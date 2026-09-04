@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>物流智能体 - 汽车物流大模型系统</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+
+    <!-- Logo -->
+    <header class="hero">
+      <div class="logo">物流<span class="logo-accent">智能体</span><span class="logo-dot"></span></div>
+      <p class="slogan">让 AI 驱动汽车物流的每一次决策</p>
+    </header>
+
+    <!-- 任务输入框 -->
+    <div class="input-wrap">
+      <div class="input-box">
+        <div class="input-top">
+          <span class="mode-chip" id="current-mode-chip">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg>
+            <span id="chip-text">需求预测</span>
+          </span>
+          <span class="hint" id="mode-hint">描述你的预测需求，需求预测 Agent 将输出未来需求趋势与结果表格。</span>
+        </div>
+        <textarea id="task-input" rows="3" placeholder="例如：预测下季度整车运输需求，并给出生产调度建议…"></textarea>
+        <div class="input-bottom">
+          <button class="deep-btn" id="deep-btn" type="button">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+            深度思考
+          </button>
+          <div class="send-area">
+            <span class="send-hint">Enter 发送，Shift + Enter 换行</span>
+            <button class="send-btn" id="send-btn" type="button" title="发送">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.2 11.4-5.3L5 12l-.001 5.3z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模式切换 -->
+      <div class="mode-bar">
+        <button class="mode-item active" data-mode="forecast" data-color="blue">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+          需求预测
+        </button>
+        <button class="mode-item" data-mode="schedule" data-color="orange">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+          生产调度
+        </button>
+        <button class="mode-item" data-mode="offload" data-color="red">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          计算卸载
+        </button>
+      </div>
+    </div>
+
+    <!-- 智能体能力 -->
+    <section class="cases">
+      <h2>智能体能力</h2>
+      <p class="cases-sub">三个专业 Agent，覆盖汽车物流核心决策场景</p>
+      <div class="case-grid">
+
+        <div class="case-card" data-mode="forecast">
+          <div class="case-head">
+            <h3>需求预测 Agent</h3>
+            <span class="case-tag tag-blue">时序预测</span>
+          </div>
+          <p class="case-desc">基于历史运输与订单数据，预测整车及零部件未来需求量，辅助产能与运力规划。</p>
+          <a class="case-link" href="#">开始预测 →</a>
+          <div class="case-preview">
+            <div class="pv-bar" style="height:40%"></div>
+            <div class="pv-bar" style="height:65%"></div>
+            <div class="pv-bar" style="height:50%"></div>
+            <div class="pv-bar" style="height:80%"></div>
+            <div class="pv-bar" style="height:70%"></div>
+            <div class="pv-bar" style="height:92%"></div>
+          </div>
+        </div>
+
+        <div class="case-card" data-mode="schedule">
+          <div class="case-head">
+            <h3>生产调度 Agent</h3>
+            <span class="case-tag tag-orange">智能排程</span>
+          </div>
+          <p class="case-desc">综合产线、订单与交期约束，自动生成最优生产排程方案，提升产线利用率。</p>
+          <a class="case-link" href="#">生成调度 →</a>
+          <div class="case-preview">
+            <div class="pv-row" style="width:55%;background:#8fb3f7"></div>
+            <div class="pv-row" style="width:30%;background:#a7e3c8;margin-left:60%"></div>
+            <div class="pv-row" style="width:45%;background:#f7c98f;margin-left:15%"></div>
+            <div class="pv-row" style="width:35%;background:#8fb3f7;margin-left:50%"></div>
+          </div>
+        </div>
+
+        <div class="case-card" data-mode="offload">
+          <div class="case-head">
+            <h3>计算卸载 Agent</h3>
+            <span class="case-tag tag-red">决策优化</span>
+          </div>
+          <p class="case-desc">面向端-边-云环境，智能决策任务卸载策略，平衡时延与能耗，优化资源利用。</p>
+          <a class="case-link" href="#">执行决策 →</a>
+          <div class="case-preview">
+            <div class="pv-donut"></div>
+            <div class="pv-legend">
+              <span><i style="background:#5b8def"></i>云端</span>
+              <span><i style="background:#3fbf7f"></i>边缘</span>
+              <span><i style="background:#f2a94a"></i>本地</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card" data-mode="qa">
+          <div class="case-head">
+            <h3>物流知识问答</h3>
+            <span class="case-tag tag-green">RAG 问答</span>
+          </div>
+          <p class="case-desc">基于知识图谱与文档库的智能问答，快速解答物流业务、单据与流程问题。</p>
+          <a class="case-link" href="#">开始提问 →</a>
+          <div class="case-preview">
+            <div class="pv-line" style="width:85%"></div>
+            <div class="pv-line" style="width:70%"></div>
+            <div class="pv-line" style="width:78%"></div>
+            <div class="pv-line" style="width:45%"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
