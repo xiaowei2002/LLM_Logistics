@@ -1,0 +1,14 @@
+/* ===== 全局设计变量 ===== */
+:root {
+  --bg: #ffffff;
+  --border: #e8eaee;
+  --text: #1f2329;
+  --text-muted: #8a919c;
+  --text-placeholder: #b8bec8;
+  --fill-light: #f4f5f7;
+  --primary: #2f6fed;
+  --primary-light: #eef3ff;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
