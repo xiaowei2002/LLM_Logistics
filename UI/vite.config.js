@@ -14,5 +14,13 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
+    proxy: {
+      // 将 /llm 开头的请求转发到智谱开放平台，规避浏览器跨域（CORS）限制
+      '/llm': {
+        target: 'https://open.bigmodel.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/llm/, ''),
+      },
+    },
   },
 })
