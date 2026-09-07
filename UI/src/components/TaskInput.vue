@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 
 import IconAgent from '@/components/icons/IconAgent.vue'
 import IconSend from '@/components/icons/IconSend.vue'
 
-defineProps({
+const props = defineProps({
   modeText: {
     type: String,
     default: '物流任务',
@@ -17,12 +17,49 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  /* 外部传入的草稿（编辑历史消息时填入） */
+  draft: {
+    type: String,
+    default: '',
+  },
+  /* 紧凑模式：聊天底部输入条，单行起、自动长高 */
+  compact: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+watch(
+  () => props.draft,
+  (v) => {
+    if (v) {
+      content.value = v
+      textareaRef.value?.focus()
+    }
+  },
+)
+
+/* 自动伸缩：高度跟随内容，最多 160px；清空后完全复位 */
+function autoResize() {
+  const el = textareaRef.value
+  if (!el) return
+  el.style.height = 'auto'
+  if (el.value) {
+    el.style.height = Math.min(el.scrollHeight, 160) + 'px'
+  } else {
+    el.style.height = ''
+  }
+}
 
 const emit = defineEmits(['send', 'toggle-deep'])
 
 const content = ref('')
 const textareaRef = ref(null)
+
+/* 程序性清空（如发送后）不触发 input 事件，这里兜底 */
+watch(content, () => {
+  nextTick(autoResize)
+})
 
 function handleSend() {
   const text = content.value.trim()
@@ -33,6 +70,7 @@ function handleSend() {
 
   emit('send', text)
   content.value = ''
+  nextTick(autoResize)
 }
 
 function handleEnter(event) {
@@ -57,9 +95,11 @@ function handleEnter(event) {
         ref="textareaRef"
         v-model="content"
         class="task-input"
-        rows="3"
+        :class="{ compact }"
+        :rows="compact ? 1 : 3"
         placeholder="例如：预测下季度整车运输需求，并给出生产调度建议…"
         @keydown.enter.exact="handleEnter"
+        @input="autoResize"
       ></textarea>
 
       <div class="input-bottom">
@@ -151,6 +191,18 @@ function handleEnter(event) {
   color: #c3c9d2;
 }
 
+/* 紧凑模式：单行起、自动长高，聊天底部输入条形态 */
+.task-input.compact {
+  min-height: 26px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.input-box:has(.task-input.compact) {
+  padding: 12px 18px 10px;
+  gap: 6px;
+}
+
 .input-bottom {
   display: flex;
   justify-content: space-between;
@@ -196,10 +248,10 @@ function handleEnter(event) {
 }
 
 .send-btn {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--primary);
   color: #fff;
   cursor: pointer;
