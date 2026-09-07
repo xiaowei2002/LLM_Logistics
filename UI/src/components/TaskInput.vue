@@ -93,12 +93,12 @@ function handleEnter(event) {
 
 .input-box {
   border: 2px solid transparent;
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   background:
     linear-gradient(var(--bg), var(--bg)) padding-box,
     linear-gradient(90deg, #ff8bd2, #b57bee, #5b8def) border-box;
   box-shadow: var(--shadow);
-  padding: 16px 18px 12px;
+  padding: 16px 20px 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -141,12 +141,14 @@ function handleEnter(event) {
   font-size: 14px;
   font-family: inherit;
   min-height: 72px;
+  line-height: 1.6;
   color: var(--text);
   background: transparent;
+  padding: 2px 4px;
 }
 
 .task-input::placeholder {
-  color: var(--text-placeholder);
+  color: #c3c9d2;
 }
 
 .input-bottom {

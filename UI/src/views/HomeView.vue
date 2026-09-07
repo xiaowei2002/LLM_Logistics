@@ -203,28 +203,45 @@ function handleLogout() {
   justify-content: flex-start;
 }
 
-/* 消息面板：可见的卡片外壳（不滚动） */
+/* 消息面板：白色卡片 + 柔和阴影，和页面背景区分层次 */
 .chat-panel {
   flex: 1;
   min-height: 0;
   display: flex;
   max-width: 760px;
   width: 100%;
-  margin: 16px auto;
-  background: var(--fill-light);
-  border: 1px solid #d7dbe2;
-  border-radius: var(--radius-lg);
+  margin: 16px auto 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
-/* 面板内的滚动区 */
+/* 面板内的滚动区：上下 24px 左右 20px，消息不贴容器边 */
 .chat-scroll {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 20px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #d3d7de transparent;
+}
+
+/* 细滚动条：浅灰、圆角，只有溢出时才出现 */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #d3d7de;
+  border-radius: 3px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* 消息列表：margin-top:auto 让消息少时贴底、多时可正常向上滚动 */
@@ -232,7 +249,15 @@ function handleLogout() {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+/* 组内（问↔答）间距 16px；组间（上一答↔下一问）拉开到 24px */
+.chat-item + .chat-item {
+  margin-top: 16px;
+}
+
+.chat-item.user:not(:first-child) {
+  margin-top: 24px;
 }
 
 .chat-item {
@@ -242,7 +267,7 @@ function handleLogout() {
 .input-dock {
   max-width: 760px;
   width: 100%;
-  margin: 0 auto;
+  margin: 12px auto 0;
   padding-bottom: 8px;
 }
 
@@ -258,27 +283,25 @@ function handleLogout() {
   justify-content: flex-start;
 }
 
+/* 气泡：统一圆角、70% 最大宽度、舒适内边距 */
 .bubble {
-  max-width: 85%;
-  padding: 10px 14px;
-  border-radius: var(--radius-lg);
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 10px;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .chat-item.user .bubble {
-  background: var(--primary);
+  background: #5b8def;
   color: #fff;
-  border-bottom-right-radius: 4px;
 }
 
 .chat-item.assistant .bubble {
-  background: #fff;
-  border: 1px solid var(--border);
+  background: var(--fill-light);
   color: var(--text);
-  border-bottom-left-radius: 4px;
 }
 
 /* 深度思考过程（DeepSeek 风格：可折叠） */
@@ -315,8 +338,8 @@ function handleLogout() {
 .reasoning-body {
   margin-top: 8px;
   padding: 10px 12px;
-  background: var(--fill-light);
-  border-left: 3px solid var(--border);
+  background: #fff;
+  border-left: 3px solid #d3d7de;
   border-radius: 6px;
   font-size: 12.5px;
   color: var(--text-muted);
