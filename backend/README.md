@@ -58,6 +58,7 @@ python run.py             # 启动后访问 http://localhost:5000
 ## 配置
 
 服务配置通过环境变量 / `backend/.env` 加载，主要项：
+将.env.example重命名为.env
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
