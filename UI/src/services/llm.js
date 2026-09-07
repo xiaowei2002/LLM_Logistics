@@ -12,15 +12,21 @@ export function isLLMConfigured() {
  * @param {Array<{role: string, content: string}>} messages 完整对话历史
  * @param {({content?: string, reasoning?: string}) => void} onDelta 增量回调
  * @param {AbortSignal} [signal] 中断信号
+ * @param {{deepThink?: boolean}} [options] deepThink 控制是否开启深度推理
  */
-export async function streamChat(messages, onDelta, signal) {
+export async function streamChat(messages, onDelta, signal, { deepThink = true } = {}) {
   const res = await fetch('/llm/api/paas/v4/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${API_KEY}`,
     },
-    body: JSON.stringify({ model: MODEL, messages, stream: true }),
+    body: JSON.stringify({
+      model: MODEL,
+      messages,
+      stream: true,
+      thinking: { type: deepThink ? 'enabled' : 'disabled' },
+    }),
     signal,
   })
 

@@ -10,9 +10,10 @@ import { streamChat } from '@/services/llm'
 const router = useRouter()
 const authStore = useAuthStore()
 
-/** 对话记录：{ role: 'user' | 'assistant', content: string, streaming?: boolean } */
+/** 对话记录：{ role, content, reasoning?, reasoningOpen?, thinkSeconds?, streaming? } */
 const messages = ref([])
 const chatListRef = ref(null)
+const deepThink = ref(true)
 let abortController = null
 
 async function scrollToBottom() {
@@ -28,9 +29,17 @@ async function handleSend(text) {
   abortController = new AbortController()
 
   messages.value.push({ role: 'user', content: text })
-  messages.value.push({ role: 'assistant', content: '', reasoning: '', streaming: true })
+  messages.value.push({
+    role: 'assistant',
+    content: '',
+    reasoning: '',
+    reasoningOpen: true,
+    thinkSeconds: null,
+    streaming: true,
+  })
   // 取 push 后的响应式代理对象，直接改原始对象不会触发页面更新
   const reply = messages.value[messages.value.length - 1]
+  const thinkStart = Date.now()
   scrollToBottom()
 
   try {
@@ -42,10 +51,18 @@ async function handleSend(text) {
       history,
       ({ content, reasoning }) => {
         if (reasoning) reply.reasoning += reasoning
-        if (content) reply.content += content
+        if (content) {
+          // 第一段正文到达时记录思考耗时并自动收起思考过程
+          if (!reply.content && reply.reasoning) {
+            reply.thinkSeconds = Math.max(1, Math.round((Date.now() - thinkStart) / 1000))
+            reply.reasoningOpen = false
+          }
+          reply.content += content
+        }
         scrollToBottom()
       },
       abortController.signal,
+      { deepThink: deepThink.value },
     )
   } catch (err) {
     if (err.name !== 'AbortError') {
@@ -76,7 +93,11 @@ function handleLogout() {
       <!-- 未开始对话：居中展示 Logo 和输入框 -->
       <template v-if="!messages.length">
         <AppHero />
-        <TaskInput @send="handleSend" />
+        <TaskInput
+          :deep-think="deepThink"
+          @toggle-deep="deepThink = !deepThink"
+          @send="handleSend"
+        />
       </template>
 
       <!-- 开始对话后：聊天记录在上方滚动，输入框固定底部 -->
@@ -91,17 +112,27 @@ function handleLogout() {
                 :class="msg.role"
               >
                 <div class="bubble">
-                  <template v-if="msg.role === 'assistant' && !msg.content">
-                    <div v-if="msg.reasoning" class="reasoning">{{ msg.reasoning }}</div>
-                    <span class="dots"><i></i><i></i><i></i></span>
-                  </template>
-                  <template v-else>
-                    <div v-if="msg.reasoning && msg.streaming" class="reasoning collapsed">
-                      已深度思考（{{ msg.reasoning.length }} 字）
-                    </div>
-                    <span class="text">{{ msg.content }}</span>
-                    <span v-if="msg.streaming && msg.content" class="caret"></span>
-                  </template>
+                  <!-- 深度思考过程：可折叠 -->
+                  <div v-if="msg.reasoning" class="reasoning-box">
+                    <button
+                      class="reasoning-toggle"
+                      type="button"
+                      @click="msg.reasoningOpen = !msg.reasoningOpen"
+                    >
+                      <template v-if="msg.streaming && !msg.content">思考中…</template>
+                      <template v-else>
+                        已深度思考<template v-if="msg.thinkSeconds">（用时 {{ msg.thinkSeconds }} 秒）</template>
+                      </template>
+                      <span class="chevron" :class="{ open: msg.reasoningOpen }">▾</span>
+                    </button>
+                    <div v-show="msg.reasoningOpen" class="reasoning-body">{{ msg.reasoning }}</div>
+                  </div>
+
+                  <span v-if="!msg.content && !(msg.role === 'assistant' && msg.reasoning)" class="dots">
+                    <i></i><i></i><i></i>
+                  </span>
+                  <span class="text">{{ msg.content }}</span>
+                  <span v-if="msg.streaming && msg.content" class="caret"></span>
                 </div>
               </div>
             </div>
@@ -109,7 +140,11 @@ function handleLogout() {
         </section>
 
         <div class="input-dock">
-          <TaskInput @send="handleSend" />
+          <TaskInput
+            :deep-think="deepThink"
+            @toggle-deep="deepThink = !deepThink"
+            @send="handleSend"
+          />
         </div>
       </template>
     </main>
@@ -246,25 +281,57 @@ function handleLogout() {
   border-bottom-left-radius: 4px;
 }
 
-/* 思考过程：灰色小字 */
-.reasoning {
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px dashed var(--border);
-  max-height: 150px;
-  overflow-y: auto;
-  white-space: pre-wrap;
+/* 深度思考过程（DeepSeek 风格：可折叠） */
+.reasoning-box {
+  margin-bottom: 10px;
 }
 
-.reasoning.collapsed {
-  max-height: none;
-  overflow: visible;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
+.reasoning-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.reasoning-toggle:hover {
+  color: var(--text);
+}
+
+.chevron {
+  display: inline-block;
+  transition: transform 0.15s;
+  font-size: 11px;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.reasoning-body {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: var(--fill-light);
+  border-left: 3px solid var(--border);
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* 思考中时内容区自动增长到较高上限 */
+.reasoning-box:has(+ .text:empty) .reasoning-body,
+.reasoning-body:only-child {
+  max-height: 240px;
 }
 
 /* "思考中"的三个跳动圆点 */

@@ -13,9 +13,13 @@ defineProps({
     type: String,
     default: '有什么物流任务需要我完成？智能体将自动规划并执行。',
   },
+  deepThink: {
+    type: Boolean,
+    default: false,
+  },
 })
 
-const emit = defineEmits(['send'])
+const emit = defineEmits(['send', 'toggle-deep'])
 
 const content = ref('')
 const textareaRef = ref(null)
@@ -59,7 +63,19 @@ function handleEnter(event) {
       ></textarea>
 
       <div class="input-bottom">
-        <span class="send-hint">Enter 发送，Shift + Enter 换行</span>
+        <div class="bottom-left">
+          <button
+            class="deep-btn"
+            :class="{ active: deepThink }"
+            type="button"
+            title="开启后模型会先深度推理再回答"
+            @click="emit('toggle-deep')"
+          >
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-4 10.5c.6.5 1 1.5 1 2.5h6c0-1 .4-2 1-2.5A6 6 0 0 0 12 3z"/><line x1="10" y1="20" x2="14" y2="20"/></svg>
+            深度思考
+          </button>
+          <span class="send-hint">Enter 发送，Shift + Enter 换行</span>
+        </div>
         <button class="send-btn" type="button" title="发送" @click="handleSend">
           <IconSend />
         </button>
@@ -135,9 +151,41 @@ function handleEnter(event) {
 
 .input-bottom {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 12px;
+}
+
+.bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deep-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.deep-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.deep-btn.active {
+  background: var(--primary-light);
+  border-color: transparent;
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .send-hint {
@@ -146,20 +194,21 @@ function handleEnter(event) {
 }
 
 .send-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   background: var(--primary);
   color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.15s;
 }
 
 .send-btn:hover {
-  opacity: 0.88;
+  background: #245bd0;
 }
 
 @media (max-width: 620px) {
