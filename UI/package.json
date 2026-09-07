@@ -1,0 +1,21 @@
+{
+  "name": "llm-logistics-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "基于大模型多主体协同的智慧物流系统 - 前端（Vue 3 + Vite）",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^3.0.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.7"
+  }
+}
