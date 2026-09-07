@@ -11,4 +11,13 @@
   --radius-md: 10px;
   --radius-lg: 18px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+  /* Element Plus 主色对齐品牌蓝 */
+  --el-color-primary: #2f6fed;
+  --el-color-primary-light-3: #5d8cf1;
+  --el-color-primary-light-5: #85a6f4;
+  --el-color-primary-light-7: #adc2f8;
+  --el-color-primary-light-8: #c1d0fa;
+  --el-color-primary-light-9: #eef3ff;
+  --el-color-primary-dark-2: #2659be;
 }

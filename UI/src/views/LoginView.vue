@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { User, Lock } from '@element-plus/icons-vue'
 
 import { useAuthStore } from '@/stores/auth'
 
@@ -8,44 +10,59 @@ const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
 
-const username = ref('')
-const password = ref('')
+const formRef = ref(null)
+const form = reactive({
+  username: '',
+  password: '',
+})
 
 function handleSubmit() {
-  if (authStore.login(username.value, password.value)) {
-    password.value = ''
+  if (authStore.login(form.username, form.password)) {
+    form.password = ''
     router.replace(route.query.redirect || '/')
+  } else if (authStore.error) {
+    ElMessage.error(authStore.error)
   }
 }
 </script>
 
 <template>
   <div class="login-page">
-    <form class="login-card" @submit.prevent="handleSubmit">
+    <el-form
+      ref="formRef"
+      class="login-card"
+      :model="form"
+      label-position="top"
+      @submit.prevent="handleSubmit"
+    >
       <div class="brand">
         物流<span class="brand-accent">智能体</span><span class="brand-dot"></span>
       </div>
       <p class="subtitle">请登录后使用系统</p>
 
-      <label class="field">
-        <span class="field-label">账号</span>
-        <input v-model="username" type="text" autocomplete="username" placeholder="请输入账号" />
-      </label>
-
-      <label class="field">
-        <span class="field-label">密码</span>
-        <input
-          v-model="password"
-          type="password"
-          autocomplete="current-password"
-          placeholder="请输入密码"
+      <el-form-item label="账号">
+        <el-input
+          v-model="form.username"
+          placeholder="请输入账号"
+          autocomplete="username"
+          :prefix-icon="User"
+          clearable
         />
-      </label>
+      </el-form-item>
 
-      <p v-if="authStore.error" class="error">{{ authStore.error }}</p>
+      <el-form-item label="密码">
+        <el-input
+          v-model="form.password"
+          type="password"
+          placeholder="请输入密码"
+          autocomplete="current-password"
+          :prefix-icon="Lock"
+          show-password
+        />
+      </el-form-item>
 
-      <button class="submit-btn" type="submit">登 录</button>
-    </form>
+      <el-button class="submit-btn" type="primary" native-type="submit">登 录</el-button>
+    </el-form>
   </div>
 </template>
 
@@ -70,7 +87,7 @@ function handleSubmit() {
   padding: 36px 32px 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 .brand {
@@ -80,6 +97,7 @@ function handleSubmit() {
   display: inline-flex;
   align-items: baseline;
   justify-content: center;
+  margin-bottom: 4px;
 }
 
 .brand-accent {
@@ -102,54 +120,10 @@ function handleSubmit() {
   margin-bottom: 8px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field-label {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.field input {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 10px 12px;
-  font-size: 14px;
-  font-family: inherit;
-  color: var(--text);
-  outline: none;
-}
-
-.field input::placeholder {
-  color: var(--text-placeholder);
-}
-
-.field input:focus {
-  border-color: var(--primary);
-}
-
-.error {
-  color: #e54545;
-  font-size: 13px;
-}
-
 .submit-btn {
-  margin-top: 8px;
-  border: none;
-  border-radius: var(--radius-md);
-  background: var(--primary);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
+  margin-top: 12px;
   letter-spacing: 2px;
-  padding: 11px 0;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  opacity: 0.88;
+  font-weight: 600;
+  font-size: 15px;
 }
 </style>

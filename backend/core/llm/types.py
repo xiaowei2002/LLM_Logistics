@@ -33,6 +33,7 @@ class StreamChunk:
     """流式输出的单个增量"""
 
     content: str | None = None
+    reasoning_content: str | None = None
     finish_reason: str | None = None
     tool_calls: list[Any] = field(default_factory=list)
     usage: dict[str, int] | None = None

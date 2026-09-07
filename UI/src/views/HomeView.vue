@@ -1,8 +1,11 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { CopyDocument, EditPen, Expand, RefreshRight } from '@element-plus/icons-vue'
 
 import AppHero from '@/components/AppHero.vue'
+import ChatSidebar from '@/components/ChatSidebar.vue'
 import TaskInput from '@/components/TaskInput.vue'
 import { useAuthStore } from '@/stores/auth'
 import { useChatStore } from '@/stores/chat'
@@ -15,36 +18,10 @@ const chatStore = useChatStore()
 const chatListRef = ref(null)
 const deepThink = ref(true)
 const sidebarOpen = ref(true)
-const searchOpen = ref(false)
-const searchText = ref('')
 const draftText = ref('')
 let abortController = null
 
 const messages = computed(() => chatStore.current?.messages ?? [])
-
-/* 历史会话按时间分组：今天 / 7 天内 / 30 天内 / 更早（支持标题搜索过滤） */
-const groupedConversations = computed(() => {
-  const now = new Date()
-  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
-  const day = 24 * 60 * 60 * 1000
-  const q = searchText.value.trim().toLowerCase()
-  const buckets = { today: [], week: [], month: [], older: [] }
-  for (const c of [...chatStore.conversations]
-    .filter((c) => !q || c.title.toLowerCase().includes(q))
-    .sort((a, b) => (b.updatedAt ?? 0) - (a.updatedAt ?? 0))) {
-    const t = c.updatedAt ?? 0
-    if (t >= startOfToday) buckets.today.push(c)
-    else if (t >= startOfToday - 7 * day) buckets.week.push(c)
-    else if (t >= startOfToday - 30 * day) buckets.month.push(c)
-    else buckets.older.push(c)
-  }
-  return [
-    { label: '今天', items: buckets.today },
-    { label: '7 天内', items: buckets.week },
-    { label: '30 天内', items: buckets.month },
-    { label: '更早', items: buckets.older },
-  ].filter((g) => g.items.length)
-})
 
 onMounted(() => {
   if (!chatStore.current) chatStore.newChat()
@@ -70,8 +47,16 @@ function handleSelectChat(id) {
   chatStore.selectChat(id)
 }
 
-function handleDeleteChat(id) {
-  if (!window.confirm('确定删除这条对话吗？删除后无法恢复。')) return
+async function handleDeleteChat(id) {
+  try {
+    await ElMessageBox.confirm('确定删除这条对话吗？删除后无法恢复。', '删除对话', {
+      confirmButtonText: '删除',
+      cancelButtonText: '取消',
+      type: 'warning',
+    })
+  } catch {
+    return
+  }
   if (id === chatStore.currentId) abortController?.abort()
   chatStore.deleteChat(id)
   if (!chatStore.current) chatStore.newChat()
@@ -155,8 +140,7 @@ function handleRegenerate(msgIndex) {
 async function copyMessage(msg) {
   try {
     await navigator.clipboard.writeText(msg.content)
-    msg.copied = true
-    setTimeout(() => (msg.copied = false), 1500)
+    ElMessage.success('已复制')
   } catch {
     // 剪贴板不可用时静默失败
   }
@@ -187,83 +171,27 @@ function handleLogout() {
 <template>
   <div class="page">
     <!-- 左侧边栏：新对话 + 历史记录 -->
-    <aside v-show="sidebarOpen" class="sidebar">
-      <div class="sidebar-head">
-        <div class="sidebar-logo">物流<span class="accent">智能体</span><span class="dot"></span></div>
-        <div class="head-actions">
-          <button
-            class="icon-btn"
-            type="button"
-            title="搜索对话"
-            @click="searchOpen = !searchOpen; searchText = ''"
-          >
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
-          </button>
-          <button
-            class="icon-btn"
-            type="button"
-            title="收起边栏"
-            @click="sidebarOpen = false"
-          >
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <input
-        v-if="searchOpen"
-        v-model="searchText"
-        class="search-input"
-        type="text"
-        placeholder="搜索对话…"
-        autofocus
-      />
-
-      <button class="new-chat-btn" type="button" @click="startNewChat">
-        <span class="plus">+</span> 开启新对话
-      </button>
-
-      <div class="history">
-        <template v-for="group in groupedConversations" :key="group.label">
-          <div class="group-label">{{ group.label }}</div>
-          <div
-            v-for="c in group.items"
-            :key="c.id"
-            class="history-item"
-            :class="{ active: c.id === chatStore.currentId }"
-            @click="handleSelectChat(c.id)"
-          >
-            <span class="history-title">{{ c.title }}</span>
-            <button
-              class="history-del"
-              type="button"
-              title="删除对话"
-              @click.stop="handleDeleteChat(c.id)"
-            >
-              ✕
-            </button>
-          </div>
-        </template>
-      </div>
-
-      <div class="sidebar-footer">
-        <span class="user">{{ authStore.displayName }}</span>
-        <button class="logout-btn" type="button" @click="handleLogout">退出登录</button>
-      </div>
-    </aside>
+    <ChatSidebar
+      v-show="sidebarOpen"
+      @new-chat="startNewChat"
+      @select="handleSelectChat"
+      @delete="handleDeleteChat"
+      @logout="handleLogout"
+      @collapse="sidebarOpen = false"
+    />
 
     <!-- 右侧聊天区 -->
     <main class="main" :class="{ 'has-chat': messages.length, collapsed: !sidebarOpen }">
       <!-- 边栏收起后，左上角显示展开按钮 -->
-      <button
+      <el-button
         v-if="!sidebarOpen"
         class="expand-btn"
-        type="button"
-        title="展开边栏"
+        circle
         @click="sidebarOpen = true"
       >
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg>
-      </button>
+        <el-icon><Expand /></el-icon>
+      </el-button>
+
       <!-- 未开始对话：居中展示 Logo 和输入框 -->
       <template v-if="!messages.length">
         <AppHero />
@@ -283,58 +211,66 @@ function handleLogout() {
         </div>
 
         <section class="chat-scroll" ref="chatListRef">
-            <div class="chat-inner">
-              <div
-                v-for="(msg, index) in messages"
-                :key="index"
-                class="chat-item"
-                :class="msg.role"
-              >
-                <div class="bubble">
-                  <!-- 深度思考过程：可折叠 -->
-                  <div v-if="msg.reasoning" class="reasoning-box">
-                    <button
-                      class="reasoning-toggle"
-                      type="button"
-                      @click="msg.reasoningOpen = !msg.reasoningOpen"
-                    >
-                      <template v-if="msg.streaming && !msg.content">思考中…</template>
-                      <template v-else>
-                        已深度思考<template v-if="msg.thinkSeconds">（用时 {{ msg.thinkSeconds }} 秒）</template>
-                      </template>
-                      <span class="chevron" :class="{ open: msg.reasoningOpen }">▾</span>
-                    </button>
-                    <div v-show="msg.reasoningOpen" class="reasoning-body">{{ msg.reasoning }}</div>
-                  </div>
-
-                  <span v-if="!msg.content && !(msg.role === 'assistant' && msg.reasoning)" class="dots">
-                    <i></i><i></i><i></i>
-                  </span>
-                  <span class="text">{{ msg.content }}</span>
-                  <span v-if="msg.streaming && msg.content" class="caret"></span>
+          <div class="chat-inner">
+            <div
+              v-for="(msg, index) in messages"
+              :key="index"
+              class="chat-item"
+              :class="msg.role"
+            >
+              <div class="bubble">
+                <!-- 深度思考过程：可折叠 -->
+                <div v-if="msg.reasoning" class="reasoning-box">
+                  <button
+                    class="reasoning-toggle"
+                    type="button"
+                    @click="msg.reasoningOpen = !msg.reasoningOpen"
+                  >
+                    <template v-if="msg.streaming && !msg.content">思考中…</template>
+                    <template v-else>
+                      已深度思考<template v-if="msg.thinkSeconds">（用时 {{ msg.thinkSeconds }} 秒）</template>
+                    </template>
+                    <span class="chevron" :class="{ open: msg.reasoningOpen }">▾</span>
+                  </button>
+                  <div v-show="msg.reasoningOpen" class="reasoning-body">{{ msg.reasoning }}</div>
                 </div>
 
-                <!-- 用户消息工具栏：复制 + 编辑 -->
-                <div v-if="msg.role === 'user' && !msg.streaming" class="msg-toolbar user-toolbar">
-                  <button class="tool-btn" type="button" data-tip="复制" @click="copyMessage(msg)">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                  </button>
-                  <button class="tool-btn" type="button" data-tip="编辑" @click="handleEdit(index)">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-                  </button>
-                </div>
+                <span v-if="!msg.content && !(msg.role === 'assistant' && msg.reasoning)" class="dots">
+                  <i></i><i></i><i></i>
+                </span>
+                <span class="text">{{ msg.content }}</span>
+                <span v-if="msg.streaming && msg.content" class="caret"></span>
+              </div>
 
-                <!-- AI 回复工具栏：复制 + 重新生成，图标 + 悬浮提示 -->
-                <div v-if="msg.role === 'assistant' && !msg.streaming" class="msg-toolbar">
-                  <button class="tool-btn" type="button" :data-tip="msg.copied ? '已复制' : '复制'" @click="copyMessage(msg)">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                  </button>
-                  <button class="tool-btn" type="button" data-tip="重新生成" @click="handleRegenerate(index)">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><line x1="21" y1="3" x2="21" y2="9"/><line x1="15" y1="9" x2="21" y2="9"/></svg>
-                  </button>
-                </div>
+              <!-- 用户消息工具栏：复制 + 编辑 -->
+              <div v-if="msg.role === 'user' && !msg.streaming" class="msg-toolbar user-toolbar">
+                <el-tooltip content="复制" placement="top" :show-after="300">
+                  <el-button class="tool-btn" text @click="copyMessage(msg)">
+                    <el-icon><CopyDocument /></el-icon>
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip content="编辑" placement="top" :show-after="300">
+                  <el-button class="tool-btn" text @click="handleEdit(index)">
+                    <el-icon><EditPen /></el-icon>
+                  </el-button>
+                </el-tooltip>
+              </div>
+
+              <!-- AI 回复工具栏：复制 + 重新生成 -->
+              <div v-if="msg.role === 'assistant' && !msg.streaming" class="msg-toolbar">
+                <el-tooltip content="复制" placement="top" :show-after="300">
+                  <el-button class="tool-btn" text @click="copyMessage(msg)">
+                    <el-icon><CopyDocument /></el-icon>
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip content="重新生成" placement="top" :show-after="300">
+                  <el-button class="tool-btn" text @click="handleRegenerate(index)">
+                    <el-icon><RefreshRight /></el-icon>
+                  </el-button>
+                </el-tooltip>
               </div>
             </div>
+          </div>
         </section>
 
         <div class="input-dock">
@@ -358,247 +294,21 @@ function handleLogout() {
   overflow: hidden;
 }
 
-/* ===== 侧边栏：中浅灰底、无边框，和白色主区保持可辨识的色差 ===== */
-.sidebar {
-  width: 240px;
-  flex-shrink: 0;
-  background: #e8eaf0;
-  display: flex;
-  flex-direction: column;
-  padding: 16px 12px;
-}
-
-/* 侧边栏头部：Logo + 图标按钮 */
-.sidebar-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.sidebar-logo {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: baseline;
-  color: var(--text);
-}
-
-.sidebar-logo .accent {
-  color: var(--primary);
-}
-
-.sidebar-logo .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: conic-gradient(#ff6b6b, #feca57, #48dbfb, #1dd1a1, #ff6b6b);
-  margin-left: 5px;
-  align-self: flex-end;
-  margin-bottom: 4px;
-}
-
-.head-actions {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.icon-btn {
-  width: 28px;
-  height: 28px;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-}
-
-.icon-btn:hover {
-  background: #dde0e8;
-  color: var(--text);
-}
-
-/* 搜索输入框 */
-.search-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  padding: 8px 14px;
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.search-input::placeholder {
-  color: #c3c9d2;
-}
-
 /* 边栏收起后的展开按钮：悬在左上角 */
 .expand-btn {
   position: fixed;
   top: 16px;
   left: 16px;
   z-index: 10;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border);
-  background: #fff;
   color: var(--text-muted);
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
+  background: #fff;
+  border: 1px solid var(--border);
 }
 
 .expand-btn:hover {
   color: var(--primary);
   border-color: var(--primary);
-}
-
-/* 新对话按钮：胶囊形白色底，靠色差和阴影区分，不画边框 */
-.new-chat-btn {
-  width: 100%;
-  padding: 11px 16px;
-  border: none;
-  border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  font-size: 14px;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.15s;
-}
-
-.new-chat-btn:hover {
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
-.new-chat-btn .plus {
-  margin-right: 4px;
-  font-weight: 600;
-}
-
-.history {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: #d3d7de transparent;
-}
-
-.history::-webkit-scrollbar {
-  width: 6px;
-}
-
-.history::-webkit-scrollbar-thumb {
-  background: #d3d7de;
-  border-radius: 3px;
-}
-
-/* 分组标题：纯文本，无边框无盒子，靠间距分组 */
-.group-label {
-  margin: 14px 8px 6px;
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.history-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 13.5px;
-  color: var(--text);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.history-item:hover {
-  background: #dde0e8;
-}
-
-/* 选中态：整行填充浅蓝底，不加边框 */
-.history-item.active {
-  background: var(--primary-light);
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.history-title {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* 删除按钮：hover 时才出现 */
-.history-del {
-  flex-shrink: 0;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  cursor: pointer;
-  opacity: 0;
-  transition: all 0.15s;
-}
-
-.history-item:hover .history-del {
-  opacity: 1;
-}
-
-.history-del:hover {
-  color: #e5484d;
-  background: rgba(229, 72, 77, 0.1);
-}
-
-.sidebar-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 12px;
-  margin-top: 8px;
-}
-
-.user {
-  color: var(--text-muted);
-  font-size: 13px;
-}
-
-.logout-btn {
-  border: none;
-  background: none;
-  padding: 4px 8px;
-  font-size: 12.5px;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.logout-btn:hover {
-  color: var(--primary);
-  background: var(--primary-light);
+  background: #fff;
 }
 
 /* ===== 右侧聊天区 ===== */
@@ -736,18 +446,8 @@ function handleLogout() {
 }
 
 .tool-btn {
-  position: relative;
-  border: none;
-  background: none;
   color: var(--text-muted);
-  font-size: 12px;
   padding: 4px 6px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.15s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .tool-btn:hover {
@@ -755,37 +455,9 @@ function handleLogout() {
   color: var(--text);
 }
 
-/* 悬浮功能提示：小气泡 */
-.tool-btn::after {
-  content: attr(data-tip);
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1f2329;
-  color: #fff;
-  font-size: 12px;
-  line-height: 1;
-  padding: 5px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s;
-  z-index: 5;
-}
-
-.tool-btn:hover::after {
-  opacity: 1;
-}
-
 /* 用户消息的工具栏：图标按钮靠右 */
 .user-toolbar {
   justify-content: flex-end;
-}
-
-.user-toolbar .tool-btn {
-  padding: 4px 6px;
 }
 
 /* 深度思考过程：可折叠 */

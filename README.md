@@ -27,6 +27,12 @@ conda activate <env_name>
 pip install -r requirements.txt
 ```
 
+### 前端环境依赖构建
+```bash
+cd UI
+npm install
+```
+
 ## 2. 项目文件结构
 ```
 LLM_Logistic/
@@ -42,4 +48,13 @@ LLM_Logistic/
 │   └── pdf/                #   PDF
 ├── UI/                     # 前端工程
 └── backend/                # 后端服务
+```
+
+## 3. 项目运行
+```bash
+# 启动后端服务
+cd backend && python run.py
+
+# 启动前端
+cd UI && npm run dev
 ```

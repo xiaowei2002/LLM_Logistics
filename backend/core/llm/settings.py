@@ -28,6 +28,7 @@ def _get_int(key: str, default: int | None) -> int | None:
 class LLMSettings:
     """LLM 调用配置项"""
 
+    provider: str = "openai"
     model: str = "Qwen2.5-VL-7B-Instruct"
     base_url: str = "http://127.0.0.1:8000/v1"
     api_key: str = "EMPTY"
@@ -41,6 +42,7 @@ class LLMSettings:
     def from_env(cls) -> "LLMSettings":
         """从环境变量构建配置。"""
         return cls(
+            provider=_get_str("LLM_PROVIDER", cls.provider) or cls.provider,
             model=_get_str("LLM_MODEL", cls.model),
             base_url=_get_str("LLM_BASE_URL", cls.base_url),
             api_key=_get_str("LLM_API_KEY", cls.api_key) or "EMPTY",

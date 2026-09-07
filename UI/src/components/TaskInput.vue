@@ -1,8 +1,8 @@
 <script setup>
-import { nextTick, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { Opportunity, Promotion } from '@element-plus/icons-vue'
 
 import IconAgent from '@/components/icons/IconAgent.vue'
-import IconSend from '@/components/icons/IconSend.vue'
 
 const props = defineProps({
   modeText: {
@@ -29,48 +29,35 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['send', 'toggle-deep'])
+
+const content = ref('')
+const inputRef = ref(null)
+
+/* el-input 自动伸缩行数：紧凑模式单行起，非紧凑三行起 */
+const autosize = computed(() =>
+  props.compact ? { minRows: 1, maxRows: 6 } : { minRows: 3, maxRows: 8 },
+)
+
 watch(
   () => props.draft,
   (v) => {
     if (v) {
       content.value = v
-      textareaRef.value?.focus()
+      inputRef.value?.focus()
     }
   },
 )
 
-/* 自动伸缩：高度跟随内容，最多 160px；清空后完全复位 */
-function autoResize() {
-  const el = textareaRef.value
-  if (!el) return
-  el.style.height = 'auto'
-  if (el.value) {
-    el.style.height = Math.min(el.scrollHeight, 160) + 'px'
-  } else {
-    el.style.height = ''
-  }
-}
-
-const emit = defineEmits(['send', 'toggle-deep'])
-
-const content = ref('')
-const textareaRef = ref(null)
-
-/* 程序性清空（如发送后）不触发 input 事件，这里兜底 */
-watch(content, () => {
-  nextTick(autoResize)
-})
-
 function handleSend() {
   const text = content.value.trim()
   if (!text) {
-    textareaRef.value?.focus()
+    inputRef.value?.focus()
     return
   }
 
   emit('send', text)
   content.value = ''
-  nextTick(autoResize)
 }
 
 function handleEnter(event) {
@@ -84,41 +71,41 @@ function handleEnter(event) {
   <div class="input-wrap">
     <div class="input-box">
       <div class="input-top">
-        <span class="mode-chip">
+        <el-tag class="mode-chip" effect="plain">
           <IconAgent />
           <span>{{ modeText }}</span>
-        </span>
+        </el-tag>
         <span class="hint">{{ hint }}</span>
       </div>
 
-      <textarea
-        ref="textareaRef"
+      <el-input
+        ref="inputRef"
         v-model="content"
         class="task-input"
         :class="{ compact }"
-        :rows="compact ? 1 : 3"
+        type="textarea"
+        :autosize="autosize"
+        resize="none"
         placeholder="例如：预测下季度整车运输需求，并给出生产调度建议…"
         @keydown.enter.exact="handleEnter"
-        @input="autoResize"
-      ></textarea>
+      />
 
       <div class="input-bottom">
         <div class="bottom-left">
-          <button
+          <el-button
             class="deep-btn"
-            :class="{ active: deepThink }"
-            type="button"
-            title="开启后模型会先深度推理再回答"
+            :type="deepThink ? 'primary' : 'default'"
+            round
             @click="emit('toggle-deep')"
           >
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0-4 10.5c.6.5 1 1.5 1 2.5h6c0-1 .4-2 1-2.5A6 6 0 0 0 12 3z"/><line x1="10" y1="20" x2="14" y2="20"/></svg>
-            深度思考
-          </button>
+            <el-icon><Opportunity /></el-icon>
+            <span>深度思考</span>
+          </el-button>
           <span class="send-hint">Enter 发送，Shift + Enter 换行</span>
         </div>
-        <button class="send-btn" type="button" title="发送" @click="handleSend">
-          <IconSend />
-        </button>
+        <el-button class="send-btn" type="primary" circle @click="handleSend">
+          <el-icon><Promotion /></el-icon>
+        </el-button>
       </div>
     </div>
   </div>
@@ -155,11 +142,14 @@ function handleEnter(event) {
   align-items: center;
   gap: 6px;
   background: var(--fill-light);
-  border-radius: 8px;
-  padding: 6px 12px;
+  border-color: transparent;
+  color: var(--text);
   font-weight: 600;
   font-size: 13px;
   flex-shrink: 0;
+  height: auto;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
 
 .mode-chip :deep(svg) {
@@ -174,28 +164,26 @@ function handleEnter(event) {
   white-space: nowrap;
 }
 
-.task-input {
+/* 去掉 el-input 默认边框，融入渐变外框 */
+.task-input :deep(.el-textarea__inner) {
   border: none;
-  outline: none;
+  box-shadow: none;
+  background: transparent;
   resize: none;
-  font-size: 14px;
   font-family: inherit;
-  min-height: 72px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--text);
-  background: transparent;
   padding: 2px 4px;
 }
 
-.task-input::placeholder {
+.task-input :deep(.el-textarea__inner)::placeholder {
   color: #c3c9d2;
 }
 
 /* 紧凑模式：单行起、自动长高，聊天底部输入条形态 */
-.task-input.compact {
+.task-input.compact :deep(.el-textarea__inner) {
   min-height: 26px;
-  max-height: 160px;
-  overflow-y: auto;
 }
 
 .input-box:has(.task-input.compact) {
@@ -217,29 +205,7 @@ function handleEnter(event) {
 }
 
 .deep-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--text-muted);
-  border-radius: 999px;
-  padding: 6px 14px;
   font-size: 13px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.deep-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.deep-btn.active {
-  background: var(--primary-light);
-  border-color: transparent;
-  color: var(--primary);
-  font-weight: 600;
 }
 
 .send-hint {
@@ -250,19 +216,7 @@ function handleEnter(event) {
 .send-btn {
   width: 32px;
   height: 32px;
-  border: none;
-  border-radius: 8px;
-  background: var(--primary);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s;
-}
-
-.send-btn:hover {
-  background: #245bd0;
+  padding: 0;
 }
 
 @media (max-width: 620px) {
