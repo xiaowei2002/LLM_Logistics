@@ -14,7 +14,8 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 
 class ChatMessage(BaseModel):
     role: str
-    content: str
+    # 纯文本，或多模态内容数组（OpenAI 视觉格式：[{type:"text"...},{type:"image_url"...}]）
+    content: str | list
 
 
 class ChatRequest(BaseModel):

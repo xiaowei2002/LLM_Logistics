@@ -1,6 +1,8 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
-import { Opportunity, Promotion } from '@element-plus/icons-vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { ElMessage } from 'element-plus'
+import { Opportunity, Paperclip, PictureFilled, Promotion } from '@element-plus/icons-vue'
+// 注：此处使用 PictureFilled（实心图片图标），小尺寸下更清晰
 
 import IconAgent from '@/components/icons/IconAgent.vue'
 
@@ -27,18 +29,177 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  /* 是否正在生成回复：发送键变停止键 */
+  streaming: {
+    type: Boolean,
+    default: false,
+  },
 })
 
-const emit = defineEmits(['send', 'toggle-deep'])
+const emit = defineEmits(['send', 'toggle-deep', 'stop'])
 
 const content = ref('')
 const inputRef = ref(null)
 
-/* el-input 自动伸缩行数：紧凑模式单行起，非紧凑三行起 */
-const autosize = computed(() =>
-  props.compact ? { minRows: 1, maxRows: 6 } : { minRows: 3, maxRows: 8 },
-)
+/* 输入框高度自适应（不用 el-input 的 autosize：其缩回后 Chrome 常残留滚动条）
+   每次内容变化重算：低于上限时 overflow hidden，滚动条必然消失；超上限才出现滚动条 */
+const MAX_INPUT_HEIGHT = 200
 
+async function autoResize() {
+  await nextTick()
+  const el = inputRef.value?.textarea
+  if (!el) return
+  el.style.height = 'auto'
+  const capped = Math.min(el.scrollHeight, MAX_INPUT_HEIGHT)
+  el.style.height = `${capped}px`
+  el.style.overflowY = el.scrollHeight > MAX_INPUT_HEIGHT ? 'auto' : 'hidden'
+}
+
+watch(content, autoResize)
+onMounted(() => {
+  autoResize()
+  /* 直接绑在内部 textarea 上：el-input 对 paste 的事件透传不可靠 */
+  inputRef.value?.textarea?.addEventListener('paste', onPaste)
+})
+
+/* ===== 图片上传 ===== */
+const MAX_IMAGES = 9
+const images = ref([]) // 待发送图片（压缩后的 base64 data URL）
+const fileRef = ref(null)
+
+/* ===== 文档上传 ===== */
+const MAX_FILES = 5
+const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB，与后端一致
+const docs = ref([]) // 待发送文档 [{id, name, text}]
+const docRef = ref(null)
+
+function pickImages() {
+  fileRef.value?.click()
+}
+
+function pickDocs() {
+  docRef.value?.click()
+}
+
+/* 单个文档 → 传给后端提取文字（选择与粘贴共用） */
+async function uploadDoc(file) {
+  if (docs.value.length >= MAX_FILES) {
+    ElMessage.warning(`最多上传 ${MAX_FILES} 个文件`)
+    return
+  }
+  if (file.size > MAX_FILE_SIZE) {
+    ElMessage.error(`「${file.name}」超过 10MB 上限`)
+    return
+  }
+  const fd = new FormData()
+  fd.append('file', file)
+  try {
+    const res = await fetch('/api/files/extract', { method: 'POST', body: fd })
+    if (!res.ok) {
+      const detail = (await res.json().catch(() => null))?.detail
+      throw new Error(typeof detail === 'string' ? detail : `接口返回 ${res.status}`)
+    }
+    const data = await res.json()
+    docs.value.push({ id: Date.now() + Math.random(), name: data.filename, text: data.text })
+    if (data.truncated) {
+      ElMessage.warning(`「${data.filename}」内容较长，仅提取前 3 万字`)
+    }
+  } catch (err) {
+    ElMessage.error(`「${file.name}」解析失败：${err.message}`)
+  }
+}
+
+async function onDocsChange(event) {
+  const selected = [...event.target.files]
+  event.target.value = '' // 清空选择，允许重复选同一份
+  for (const file of selected) await uploadDoc(file)
+}
+
+function removeDoc(id) {
+  docs.value = docs.value.filter((d) => d.id !== id)
+}
+
+function onFilesChange(event) {
+  const files = [...event.target.files]
+  event.target.value = '' // 清空选择，允许重复选同一张
+  for (const file of files) addImage(file)
+}
+
+/* 单张图片（选择与粘贴共用）：压缩后加入待发送列表 */
+function addImage(file) {
+  if (!file.type.startsWith('image/')) return
+  if (images.value.length >= MAX_IMAGES) {
+    ElMessage.warning(`最多上传 ${MAX_IMAGES} 张图片`)
+    return
+  }
+  compressImage(file).then((url) => {
+    if (images.value.length < MAX_IMAGES) {
+      images.value.push({ id: Date.now() + Math.random(), url })
+    }
+  })
+}
+
+/* Ctrl+V 粘贴：图片直接进预览条，文档走解析接口，文本交给默认行为 */
+async function onPaste(event) {
+  const data = event.clipboardData
+  if (!data) return
+  // 优先取 items（截图/网页复制），否则取 files（资源管理器里 Ctrl+C 的文件）
+  let files = [...(data.items || [])]
+    .filter((item) => item.kind === 'file')
+    .map((item) => item.getAsFile())
+    .filter(Boolean)
+  if (!files.length) files = [...(data.files || [])]
+  files = files.filter((f, i, arr) => arr.findIndex((x) => x.name === f.name && x.size === f.size) === i)
+  if (!files.length) return
+  event.preventDefault()
+  for (const file of files) {
+    if (file.type.startsWith('image/')) addImage(file)
+    else await uploadDoc(file)
+  }
+}
+
+/* 拖拽悬停状态：计数器避免鼠标在子元素间移动时闪烁 */
+const dragDepth = ref(0)
+const dragOver = computed(() => dragDepth.value > 0)
+
+/* 拖拽文件进输入框：图片进预览条，其他文件走文档解析 */
+function onDrop(event) {
+  dragDepth.value = 0
+  const files = [...(event.dataTransfer?.files || [])]
+  if (!files.length) return
+  for (const file of files) {
+    if (file.type.startsWith('image/')) addImage(file)
+    else uploadDoc(file)
+  }
+}
+
+function removeImage(id) {
+  images.value = images.value.filter((img) => img.id !== id)
+}
+
+/* 图片压缩：最长边 1280px、JPEG 85%，避免 base64 过大拖慢请求 */
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    const objectUrl = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl)
+      const scale = Math.min(1, 1280 / Math.max(img.width, img.height))
+      const canvas = document.createElement('canvas')
+      canvas.width = Math.round(img.width * scale)
+      canvas.height = Math.round(img.height * scale)
+      const ctx = canvas.getContext('2d')
+      ctx.fillStyle = '#fff' // PNG 透明底补白，避免转 JPEG 后变黑
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      resolve(canvas.toDataURL('image/jpeg', 0.85))
+    }
+    img.onerror = reject
+    img.src = objectUrl
+  })
+}
+
+/* 外部草稿变化时填入输入框（编辑历史消息） */
 watch(
   () => props.draft,
   (v) => {
@@ -51,13 +212,20 @@ watch(
 
 function handleSend() {
   const text = content.value.trim()
-  if (!text) {
+  if (!text && !images.value.length && !docs.value.length) {
     inputRef.value?.focus()
     return
   }
 
-  emit('send', text)
+  emit(
+    'send',
+    text,
+    images.value.map((img) => img.url),
+    docs.value.map((d) => ({ name: d.name, text: d.text })),
+  )
   content.value = ''
+  images.value = []
+  docs.value = []
 }
 
 function handleEnter(event) {
@@ -65,11 +233,36 @@ function handleEnter(event) {
   event.preventDefault()
   handleSend()
 }
+
+/* 暴露给父组件：把历史消息里的文档重新加回待发送列表 */
+defineExpose({
+  addDocs(list) {
+    for (const doc of list || []) {
+      if (docs.value.length >= MAX_FILES) {
+        ElMessage.warning(`最多上传 ${MAX_FILES} 个文件`)
+        break
+      }
+      docs.value.push({ id: Date.now() + Math.random(), name: doc.name, text: doc.text })
+    }
+  },
+})
 </script>
 
 <template>
   <div class="input-wrap">
-    <div class="input-box">
+    <div
+      class="input-box"
+      :class="{ dragging: dragOver }"
+      @dragenter.prevent="dragDepth++"
+      @dragleave="dragDepth = Math.max(0, dragDepth - 1)"
+      @dragover.prevent
+      @drop.prevent="onDrop"
+    >
+      <!-- 拖拽悬停提示浮层 -->
+      <div v-if="dragOver" class="drop-overlay">
+        <el-icon :size="24"><Paperclip /></el-icon>
+        <span>松开鼠标，上传文件</span>
+      </div>
       <div class="input-top">
         <el-tag class="mode-chip" effect="plain">
           <IconAgent />
@@ -78,13 +271,30 @@ function handleEnter(event) {
         <span class="hint">{{ hint }}</span>
       </div>
 
+      <!-- 已选图片预览条 -->
+      <div v-if="images.length" class="image-strip">
+        <div v-for="img in images" :key="img.id" class="image-chip">
+          <img :src="img.url" alt="" />
+          <button class="image-remove" type="button" @click="removeImage(img.id)">×</button>
+        </div>
+      </div>
+
+      <!-- 已选文档标签条 -->
+      <div v-if="docs.length" class="doc-strip">
+        <div v-for="doc in docs" :key="doc.id" class="doc-chip">
+          <el-icon class="doc-icon"><Paperclip /></el-icon>
+          <span class="doc-name">{{ doc.name }}</span>
+          <button class="doc-remove" type="button" @click="removeDoc(doc.id)">×</button>
+        </div>
+      </div>
+
       <el-input
         ref="inputRef"
         v-model="content"
         class="task-input"
         :class="{ compact }"
         type="textarea"
-        :autosize="autosize"
+        :rows="compact ? 1 : 3"
         resize="none"
         placeholder="例如：预测下季度整车运输需求，并给出生产调度建议…"
         @keydown.enter.exact="handleEnter"
@@ -92,6 +302,16 @@ function handleEnter(event) {
 
       <div class="input-bottom">
         <div class="bottom-left">
+          <el-tooltip content="上传图片（最多 9 张）" placement="top" :show-after="300">
+            <el-button class="attach-btn" circle @click="pickImages">
+              <el-icon><PictureFilled /></el-icon>
+            </el-button>
+          </el-tooltip>
+          <el-tooltip content="上传文档（txt/pdf/docx/xlsx，最多 5 个）" placement="top" :show-after="300">
+            <el-button class="attach-btn" circle @click="pickDocs">
+              <el-icon><Paperclip /></el-icon>
+            </el-button>
+          </el-tooltip>
           <el-button
             class="deep-btn"
             :type="deepThink ? 'primary' : 'default'"
@@ -103,10 +323,36 @@ function handleEnter(event) {
           </el-button>
           <span class="send-hint">Enter 发送，Shift + Enter 换行</span>
         </div>
-        <el-button class="send-btn" type="primary" circle @click="handleSend">
-          <el-icon><Promotion /></el-icon>
+        <el-button
+          class="send-btn"
+          type="primary"
+          circle
+          @click="streaming ? emit('stop') : handleSend()"
+        >
+          <span v-if="streaming" class="stop-square" />
+          <el-icon v-else><Promotion /></el-icon>
         </el-button>
       </div>
+
+      <!-- 隐藏的文件选择框：只允许图片、可多选 -->
+      <input
+        ref="fileRef"
+        type="file"
+        accept="image/*"
+        multiple
+        hidden
+        @change="onFilesChange"
+      />
+
+      <!-- 隐藏的文档选择框：txt/md/csv/log/pdf/docx/xlsx -->
+      <input
+        ref="docRef"
+        type="file"
+        accept=".txt,.md,.csv,.log,.pdf,.docx,.xlsx"
+        multiple
+        hidden
+        @change="onDocsChange"
+      />
     </div>
   </div>
 </template>
@@ -119,6 +365,7 @@ function handleEnter(event) {
 }
 
 .input-box {
+  position: relative;
   border: 2px solid transparent;
   border-radius: 16px;
   background:
@@ -131,6 +378,27 @@ function handleEnter(event) {
   gap: 10px;
 }
 
+/* 拖拽悬停：高亮边框 + 覆盖提示层 */
+.input-box.dragging {
+  border-color: var(--primary);
+}
+
+.drop-overlay {
+  position: absolute;
+  inset: 2px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
+  font-size: 13px;
+  pointer-events: none;
+}
+
 .input-top {
   display: flex;
   align-items: center;
@@ -138,21 +406,30 @@ function handleEnter(event) {
 }
 
 .mode-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   background: var(--fill-light);
   border-color: transparent;
   color: var(--text);
   font-weight: 600;
   font-size: 13px;
+  line-height: 1;
   flex-shrink: 0;
   height: auto;
   padding: 6px 12px;
   border-radius: 8px;
 }
 
+/* el-tag 内部有一层 .el-tag__content 包裹图标和文字，对齐/间距要设在这一层才生效 */
+.mode-chip :deep(.el-tag__content) {
+  display: inline-flex;
+  align-items: flex-end; /* 图标与文字底边对齐 */
+  gap: 7px;
+}
+
 .mode-chip :deep(svg) {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-bottom: 2px; /* 补偿中文字形底部的下沉空间，视觉底边齐平 */
   color: var(--primary);
 }
 
@@ -170,11 +447,22 @@ function handleEnter(event) {
   box-shadow: none;
   background: transparent;
   resize: none;
+  overflow-y: hidden; /* 初始隐藏；是否出现滚动条由 autoResize 按高度动态控制 */
   font-family: inherit;
   font-size: 14px;
   line-height: 1.6;
   color: var(--text);
   padding: 2px 4px;
+}
+
+/* 内部滚动条：细滚动条，与聊天区一致 */
+.task-input :deep(.el-textarea__inner)::-webkit-scrollbar {
+  width: 6px;
+}
+
+.task-input :deep(.el-textarea__inner)::-webkit-scrollbar-thumb {
+  background: #d3d7de;
+  border-radius: 3px;
 }
 
 .task-input :deep(.el-textarea__inner)::placeholder {
@@ -191,6 +479,111 @@ function handleEnter(event) {
   gap: 6px;
 }
 
+/* ===== 图片预览条 ===== */
+.image-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.image-chip {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.image-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 0 0 0 8px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.image-remove:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ===== 文档标签条 ===== */
+.doc-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.doc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 240px;
+  padding: 5px 8px 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--fill-light);
+}
+
+/* 文档标签删除：内联小 ×（不用图片的绝对定位角标） */
+.doc-remove {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.doc-remove:hover {
+  color: #f56c6c;
+}
+
+.doc-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.doc-name {
+  font-size: 13px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 上传按钮：圆形描边框 */
+.attach-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+.attach-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--fill-light);
+}
+
 .input-bottom {
   display: flex;
   justify-content: space-between;
@@ -201,7 +594,12 @@ function handleEnter(event) {
 .bottom-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
+}
+
+/* 抵消 el-button 相邻默认 margin，间距统一由上面的 gap 控制 */
+.bottom-left :deep(.el-button + .el-button) {
+  margin-left: 0;
 }
 
 .deep-btn {
@@ -211,12 +609,22 @@ function handleEnter(event) {
 .send-hint {
   color: var(--text-placeholder);
   font-size: 12px;
+  margin-left: 6px; /* 与深度思考按钮拉开一点，避免过挤 */
 }
 
 .send-btn {
   width: 32px;
   height: 32px;
   padding: 0;
+}
+
+/* 停止键图标：蓝底圆内的白色小方块（通用 AI 停止样式） */
+.stop-square {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #fff;
 }
 
 @media (max-width: 620px) {

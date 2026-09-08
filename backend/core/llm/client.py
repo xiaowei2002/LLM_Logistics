@@ -181,6 +181,12 @@ def get_llm(settings: LLMSettings | None = None) -> LLMClient:
     return _llm
 
 
+def reset_llm(settings: LLMSettings | None = None) -> None:
+    """丢弃缓存的客户端；配置更新后调用，下次 get_llm() 按新配置重建。"""
+    global _llm
+    _llm = LLMClient(settings) if settings is not None else None
+
+
 async def ask_llm(
     messages: str | Message | Iterable[Message | dict[str, Any]],
     *,

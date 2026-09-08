@@ -1,11 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Delete, Fold, Plus, Search, SwitchButton } from '@element-plus/icons-vue'
+import { Delete, Fold, Plus, Search, SwitchButton, Tools } from '@element-plus/icons-vue'
 
 import { useAuthStore } from '@/stores/auth'
 import { useChatStore } from '@/stores/chat'
 
-const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse'])
+const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings'])
 
 const authStore = useAuthStore()
 const chatStore = useChatStore()
@@ -110,14 +110,18 @@ function toggleSearch() {
     </el-scrollbar>
 
     <div class="sidebar-footer">
-      <el-dropdown trigger="click" @command="(cmd) => cmd === 'logout' && emit('logout')">
+      <el-dropdown
+        trigger="click"
+        @command="(cmd) => emit(cmd === 'settings' ? 'open-settings' : cmd)"
+      >
         <span class="user-trigger">
           <el-avatar :size="28" class="user-avatar">{{ authStore.displayName.slice(0, 1) }}</el-avatar>
           <span class="user-name">{{ authStore.displayName }}</span>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
+            <el-dropdown-item command="settings" :icon="Tools">系统设置</el-dropdown-item>
+            <el-dropdown-item command="logout" :icon="SwitchButton" divided>退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
