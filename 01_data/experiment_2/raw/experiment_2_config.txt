@@ -1,0 +1,42 @@
+Experiment 2 Independent Simulation Dataset
+
+experiment_seed=20260817
+start_time=2026-01-01 08:00:00
+total_hours=720
+
+vehicle_switch_rule:
+same_vehicle_probability=0.70
+switch_vehicle_probability=0.30
+
+vehicle_base_output:
+A车型=20
+B车型=15
+C车型=10
+
+production:
+rho=0.75
+noise_std=0.8
+
+material:
+rho=0.70
+noise_std=0.25
+
+shift_factor:
+08-16=1.02
+16-24=1.00
+00-08=0.97
+
+hour_factor:
+09-11=1.015
+14-16=1.020
+01-05=0.980
+other=1.000
+
+BOM:
+A车型: M001=1,M002=1,M003=2
+B车型: M001=1,M004=2,M005=1
+C车型: M006=1,M007=1,M008=2
+
+IMPORTANT:
+This seed is frozen before model evaluation.
+Do not regenerate Experiment 2 with another seed based on test results.

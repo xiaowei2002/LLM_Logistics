@@ -1,0 +1,75 @@
+Experiment 3 - Observable Multi-Source Disturbance Dataset
+
+experiment_seed=20260818
+start_time=2026-01-01 08:00:00
+total_hours=720
+
+vehicle_rule:
+same_probability=0.70
+switch_probability=0.30
+
+production_base:
+A车型=20
+B车型=15
+C车型=10
+
+production_error_model:
+rho=0.60
+irreducible_noise_std=0.35
+
+state_driver_effect:
+machine=-2.0*max(machine_load-0.88,0)
+supply=+3.0*(material_supply_status-0.90)
+changeover=-1.2*changeover_progress
+order=+1.5*(order_pressure-1.00)
+congestion=-1.5*line_congestion
+
+observable_ranges:
+machine_load=[0.65,1.00]
+material_supply_status=[0.70,1.00]
+changeover_progress=[0,1]
+order_pressure=[0.85,1.15]
+line_congestion=[0,0.80]
+
+changeover_progress_rule:
+no_change=0.0
+one_hour_before=0.3
+change_hour=1.0
+one_hour_after=0.4
+
+material_layer:
+rho_material=0.70
+material_noise_std=0.25
+same_as_experiment_2=True
+
+BOM:
+A车型: M001=1,M002=1,M003=2
+B车型: M001=1,M004=2,M005=1
+C车型: M006=1,M007=1,M008=2
+
+STRICT MODEL INPUT RULE:
+Allowed historical/real-time:
+- actual_output up to t
+- production error up to t
+- machine_load up to t
+- material_supply_status up to t
+- line_congestion up to t
+- historical vehicle/material/time features
+
+Allowed future planned:
+- planned_output t+1/t+2
+- vehicle_type t+1/t+2
+- shift_factor t+1/t+2
+- hour_factor t+1/t+2
+- order_pressure t+1/t+2
+- changeover_progress t+1/t+2
+
+Forbidden:
+- actual_output t+1/t+2
+- true production error t+1/t+2
+- true material demand t+1/t+2
+- experiment_3_latent_diagnostic.csv fields
+
+IMPORTANT:
+Experiment 3 seed and generation mechanism are frozen before model evaluation.
+Do not regenerate based on forecast results.
