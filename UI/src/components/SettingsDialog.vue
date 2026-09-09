@@ -127,7 +127,7 @@ async function save() {
           <el-input-number
             v-model="form.temperature"
             :min="0"
-            :max="2"
+            :max="1"
             :step="0.1"
             controls-position="right"
             placeholder="默认"
