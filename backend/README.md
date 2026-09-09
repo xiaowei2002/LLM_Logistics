@@ -42,6 +42,7 @@ backend/
 │   └── prompts/             # Prompt 仓库
 ├── config/                  # 配置文件
 ├── scripts/                 # 脚本（数据预处理、模型下载等）
+│   └── import_graph.py      #   知识图谱导入脚本
 └── tests/                   # 测试
 ```
 
@@ -67,4 +68,28 @@ python run.py             # 启动后访问 http://localhost:5000
 | `LLM_MODEL` | `Qwen2.5-VL-7B-Instruct` | 模型名 |
 | `MODEL_CACHE_DIR` | `~/.cache/modelscope` | ModelScope 模型缓存目录 |
 | `APP_HOST` / `APP_PORT` | `0.0.0.0` / `5000` | 服务监听地址 |
+| `NEO4J_URI` | `bolt://localhost:7687` | Neo4j 连接地址 |
+| `NEO4J_USER` | `neo4j` | Neo4j 用户名 |
+| `NEO4J_PASSWORD` | — | Neo4j 密码（必填） |
+
+## 知识图谱数据库初始化
+1. 安装并启动Neo4j
+2. 在`backend/.env` 中配置连接信息
+   ```
+   NEO4J_URI=bolt://localhost:7687
+   NEO4J_USER=neo4j
+   NEO4J_PASSWORD=<你的密码>
+   ```
+3. 导入图谱数据（在项目根目录执行）：
+   ```bash
+   python backend/scripts/import_graph.py                 
+   python backend/scripts/import_graph.py 自定义数据.json
+   ```
+数据文件格式约定：
+```json
+{
+  "entities": ["实体1", "实体2"],
+  "relations": [["主体", "关系", "客体"]]
+}
+```
 

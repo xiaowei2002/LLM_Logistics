@@ -1,15 +1,6 @@
-"""导入知识图谱 JSON 到 Neo4j。
-
-用法：python knowledge/import_graph.py [数据文件.json]
-不传参数时默认读同目录 merged_graph.json。
-
-数据格式约定：
-{
-  "entities": ["实体1", "实体2", ...],           // 实体名列表
-  "relations": [["主体", "关系", "客体"], ...]    // 三元组列表
-}
-图模型：(:Entity {name}) -[:RELATES {rel_type}]-> (:Entity)
-会先清空库中全部旧数据，可重复执行（幂等）。连接参数读 backend/.env。
+"""
+导入知识图谱 JSON 到 Neo4j。
+python backend/scripts/import_graph.py [数据文件.json]
 """
 import json
 import os
@@ -19,7 +10,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parents[2]
 load_dotenv(BASE / "backend" / ".env")
 
 URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
@@ -37,7 +28,7 @@ def chunks(lst, size):
 
 
 def load_graph():
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "merged_graph.json"
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE / "knowledge" / "merged_graph.json"
     if not path.exists():
         raise SystemExit(f"数据文件不存在: {path}")
     with open(path, encoding="utf-8") as f:
