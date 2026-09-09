@@ -1,11 +1,19 @@
-"""将 knowledge/merged_graph.json 导入 Neo4j。
+"""导入知识图谱 JSON 到 Neo4j。
 
-数据形态：entities=实体名列表，relations=[主体, 关系, 客体] 三元组，edges=关系类型表。
+用法：python knowledge/import_graph.py [数据文件.json]
+不传参数时默认读同目录 merged_graph.json。
+
+数据格式约定：
+{
+  "entities": ["实体1", "实体2", ...],           // 实体名列表
+  "relations": [["主体", "关系", "客体"], ...]    // 三元组列表
+}
 图模型：(:Entity {name}) -[:RELATES {rel_type}]-> (:Entity)
 会先清空库中全部旧数据，可重复执行（幂等）。连接参数读 backend/.env。
 """
 import json
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -28,11 +36,26 @@ def chunks(lst, size):
         yield lst[i : i + size]
 
 
-def main():
-    with open(Path(__file__).parent / "merged_graph.json", encoding="utf-8") as f:
+def load_graph():
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "merged_graph.json"
+    if not path.exists():
+        raise SystemExit(f"数据文件不存在: {path}")
+    with open(path, encoding="utf-8") as f:
         data = json.load(f)
-    entities = sorted(set(data["entities"]))
-    relations = [r for r in data["relations"] if isinstance(r, list) and len(r) == 3]
+    entities = data.get("entities")
+    relations = data.get("relations")
+    if not isinstance(entities, list) or not isinstance(relations, list):
+        raise SystemExit(
+            f"{path.name} 格式不符合约定：需要顶层含 entities(实体名列表) "
+            "和 relations([主体, 关系, 客体] 列表) 两个键，详见脚本头部说明"
+        )
+    return sorted(set(map(str, entities))), [
+        [str(x) for x in r] for r in relations if isinstance(r, list) and len(r) == 3
+    ]
+
+
+def main():
+    entities, relations = load_graph()
 
     driver = GraphDatabase.driver(URI, auth=(USER, PASSWORD))
     with driver.session() as s:
