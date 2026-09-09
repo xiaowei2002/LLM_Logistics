@@ -81,6 +81,23 @@ async def overview(limit: int = Query(150, ge=10, le=1067)) -> dict:
         raise HTTPException(status_code=502, detail=f"Neo4j 查询失败: {exc}") from exc
 
 
+@router.get("/stats")
+async def stats() -> dict:
+    """侧边栏基本信息：关系类型排行（实体/关系总数由 overview 返回）。"""
+    try:
+        with _get_driver().session() as s:
+            top_rel_types = s.run(
+                """
+                MATCH ()-[r:RELATES]->()
+                RETURN r.rel_type AS type, count(*) AS count
+                ORDER BY count DESC LIMIT 10
+                """
+            ).data()
+        return {"topRelTypes": top_rel_types}
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=f"Neo4j 查询失败: {exc}") from exc
+
+
 @router.get("/search")
 async def search(
     q: str = Query(..., min_length=1, max_length=50),

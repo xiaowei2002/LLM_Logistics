@@ -15,3 +15,8 @@ export async function fetchOverview(limit = 150) {
 export async function searchGraph(keyword, limit = 10) {
   return parse(await fetch(`/api/graph/search?q=${encodeURIComponent(keyword)}&limit=${limit}`))
 }
+
+/* 侧边栏统计：关系类型排行 */
+export async function fetchStats() {
+  return parse(await fetch('/api/graph/stats'))
+}
