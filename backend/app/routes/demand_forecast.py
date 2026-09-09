@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from functools import lru_cache
-
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from core.agents.demand_forecast_agent import DemandForecastAgent
+from core.llm import get_llm
 
 
 router = APIRouter(
@@ -30,13 +29,23 @@ class DemandForecastResponse(BaseModel):
     answer: str
 
 
-@lru_cache(maxsize=1)
+_cached_client = None
+_cached_agent: DemandForecastAgent | None = None
+
+
 def get_demand_forecast_agent() -> DemandForecastAgent:
     """
-    进程内复用需求预测 Agent，
-    避免每次 HTTP 请求都重复创建模型客户端和 Agent。
+    进程内复用需求预测 Agent，避免每次请求重复创建。
+
+    LLM 配置热更新后，reset_llm() 会重建全局客户端，这里通过
+    客户端对象身份变化感知并重建 Agent，保证预测与聊天配置一致。
     """
-    return DemandForecastAgent()
+    global _cached_client, _cached_agent
+    client = get_llm()
+    if _cached_agent is None or _cached_client is not client:
+        _cached_agent = DemandForecastAgent(client=client)
+        _cached_client = client
+    return _cached_agent
 
 
 def _extract_final_answer(result: dict) -> str:

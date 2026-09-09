@@ -28,10 +28,26 @@ export const useChatStore = defineStore('chat', () => {
   )
 
   function persist() {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ conversations: conversations.value, currentId: currentId.value }),
-    )
+    const data = JSON.stringify({ conversations: conversations.value, currentId: currentId.value })
+    try {
+      localStorage.setItem(STORAGE_KEY, data)
+    } catch {
+      // 存储超限（base64 图片较大）：丢弃非当前会话的图片后重试，保住文字记录
+      for (const c of conversations.value) {
+        if (c.id === currentId.value) continue
+        for (const m of c.messages) {
+          if (m.images?.length) m.images = []
+        }
+      }
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ conversations: conversations.value, currentId: currentId.value }),
+        )
+      } catch {
+        // 仍失败则放弃本次持久化，不影响当前会话
+      }
+    }
   }
 
   function newChat() {

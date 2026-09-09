@@ -3,9 +3,8 @@ from __future__ import annotations
 from typing import Any
 
 from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
 
-from core.llm.settings import LLMSettings
+from core.llm import LLMClient, get_llm
 from core.prompts.demand_forecast import DEMAND_FORECAST_SYSTEM_PROMPT
 from core.tools.demand_forecast.demand_forecast_tool import (
     DEMAND_FORECAST_TOOLS,
@@ -23,29 +22,12 @@ class DemandForecastAgent:
     - 基于 Tool 输出生成业务回答
     """
 
-    def __init__(
-        self,
-        settings: LLMSettings | None = None,
-    ) -> None:
-
-        self.settings = settings or LLMSettings.from_env()
-
-        self.model = ChatOpenAI(
-            model=self.settings.model,
-            api_key=self.settings.api_key,
-            base_url=self.settings.base_url,
-            temperature=(
-                self.settings.temperature
-                if self.settings.temperature is not None
-                else 0
-            ),
-            max_tokens=self.settings.max_tokens,
-            timeout=self.settings.timeout,
-            max_retries=self.settings.max_retries,
-        )
+    def __init__(self, client: LLMClient | None = None) -> None:
+        # 复用全局 LLM 单例（get_llm），与聊天共享同一份配置与热更新入口
+        self.client = client or get_llm()
 
         self.agent = create_agent(
-            model=self.model,
+            model=self.client.model,
             tools=DEMAND_FORECAST_TOOLS,
             system_prompt=DEMAND_FORECAST_SYSTEM_PROMPT,
         )

@@ -7,13 +7,16 @@
  * @param {AbortSignal} [signal] 中断信号
  * @param {{deepThink?: boolean}} [options] deepThink 控制是否开启深度推理
  */
-export async function streamChat(messages, onDelta, signal, { deepThink = true } = {}) {
+export async function streamChat(messages, onDelta, signal, { deepThink = true, config } = {}) {
+  const body = { messages, deepThink }
+  if (config && Object.keys(config).length) body.config = config
+
   const res = await fetch('/api/chat/stream', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ messages, deepThink }),
+    body: JSON.stringify(body),
     signal,
   })
 

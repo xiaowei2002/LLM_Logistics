@@ -11,3 +11,6 @@ wheels/
 .venv
 .env
 
+# 运行时数据（网页端保存的 LLM 配置覆盖值）
+backend/data/
+
