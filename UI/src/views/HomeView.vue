@@ -225,6 +225,7 @@ function handleLogout() {
       @logout="handleLogout"
       @collapse="sidebarOpen = false"
       @open-settings="settingsOpen = true"
+      @open-graph="router.push('/graph')"
     />
 
     <!-- 系统设置：模型 / API / 采样参数 -->

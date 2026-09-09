@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/HomeView.vue'
+import GraphView from '@/views/GraphView.vue'
 import LoginView from '@/views/LoginView.vue'
 import { useAuthStore } from '@/stores/auth'
 
@@ -18,6 +19,12 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: { title: '物流智能体 - 汽车物流大模型系统', requiresAuth: true },
+    },
+    {
+      path: '/graph',
+      name: 'graph',
+      component: GraphView,
+      meta: { title: '知识图谱 - 汽车物流大模型系统', requiresAuth: true },
     },
     {
       path: '/:pathMatch(.*)*',
