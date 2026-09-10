@@ -23,6 +23,7 @@ dependencies = [
     "torch>=2.5.1",
     "transformers>=5.16.1",
     "uvicorn[standard]>=0.30.0",
+    "langchain-mcp-adapters>=0.3.2",
 ]
 
 [[tool.uv.index]]
