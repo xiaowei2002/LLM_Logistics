@@ -10,7 +10,7 @@
   - test_db_connection()：测试数据库连接（Milvus / Chroma / MySQL / PostgreSQL，可配置切换）
 
 用法：
-    from utils import config, logger, test_db_connection
+    from core.tools.mrag.utils.utils import config, logger, test_db_connection
     logger.info("模型：{}", config.vl_model)
     result = test_db_connection()   # -> {"ok": bool, "type": ..., "message": ...}
 ==========================================================================

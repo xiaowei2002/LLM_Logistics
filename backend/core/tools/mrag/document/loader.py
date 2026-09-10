@@ -47,12 +47,12 @@
   └─────────────────────────────────────────────────────────────┘
 
 运行：
-    from loader import process_file
+    from core.tools.mrag.document.loader import process_file
     chunks = process_file("demo.pdf")
     for c in chunks:
         print(c["type"], c["content"][:100])
 
-配置：同目录 .env（参考 .env.example）
+配置：backend/.env（参考 .env.example）
 ==========================================================================
 """
 from __future__ import annotations
@@ -70,7 +70,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from utils import config, logger
+from core.tools.mrag.utils.utils import config, logger
 
 # ==========================================================================
 # 配置（由 utils.Config 统一从 .env 读取，这里建模块级别名）
@@ -1344,7 +1344,7 @@ except Exception:  # noqa: BLE001
 
 def _count_tokens(text: str) -> int:
     if _TIKTOKEN_AVAILABLE:
-        return len(_ENC.encode(text))
+        return len(_ENC.encode(text, disallowed_special=()))
     cjk = sum(1 for ch in text if "㐀" <= ch <= "鿿")
     latin = len(text) - cjk
     return cjk + max(1, latin // 4)
@@ -1392,7 +1392,7 @@ def split_text_into_chunks(
 
 def _tail_by_tokens(text: str, token_budget: int) -> str:
     if _TIKTOKEN_AVAILABLE:
-        tokens = _ENC.encode(text)
+        tokens = _ENC.encode(text, disallowed_special=())
         if len(tokens) <= token_budget:
             return text
         return _ENC.decode(tokens[-token_budget:])

@@ -21,7 +21,7 @@ BGE 关键点：query 和 passage 要用不同前缀，才能发挥最好效果�
   - passage（文档 / chunk）一律不加前缀
 
 用法：
-    from embedding import get_embedder
+    from core.tools.mrag.embedding.embedding import get_embedder
     emb = get_embedder()
     vecs = emb.embed_texts(["物流成本", "仓储管理"])        # 文档（passage）
     q = emb.embed_query("怎么降低运输成本？")               # 查询（自动加前缀）
@@ -33,7 +33,7 @@ from __future__ import annotations
 import os
 from typing import Any, Dict, List, Optional
 
-from utils import config, logger
+from core.tools.mrag.utils.utils import config, logger
 
 # BGE query 前缀（按模型家族区分；passage 一律不加前缀）
 _ZH_QUERY_PREFIX = "为这个句子生成表示以用于检索相关文章："

@@ -23,8 +23,8 @@ from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from utils import config, logger, test_db_connection
-from loader import (
+from core.tools.mrag.utils.utils import config, logger, test_db_connection
+from core.tools.mrag.document.loader import (
     SUPPORTED_FORMATS,
     MinerUParser,
     MinerUNotInstalledError,
