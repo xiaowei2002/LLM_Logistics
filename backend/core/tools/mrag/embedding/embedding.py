@@ -1,25 +1,6 @@
 """
 ==========================================================================
-BGE 向量嵌入模块（多模态 RAG 用）
-
-作用：把「文本 / 多模态 chunk 的描述文字」编码成向量，供向量库做相似度检索。
-
-参考：
-  - 港大 RAG-Anything / LightRAG：embedding 做成可插拔的 embedding_func，
-    默认走 OpenAI 接口，可换成 BGE 等任意模型。
-  - 本模块固定用 BGE（BAAI General Embedding，中文检索效果好）。
-
-两种后端（.env 的 EMBEDDING_BACKEND 切换）：
-  - local（默认）：sentence-transformers 本地跑 BAAI/bge-m3，离线、免费、
-    不用 key；但首次要下载模型（约 2GB），且依赖 torch。
-  - api：OpenAI 兼容接口（推荐硅基流动 SiliconFlow，免费托管 BAAI/bge-m3），
-    轻量、不用下模型，但要一个 SiliconFlow 的 key。
-
-BGE 关键点：query 和 passage 要用不同前缀，才能发挥最好效果。
-  - bge-*-zh-v1.5 系列：query 前加「为这个句子生成表示以用于检索相关文章：」
-  - bge-m3：dense 检索官方建议不加前缀
-  - passage（文档 / chunk）一律不加前缀
-
+BGE 向量嵌入模块
 用法：
     from core.tools.mrag.embedding.embedding import get_embedder
     emb = get_embedder()

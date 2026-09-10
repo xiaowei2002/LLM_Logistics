@@ -151,6 +151,11 @@ class Config:
     output_dir: Path = Path("./output")
     upload_dir: Path = Path("./uploads")
 
+    # ---- 向量 / 知识图谱存储（文件式，师兄 rag.py / graphrag.py 方案）----
+    vector_index_dir: Path = Path("./output/.rag_index")
+    graph_index_dir: Path = Path("./output/.graphrag_index")
+    graph_path: Path = Path("./output/merged_graph.json")
+
     # ---- 数据库 ----
     db_type: str = "none"  # none / milvus / chroma / mysql / postgresql
     milvus_uri: str = "http://localhost:19530"
@@ -198,6 +203,9 @@ class Config:
             enable_equation_summary=_env_bool("ENABLE_EQUATION_SUMMARY", True),
             output_dir=Path(os.getenv("OUTPUT_DIR", "./output")),
             upload_dir=Path(os.getenv("UPLOAD_DIR", "./uploads")),
+            vector_index_dir=Path(os.getenv("VECTOR_INDEX_DIR", "./output/.rag_index")),
+            graph_index_dir=Path(os.getenv("GRAPH_INDEX_DIR", "./output/.graphrag_index")),
+            graph_path=Path(os.getenv("GRAPH_PATH", "./output/merged_graph.json")),
             db_type=os.getenv("DB_TYPE", "none").strip().lower(),
             milvus_uri=os.getenv("MILVUS_URI", "http://localhost:19530"),
             milvus_token=os.getenv("MILVUS_TOKEN", ""),
