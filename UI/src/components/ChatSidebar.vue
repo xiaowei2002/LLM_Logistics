@@ -1,11 +1,11 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Delete, Fold, Plus, Search, Share, SwitchButton, Tools } from '@element-plus/icons-vue'
+import { Delete, Fold, Plus, Search, Share, SwitchButton, Tools, TrendCharts } from '@element-plus/icons-vue'
 
 import { useAuthStore } from '@/stores/auth'
 import { useChatStore } from '@/stores/chat'
 
-const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph'])
+const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph', 'open-forecast'])
 
 const authStore = useAuthStore()
 const chatStore = useChatStore()
@@ -115,7 +115,7 @@ function toggleSearch() {
         @command="
           (cmd) =>
             emit(
-              cmd === 'settings' ? 'open-settings' : cmd === 'graph' ? 'open-graph' : cmd,
+              cmd === 'settings' ? 'open-settings' : cmd === 'graph' ? 'open-graph' : cmd === 'forecast' ? 'open-forecast' : cmd,
             )
         "
       >
@@ -125,6 +125,7 @@ function toggleSearch() {
         </span>
         <template #dropdown>
           <el-dropdown-menu>
+            <el-dropdown-item command="forecast" :icon="TrendCharts">需求预测</el-dropdown-item>
             <el-dropdown-item command="graph" :icon="Share">知识图谱</el-dropdown-item>
             <el-dropdown-item command="settings" :icon="Tools">系统设置</el-dropdown-item>
             <el-dropdown-item command="logout" :icon="SwitchButton" divided>退出登录</el-dropdown-item>

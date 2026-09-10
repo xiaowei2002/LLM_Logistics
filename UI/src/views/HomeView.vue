@@ -226,6 +226,7 @@ function handleLogout() {
       @collapse="sidebarOpen = false"
       @open-settings="settingsOpen = true"
       @open-graph="router.push('/graph')"
+      @open-forecast="router.push('/forecast')"
     />
 
     <!-- 系统设置：模型 / API / 采样参数 -->
