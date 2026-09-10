@@ -7,11 +7,13 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from core.agents.demand_forecast_agent import DemandForecastAgent
-from core.llm import get_llm
+from core.llm import LLMClient
+from core.llm.api_key_store import load_api_key
+from core.llm.settings import LLMSettings
 
 
 router = APIRouter(
-    prefix="/api/demand-forecast",
+    prefix="/demand-forecast",
     tags=["Demand Forecast"],
 )
 
@@ -62,27 +64,31 @@ class DemandForecastResponse(BaseModel):
 
 _cached_client = None
 _cached_agent: DemandForecastAgent | None = None
+_cached_saved_key: str | None = None
 
 
 def get_demand_forecast_agent() -> DemandForecastAgent:
     """
     进程内复用需求预测 Agent。
 
-    LLM 配置热更新后，reset_llm() 会重建全局客户端；
-    这里通过客户端对象变化感知并重建 Agent。
+    与 chat.py 保持一致：设置页保存的 API Key（data/api_key.json）
+    优先于 .env 默认值。注意 agent 内部用 InMemorySaver 保存
+    Human-in-the-loop 线程，因此只在 key 变化时才重建，
+    避免每次请求都清空进行中的预测线程。
     """
-    global _cached_client, _cached_agent
+    global _cached_client, _cached_agent, _cached_saved_key
 
-    client = get_llm()
+    saved_key = load_api_key()
 
-    if (
-        _cached_agent is None
-        or _cached_client is not client
-    ):
+    if _cached_agent is None or _cached_saved_key != saved_key:
+        settings = LLMSettings.from_env()
+        if saved_key:
+            settings.api_key = saved_key
+        _cached_client = LLMClient(settings)
         _cached_agent = DemandForecastAgent(
-            client=client
+            client=_cached_client
         )
-        _cached_client = client
+        _cached_saved_key = saved_key
 
     return _cached_agent
 
