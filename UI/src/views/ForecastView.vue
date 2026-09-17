@@ -1,7 +1,16 @@
 <script setup>
-import { computed, nextTick, ref } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { Back, ChatDotRound, Check, Promotion, RefreshLeft } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
+import {
+  Back,
+  ChatDotRound,
+  Check,
+  CopyDocument,
+  Download,
+  Promotion,
+  RefreshLeft,
+} from '@element-plus/icons-vue'
 
 import { predictDemand, resumeDemand } from '@/services/forecast'
 import { renderMarkdown } from '@/utils/markdown'
@@ -17,6 +26,42 @@ const flowEl = ref(null)
 
 /* 是否存在未回应的提问卡片：此时主输入框禁用，必须先回答卡片 */
 const pendingCard = computed(() => messages.value.find((m) => m.type === 'card' && !m.answered))
+
+/* 是否已有可导出的预测结果 */
+const hasReport = computed(() => messages.value.some((m) => m.type === 'assistant'))
+
+/* ===== 本地持久化：刷新或切页回来后对话不丢。
+   后端靠 thread_id 记着人在环现场，前端一丢 thread_id 那个线程就成孤儿，
+   所以这里连 threadId 一起存 ===== */
+const STORE_KEY = 'llm-logistics-forecast'
+
+function restore() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null')
+    if (saved?.messages?.length) {
+      messages.value = saved.messages
+      threadId.value = saved.threadId ?? null
+    }
+  } catch {
+    /* 存的内容坏了就当没有，直接重来 */
+    localStorage.removeItem(STORE_KEY)
+  }
+}
+
+restore()
+
+watch(
+  [messages, threadId],
+  () => {
+    localStorage.setItem(
+      STORE_KEY,
+      JSON.stringify({ messages: messages.value, threadId: threadId.value }),
+    )
+  },
+  { deep: true },
+)
+
+onMounted(scrollToBottom)
 
 /* 后端 reason 代码转中文标签 */
 const REASON_TEXT = {
@@ -97,7 +142,7 @@ async function send() {
   try {
     applyResult(await predictDemand(text, threadId.value))
   } catch (err) {
-    messages.value.push({ type: 'error', content: err.message })
+    pushError(err.message, { kind: 'predict', payload: text })
   } finally {
     loading.value = false
     scrollToBottom()
@@ -116,11 +161,77 @@ async function submitAnswer(card) {
   try {
     applyResult(await resumeDemand(threadId.value, text))
   } catch (err) {
-    messages.value.push({ type: 'error', content: err.message })
+    pushError(`${err.message}；若后端刚重启，恢复现场可能已失效，可点「新预测」重新开始`, {
+      kind: 'resume',
+      payload: text,
+    })
   } finally {
     loading.value = false
     scrollToBottom()
   }
+}
+
+/* ===== 失败重试：错误消息里带上"要重试什么"，避免用户从头再问一遍 ===== */
+function pushError(content, retry) {
+  messages.value.push({ type: 'error', content, retry })
+}
+
+async function retryError(msg) {
+  if (loading.value || !msg.retry) return
+  const idx = messages.value.findIndex((m) => m === msg)
+  if (idx >= 0) messages.value.splice(idx, 1)
+  const { kind, payload } = msg.retry
+  loading.value = true
+  scrollToBottom()
+  try {
+    const res =
+      kind === 'predict'
+        ? await predictDemand(payload, threadId.value)
+        : await resumeDemand(threadId.value, payload)
+    applyResult(res)
+  } catch (err) {
+    pushError(err.message, msg.retry)
+  } finally {
+    loading.value = false
+    scrollToBottom()
+  }
+}
+
+/* ===== 复制 / 导出 ===== */
+async function copyMessage(msg) {
+  try {
+    await navigator.clipboard.writeText(msg.content)
+    ElMessage.success('已复制')
+  } catch {
+    ElMessage.error('复制失败')
+  }
+}
+
+/* 把整轮预测整理成一份 Markdown（含提问与补充的信息），供存档/贴进文档 */
+function buildReport() {
+  const lines = ['# 物料需求预测报告', '']
+  for (const m of messages.value) {
+    if (m.type === 'user') lines.push(`**需求**：${m.content}`, '')
+    else if (m.type === 'card') {
+      lines.push(`**智能体提问**：${QUESTION_HINT[m.reason] || m.question}`, '')
+      lines.push(`**补充信息**：${m.answer || '（未回答）'}`, '')
+    } else if (m.type === 'assistant') lines.push(m.content, '')
+  }
+  return lines.join('\n')
+}
+
+function exportReport() {
+  const blob = new Blob([buildReport()], { type: 'text/markdown;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const t = new Date()
+  const pad = (n) => String(n).padStart(2, '0')
+  const name = `需求预测报告_${t.getFullYear()}${pad(t.getMonth() + 1)}${pad(t.getDate())}_${pad(t.getHours())}${pad(t.getMinutes())}.md`
+  const link = document.createElement('a')
+  link.href = url
+  link.download = name
+  link.click()
+  URL.revokeObjectURL(url)
+  ElMessage.success('报告已导出')
 }
 
 /* Enter 提交：中文输入法选词时的 Enter 不算发送 */
@@ -159,6 +270,13 @@ function reset() {
         </el-button>
       </div>
       <div class="head-title">需求预测智能体</div>
+      <div class="bar-right">
+        <el-tooltip content="把本轮预测存成 Markdown 文件" placement="bottom" :show-after="300">
+          <el-button text bg size="small" :disabled="!hasReport || loading" @click="exportReport">
+            <el-icon style="margin-right: 4px"><Download /></el-icon>导出报告
+          </el-button>
+        </el-tooltip>
+      </div>
     </header>
 
     <!-- 对话流 -->
@@ -173,6 +291,13 @@ function reset() {
           <!-- 智能体最终回答：无气泡平铺，与对话页一致 -->
           <div v-else-if="m.type === 'assistant'" class="row bot">
             <div class="bot-text md-content" v-html="renderMarkdown(m.content)"></div>
+            <div class="msg-toolbar">
+              <el-tooltip content="复制" placement="top" :show-after="300">
+                <el-button class="tool-btn" text @click="copyMessage(m)">
+                  <el-icon><CopyDocument /></el-icon>
+                </el-button>
+              </el-tooltip>
+            </div>
           </div>
 
           <!-- 人在环提问卡片：智能体暂停等待补充信息 -->
@@ -201,9 +326,19 @@ function reset() {
             </div>
           </div>
 
-          <!-- 错误提示 -->
+          <!-- 错误提示：可原地重试，不用从头再问 -->
           <div v-else-if="m.type === 'error'" class="row user">
             <div class="bubble error">{{ m.content }}</div>
+            <el-button
+              v-if="m.retry"
+              class="retry-btn"
+              size="small"
+              round
+              :disabled="loading"
+              @click="retryError(m)"
+            >
+              重试
+            </el-button>
           </div>
         </template>
 
@@ -280,6 +415,10 @@ function reset() {
 .bar-left {
   display: flex;
   gap: 4px;
+}
+
+.bar-right {
+  margin-left: auto;
 }
 
 .head-title {
@@ -375,6 +514,34 @@ function reset() {
   line-height: 1.6;
   color: var(--text);
   word-break: break-word;
+}
+
+/* 回答工具栏：hover 才显示，与对话页一致 */
+.msg-toolbar {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.row.bot:hover .msg-toolbar {
+  opacity: 1;
+}
+
+.tool-btn {
+  color: var(--text-muted);
+  padding: 4px 6px;
+}
+
+.tool-btn:hover {
+  background: var(--fill-light);
+  color: var(--text);
+}
+
+/* 错误消息下的重试按钮：row.user 是右对齐列，自然靠右 */
+.retry-btn {
+  margin-top: 6px;
 }
 
 /* ===== 人在环提问卡片 ===== */
