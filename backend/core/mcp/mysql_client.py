@@ -27,7 +27,7 @@ class MySQLMCPClient:
         else:
             config = {
                 "transport": "sse",
-                "url": os.getenv("MYSQL_MCP_URL", "http://127.0.0.1:8000/sse"),
+                "url": os.getenv("MYSQL_MCP_URL", "http://127.0.0.1:8001/sse"),
             }
         self.client = MultiServerMCPClient({"mysql": config})
 

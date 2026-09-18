@@ -1,0 +1,23 @@
+# Virtualenvs (rebuilt inside the image)
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# VCS / editors
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Misc
+*.log

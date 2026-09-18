@@ -72,6 +72,26 @@ python run.py             # 启动后访问 http://localhost:5000
 | `NEO4J_USER` | `neo4j` | Neo4j 用户名 |
 | `NEO4J_PASSWORD` | — | Neo4j 密码（必填） |
 
+
+## MCP 工具启动
+| 服务 | 传输 | 端口 | 端点地址 | 后端连接环境变量 |
+|------|------|------|----------|------------------|
+| mysql-mcp-server | SSE | 8001 | `http://127.0.0.1:8001/sse` | `MYSQL_MCP_URL` |
+| mcp-pandas | Streamable HTTP | 8080 | `http://127.0.0.1:8080/mcp/` | `PANDAS_MCP_URL` |
+
+### 1. 启动 mysql-mcp-server
+前置条件：在env中配置环境变量，并启动了MySQL服务
+```bash
+uvx --from mysql-mcp-server mysql_mcp_server
+```
+
+### 2. 启动 mcp-pandas
+```bash
+cd backend/core/mcp/mcp-pandas
+uv sync
+MCP_TRANSPORT=http MCP_PORT=8080 uv run mcp-pandas
+```
+
 ## 知识图谱数据库初始化
 1. 安装并启动Neo4j
 2. 在`backend/.env` 中配置连接信息
