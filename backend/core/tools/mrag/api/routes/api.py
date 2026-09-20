@@ -2,8 +2,8 @@
 ==========================================================================
 多模态 RAG —— FastAPI 接口
 
-运行：
-    uvicorn api:app --reload
+运行（在 backend 目录下）：
+    python -m uvicorn core.tools.mrag.api.routes.api:app --port 8000
 然后浏览器打开： http://127.0.0.1:8000/docs
 
 接口：
@@ -11,6 +11,8 @@
     GET  /tasks/{id}      查询解析进度与分块结果
     GET  /health          健康检查
     GET  /formats         列出支持的文件类型
+
+文档列表 / 删除接口见同目录 documents.py（记录落盘逻辑也在那里）。
 ==========================================================================
 """
 import asyncio
@@ -23,6 +25,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from core.tools.mrag.utils.utils import config, logger, test_db_connection
+from core.tools.mrag.api.routes.documents import (
+    load_chunks,
+    record_done,
+    record_failed,
+    record_running,
+    record_upload,
+    records as TASKS,
+    restore_records,
+    router as documents_router,
+    safe_name,
+)
 from core.tools.mrag.document.loader import (
     SUPPORTED_FORMATS,
     MinerUParser,
@@ -34,12 +47,14 @@ from core.tools.mrag.document.loader import (
 UPLOAD_DIR = config.upload_dir
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-TASKS: dict = {}  # task_id -> {status, file, chunks, error}
+# 文档记录（status / file / chunks 等）统一由 documents.py 维护，
+# 这里直接引用同一个 dict（records as TASKS），避免两处状态不同步
 _sem = asyncio.Semaphore(1)  # 同时只解析一份文档，避免 MinerU/API 并发过高
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    restore_records()  # 恢复上次的文档记录（服务重启不丢）
     # 启动时按所选后端检查依赖，提前暴露环境问题
     backend = config.parser_backend
     if backend == "mineru":
@@ -75,40 +90,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(documents_router)  # 知识库文档列表 / 删除（见 documents.py）
+
 
 async def _ingest(task_id: str, file_path: str) -> None:
     """后台任务：解析并分块（阻塞操作放到线程池，不堵住上传请求）。"""
     async with _sem:
-        TASKS[task_id]["status"] = "running"
+        record_running(task_id)
         try:
             chunks = await asyncio.to_thread(process_file, file_path)
-            TASKS[task_id]["status"] = "done"
-            TASKS[task_id]["chunks"] = chunks
-            TASKS[task_id]["chunk_count"] = len(chunks)
+            record_done(task_id, chunks)
         except (MinerUNotInstalledError, LibreOfficeNotInstalledError) as exc:
-            TASKS[task_id]["status"] = "failed"
-            TASKS[task_id]["error"] = str(exc)
+            record_failed(task_id, str(exc))
         except Exception as exc:  # noqa: BLE001
-            TASKS[task_id]["status"] = "failed"
-            TASKS[task_id]["error"] = f"{type(exc).__name__}: {exc}"
+            record_failed(task_id, f"{type(exc).__name__}: {exc}")
 
 
 @app.post("/documents")
 async def upload(file: UploadFile = File(...)):
-    suffix = Path(file.filename).suffix.lower()
+    file_name = safe_name(file.filename)  # 还原中文文件名 + 过滤危险字符
+    suffix = Path(file_name).suffix.lower()
     if suffix not in SUPPORTED_FORMATS:
         raise HTTPException(
             status_code=400,
             detail=f"不支持的文件类型 {suffix}，支持：{', '.join(sorted(SUPPORTED_FORMATS))}",
         )
 
-    save_path = UPLOAD_DIR / f"{uuid.uuid4().hex}_{file.filename}"
-    save_path.write_bytes(await file.read())  # 先落盘，解析器需要文件路径
-
     task_id = uuid.uuid4().hex
-    TASKS[task_id] = {"status": "pending", "file": file.filename}
+    stored_as = f"{task_id}_{file_name}"
+    save_path = UPLOAD_DIR / stored_as
+    content = await file.read()
+    save_path.write_bytes(content)  # 先落盘，解析器需要文件路径
+
+    record_upload(task_id, file_name, len(content), stored_as)
     asyncio.create_task(_ingest(task_id, str(save_path)))  # 后台开始解析
-    return {"task_id": task_id, "status": "pending"}
+    return {"task_id": task_id, "status": "pending", "file": file_name}
 
 
 @app.get("/tasks/{task_id}")
@@ -116,6 +132,11 @@ async def get_task(task_id: str):
     task = TASKS.get(task_id)
     if task is None:
         raise HTTPException(status_code=404, detail="task 不存在")
+    if "chunks" not in task:
+        # 服务重启后内存里没有分块，从磁盘补回来；补不到就返回元数据
+        chunks = load_chunks(task_id)
+        if chunks is not None:
+            task["chunks"] = chunks
     return task
 
 
