@@ -1,11 +1,19 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Delete, Fold, Plus, Search, Share, SwitchButton, Tools, TrendCharts } from '@element-plus/icons-vue'
+import { Collection, Delete, Fold, Plus, Search, Share, SwitchButton, Tools, TrendCharts } from '@element-plus/icons-vue'
 
 import { useAuthStore } from '@/stores/auth'
 import { useChatStore } from '@/stores/chat'
 
-const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph', 'open-forecast'])
+const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph', 'open-forecast', 'open-knowledge'])
+
+/* 用户菜单：command 名 → 抛给父组件的事件名 */
+const MENU_EVENTS = {
+  settings: 'open-settings',
+  graph: 'open-graph',
+  forecast: 'open-forecast',
+  knowledge: 'open-knowledge',
+}
 
 const authStore = useAuthStore()
 const chatStore = useChatStore()
@@ -112,12 +120,7 @@ function toggleSearch() {
     <div class="sidebar-footer">
       <el-dropdown
         trigger="click"
-        @command="
-          (cmd) =>
-            emit(
-              cmd === 'settings' ? 'open-settings' : cmd === 'graph' ? 'open-graph' : cmd === 'forecast' ? 'open-forecast' : cmd,
-            )
-        "
+        @command="(cmd) => emit(MENU_EVENTS[cmd] || cmd)"
       >
         <span class="user-trigger">
           <el-avatar :size="28" class="user-avatar">{{ authStore.displayName.slice(0, 1) }}</el-avatar>
@@ -126,6 +129,7 @@ function toggleSearch() {
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item command="forecast" :icon="TrendCharts">需求预测</el-dropdown-item>
+            <el-dropdown-item command="knowledge" :icon="Collection">知识库</el-dropdown-item>
             <el-dropdown-item command="graph" :icon="Share">知识图谱</el-dropdown-item>
             <el-dropdown-item command="settings" :icon="Tools">系统设置</el-dropdown-item>
             <el-dropdown-item command="logout" :icon="SwitchButton" divided>退出登录</el-dropdown-item>

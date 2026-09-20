@@ -21,6 +21,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      // 知识库（RAG）是独立进程，端口 8000
+      '/rag': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/rag/, ''),
+      },
     },
   },
 })

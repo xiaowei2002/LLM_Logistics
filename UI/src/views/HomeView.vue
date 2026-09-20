@@ -227,6 +227,7 @@ function handleLogout() {
       @open-settings="settingsOpen = true"
       @open-graph="router.push('/graph')"
       @open-forecast="router.push('/forecast')"
+      @open-knowledge="router.push('/knowledge')"
     />
 
     <!-- 系统设置：模型 / API / 采样参数 -->
