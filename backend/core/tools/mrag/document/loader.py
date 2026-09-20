@@ -1,11 +1,11 @@
 """
 ==========================================================================
-多模态文档解析与分块（独立实现，参考港大 HKUDS/RAG-Anything + 师兄的 Qwen-VL 路线）
+多模态文档解析与分块
 
-核心思路（与师兄 pdf2json.py 一致）：把文档转成图片，交给千问视觉大模型去
+核心思路：把文档转成图片，交给千问视觉大模型去
 「看图解析 + 分块」，而不是靠 MinerU 抽结构化文本。两条后端可用 .env 切换：
 
-    PARSER_BACKEND=qwen-vl   （默认）图片 -> 千问 VL 解析分块（师兄路线）
+    PARSER_BACKEND=qwen-vl   （默认）图片 -> 千问 VL 解析分块
     PARSER_BACKEND=mineru    MinerU 结构化抽取 -> 分块 -> 千问描述多模态
 
 完整流水线（process_file 一条龙，一步步走）：
@@ -47,12 +47,12 @@
   └─────────────────────────────────────────────────────────────┘
 
 运行：
-    from loader import process_file
+    from core.tools.mrag.document.loader import process_file
     chunks = process_file("demo.pdf")
     for c in chunks:
         print(c["type"], c["content"][:100])
 
-配置：同目录 .env（参考 .env.example）
+配置：backend/.env（参考 .env.example）
 ==========================================================================
 """
 from __future__ import annotations
@@ -70,7 +70,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from utils import config, logger
+from core.tools.mrag.utils.utils import config, logger
 
 # ==========================================================================
 # 配置（由 utils.Config 统一从 .env 读取，这里建模块级别名）
@@ -1344,7 +1344,7 @@ except Exception:  # noqa: BLE001
 
 def _count_tokens(text: str) -> int:
     if _TIKTOKEN_AVAILABLE:
-        return len(_ENC.encode(text))
+        return len(_ENC.encode(text, disallowed_special=()))
     cjk = sum(1 for ch in text if "㐀" <= ch <= "鿿")
     latin = len(text) - cjk
     return cjk + max(1, latin // 4)
@@ -1392,7 +1392,7 @@ def split_text_into_chunks(
 
 def _tail_by_tokens(text: str, token_budget: int) -> str:
     if _TIKTOKEN_AVAILABLE:
-        tokens = _ENC.encode(text)
+        tokens = _ENC.encode(text, disallowed_special=())
         if len(tokens) <= token_budget:
             return text
         return _ENC.decode(tokens[-token_budget:])

@@ -1,9 +1,8 @@
 """
 ==========================================================================
 多模态 RAG —— FastAPI 接口
-（配合 loader.py 使用：上传文档/图片 -> 后台解析分块 -> 查询结果）
 
-运行（在本文件所在目录打开终端）：
+运行：
     uvicorn api:app --reload
 然后浏览器打开： http://127.0.0.1:8000/docs
 
@@ -23,8 +22,8 @@ from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from utils import config, logger, test_db_connection
-from loader import (
+from core.tools.mrag.utils.utils import config, logger, test_db_connection
+from core.tools.mrag.document.loader import (
     SUPPORTED_FORMATS,
     MinerUParser,
     MinerUNotInstalledError,
