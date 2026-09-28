@@ -1,11 +1,11 @@
 """
 ==========================================================================
-BGE 向量嵌入模块
+向量嵌入模块（对齐师兄 LogisticsKG：本地 Qwen3-Embedding，sentence-transformers 加载）
 用法：
     from core.tools.mrag.embedding.embedding import get_embedder
     emb = get_embedder()
     vecs = emb.embed_texts(["物流成本", "仓储管理"])        # 文档（passage）
-    q = emb.embed_query("怎么降低运输成本？")               # 查询（自动加前缀）
+    q = emb.embed_query("怎么降低运输成本？")               # 查询
     chunks = emb.embed_chunks(chunks)                       # 给 loader 的 chunk 加 embedding 字段
 ==========================================================================
 """
@@ -14,24 +14,14 @@ from __future__ import annotations
 import os
 from typing import Any, Dict, List, Optional
 
-from core.tools.mrag.utils.utils import config, logger
+from core.tools.mrag.utils.utils import config, logger, torch_dtype_kwargs
 
-# BGE query 前缀（按模型家族区分；passage 一律不加前缀）
-_ZH_QUERY_PREFIX = "为这个句子生成表示以用于检索相关文章："
-_EN_QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
-
-
-def _query_prefix(model: str) -> str:
-    """根据模型名返回 query 前缀。"""
-    m = (model or "").lower()
-    if "zh" in m:
-        return _ZH_QUERY_PREFIX
-    # bge-m3 等：dense 检索不加前缀（官方建议）
-    return ""
+# 对齐师兄 LogisticsKG：query 与 passage 都裸编码、不加前缀。
+# （Qwen3-Embedding 官方虽支持 instruct 前缀，但师兄不加，这里保持一致。）
 
 
-class BGEEmbedder:
-    """BGE 嵌入器，封装 local（sentence-transformers）与 api（OpenAI 兼容）两种后端。"""
+class Embedder:
+    """向量嵌入器，封装 local（sentence-transformers）与 api（OpenAI 兼容）两种后端。"""
 
     def __init__(
         self,
@@ -42,7 +32,6 @@ class BGEEmbedder:
         self.backend = (backend or config.embedding_backend).strip().lower()
         self.model_name = model or config.embedding_model
         self.batch_size = batch_size or config.embedding_batch_size
-        self._prefix = _query_prefix(self.model_name)
         self._local_model = None
         self._client = None
         self.dim = 0
@@ -64,12 +53,19 @@ class BGEEmbedder:
             from sentence_transformers import SentenceTransformer
         except ImportError:
             raise RuntimeError(
-                "本地 BGE 需要 sentence-transformers，请：pip install sentence-transformers"
+                "本地嵌入需要 sentence-transformers，请：pip install sentence-transformers"
             )
-        logger.info("加载本地 BGE 模型：{}（首次会联网下载，耐心等）", self.model_name)
-        self._local_model = SentenceTransformer(self.model_name)
-        self.dim = self._local_model.get_sentence_embedding_dimension()
-        logger.info("BGE 模型加载完成，向量维度：{}", self.dim)
+        logger.info(
+            "加载本地嵌入模型：{}（设备 {}，首次会联网下载，耐心等）",
+            self.model_name, config.embedding_device,
+        )
+        self._local_model = SentenceTransformer(
+            self.model_name,
+            device=config.embedding_device,
+            model_kwargs=torch_dtype_kwargs(config.embedding_dtype),
+        )
+        self.dim = self._local_model.get_embedding_dimension()
+        logger.info("嵌入模型加载完成，向量维度：{}", self.dim)
 
     def _init_api(self) -> None:
         api_key = config.embedding_api_key
@@ -80,18 +76,16 @@ class BGEEmbedder:
         from openai import OpenAI
 
         self._client = OpenAI(api_key=api_key, base_url=config.embedding_base_url)
-        # api 后端拿不到维度，用 .env 的 EMBEDDING_DIM，缺省按 bge-m3 的 1024
+        # api 后端拿不到维度，用 .env 的 EMBEDDING_DIM，缺省按 1024
         self.dim = config.embedding_dim or 1024
         logger.info("使用 API 后端嵌入模型：{}（维度 {}）", self.model_name, self.dim)
 
     # ---- 核心：批量编码 ----
     def embed_texts(self, texts: List[str], is_query: bool = False) -> List[List[float]]:
-        """批量编码文本。文档/chunk 传 is_query=False，查询传 True。"""
+        """批量编码文本。is_query 预留（当前对齐师兄，query/passage 均裸编码不加前缀）。"""
         texts = [str(t) for t in texts]
         if not texts:
             return []
-        if is_query and self._prefix:
-            texts = [self._prefix + t for t in texts]
 
         if self.backend == "local":
             vecs = self._local_model.encode(
@@ -112,7 +106,7 @@ class BGEEmbedder:
         return out
 
     def embed_query(self, query: str) -> List[float]:
-        """编码单条查询（自动加 query 前缀）。"""
+        """编码单条查询。"""
         vecs = self.embed_texts([query], is_query=True)
         return vecs[0] if vecs else []
 
@@ -148,13 +142,13 @@ class BGEEmbedder:
 
 
 # 全局单例（懒加载：首次 get_embedder() 才下载模型 / 建连）
-_EMBEDDER: Optional[BGEEmbedder] = None
+_EMBEDDER: Optional[Embedder] = None
 
 
-def get_embedder(**kwargs) -> BGEEmbedder:
+def get_embedder(**kwargs) -> Embedder:
     global _EMBEDDER
     if _EMBEDDER is None:
-        _EMBEDDER = BGEEmbedder(**kwargs)
+        _EMBEDDER = Embedder(**kwargs)
     return _EMBEDDER
 
 

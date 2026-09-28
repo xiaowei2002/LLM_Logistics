@@ -13,7 +13,7 @@
 
     store = VectorStore()                       # 索引目录默认 output/.rag_index
     chunks = process_file("demo.pdf")           # List[Dict]，见 loader.Chunk
-    store.add(chunks)                           # 缺 embedding 会自动补（首次下载 BGE）
+    store.add(chunks)                           # 缺 embedding 会自动补（首次下载嵌入模型）
     store.persist()                             # 落盘，二次启动 store.load() 秒级加载
     hits = store.search("怎么降低运输成本？", top_k=5)  # -> 带 score 的 chunk 列表
 ==========================================================================
@@ -90,7 +90,7 @@ class VectorStore:
         Args:
             index_dir: 索引目录，缺省用 config.vector_index_dir（output/.rag_index）
             bm25_weight: 混合检索中 BM25 的权重（0~1，越大越偏向关键词匹配）
-            embedder: 嵌入器实例；缺省懒加载 get_embedder()（BGEEmbedder）
+            embedder: 嵌入器实例；缺省懒加载 get_embedder()（Embedder）
         """
         self.index_dir = Path(index_dir) if index_dir else config.vector_index_dir
         self.bm25_weight = bm25_weight
@@ -127,7 +127,7 @@ class VectorStore:
         """写入 chunk 列表（复制一份，不改动传入对象）。
 
         chunk 需带 ``embedding`` 字段（embed_chunks 的产物）；若缺且 embed=True，
-        自动用 get_embedder() 补上（首次会下载 BGE 模型）。
+        自动用 get_embedder() 补上（首次会下载嵌入模型）。
 
         Returns:
             本次写入的 chunk 数量。
@@ -191,6 +191,10 @@ class VectorStore:
         self._bm25 = None
         logger.info("VectorStore 已加载缓存 {} 块", len(self._chunks))
         return True
+
+    def existing_chunk_ids(self) -> set:
+        """返回当前内存中已有的 chunk_id 集合（增量建库时用于去重）。"""
+        return {c.get("chunk_id") for c in self._chunks if c.get("chunk_id")}
 
     # ---- 检索 ----
     def _ensure_bm25(self) -> None:

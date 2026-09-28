@@ -26,7 +26,7 @@
       ▼
   ┌─────────────────────────────────────────────────────────────┐
   │ 第 2 步：分块（Chunking）                                    │
-  │   qwen-vl 后端：每页图片 -> 千问 VL 输出结构化 JSON           │
+  │   qwen-vl 后端：每页图片 交给千问VL输出结构化JSON           │
   │                 （heading / text / table markdown），再按      │
   │                 token 预算二次切块                            │
   │   mineru 后端：separate_content 拆纯文本 + 多模态项，token 切块│
@@ -236,7 +236,7 @@ def _import_pymupdf():
 
 
 def render_pdf_to_images(pdf_path: Path, output_dir: Path, dpi: int = RENDER_DPI) -> List[Path]:
-    """把 PDF 逐页渲染成 PNG 图片（对齐师兄的 pdf2json）。"""
+    """把 PDF 逐页渲染成 PNG 图片。"""
     pymupdf = _import_pymupdf()
     pdf_path = Path(pdf_path)
     img_dir = output_dir / f"{pdf_path.stem}_images"
@@ -997,7 +997,7 @@ def extract_pdf_text(pdf_path: Path) -> str:
         for i, page in enumerate(doc):
             text = page.get_text().strip()
             if text:
-                parts.append(f"\n<!-- 第 {i + 1} 页 -->\n{text}")
+                parts.append(_page_marker(i + 1) + text)  # 页码标记（1-based），切块后溯源用
     finally:
         doc.close()
     return "\n".join(parts)
@@ -1065,7 +1065,7 @@ class QwenClient:
         """图片 + prompt -> 原始回复（结构化解析用，返回 JSON 文本）。"""
         return self._describe_vl(image_path, prompt)
 
-    def describe_image(self, image_path: str, section_path: str = "", captions: List[str] = None, neighbor_text: str = "") -> str:
+    def describe_image(self, image_path: str, section_path: str = "", captions: Optional[List[str]] = None, neighbor_text: str = "") -> str:
         """图片/图表描述：把图片交给千问 VL，结合章节与邻近正文。"""
         prompt = (
             "你是专业的图像分析专家。请详细描述这张图片的内容，用于知识检索。要求：\n"
@@ -1187,27 +1187,41 @@ def parse_page_image(qwen: QwenClient, image_path: Path, page_no: int) -> Dict:
 
 
 def assemble_sections(page_records: List[Dict]) -> List[Dict]:
-    """把逐页 block 合并成扁平的 section 列表（heading + content），对齐师兄 _assemble。"""
+    """把逐页 block 合并成扁平的 section 列表（heading + content + tables），对齐师兄 _assemble。
+
+    text 与 table 分开：table 不进 content，而是独立收集到 section["tables"]，
+    供 sections_to_chunks 生成 type="table" 的独立 chunk（选项1：table 独立溯源）。
+    """
     sections: List[Dict] = []
     current: Optional[Dict] = None
 
+    def _empty_section() -> Dict:
+        return {"heading": "", "level": 0, "heading_page": 0, "content": "", "tables": []}
+
     for record in page_records:
+        page = int(record.get("page", 0) or 0)  # 本页页码（_process_file_qwenvl 里写入）
         for block in record.get("blocks", []):
             btype = block.get("type")
             if btype == "heading":
-                if current and current["content"].strip():
+                if current and (current["content"].strip() or current["tables"]):
                     sections.append(current)
                 current = {
                     "heading": block.get("text", ""),
                     "level": block.get("level", 1),
+                    "heading_page": page,
                     "content": "",
+                    "tables": [],
                 }
-            elif btype in ("text", "table"):
+            elif btype == "text":
                 if current is None:
-                    current = {"heading": "", "level": 0, "content": ""}
-                current["content"] += block.get("content", "") + "\n"
+                    current = _empty_section()
+                current["content"] += _page_marker(page) + block.get("content", "") + "\n"
+            elif btype == "table":
+                if current is None:
+                    current = _empty_section()
+                current["tables"].append({"page": page, "content": block.get("content", "")})
 
-    if current and current["content"].strip():
+    if current and (current["content"].strip() or current["tables"]):
         sections.append(current)
 
     return sections
@@ -1219,7 +1233,7 @@ def sections_to_chunks(
     chunk_token_size: int = CHUNK_TOKEN_SIZE,
     chunk_overlap: int = CHUNK_OVERLAP,
 ) -> List["Chunk"]:
-    """把 section 列表按 token 预算切成文本 Chunk，附带章节路径。"""
+    """把 section 列表按 token 预算切成 Chunk（text + 独立 table），附带章节路径。"""
     chunks: List["Chunk"] = []
     heading_chain: List[Tuple[int, str]] = []
 
@@ -1227,6 +1241,7 @@ def sections_to_chunks(
         heading = str(section.get("heading", "") or "").strip()
         level = int(section.get("level", 0) or 0)
         content = str(section.get("content", "") or "").strip()
+        heading_page = int(section.get("heading_page", 0) or 0)
 
         if heading:
             while heading_chain and heading_chain[-1][0] >= level:
@@ -1234,18 +1249,43 @@ def sections_to_chunks(
             heading_chain.append((level, heading))
         section_path = " > ".join(t for _, t in heading_chain)
 
-        text = (heading + "\n" + content) if heading else content
+        text = (_page_marker(heading_page) + heading + "\n") if heading else ""
+        text += content
         for part in split_text_into_chunks(text, chunk_token_size, chunk_overlap):
+            page_idx, page_end = _extract_pages(part)
+            clean = _strip_page_markers(part).strip()
+            if not clean:
+                continue
             chunks.append(
                 Chunk(
-                    chunk_id=_chunk_id(part),
+                    chunk_id=_chunk_id(clean),
                     type="text",
-                    content=part,
-                    page_idx=0,
+                    content=clean,
+                    page_idx=page_idx,
+                    page_end=page_end,
                     section_path=section_path,
                     metadata={"source": source},
                 )
             )
+
+        # 表格独立成 chunk（选项1）：content 即 markdown 表格，单页即可溯源
+        for t in section.get("tables", []):
+            tpage = int(t.get("page", 0) or 0)
+            for tpart in split_text_into_chunks(str(t.get("content", "") or ""), chunk_token_size, chunk_overlap):
+                tpart = tpart.strip()
+                if not tpart:
+                    continue
+                chunks.append(
+                    Chunk(
+                        chunk_id=_chunk_id(tpart),
+                        type="table",
+                        content=tpart,
+                        page_idx=tpage,
+                        page_end=tpage,
+                        section_path=section_path,
+                        metadata={"source": source},
+                    )
+                )
     return chunks
 
 
@@ -1309,7 +1349,8 @@ def separate_content(content_list: List[Dict]) -> Tuple[str, List[Dict]]:
         if content_type == "text":
             text = str(item.get("text", "") or "")
             if text.strip():
-                text_parts.append(text)
+                page = int(item.get("page_idx", 0) or 0) + 1  # MinerU 页码 0-based -> 1-based
+                text_parts.append(_page_marker(page) + text)
         else:
             m_item = dict(item)
             m_item.setdefault("_content_list_index", index)
@@ -1458,7 +1499,7 @@ def get_equation_text_and_format(item: Dict) -> Tuple[str, str]:
 def _process_multimodal_item(item: Dict, qwen: QwenClient) -> Optional["Chunk"]:
     """把单个多模态项转成一个描述 Chunk（图片优先交千问 VL）。"""
     item_type = item.get("type", "")
-    page_idx = item.get("page_idx", 0)
+    page_idx = int(item.get("page_idx", 0) or 0) + 1  # MinerU 页码 0-based -> 1-based
     section_path = item.get("_section_path", "")
 
     if item_type in ("image", "chart"):
@@ -1562,7 +1603,8 @@ class Chunk:
     chunk_id: str
     type: str  # text / image / table / equation / chart / code
     content: str  # 文本内容 或 多模态描述
-    page_idx: int = 0
+    page_idx: int = 0   # 起始页（1-based；无页码时为 0）
+    page_end: int = 0   # 结束页（跨页 chunk 时 > page_idx；单页或无页码时 == page_idx 或 0）
     section_path: str = ""
     metadata: Dict[str, Any] = field(default_factory=dict)
 
@@ -1572,6 +1614,7 @@ class Chunk:
             "type": self.type,
             "content": self.content,
             "page_idx": self.page_idx,
+            "page_end": self.page_end,
             "section_path": self.section_path,
             "metadata": self.metadata,
         }
@@ -1579,6 +1622,35 @@ class Chunk:
 
 def _chunk_id(content: str, prefix: str = "chunk-") -> str:
     return prefix + hashlib.md5(content.encode("utf-8")).hexdigest()
+
+
+# ---- 页码标记工具（page_idx 溯源用） ----
+# 用单个 Unicode 私有区字符编码页码，贴在每段正文前。切块时它是「单字符」，tiktoken
+# 只会整体编码、绝不会被 token 边界切断，切完后再从 chunk 里解出页码范围并删掉，
+# 这样正文内容一字不动、页码又能准确透传（对齐师兄「逐页记录 page 再切块透传」）。
+_PAGE_MARK_BASE = 0xE000  # 私有区起始；0xE000 ~ 0xE0FF 共 256 个字符，表示 0~255 页
+
+
+def _page_marker(page: int) -> str:
+    """页码 -> 单个私有区字符（1-based 页码；0 表示无页码）。"""
+    return chr(_PAGE_MARK_BASE + int(page))
+
+
+def _extract_pages(text: str) -> Tuple[int, int]:
+    """从带页码标记的文本里解出 (起始页, 结束页)，无标记返回 (0, 0)。"""
+    pages = [
+        ord(ch) - _PAGE_MARK_BASE
+        for ch in text
+        if _PAGE_MARK_BASE <= ord(ch) < _PAGE_MARK_BASE + 256
+    ]
+    return (min(pages), max(pages)) if pages else (0, 0)
+
+
+def _strip_page_markers(text: str) -> str:
+    """删掉页码标记字符，还原干净正文。"""
+    return "".join(
+        ch for ch in text if not (_PAGE_MARK_BASE <= ord(ch) < _PAGE_MARK_BASE + 256)
+    )
 
 
 def process_file(
@@ -1669,8 +1741,9 @@ def _process_file_qwenvl(
         sections = assemble_sections(page_records)
         chunks = sections_to_chunks(sections, source, chunk_token_size, chunk_overlap)
 
-    # ---- 第 3 步：多模态理解（qwen-vl 后端已在第 2 步顺带完成表格/图片的识别） ----
-    # 纯文本/页面型无需额外描述；纯图片已在上面描述过。
+    # ---- 第 3 步：多模态理解 ----
+    # qwen-vl 后端：表格已在第 2 步识别并独立成 table chunk；纯图片已单独描述；
+    # 页面型正文无需额外处理。
 
     # ---- 第 4 步：输出 ----
     n_text = sum(1 for c in chunks if c.type == "text")
@@ -1697,12 +1770,17 @@ def _process_file_mineru(
 
     chunks: List[Chunk] = []
     for text_chunk in split_text_into_chunks(text_content, chunk_token_size, chunk_overlap):
+        page_idx, page_end = _extract_pages(text_chunk)
+        clean = _strip_page_markers(text_chunk).strip()
+        if not clean:
+            continue
         chunks.append(
             Chunk(
-                chunk_id=_chunk_id(text_chunk),
+                chunk_id=_chunk_id(clean),
                 type="text",
-                content=text_chunk,
-                page_idx=0,
+                content=clean,
+                page_idx=page_idx,
+                page_end=page_end,
                 metadata={"source": source},
             )
         )
@@ -1787,16 +1865,22 @@ def _process_file_direct(
 
     # ---- 第 2 步：分块（markdown 按 token 预算切块） ----
     logger.info("【第 2 步】分块：markdown 按 token 预算切块")
-    chunks = [
-        Chunk(
-            chunk_id=_chunk_id(part),
-            type="text",
-            content=part,
-            page_idx=0,
-            metadata={"source": source},
+    chunks = []
+    for part in split_text_into_chunks(markdown, chunk_token_size, chunk_overlap):
+        page_idx, page_end = _extract_pages(part)
+        clean = _strip_page_markers(part).strip()
+        if not clean:
+            continue
+        chunks.append(
+            Chunk(
+                chunk_id=_chunk_id(clean),
+                type="text",
+                content=clean,
+                page_idx=page_idx,
+                page_end=page_end,
+                metadata={"source": source},
+            )
         )
-        for part in split_text_into_chunks(markdown, chunk_token_size, chunk_overlap)
-    ]
     logger.info("【输出】共 {} 个 Chunk", len(chunks))
     return [c.to_dict() for c in chunks]
 

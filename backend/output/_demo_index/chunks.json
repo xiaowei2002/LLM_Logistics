@@ -1,0 +1,20 @@
+[
+  {
+    "chunk_id": "c1",
+    "type": "text",
+    "content": "物流运输成本主要由燃油、人工、路桥费构成",
+    "page_idx": 1,
+    "metadata": {
+      "source": "a.pdf"
+    }
+  },
+  {
+    "chunk_id": "c2",
+    "type": "text",
+    "content": "仓储管理涉及入库、出库、盘点",
+    "page_idx": 2,
+    "metadata": {
+      "source": "a.pdf"
+    }
+  }
+]

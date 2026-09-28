@@ -12,9 +12,9 @@ Query 构建（检索前处理）
 用法：
     from core.tools.mrag.query.query import build_query
     q = build_query("那它的成本怎么降？", history=[("R125 车型是什么", "…")])
-    q.standalone   # 改写后的完整问题
-    q.keywords     # ["R125 车型", "运输成本"]
-    q.mode         # auto / rag / graphrag / hybrid
+    q.standalone                                          # 改写后的完整问题
+    q.keywords                                            # ["R125 车型", "运输成本"]
+    q.mode                                                # auto / rag / graphrag / hybrid
 ==========================================================================
 """
 from __future__ import annotations
@@ -24,11 +24,8 @@ from typing import List, Optional, Tuple
 
 from core.tools.mrag.utils.utils import config, logger
 from core.tools.mrag.utils.llm import chat
+from core.tools.mrag.enums import SearchMode
 
-MODE_AUTO = "auto"
-MODE_RAG = "rag"            # 文档向量检索
-MODE_GRAPHRAG = "graphrag"  # 知识图谱检索
-MODE_HYBRID = "hybrid"      # 文档向量 + 知识图谱融合
 
 _REWRITE_PROMPT = (
     "你是检索查询改写助手。请结合【对话历史】，把用户最后一句追问改写为一句完整、独立、"
@@ -50,7 +47,7 @@ class Query:
     question: str                                         # 原始问题
     standalone: str                                       # 改写后的独立问题
     keywords: List[str] = field(default_factory=list)     # 抽取的实体/关键词
-    mode: str = MODE_AUTO                                 # 路由结果
+    mode: str = SearchMode.AUTO.value                     # 路由结果
 
 
 def _graph_available() -> bool:
@@ -59,11 +56,11 @@ def _graph_available() -> bool:
 
 def resolve_mode(mode: str, graph_available: bool) -> str:
     """路由：auto → 有图谱走 graphrag，否则 rag；rag / graphrag / hybrid 显式指定。"""
-    mode = (mode or MODE_AUTO).strip().lower()
-    if mode == MODE_AUTO:
-        return MODE_GRAPHRAG if graph_available else MODE_RAG
-    if mode in (MODE_RAG, MODE_GRAPHRAG, MODE_HYBRID):
-        if mode == MODE_GRAPHRAG and not graph_available:
+    mode = (mode or SearchMode.AUTO.value).strip().lower()
+    if mode == SearchMode.AUTO.value:
+        return SearchMode.GRAPHRAG.value if graph_available else SearchMode.RAG.value
+    if mode in (SearchMode.RAG.value, SearchMode.GRAPHRAG.value, SearchMode.HYBRID.value):
+        if mode == SearchMode.GRAPHRAG.value and not graph_available:
             raise RuntimeError("知识图谱不存在，无法使用 graphrag 模式，请改用 rag 或 hybrid")
         return mode
     raise ValueError(f"未知模式: {mode}（可选 auto / rag / graphrag / hybrid）")
@@ -77,7 +74,7 @@ def _rewrite(question: str, history: List[Tuple[str, str]]) -> str:
         messages.append({"role": "assistant", "content": (a or "")[:500]})
     messages.append({"role": "user", "content": question})
     out = chat(messages, temperature=0.0).strip()
-    return out or question  # 改写失败时退回原问题，不阻塞
+    return out or question                                # 改写失败时退回原问题，不阻塞
 
 
 def _extract_keywords(question: str) -> List[str]:
@@ -102,7 +99,7 @@ def _extract_keywords(question: str) -> List[str]:
 def build_query(
     question: str,
     history: Optional[List[Tuple[str, str]]] = None,
-    mode: str = MODE_AUTO,
+    mode: str = SearchMode.AUTO.value,
     graph_available: Optional[bool] = None,
 ) -> Query:
     """检索前处理入口：多轮改写 + 实体抽取 + 路由，返回 Query。
@@ -125,7 +122,7 @@ def build_query(
     history = history or []
     standalone = _rewrite(question, history) if history else question
     resolved = resolve_mode(mode, graph_available)
-    need_graph = resolved in (MODE_GRAPHRAG, MODE_HYBRID)
+    need_graph = resolved in (SearchMode.GRAPHRAG.value, SearchMode.HYBRID.value)
     keywords = _extract_keywords(standalone) if need_graph else []
 
     logger.info(

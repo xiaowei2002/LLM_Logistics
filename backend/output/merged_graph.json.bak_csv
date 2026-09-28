@@ -1,0 +1,9806 @@
+{
+  "entities": [
+    "中国物流与采购联合会",
+    "可折叠箱",
+    "上汽通用五菱汽车股份有限公司",
+    "标签座",
+    "比亚迪股份有限公司",
+    "陈琳",
+    "嵌套尺寸",
+    "叶春江",
+    "上海蔚来汽车有限公司",
+    "塑料周转箱",
+    "重庆长安民生物流股份有限公司",
+    "宋夏虹",
+    "章登鹏",
+    "陈伯格",
+    "任晓霞",
+    "陈程",
+    "廖清新",
+    "全国物流标准化技术委员会（SAC/TC 269）",
+    "廖家华",
+    "可堆箱",
+    "一汽物流有限公司",
+    "臧智昊",
+    "不可折叠箱",
+    "中都数科供应链管理有限公司",
+    "陈维杰",
+    "黄飞",
+    "长城汽车股份有限公司",
+    "岚图汽车科技有限公司",
+    "GB/T 31150—2014",
+    "卢岱燕",
+    "安吉智行物流有限公司",
+    "奇瑞汽车股份有限公司",
+    "黄浩",
+    "李加祥",
+    "RFID芯片",
+    "吉利汽车集团有限公司",
+    "GB/T 31838.3",
+    "吴迪",
+    "上海箱箱智能科技有限公司",
+    "王亚峰",
+    "李佛胜",
+    "张璐",
+    "GB/T 18354",
+    "苏彦泽",
+    "赛力斯汽车有限公司",
+    "上海携赁物流设备有限公司",
+    "赖海华",
+    "GB/T 39907—2021",
+    "GB/T 4857.4—2008",
+    "张莹莹",
+    "GB/T 40006.1—2021",
+    "吴华",
+    "把手",
+    "胡献饮",
+    "杨瑞霞",
+    "上汽通用汽车有限公司",
+    "GB/T 1.1—2020",
+    "折叠后高度",
+    "潘金辽",
+    "李国平",
+    "张雪梅",
+    "上海小白雄数字科技有限公司",
+    "李中元",
+    "重庆长安汽车股份有限公司",
+    "王昊璐",
+    "BB/T 0043—2007",
+    "托盘",
+    "厂区小火车",
+    "21#车间",
+    "15#氧化组装车间",
+    "17#车间",
+    "取铝型材、送型材框",
+    "价值流图",
+    "4#车间",
+    "沃尔沃",
+    "SAP 系统",
+    "VSM",
+    "成品库房",
+    "5WIH",
+    "大牵引车",
+    "物流司机",
+    "15#车间",
+    "RFID",
+    "库管员",
+    "工装模具检具库",
+    "ERP系统",
+    "叉车",
+    "内河运输",
+    "送原材料、成品器具，取成品，取垃圾废料",
+    "ECRS方法",
+    "高位货架库位区",
+    "管道运输",
+    "原材料库",
+    "物料流量矩阵F",
+    "9#车间",
+    "ERP",
+    "叉车充电区",
+    "财务部",
+    "AGV",
+    "大货车",
+    "距离矩阵D",
+    "取化学品药剂，入库危废料",
+    "推车",
+    "20#车间",
+    "升高车",
+    "5#车间",
+    "周转区",
+    "8#车间",
+    "物流人员",
+    "调度员",
+    "技术中心",
+    "23#车间",
+    "蔚来汽车",
+    "人事部",
+    "车间物流工",
+    "25T 牵引车",
+    "器具库",
+    "SLP",
+    "地面平铺库位区",
+    "物流工程师",
+    "多式联运",
+    "秦皇岛VCV汽车零部件有限公司",
+    "空运",
+    "流通加工",
+    "年度最佳协同奖",
+    "铁路运输",
+    "装卸",
+    "配送",
+    "价值流图（VSM）",
+    "重型叉车",
+    "五金辅料库",
+    "物流部门",
+    "13#车间",
+    "采购部",
+    "比亚迪",
+    "电动升高车",
+    "秦皇岛 VCV 汽车零部件有限公司",
+    "总经理",
+    "一汽轿车股份有限公司",
+    "化学品库",
+    "备料/货区",
+    "华晨宝马",
+    "秦皇岛市汽车零部件轻量化工程技术中心",
+    "2.0T 牵引车",
+    "不合格品区",
+    "库房",
+    "ECRS理论",
+    "河北省绿色工厂",
+    "7#车间",
+    "系统布置设计",
+    "特斯拉",
+    "奥迪",
+    "小牵引车",
+    "车间",
+    "SLP系统布局设计",
+    "MES系统",
+    "售后质量优秀合作供应商",
+    "取原材料、辅料",
+    "成品库",
+    "SLP理论",
+    "一汽大众",
+    "10#车间",
+    "北京 VCV 汽车零部件股份有限公司",
+    "北京奔驰",
+    "运输",
+    "秦皇岛市经济发展创新引领企业",
+    "价值流图分析工具",
+    "电动搬运车",
+    "30#车间",
+    "销售部",
+    "待入库区",
+    "物流强度分析表",
+    "16#车间",
+    "包装工程师",
+    "MES",
+    "公路运输",
+    "上海通用",
+    "河北省战略性新兴产业百强企业",
+    "MM 模块",
+    "搬运车",
+    "物流计划员",
+    "小火车",
+    "11#车间",
+    "来料待检区",
+    "18#车间",
+    "河北省高新技术企业",
+    "冷链运输",
+    "12#车间",
+    "系统布置设计理论",
+    "副总经理",
+    "上汽集团",
+    "AGV 设备",
+    "RFID 技术",
+    "VCV公司",
+    "危险品运输",
+    "Petri网",
+    "优秀开发奖",
+    "吉利汽车",
+    "包装",
+    "小鹏汽车",
+    "30#氧化组装车间",
+    "上海汽车",
+    "WMS",
+    "31#车间",
+    "武汉神龙",
+    "基建部",
+    "安环部",
+    "当量物流量",
+    "一汽红旗",
+    "奋进供应商",
+    "VCV 汽车零部件有限公司",
+    "理想汽车",
+    "报关",
+    "海运",
+    "厂内物流优化",
+    "半成品出入库及搬运，空器具返回",
+    "仓储",
+    "19#车间",
+    "制造部",
+    "FlexSim",
+    "长城汽车",
+    "地牛",
+    "存储",
+    "汽车零部件物流",
+    "移动机器人",
+    "DAS",
+    "入厂物流",
+    "中德合资汽车厂",
+    "上海快仓智能科技有限公司",
+    "LES",
+    "无人叉车",
+    "厂内物流",
+    "前置小仓",
+    "盘点",
+    "WCS系统",
+    "产线工位",
+    "线边仓",
+    "长安民生仓库",
+    "自动卸货系统",
+    "收货入库",
+    "进厂卸货",
+    "仓库",
+    "TMS",
+    "线边管理",
+    "SAP iPro系统",
+    "搬运",
+    "玄武M100",
+    "料箱式机器人系统",
+    "备料",
+    "货架叠盘机",
+    "潜伏式机器人",
+    "SAP（ERP）",
+    "暂存区",
+    "机械臂",
+    "分拣",
+    "划印",
+    "功能性损坏",
+    "错装",
+    "漏装",
+    "GB/T 31152",
+    "夹杂",
+    "自我评价",
+    "物流质损",
+    "部件表面疵点",
+    "温湿度",
+    "漏喷",
+    "客户评价",
+    "第三方评价",
+    "汽车零部件入厂物流",
+    "装卸搬运",
+    "车辆任务均衡",
+    "装配制造企业",
+    "重型普通货车（单车）",
+    "厂内半成品运输",
+    "数字化转型",
+    "8小时",
+    "车辆控制模块",
+    "重型牵引车（拖车）",
+    "RaLC仿真建模",
+    "信息展示模块",
+    "成品的下线暂存与发运",
+    "Pickup and Delivery Problem (PDP)",
+    "原材料及零部件的入库配送",
+    "大规模个性化定制",
+    "8:00～12:00、13:00～17:00",
+    "RaLC（乐龙）系列软件",
+    "《物流技术与应用》杂志",
+    "柔性生产",
+    "车辆调度优化",
+    "车间装卸模块",
+    "济南二机床集团有限公司",
+    "山东建筑大学信息与电气工程学院",
+    "仿真控制模块",
+    "J公司",
+    "三维虚拟物流中心模型构筑工具",
+    "生产过程中半成品的跨车间流转",
+    "山东建筑大学交通工程学院",
+    "车间通道约束",
+    "物流运输仿真",
+    "任务紧急程度",
+    "运输车辆装载率",
+    "入库及时率",
+    "到场准时率",
+    "售后服务备件普通订单运输及时率",
+    "仓储设施不合格率",
+    "仓储库位摆放准确率",
+    "先进先出执行率",
+    "订单及时率",
+    "售后服务备件包装破损率",
+    "出库及时率",
+    "流通加工合格率",
+    "单车物流质损成本率",
+    "运力保障率",
+    "物流停线时间",
+    "运输货损率",
+    "返单及时率",
+    "发运及时率",
+    "GB/T 3730.1",
+    "WB/T 1033",
+    "调度及时率",
+    "账实符合率",
+    "仓储质损率",
+    "运输质损率",
+    "运输监控设备完好率",
+    "仓储货差率",
+    "交付及时率",
+    "设备完好率",
+    "仓储货损率",
+    "运输及时率",
+    "运输货差率",
+    "备车及时率",
+    "保质期件占有率",
+    "订单满足率",
+    "仓库服务交付差错率",
+    "运输车辆符合率",
+    "运输工具检验不合格率",
+    "交付质损率",
+    "收车及时率",
+    "装车及时率",
+    "售后服务备件紧急订单运输及时率",
+    "下线检查漏检率",
+    "物流中心",
+    "上海惠晟物流有限公司",
+    "上海市质量和标准化研究院",
+    "青岛远洋船员职业学院",
+    "信息设备",
+    "张路",
+    "物资节能中心",
+    "退货处理",
+    "于晓丹",
+    "王文杰",
+    "姚红伟",
+    "订单处理",
+    "GB/T 22126—2008",
+    "曾庆",
+    "EDI",
+    "浙江银轮普天供应链管理有限公司",
+    "GB/T 39660—2020",
+    "秦玉洁",
+    "GPS追踪",
+    "国网浙江省电力有限公司嘉兴供电公司",
+    "收货",
+    "TMS（运输管理系统）",
+    "条码识读设备",
+    "嘉兴恒创电力集团有限公司",
+    "王骊",
+    "孟凡奇",
+    "陈瑜",
+    "信息管理",
+    "北方工程设计研究院有限公司",
+    "信息系统",
+    "许肇然",
+    "李倩",
+    "射频识别设备",
+    "王锋",
+    "杨岸涛",
+    "赵玉勇",
+    "赵洁玉",
+    "湖北物资流通技术研究所",
+    "路欢欢",
+    "周亚玲",
+    "发货",
+    "郝皓",
+    "李国仪",
+    "国网浙江省电力有限公司物资分公司",
+    "陈思",
+    "中远海运化工物流有限公司",
+    "王春林",
+    "国网浙江省电力有限公司",
+    "张华进",
+    "上海第二工业大学",
+    "林慧丹",
+    "上衡道国际标准技术服务（上海）有限公司",
+    "储存",
+    "OMS",
+    "郑伟洪",
+    "余斌",
+    "WMS（仓储管理系统）",
+    "车辆运输车装卸场地",
+    "抱轮式紧固器",
+    "道路救援车",
+    "汽车整车",
+    "滚装船",
+    "GB/T 26774",
+    "信息处理设备",
+    "绑扎带",
+    "GB 1589",
+    "浮码头",
+    "车辆运输车",
+    "滚装",
+    "摄录设备",
+    "GB 50015",
+    "信息采集设备",
+    "对讲机",
+    "双层可调式装卸站台",
+    "GB 50582",
+    "铁路站台",
+    "中置轴挂车列车",
+    "GB/T 5600",
+    "二层升降起动装置",
+    "GB 50057",
+    "办公设施",
+    "移动式装卸连接设备",
+    "绑扎环",
+    "公路运输停车场",
+    "渡板",
+    "双层运输汽车专用车",
+    "垫木",
+    "充电区域",
+    "码头",
+    "探伤仪",
+    "监控和安保设施",
+    "趸船",
+    "定位设备",
+    "GB 50034",
+    "交接缓冲场地",
+    "车辆运输半挂列车",
+    "短驳司机摆渡车",
+    "铁路装卸线",
+    "门区",
+    "尽端式站台",
+    "生活办公车辆通行车道",
+    "整车存储场地",
+    "Scheduling the part supply of mixed-model assembly lines in line-integrated supermarkets",
+    "Guangzhou, China",
+    "RT",
+    "w",
+    "ρ2",
+    "Sequencing mixed-model assembly lines: Survey, classification and model critique",
+    "v",
+    "regret-2",
+    "RC50-15-3",
+    "ls4",
+    "同步零件的截止日期",
+    "T0",
+    "Gurobi",
+    "R50-15-3",
+    "milk-run logistics",
+    "容量",
+    "st",
+    "National Natural Science Foundation of China",
+    "cross-docking",
+    "VND local search",
+    "同步零件",
+    "ls3",
+    "ls1",
+    "electric automobile manufacturer in China",
+    "Gap",
+    "Q (Vehicle capacity)",
+    "Qing Lan Project, China",
+    "Taguchi method",
+    "Mixed-model assembly line",
+    "同步工作站",
+    "ΔCm r",
+    "最大载重",
+    "An adaptive large neighborhood search approach for multiple traveling repairman problem with profits",
+    "同步部件",
+    "RVm",
+    "Applied column generation-based approach to solve supply chain scheduling problems",
+    "Qiang Xue",
+    "Solomon's VRP instances",
+    "point-to-point",
+    "Jian Chen",
+    "RC",
+    "C50-15-3",
+    "车辆",
+    "R",
+    "旅行时间",
+    "s_pnj (Supplier)",
+    "ALNS",
+    "Naiming Xie",
+    "The production and inventory behavior of the American automobile industry",
+    "VND",
+    "VND算法",
+    "MS-ALNS-VND",
+    "Gurobi solver",
+    "Algorithm 6: Trip efficiency-based destroy operator",
+    "College of Economics and Management, Nanjing University of Aeronautics and Astronautics",
+    "破坏和修复操作符",
+    "供应商",
+    "N1",
+    "Shaw 破坏操作符",
+    "Baidu Maps API",
+    "IPODS",
+    "ALNS算法",
+    "ICSVRP",
+    "China Postdoctoral Science Foundation",
+    "C_bst",
+    "NoImp",
+    "随机破坏操作符",
+    "Yao-Wen Sang",
+    "基于零件等待时间的破坏操作符",
+    "V",
+    "混合模型装配线",
+    "车辆路径优化",
+    "MILP模型",
+    "Γ",
+    "Sync-part supply",
+    "t_ij (Travel time matrix)",
+    "ALNS-VND",
+    "N2",
+    "An iterated local search procedure for the job sequencing and tool switching problem with non-identical parallel machines",
+    "B_no_improve",
+    "MTVRP",
+    "Multi-trip vehicle routing",
+    "C_avg",
+    "Adaptive large neighborhood search",
+    "总时长",
+    "An adaptive large neighbourhood search for the operational integrated production and distribution problem of perishable products",
+    "q_m (Size)",
+    "Hong Zhou",
+    "Solving an order batching, picker assignment, batch sequencing and picker routing problem via information integration",
+    "生产与运输的协调",
+    "交换操作符",
+    "ATTᵣ",
+    "regret-k_max",
+    "T (Takt time)",
+    "τ_r (Interval time)",
+    "Sequencing",
+    "Roulette wheel selection for operators",
+    "k0",
+    "Sync-parts",
+    "T_bst",
+    "n_trips",
+    "wt_m",
+    "Nanjing 211106, People's Republic of China",
+    "Integrated production and outbound distribution scheduling: review and extensions",
+    "Cmax",
+    "到达时间",
+    "Solving mixed model sequencing problem in assembly lines with serial workstations with work overload minimisation and interruption rules",
+    "ls2",
+    "后悔启发式",
+    "K",
+    "ls5",
+    "woj",
+    "ρ1",
+    "基于行程效率的破坏操作符",
+    "制造商",
+    "ls6",
+    "P_size",
+    "C",
+    "ρ_r",
+    "多启动策略",
+    "节拍时间",
+    "item-1",
+    "加工批次",
+    "汽车零部件制造企业",
+    "Hybrid genetic algorithm",
+    "PSO-simulated annealing hybrid algorithm",
+    "Cauchy perturbation",
+    "parallel production line scheduling problem",
+    "Pathollahi-Fard et al. [43]",
+    "EN",
+    "sub-lots",
+    "UR",
+    "makespan",
+    "inventory cost",
+    "Cplex12.10.0.0",
+    "天窗",
+    "He et al. [42]",
+    "Wang et al. [38]",
+    "总加权目标",
+    "multi-objective weighting coefficients",
+    "强化学习",
+    "Linshan Ding",
+    "item-9",
+    "运行时间",
+    "逻辑混沌映射 (LCM)",
+    "订单拆分和合并",
+    "improved particle swarm optimization (IPSO)",
+    "item-2",
+    "Sparrow search algorithm (HSSA)",
+    "Algorithm 2",
+    "Lei Yue",
+    "min-max归一化和线性加权法",
+    "perturbation probability",
+    "生产调度",
+    "运输资源",
+    "模具更换约束",
+    "Genetic Algorithms (GA)",
+    "迁移学习",
+    "Xiwen Cai",
+    "production lines",
+    "National Natural Science Foundation of China (No. 52275479)",
+    "生产计划",
+    "产品库存时间",
+    "Gaussian perturbation",
+    "School of Mechanical and Electrical Engineering, Guangzhou University",
+    "完成时间",
+    "inertia weight",
+    "Li et al. [41]",
+    "生产调度优化",
+    "EL",
+    "proximal policy optimization (PPO)",
+    "item-11",
+    "Guangzhou basic and applied basic research project, PR China (No. 2025A03J0154, 2025A03J108 and 2024A04J3447)",
+    "item-12",
+    "安装外部密封条",
+    "IN",
+    "total tardiness",
+    "玻璃组件与框架组件之间的粘接",
+    "模具更换频率",
+    "Jietao Huang",
+    "Taguchi experimental design method",
+    "大规模实例",
+    "CI",
+    "item-10",
+    "钣金件",
+    "hybrid ant colony optimization algorithm",
+    "work-in-process inventory cost",
+    "遮阳板组装",
+    "物流园区",
+    "运输资源管理",
+    "scout proportion",
+    "Transportation resources",
+    "小车",
+    "trolley",
+    "安装电机和线束",
+    "深度学习",
+    "Serrano-Ruiz et al. [46]",
+    "item-3",
+    "模式更改次数",
+    "differential evolution (DE)",
+    "多点交叉操作",
+    "Scheduling",
+    "order delivery risks",
+    "parallel production lines",
+    "HSSA",
+    "item-6",
+    "生产线路",
+    "延期时间",
+    "GA-based solution",
+    "工作件类型",
+    "DE",
+    "multi-point crossover strategy",
+    "artificial bee colony algorithm",
+    "item-4",
+    "Guangdong Basic and Applied Basic Research Foundation, PR China (No. 2024A1515011653)",
+    "https://doi.org/10.5281/zenodo.15833291",
+    "sparrow search algorithm (SSA)",
+    "制造成本",
+    "子批量",
+    "total number of switches",
+    "SSA",
+    "Mixed-model production (MMP)",
+    "Total weighted objective",
+    "HSSA algorithm",
+    "物流车容量",
+    "MINLP model",
+    "Multi-agent deep Q network framework",
+    "Cauchy scale",
+    "item-8",
+    "continuous-to-discrete mapping method",
+    "粒子群优化",
+    "lot-sizing",
+    "Advanced Planning and Scheduling Systems (APS)",
+    "Automotive industry",
+    "Heuristic-assisted deep Q-network (HA-DQN) algorithm",
+    "Tao Zou",
+    "XR",
+    "particle swarm velocity-position updating strategies",
+    "Gaussian scale",
+    "多策略增强的HSSA",
+    "知识辅助搜索机制",
+    "item-7",
+    "小规模实例",
+    "高斯扰动",
+    "population size",
+    "燃油箱",
+    "Integrated lot-sizing and scheduling for parallel mixed-model automotive production lines with transportation resource constraints",
+    "MTO (make to order)",
+    "semi-finished automobile parts",
+    "Shahvari et al. [44]",
+    "差分进化策略",
+    "Multi-agent deep reinforcement learning (MAPPO-MC)",
+    "discoverer variation rate",
+    "柯西扰动",
+    "mold changeover",
+    "maximum iteration count",
+    "School of Management, Guangzhou University",
+    "订单",
+    "AV",
+    "预装框架组装",
+    "Automatic mobile robot (AMR)",
+    "VNS algorithm",
+    "交货日期",
+    "workpieces",
+    "automobile parts",
+    "graph reinforcement learning method",
+    "自适应学习框架",
+    "item-5",
+    "AGV transportation resources",
+    "Component manufacturers",
+    "multidimensional co-evolutionary algorithm",
+    "Yanming Sun",
+    "子批",
+    "树脂件",
+    "Algorithm 1",
+    "differential variation strategy",
+    "multi-point crossover proportion",
+    "IPSO",
+    "Particle Swarm Optimization (PSO)",
+    "Zeng et al. [39]",
+    "Taguchi方法",
+    "最终装配和功能测试",
+    "China",
+    "delivery tardiness and customer dissatisfaction",
+    "Direct Shipment",
+    "transportation and earliness/tardiness penalty costs",
+    "CNC machines",
+    "Abdül Kadir Görür",
+    "unidirectional flow",
+    "Metaheuristic",
+    "India",
+    "hybrid metaheuristics",
+    "flow shop",
+    "T. Lee Kong",
+    "integrated production and distribution scheduling (IPDS) problems",
+    "Expert Systems with Applications",
+    "shared transportation resource (STR) strategy",
+    "S. Belbağ",
+    "Objective Function Characteristics",
+    "unlimited vehicle count",
+    "可持续发展",
+    "immediate shipments to customers",
+    "M. Asghari",
+    "Unrelated Parallel Machines",
+    "Job Shop Configurations",
+    "Çankaya University",
+    "Applied Mathematical Modelling",
+    "Automated Guided Vehicles (AGVs)",
+    "fixed number C of orders (pallets)",
+    "omnichannel retailing",
+    "Multi-tour",
+    "Memetic Algorithm",
+    "Genetic Algorithm",
+    "total production, distribution, and tardiness costs",
+    "Exact Solution",
+    "nonlinear programming",
+    "vehicles",
+    "C. Chen",
+    "shipment for a customer order",
+    "single batch of production",
+    "Hard time windows",
+    "Heterogeneous",
+    "Hong Kong",
+    "vehicle type",
+    "distributed flow shop",
+    "S. Aravindraj",
+    "E. Toğrul",
+    "flexible order composition",
+    "chemotherapy drugs",
+    "Number of Periods",
+    "homogeneous vehicles",
+    "minimizing production, distribution, and storage costs",
+    "Hungary",
+    "lifespan constraint",
+    "Number of Factories",
+    "A. Echchatbi",
+    "product differentiation",
+    "Morocco",
+    "epsilon-constraint method",
+    "Time Window",
+    "dynamic programming",
+    "tabu search (TS)",
+    "Shortest Processing Time (SPT)",
+    "production scheduling phase F₁",
+    "unrelated parallel machines with machine-dependent processing times",
+    "flexible job shop",
+    "Multiple Vehicle",
+    "Many periods",
+    "multi-objective optimization",
+    "Brazil",
+    "B. Ahmad",
+    "cost-based objectives",
+    "Single period",
+    "Parallel Machines",
+    "earliness and tardiness penalties",
+    "Single Product",
+    "Vehicle energy consumption",
+    "车辆路径规划 (VRP)",
+    "Roketsan Missiles Inc.",
+    "assembly workshops",
+    "France",
+    "Computers & Operations Research",
+    "fleet of vehicles",
+    "set of n jobs",
+    "International Journal of Production Research",
+    "green-based elements",
+    "greedy algorithms",
+    "green elements-based objectives",
+    "granulating raw materials",
+    "mathematical optimization",
+    "simulated annealing (SA)",
+    "Permutation Flow Shop",
+    "integrated supply chain context",
+    "multiple depots",
+    "sequence-dependent setup time (SDST) vehicle routing issues",
+    "J. Renaud",
+    "multiple discrete time buckets",
+    "dispatching rules",
+    "relaxed simplified programming (RSP)",
+    "M. Soysal",
+    "Belgium",
+    "tardiness of each job T_j",
+    "M. Darvish",
+    "multi-facility or distributed job shop",
+    "limited number of vehicles",
+    "L. C. Coelho",
+    "multiple customer locations",
+    "S. M. J. Mirzapour Al-e-hashem",
+    "temporal constraints",
+    "IPDS",
+    "S. Vinodh",
+    "R. Harrison",
+    "F. Yao",
+    "service-based objectives",
+    "open shop configuration",
+    "single factory setting with parallel machines",
+    "weighted number of late X orders Ux",
+    "精益制造",
+    "on-hand stock I_t",
+    "Indonesia",
+    "绿色供应链管理 (GSCM)",
+    "total carbon emissions",
+    "vehicle carbon emissions",
+    "hybrid flow shops",
+    "permutation flow shop machine configuration",
+    "memetic algorithm (MA)",
+    "M. Grazia Speranza",
+    "Canada",
+    "Multiple Depots",
+    "minimizing carbon emissions and fuel consumption from distribution vehicles",
+    "distribution schedule",
+    "linear decay of perishable product value over time",
+    "Omega",
+    "M. Benbouja",
+    "direct shipment case",
+    "revenue-based objectives",
+    "inventory",
+    "USA",
+    "time-based elements",
+    "heuristic methods",
+    "multi-facility flow shop configurations",
+    "soft time windows",
+    "dedicated lines for specific product types",
+    "time constraints",
+    "job shop configuration",
+    "Single Vehicle",
+    "metaheuristics",
+    "rolling-horizon heuristic",
+    "vehicle routing problems (VRPs)",
+    "packaging lines",
+    "Depot Usage",
+    "B. Farooq",
+    "Multi-Facility Production",
+    "Heuristic",
+    "chemotherapy production and delivery process",
+    "Single Factory",
+    "packaging of orders",
+    "setup times",
+    "limited integrated simulated annealing (LISA)",
+    "delivery tardiness",
+    "quality-based objectives",
+    "fleet of heterogeneous vehicles",
+    "Germany",
+    "reducing overall energy use in production",
+    "GAMS/CPLEX software",
+    "生产与分销计划集成 (IPDS)",
+    "tour count",
+    "static plan",
+    "敏捷制造",
+    "R. Cuthbertson",
+    "W. Piotrowicz",
+    "Q-learning-based metaheuristic algorithm",
+    "hospital pharmacy",
+    "Engineering Applications of Artificial Intelligence",
+    "multi-factory system with a single machine",
+    "e-commerce",
+    "learning-and-knowledge-assisted multi-population cooperative evolutionary algorithm",
+    "shelf life",
+    "central depot",
+    "design, production, and distribution scheduling",
+    "machine operation costs",
+    "Earliest Due Date (EDD)",
+    "specific processing time p_{it}",
+    "旅行商问题 (TSP)",
+    "green constraints",
+    "mixed-integer linear programming (MILP)",
+    "advanced heuristic methods",
+    "N/A",
+    "cyber-physical systems (CPS)",
+    "Heterogeneous Fleets",
+    "multi-product problems",
+    "temporary storage capacities",
+    "total distribution cost",
+    "Benders decomposition",
+    "self-adapted Gaussian mutation-based arithmetic optimizer algorithm (SGMAOA)",
+    "total completion time",
+    "Distribution Characteristics",
+    "Temporal Characteristics",
+    "Production scheduling-based Routing Problem (PRP)",
+    "Multi-Period Planning Horizons",
+    "Onur Türel",
+    "flexible or hybrid workshop",
+    "useful life sl_p",
+    "optimizing waste generation throughout the integrated system",
+    "completion earliness",
+    "identical processing times of the machines",
+    "Poland",
+    "Z. Jiang",
+    "inventory system",
+    "capacity Qk",
+    "Number of Products",
+    "multi-factory supply chain",
+    "discrete known set of n independent orders J = {J₁,J₂,...,Jₙ}",
+    "branch-and-bound",
+    "direct delivery cost hk",
+    "integrated production research",
+    "supply chain optimization",
+    "M. Çimen",
+    "delivery time window",
+    "Solution Methods of the IPDS Problem",
+    "transportation times and costs",
+    "non-identical parallel processors",
+    "process time",
+    "M. P. Kidd",
+    "in-time delivery",
+    "VRP",
+    "standard-size pallet",
+    "Homogeneous",
+    "Single-tour",
+    "production configuration that forms batches of orders",
+    "number of vehicles",
+    "vehicle capacity",
+    "economic efficiency, service quality, and environmental savings",
+    "Bangladesh",
+    "Flexible Flow Shop",
+    "minimizing spoilage or damage",
+    "B. Alkan",
+    "T. Liang",
+    "temporal costs associated with the earliness or tardiness",
+    "operations researchers",
+    "WoS",
+    "W. Kan",
+    "S. Sabet",
+    "fuel consumption",
+    "Web of Science (WoS)",
+    "delivery lateness",
+    "Home Chemotherapy Delivery Problem (HCDP)",
+    "A. Touil",
+    "Internet of Things (IoT)",
+    "energy consumption e_{it}",
+    "dedicated storage process inside the factories",
+    "Serbia",
+    "heterogeneous type of carrier",
+    "job shops",
+    "Iran",
+    "quality reduction point QRP_p",
+    "Non-Identical Parallel Machines",
+    "heuristics",
+    "A. Charkaoui",
+    "Ferda Can Çetinkaya",
+    "single-factory system with parallel machines",
+    "Aggregate Production Planning (APP)",
+    "total cost of the process",
+    "non-permutation flow shop",
+    "third-party logistics (3PL) provider",
+    "drop cost φk",
+    "transport mode",
+    "循环经济",
+    "Computers & Industrial Engineering",
+    "Turkey",
+    "cost-based elements",
+    "job sequencing and resource allocation",
+    "dairy production industry",
+    "customer satisfaction and supply chain responsiveness",
+    "准时制 (JIT)",
+    "single-machine",
+    "single-product scenarios",
+    "hard time windows for delivery",
+    "hard time windows",
+    "L. Zhou",
+    "Multiple Factories",
+    "CPLEX solver",
+    "批量大小问题 (LSP)",
+    "make-to-order supply chain model",
+    "Multiple Products",
+    "n orders as belonging to g distinct product types",
+    "multi-factory supply chain with parallel machines in each factory",
+    "Scopus",
+    "Arithmetic Optimizer Algorithm (AOA)",
+    "Soft Time Windows",
+    "Job Shop",
+    "库存控制",
+    "集装单元 unitized unit",
+    "货物跟踪系统 goods tracking system",
+    "综合物流服务",
+    "rolling transport",
+    "存储单元 stock keeping unit; SKU",
+    "物流管理信息系统",
+    "换装 transshipment",
+    "物流",
+    "物品编码",
+    "条形码",
+    "库存",
+    "顺序供给",
+    "自营仓库 private warehouse",
+    "驮背运输",
+    "交付日期",
+    "RDC",
+    "电子通关",
+    "严重物流质损车",
+    "等级标签",
+    "电子订货系统",
+    "货垛 goods stack",
+    "物流系统仿真 logistics system simulation",
+    "物流作业成本法",
+    "汽车售后服务备件",
+    "包装周转量",
+    "直拨 direct distribution",
+    "库房 storehouse",
+    "全球位置码",
+    "码头 wharf",
+    "整车运输 full-truck-load transport",
+    "地理信息系统",
+    "升降台 lift table; LT",
+    "盘点 stock checking",
+    "仓库 warehouse",
+    "分拣设备 sorting and picking equipment",
+    "单个资产标识代码",
+    "GB/T 31152—2014",
+    "射频识别",
+    "等级费率",
+    "合同物流 contract logistics",
+    "立体仓库 stereoscopic warehouse",
+    "在途",
+    "电子运单 electronic waybill",
+    "清关",
+    "柔性货运袋",
+    "绿色物流",
+    "冷链",
+    "库存周期 inventory cycle time",
+    "理货 tally",
+    "供应商管理库存",
+    "电子商务",
+    "班列 scheduled railway express",
+    "汽车零部件",
+    "卸载",
+    "电子采购",
+    "交接",
+    "快速反应",
+    "跳板",
+    "海关估价",
+    "物品标识编码",
+    "定位",
+    "物流成本作业法",
+    "保税工厂",
+    "出口监管仓库",
+    "保税物流",
+    "铁路专用线 private railway siding",
+    "绿色包装",
+    "物流标签 logistics label",
+    "制造资源计划",
+    "物流质量管理",
+    "集疏运 collection and distribution",
+    "合同物流",
+    "系列货运包装箱代码",
+    "条码自动识别技术",
+    "出口退税",
+    "订货提前期 order lead-time",
+    "周转容器循环使用 returnable container circulating",
+    "VDC",
+    "调节板 dock leveler",
+    "物流单元",
+    "动态维护",
+    "汽车专用铁运货车",
+    "GB/T 18354—2021",
+    "电子报表",
+    "经济订货批量",
+    "移位",
+    "周期供给",
+    "客户关系管理",
+    "上线包装",
+    "标准包装量",
+    "保税仓库",
+    "国际多式联运",
+    "保税物流园区",
+    "自动导引车 automatic guided vehicle; AGV",
+    "干线运输",
+    "循环取货 milk-run",
+    "快速响应",
+    "快递服务 express service",
+    "radio frequency tag",
+    "汽车整车配送中心",
+    "仓储指令",
+    "仓配一体",
+    "公共仓库 public warehouse",
+    "甩挂运输 tractor-and-trailer swap transport",
+    "replenishment",
+    "协同计划、预测与补货",
+    "码盘作业 palletizing",
+    "全卡车运输",
+    "物流效益背反",
+    "配送资源计划",
+    "叉车 fork lift truck",
+    "前置仓库",
+    "shared inventory",
+    "配载",
+    "成本加保险费加运费",
+    "物流质损索赔",
+    "综合保税区",
+    "货物跟踪系统",
+    "共同配送 joint distribution",
+    "集装箱 container",
+    "标准作业遵守率",
+    "射频标签 radio frequency tag； RF tag",
+    "国际航空货运",
+    "散改集 containerized transportation of bulk",
+    "配送需求计划",
+    "厢式货车 cargo van",
+    "搬运 handling",
+    "物流成本管理",
+    "汽车",
+    "PDI",
+    "检验棚",
+    "自动识别技术",
+    "产品电子代码系统",
+    "电子订货系统 electronic ordering system; EOS",
+    "集装器具 unitized implement",
+    "受海关监管的货物",
+    "多温共配 multi-temperature joint distribution",
+    "有效客户反应",
+    "scheduled railway express",
+    "组配货 grouping allocation",
+    "自动识别技术 automatic identification technology",
+    "通运货物",
+    "直送运输",
+    "物流战略管理",
+    "支线运输",
+    "运输管理系统 transportation management system; TMS",
+    "固定",
+    "非物流质损车",
+    "报缺",
+    "输送机 conveyor",
+    "RF tag",
+    "隐形质损",
+    "多式联运 multimodal transportation; intermodal transportation",
+    "reverse logistics",
+    "全球贸易项目标识代码",
+    "全球定位系统 global positioning system",
+    "交通枢纽 transportation hub",
+    "returnable container circulating",
+    "智能交通系统",
+    "regional distribution center",
+    "仓库布局",
+    "连续补货计划",
+    "成套供给",
+    "储存 storing",
+    "企业资源计划",
+    "汽车零部件集配中心",
+    "转运运输",
+    "启运港退税",
+    "成本加运费",
+    "滚装运输 rolling transport",
+    "safety stock",
+    "仓库管理系统 warehouse management system; WMS",
+    "下线(后)检查",
+    "存货控制",
+    "虚拟仓库",
+    "条码 bar code",
+    "货物编码",
+    "中转运输 transfer transport",
+    "returnable container",
+    "汽车整车物流",
+    "大陆桥运输",
+    "混载",
+    "自主卸货",
+    "海外仓",
+    "直达运输 through transport",
+    "单元装卸 unit loading and unloading",
+    "补货 replenishment",
+    "集货 goods collection",
+    "报废物流质损车",
+    "单车物流成本",
+    "人工短驳",
+    "即时配送 on-demand delivery",
+    "仓库管理系统",
+    "销售时点系统 point of sale; POS",
+    "原产地证明",
+    "质损件",
+    "物流资源计划",
+    "物流信息编码",
+    "内陆港 inland port",
+    "自动存取系统",
+    "汽车专用铁运集装箱",
+    "仓单 warehouse receipt",
+    "装载率",
+    "国际货运代理",
+    "吊装",
+    "转关运输",
+    "电子通关 electronic customs clearance",
+    "共享库存",
+    "地理信息系统 geographical information system; GIS",
+    "准时制配送 just-in-time distribution",
+    "保管 stock keeping",
+    "可回收资产标识代码",
+    "电子数据交换",
+    "质损代码",
+    "过境货物",
+    "索赔",
+    "定期订货制",
+    "物流资源整合",
+    "牵引车 tractor",
+    "GB/T 18354—2006",
+    "托盘 pallet",
+    "供应链",
+    "起重机械",
+    "供应商交互平台",
+    "专用铁路线",
+    "积载",
+    "定量订货制",
+    "保税港区",
+    "中欧班列",
+    "航空货运代理",
+    "流通加工 distribution processing",
+    "到货价格",
+    "空驶率",
+    "海关监管货物",
+    "滞报金",
+    "robot for logistics",
+    "物流设施 logistics facilities",
+    "集装箱场站 yard-station",
+    "射频识别 radio frequency identification； RFID",
+    "运输包装 transport packaging",
+    "自动存储与检索系统",
+    "物料需求计划",
+    "保税区",
+    "B 型保税物流中心",
+    "托盘循环共用系统 pallet pooling system",
+    "集装袋 flexible freightbag",
+    "租船运输",
+    "运输指令",
+    "准时制",
+    "港口 water port",
+    "存货质押融资监管 inventory financing supervision",
+    "销售时点系统",
+    "物流管理信息系统 logistics management information system",
+    "shipper",
+    "国际铁路联运",
+    "效益背反",
+    "循环盘点",
+    "电子数据交换 electronic data interchange； EDI",
+    "准时制物流",
+    "带板运输 palletized transport",
+    "物流包装回收 logistics package recycling",
+    "自由贸易试验区",
+    "联合库存管理",
+    "循环取货模式",
+    "进出口商品检验",
+    "托运",
+    "跨境运输",
+    "国际中转集拼",
+    "输送机",
+    "radio frequency identification",
+    "质量交接",
+    "售前质量检查",
+    "无船承运人",
+    "船务代理",
+    "库存 inventory",
+    "保税维修",
+    "运输准时率",
+    "装载",
+    "运价 transport price",
+    "POS",
+    "国际转运拼箱",
+    "私人仓库",
+    "看板卡",
+    "集拼 consolidation",
+    "物流信息技术 logistics information technology",
+    "集装箱船 container ship",
+    "条码系统",
+    "台车置换供给",
+    "转运货物",
+    "标准工作时间",
+    "绿色包装 green packaging",
+    "shipping agency",
+    "延迟策略",
+    "物流机器人 robot for logistics",
+    "VSC",
+    "坡道",
+    "物流流程重组",
+    "试运输",
+    "GB/T 26774—2011",
+    "物流总成本分析",
+    "GB/T 3730.1—2001",
+    "称量装置 load weighing device",
+    "分拣输送系统 sorting and picking system",
+    "二维条码 two-dimensional bar code; 2D code",
+    "物流外包",
+    "仓储与配送一体化",
+    "出口加工区",
+    "物流服务质量 logistics service quality",
+    "分拣 sorting and picking",
+    "进料加工",
+    "航空港 airport",
+    "原产地证书",
+    "加固 securing",
+    "自动存取系统 automatic storage and retrieval system; AS/RS",
+    "供应商关系管理",
+    "物资储备 goods reserving",
+    "提单",
+    "射频识别系统 radio frequency identification system",
+    "物流标签",
+    "安全库存",
+    "军民融合物流",
+    "公共物流信息平台",
+    "ABC分类法",
+    "交车",
+    "智能运输系统",
+    "理赔",
+    "物流公共信息平台",
+    "商品标识代码",
+    "公共仓库",
+    "供应链金融 supply chain finance",
+    "一般物流质损车",
+    "口岸",
+    "仓储管理",
+    "电子认证",
+    "汽车售后服务备件配送中心",
+    "仓储 warehousing",
+    "物流停线",
+    "PDC",
+    "牛鞭效应",
+    "质损",
+    "保税货物",
+    "物流公共信息平台 public logistics information platform",
+    "货箱",
+    "交车人",
+    "定制物流 customized logistics",
+    "质损车",
+    "rack",
+    "接车人",
+    "内陆港口",
+    "来料加工",
+    "汽车整车储存中心",
+    "货架 rack",
+    "台车",
+    "自备箱 shipper’s own container",
+    "条码",
+    "交付时间",
+    "物流增值服务 logistics value-added service",
+    "装卸 loading and unloading",
+    "固定订货量系统",
+    "二维码",
+    "集装箱标准箱 twenty-foot equivalent unit for container; TEU",
+    "分组分配",
+    "展翼车",
+    "全球定位系统",
+    "接车",
+    "驮背运输 piggyback transport",
+    "A 型保税物流中心",
+    "挂车 trailer",
+    "全国产品与服务统一代码",
+    "装运港船上交货",
+    "检测线",
+    "securing",
+    "集装运输 unitized transport",
+    "ABC 分类法",
+    "巡视供给",
+    "集散",
+    "非物流质损",
+    "物流信息技术",
+    "前置仓",
+    "看板供给",
+    "物品编码 article numbering; article number",
+    "一维条码 linear bar code; one-dimensional bar code",
+    "起重机械 hoisting machinery",
+    "配载 load matching planning",
+    "物品标识编码 article identification number",
+    "门到门运输 door to door transport",
+    "物流设备 logistics equipment",
+    "班轮运输",
+    "冷链 cold-chain",
+    "包装 packaging",
+    "汽车物流",
+    "周转箱 returnable container",
+    "集装化 unitization",
+    "堆码 stacking",
+    "零担运输 less-than-truck-load transport",
+    "汽车售后服务备件物流",
+    "自动识别与数据采集",
+    "二维条码",
+    "供应链集成",
+    "国际物流",
+    "shipper’s own container",
+    "销售点",
+    "智能运输系统 intelligent transport system; ITS",
+    "QR",
+    "汽车零部件运输提前期",
+    "货场 freight yard",
+    "承运商",
+    "交割仓库 delivery warehouse",
+    "货损率",
+    "LARGe",
+    "物料配送",
+    "精益生产",
+    "Dijkstra算法",
+    "API 接口",
+    "物料拉动方式",
+    "车载传感器",
+    "ERP 系统",
+    "空调",
+    "网格板",
+    "供应链协调",
+    "CMMI 模型",
+    "JIS 模式",
+    "强化学习的动态路径优化算法",
+    "精益管理",
+    "上海奉贤区工厂",
+    "需求预测",
+    "组合开关",
+    "供应链动态监控管理",
+    "SCOR 模型",
+    "Lincs 系统",
+    "SAP的ERP系统",
+    "发动机",
+    "中频区",
+    "绩效奖金",
+    "自动化（Jidoka）",
+    "横梁骨架",
+    "员工绩效考核",
+    "运输路径优化",
+    "供应商分级管理",
+    "物流信息与协同系统 (LINCS)",
+    "供应商管理",
+    "员工",
+    "SAP",
+    "中控仪表台",
+    "数据仓库",
+    "线束",
+    "支架",
+    "采购部门",
+    "敏捷物流",
+    "合作决策",
+    "运输调度",
+    "需求计划共享",
+    "上海工厂",
+    "零部件拉动",
+    "线束电子件",
+    "晋升机会",
+    "价值流分析方法",
+    "S公司",
+    "动态库位分配管理",
+    "Tier 1供应商",
+    "信息系统整合",
+    "销售部门",
+    "订单跟踪",
+    "供应商风险管理",
+    "轮胎",
+    "车辆路径问题（VRP）",
+    "智能路径规划系统",
+    "新能源汽车",
+    "路径优化",
+    "订单信息",
+    "高频区",
+    "库存状态模块",
+    "安全气囊",
+    "库存控制机制",
+    "机器学习算法",
+    "物料需求计划（MRP）系统",
+    "动态调整模块",
+    "准时化（JIT）",
+    "增值活动",
+    "手套箱",
+    "物料配送路径优化",
+    "价值流图（Value Stream Mapping, VSM）",
+    "中间件",
+    "IT 部门",
+    "应急计划培训",
+    "计划生成模块",
+    "运输部门",
+    "异常报告",
+    "Clever",
+    "运营效率",
+    "仪表壳",
+    "EDI/API技术",
+    "价值流",
+    "喇叭",
+    "GPS系统",
+    "遗传算法",
+    "转向柱",
+    "物流响应速度",
+    "系统订单信息共享架构",
+    "安全交付培训",
+    "JIT",
+    "智能物流技术",
+    "生产线协调",
+    "看板系统",
+    "集成平台",
+    "库存满足率",
+    "显示屏",
+    "管理层绩效考核",
+    "出风口",
+    "供应链协同",
+    "跨部门协调会议",
+    "丰田公司",
+    "货车信息管理",
+    "预测模型",
+    "JIS排序",
+    "低频区",
+    "人工智能",
+    "信息共享平台",
+    "管理层",
+    "信息共享",
+    "螺丝",
+    "信息共享机制",
+    "安全交付",
+    "信息系统管理",
+    "Lincs",
+    "货车",
+    "MES 系统",
+    "地理信息系统（GIS）",
+    "物联网（IoT）技术",
+    "库存成本",
+    "物流系统",
+    "GFSH-GA2-MAIN 系统",
+    "非增值活动",
+    "设备状态",
+    "搬运成本",
+    "系统订单信息共享",
+    "货车发运",
+    "绩效评价",
+    "ISO 标准（YYYY-MM-DD）",
+    "团队闭环反馈机制",
+    "物流管理团队",
+    "大数据分析",
+    "Just In Sequence, JIS",
+    "GPS 设备",
+    "发货管理",
+    "供应链管理",
+    "激励机制",
+    "电气系统",
+    "ABC分析法",
+    "智能分仓",
+    "电池冷却液",
+    "库存数据",
+    "风管",
+    "旅行商问题（TSP）",
+    "RFID标签",
+    "道口对接",
+    "订单更新模块",
+    "安全库存模型",
+    "绩效评估和反馈机制",
+    "带时间窗的车辆路径问题（Vehicle Routing Problem with Time Windows, VRPTW）",
+    "S 公司",
+    "丰田生产方式（Toyota Production System, TPS）",
+    "变速箱传动",
+    "彼得·卡拉杰克（Peter Kraljic）",
+    "发货系统",
+    "拉动式需求管理理论",
+    "库存管理",
+    "电子数据交换 (EDI)",
+    "客户投诉",
+    "JIS",
+    "上海大众汽车公司",
+    "美国营运管理协会",
+    "供应链协作",
+    "AI 技术",
+    "SAP系统",
+    "Kraljic 矩阵",
+    "空间利用率",
+    "仓储部门",
+    "动态库存管理",
+    "生产部门",
+    "绩效考核",
+    "运输管理",
+    "分销物流",
+    "现代物流管理",
+    "订货系统",
+    "采购行为",
+    "目标管理",
+    "集货",
+    "槽罐集装箱",
+    "零部件",
+    "天地物流控股公司",
+    "保管库",
+    "信息流",
+    "供应链总运营成本指标",
+    "联合运输",
+    "起升高度",
+    "司机",
+    "新产品",
+    "订货完成率",
+    "安装作广告用的幕墙",
+    "增值网（Value Added Network，VAN）",
+    "通用电气",
+    "生产企业配送",
+    "商业—商业",
+    "协作保管方式",
+    "货物自动跟踪系统",
+    "盖印机",
+    "销售配送",
+    "福特汽车公司",
+    "经济的运输路线",
+    "松下",
+    "商品",
+    "电子定货系统（Electronic Ordering System，EOS）",
+    "准时制造制（JIT）",
+    "仓库货架",
+    "综合性评价",
+    "JAVABEANS",
+    "经济批量",
+    "工作速度",
+    "售前售后服务",
+    "载重",
+    "成品物流",
+    "物流业",
+    "流通加工代理企业",
+    "成长期",
+    "采购",
+    "装卸机器",
+    "收货验货作业区",
+    "定量订货法",
+    "配装",
+    "沈大铁路",
+    "成熟期",
+    "防盗报警设施",
+    "包装材料",
+    "航空运输",
+    "钢板的切割",
+    "伸长货叉型叉车",
+    "防湿包装技法",
+    "半挂车",
+    "物流工程师学会",
+    "重力式货架",
+    "海尔",
+    "防火报警器",
+    "原料供应",
+    "储存保管作业区",
+    "配送网络",
+    "保管",
+    "桥式起重机",
+    "翻车机",
+    "中型卡车",
+    "上市牛奶的灭菌和摇匀",
+    "灵活性",
+    "资金流",
+    "畜力车",
+    "储藏仓库",
+    "产销率指标",
+    "数量折扣结构",
+    "计算机",
+    "衰退期",
+    "安全认证",
+    "仓储企业（仓储代理企业）",
+    "进厂运输",
+    "塑料容器",
+    "电子市场",
+    "自家用仓库",
+    "精细生产（Lean Production）",
+    "防水包装技法",
+    "NEC",
+    "JIT 式生产方式",
+    "Internet",
+    "Covisint",
+    "UPS 全球物流集团",
+    "顾客服务",
+    "仓储和经营经理",
+    "计量机",
+    "市场后勤观念",
+    "热加工",
+    "生鲜食品的原包装",
+    "质检员",
+    "国际第三方汽车物流公司",
+    "安吉天地汽车物流有限公司",
+    "商业包装",
+    "网络系统",
+    "新产品（服务）收入比率指标",
+    "物料清单",
+    "IPE（内部运输计划）",
+    "事务所",
+    "零售商",
+    "配送系统",
+    "通用",
+    "地毯剪接",
+    "包装箱",
+    "草包",
+    "大型卡车",
+    "通用公司",
+    "促销活动",
+    "冷藏集装箱",
+    "半成品",
+    "侧面货叉型叉车",
+    "即时配送",
+    "个人通信系统",
+    "厂内运输",
+    "收缩包装机械",
+    "绞车",
+    "实体分配",
+    "供应商管理用户库存（VMI）",
+    "总经销商",
+    "定时配送",
+    "体积",
+    "平板玻璃",
+    "库存能力",
+    "送货",
+    "配送制",
+    "企业决策者",
+    "租赁仓库",
+    "EDI（电子数据交换）",
+    "纵向切割薄板卷，使之成为窄幅（钢管用卷材）",
+    "综合物流",
+    "计算机化的信息管理",
+    "委托保管方式",
+    "企业资源计划（Enterprise Resource Planning，ERP）",
+    "普通仓库",
+    "Trade Xchange",
+    "定量配送",
+    "石家庄",
+    "播种式分拣",
+    "高等学校车辆工程专业教材",
+    "车载 GPS 装置",
+    "定期订货法",
+    "金属包装材料",
+    "港口",
+    "公路",
+    "机械搬运",
+    "水上仓库",
+    "福特",
+    "运输包装",
+    "上海大众",
+    "原材料仓库",
+    "库存数量",
+    "充填包装机械",
+    "Haul. lee 教授",
+    "危险品仓库",
+    "冷藏仓库",
+    "直达运输",
+    "克莱斯勒",
+    "物流策略组合",
+    "设施地点",
+    "燃料油配送",
+    "经销商仓库",
+    "福利保健场所",
+    "油耗",
+    "产品生产（或服务）循环周期指标",
+    "接受订货系统",
+    "迂回运输",
+    "中转货场",
+    "大通国际运输",
+    "运输车辆",
+    "卸载机",
+    "航空",
+    "4Ps组合",
+    "可得性",
+    "起重运输机械",
+    "大连",
+    "制造资源系统（Manufacturing Requirement Planning, MRP）",
+    "物流硬技术",
+    "弹性制造系统（Flexible Manufacturing System, FMS）",
+    "配送员",
+    "理货",
+    "仓储企业",
+    "出厂运输",
+    "服务水平",
+    "Vauxhall",
+    "水路",
+    "彼得·德鲁克",
+    "斗式提升机",
+    "铁路",
+    "食品配送",
+    "绿化地",
+    "海关",
+    "厂外运输",
+    "包装技术费用",
+    "鹿特丹港",
+    "粘贴标价",
+    "捆扎机械",
+    "货物分拣",
+    "化工产品",
+    "自重",
+    "中国储运",
+    "集装箱车",
+    "机械工业出版社",
+    "SynQuest",
+    "大众交通",
+    "汽车制造企业",
+    "导入期",
+    "管理费",
+    "综合物流服务供应商",
+    "振动输送机",
+    "纸箱",
+    "结算状况",
+    "经济核算",
+    "中外合资汽车物流服务企业",
+    "美国干货储藏公司（D.S.C）",
+    "密歇根州兰辛的工厂",
+    "基本储备",
+    "商流",
+    "邮寄",
+    "厂内储存",
+    "JIT（准时制生产）",
+    "包装材料费用",
+    "家具等的组装",
+    "配送中心配送",
+    "C类商品",
+    "中国仓储协会",
+    "瓶",
+    "配送理货作业区",
+    "保管机器",
+    "B类商品",
+    "瓦楞纸板箱",
+    "通信",
+    "回收物流",
+    "电子数据交换（Electronic Data Interchange，EDI）",
+    "物流作业系统",
+    "起重机",
+    "配送场所",
+    "自动导向车",
+    "机电产品中的散件、配件",
+    "马士基物流",
+    "麦当劳",
+    "车站",
+    "贴标机械",
+    "ES/1 Logistics",
+    "网上广告",
+    "整车",
+    "声讯查询服务系统",
+    "汽车零部件物流运输系统设计",
+    "中转运输",
+    "退货处理场所",
+    "平板玻璃配送",
+    "内饰",
+    "麻袋",
+    "推销",
+    "检测机",
+    "商品和服务",
+    "电子资金转账（EFT）",
+    "运输系统",
+    "准时交货率指标",
+    "配货",
+    "菲利普·科特勒",
+    "顾客需求",
+    "烘干机",
+    "京沪高速公路",
+    "ECR（Evaluated Cash Receipt）",
+    "Internet 系统",
+    "软式集装箱",
+    "操作人员",
+    "堆取料机",
+    "供应商管理用户库存",
+    "电子数据交换技术",
+    "南方物流",
+    "保税货场",
+    "棉袋",
+    "共享作用",
+    "大型企业集团",
+    "燃料煤配送",
+    "白铁罐",
+    "CPS 系统",
+    "成本中心型",
+    "物流评价",
+    "计算机储存系统",
+    "VMI",
+    "合理储存量",
+    "准时制工作法（Just In Time）",
+    "六瓶装的新包装",
+    "搬运和运输作业",
+    "条码技术（Bar Code）",
+    "产需率指标",
+    "机车",
+    "仓管员",
+    "供应比率",
+    "人工智能专家系统",
+    "发料及在制品管理",
+    "链式输送机",
+    "价格策略",
+    "配载运输",
+    "电话网络",
+    "梅林正广和",
+    "服务中心型",
+    "批发商",
+    "智力资本比率指标",
+    "供应链同步化计划",
+    "供应物流",
+    "工作制度",
+    "包装标准",
+    "WTO",
+    "工厂",
+    "煤炭",
+    "起重量",
+    "包装工作者学会",
+    "雷诺",
+    "增值服务",
+    "扇形仓库布局",
+    "工厂仓库",
+    "金属材料配送",
+    "远程仓储",
+    "散货",
+    "咨询洽谈",
+    "货主",
+    "外包装",
+    "条形码和扫描仪",
+    "露天仓库",
+    "草袋",
+    "运力选择不当",
+    "机械设备",
+    "产品质量合格率指标",
+    "建筑专用起重机",
+    "运营经理",
+    "木箱",
+    "门到门运输",
+    "快速照相机",
+    "采购活动",
+    "生产线",
+    "全面质量管理（TQM）",
+    "合成树脂包装材料",
+    "零部件供应商",
+    "商品搬运决策",
+    "专门性评价",
+    "包装的标准化",
+    "Commerce One",
+    "电子商务与物流",
+    "倒流运输",
+    "用气割厚板",
+    "宝马",
+    "成品",
+    "ABC分析",
+    "华运通",
+    "现代物流服务",
+    "冷链品",
+    "哈里森（Harrison）",
+    "水泥配送",
+    "黄天百物流",
+    "仓库及教学研究委员会",
+    "配送中心",
+    "MRP II",
+    "需求量预测",
+    "筐",
+    "专业配送",
+    "功能集成",
+    "ANSI X.12电子数据交换标准",
+    "销售物流",
+    "湿度",
+    "行动旋转式起重机",
+    "销售人员",
+    "席",
+    "船舶",
+    "霍尔果斯",
+    "伊文斯（Evens）",
+    "信息化建设",
+    "原材料",
+    "无货空驶",
+    "养护设施",
+    "完好率",
+    "装载机",
+    "缸",
+    "切断成形钢材",
+    "废弃物流",
+    "JISZ0200",
+    "罐",
+    "西伯利亚大陆桥",
+    "物流成本",
+    "全国实物配送管理委员会",
+    "传真",
+    "先进先出",
+    "配送运输",
+    "第三方物流企业",
+    "衣料品的标识和印记商标",
+    "第二欧亚大陆桥",
+    "全球卫星定位系统（GPS）",
+    "销售企业",
+    "加料斗集装箱",
+    "代存代供配送",
+    "使用矫直机将薄板卷材展平",
+    "阳光网达",
+    "产成品存货",
+    "飞机",
+    "聚集型仓库布局",
+    "分拣机",
+    "冷链设备",
+    "美国运输与物流学会",
+    "第二利润源",
+    "运输方式",
+    "虚拟企业",
+    "自动化分拣设施",
+    "食品",
+    "美国汽车采购委员会",
+    "一般运输",
+    "塑料箱",
+    "灌装包装机械",
+    "MILKRUN 运输方式",
+    "陶瓷与玻璃包装材料",
+    "商业—消费者",
+    "物流信息系统",
+    "合理化运输",
+    "快速反应（Quick Response，QR）",
+    "存货管理系统",
+    "跨度",
+    "商业—政府",
+    "产品策略",
+    "重型平衡叉车",
+    "手推车",
+    "实时信息系统",
+    "安全员",
+    "外形尺寸",
+    "易速网",
+    "摘取式分拣",
+    "GMBuypower",
+    "真空包装机械",
+    "多级库存优化控制",
+    "美国生产与库存管理学会",
+    "电子电器",
+    "第三利润源",
+    "销售渠道",
+    "沈阳",
+    "计算机集成制造系统（Computer Integrated Manufacturing System, CIMS）",
+    "滚子输送机",
+    "逐个包装",
+    "固定资产折旧费",
+    "乘用小车",
+    "将冷冻的鱼肉磨碎及蛋品加工",
+    "配送企业",
+    "供产销一体化物流模式",
+    "企业内部信息管理系统",
+    "石太铁路",
+    "包装机械",
+    "刮板输送机",
+    "信用卡业务",
+    "快速反应策略",
+    "陇海铁路",
+    "供应配送",
+    "纸制包装材料",
+    "牵引车",
+    "UN/EDIFACT标准",
+    "集货箱",
+    "农业仓库",
+    "射频技术（RF）",
+    "贯通式货架",
+    "高职高专层次的汽车物流专业",
+    "北京中兴印刷有限公司",
+    "收货系统",
+    "木材配送",
+    "中国台湾省",
+    "报纸、电台、电视台传播",
+    "纸袋",
+    "集装箱",
+    "中转站",
+    "港口专用起重机",
+    "网上营销",
+    "远东至北美东海岸和墨西哥湾大陆桥",
+    "储存结构",
+    "绩效评价机制",
+    "系列产品",
+    "零售包装",
+    "陆空联运",
+    "自动分拣系统",
+    "雇员建议增长率指标",
+    "调达物流",
+    "中国远洋运输",
+    "POS 系统",
+    "气力输送机",
+    "草制包装材料",
+    "仓库配送",
+    "大米的自动包装",
+    "业务管理分析与计划员",
+    "发运的批量",
+    "代理商",
+    "在途数量",
+    "内包装",
+    "交易事务",
+    "标准化作业",
+    "宝供物流",
+    "连云港",
+    "京广线",
+    "消费者—政府",
+    "业务咨询",
+    "中转仓库",
+    "合资企业",
+    "塑料袋",
+    "纤维包装材料",
+    "固定旋转起重机",
+    "配货处理",
+    "货架",
+    "盒子",
+    "专用车",
+    "带式输送机",
+    "耐压强度",
+    "车皮",
+    "港口装卸",
+    "生产进度日程计划",
+    "上海",
+    "尺寸",
+    "德国一家饮料制造商",
+    "第一利润源",
+    "哈萨克斯坦",
+    "KPI",
+    "热成型包装机械",
+    "营销策划部门",
+    "牲畜集装箱",
+    "堆垛机械",
+    "史蒂文斯（Stevens）",
+    "销售及顾客服务活动",
+    "人力车",
+    "汽车装卸",
+    "ES/1 Manufacturing",
+    "包装费用",
+    "过程集成",
+    "集装箱运输",
+    "自动识别系统",
+    "检验仪表",
+    "美国柯达公司",
+    "牛鞭效应（Bullwhip Effect）",
+    "中国外贸运输",
+    "一致性",
+    "流通加工业",
+    "物流速度",
+    "安全储备",
+    "新西伯利亚",
+    "准时制（JIT）方式",
+    "物流公司",
+    "市场营销水平",
+    "二次运输",
+    "客户服务",
+    "传输机械",
+    "制造资源计划（Manufacturing Resource Planning）",
+    "美国普雷兹集团公司（APC）",
+    "A类商品",
+    "互联网",
+    "分拣作业区",
+    "定时定量配送",
+    "商业零售网点",
+    "沃尔玛",
+    "国家物流管理协会",
+    "后勤管理",
+    "网上订货",
+    "木桶",
+    "促销策略",
+    "软性容器",
+    "进出口",
+    "物流软技术",
+    "吸收型仓库布局",
+    "营业仓库",
+    "有效的客户响应（Effective Customer Response，ECR）",
+    "货盘",
+    "卡车",
+    "配送车辆",
+    "生产资料",
+    "配送箱",
+    "货票",
+    "采购订单",
+    "废弃物物流",
+    "零配件",
+    "装卸搬运企业",
+    "第三方物流公司",
+    "太原",
+    "全球运筹式产销模式",
+    "CRM",
+    "物流设施",
+    "加工",
+    "仓储决策",
+    "第三方物流",
+    "信息化",
+    "目录服务",
+    "e-GM",
+    "缺货频率",
+    "企业集团",
+    "开盖集装箱",
+    "EOQ",
+    "动力传动",
+    "VMI（供应商管理库存）",
+    "计算机辅助设计",
+    "商店配送",
+    "综合配送",
+    "准点率",
+    "运输服务",
+    "幅度",
+    "数据集成",
+    "流通仓库",
+    "电子商务实体",
+    "配销中心",
+    "TNT 物流",
+    "公共宣传",
+    "运输经理",
+    "保密措施",
+    "金属材料",
+    "包装的合理化",
+    "中、小件杂货配送",
+    "海空联运",
+    "包装辅助费用",
+    "销售时点信息管理系统（Point of Sale）",
+    "葫芦",
+    "丰田",
+    "经济区域",
+    "美国物流管理协议会（National Council of Physical Distribution Management，NCPDM）",
+    "分销策略",
+    "鱼和肉类的冷冻",
+    "自动化机械设备",
+    "集货运输",
+    "京哈线",
+    "自建仓库",
+    "中国邮政",
+    "辐射型仓库布局",
+    "产成品",
+    "直线运输",
+    "销售网点",
+    "宅急送",
+    "销售—供应一体化配送",
+    "IBM公司",
+    "通道",
+    "供应链 SCM 整体解决方案",
+    "包装人工费用",
+    "Intranet",
+    "零售商店",
+    "物流管理委员会",
+    "两库存法",
+    "库存管理经理",
+    "广告",
+    "复合包装材料",
+    "数据库技术（Database）",
+    "Smart Auction",
+    "库存管理系统",
+    "运输决策",
+    "铁路装卸",
+    "报关员",
+    "中海物流",
+    "定时定线配送",
+    "明尼阿波利斯",
+    "美国洛杉矶西海报关公司",
+    "分销商",
+    "备货",
+    "整车发运",
+    "木材",
+    "物流信息",
+    "销售服务",
+    "洗瓶机",
+    "美国橡胶公司（USCO）",
+    "配送能力",
+    "化工产品配送",
+    "木制包装材料",
+    "市场营销",
+    "电子商务规则",
+    "物流效率",
+    "框架集装箱",
+    "监视器",
+    "有效客户响应策略",
+    "POS数据读取系统",
+    "顾客",
+    "连锁商店",
+    "GTDI标准",
+    "中国外轮代理",
+    "整车物流管理解决方案",
+    "丝网",
+    "大铁桶",
+    "元器件",
+    "信息",
+    "业务管理经理",
+    "挂车",
+    "工业包装",
+    "水路运输",
+    "零库存管理",
+    "看板管理",
+    "搬运工具",
+    "交易管理",
+    "接货发货能力",
+    "上汽集团上海汽车工业销售总公司",
+    "液体状态的物质资料",
+    "消费者包装",
+    "时效",
+    "国际市场",
+    "存货计划",
+    "陆海联运",
+    "杂品仓库",
+    "耐用消费品",
+    "危险品",
+    "货运站",
+    "故障恢复能力",
+    "缓冲包装技法",
+    "成本利润指标",
+    "对流运输",
+    "Auto Xchange",
+    "计算机及辅助设备",
+    "地区储存",
+    "冶金专用起重机",
+    "北美西海岸至欧洲大陆桥",
+    "生产物流",
+    "物流管理模式",
+    "底盘",
+    "裹包包装机械",
+    "文件交换",
+    "分货",
+    "生产企业",
+    "枢纽城市",
+    "螺旋输送机",
+    "温度",
+    "得利得物流",
+    "运输企业",
+    "防锈包装技法",
+    "生产商",
+    "存货控制决策",
+    "英国",
+    "联合包裹公司（UPS）",
+    "周转箱",
+    "TPG",
+    "速度",
+    "北京",
+    "联合公司",
+    "封口机械",
+    "铁路专用线",
+    "IBM",
+    "家具及家庭用具配送",
+    "汽车零部件物流运输系统",
+    "电子支付",
+    "仓库装卸",
+    "阿拉木图",
+    "零售网点",
+    "交货",
+    "巴西",
+    "可靠性",
+    "管道",
+    "用户服务经理",
+    "本田",
+    "托运方式选择不当",
+    "货代公司（运输代理企业）",
+    "生奶酪的冷藏",
+    "防霉包装技法",
+    "破损率",
+    "Internet/Intranet",
+    "温度监视器",
+    "蒲包",
+    "包装机械费用",
+    "整车制造企业",
+    "搬运机",
+    "门式起重机",
+    "技术开发部",
+    "TOC",
+    "招标费用",
+    "输滞留数",
+    "车门",
+    "人与物的结合成本",
+    "流动资产占用",
+    "工业工程",
+    "工业工程(Industrial Engineering, IE)",
+    "欧洲的某供应商",
+    "作业不当",
+    "电器",
+    "同步管理",
+    "系统模块系统组件",
+    "物流总额",
+    "苏宁环球汽车城",
+    "售后服务",
+    "车身及饰品零部件",
+    "尺寸标准化",
+    "项目施工成本",
+    "库存制生产(Build to Stock, BTS)模式",
+    "汽车物流标准化",
+    "车载娱乐电子",
+    "GPS",
+    "戈德拉特博士",
+    "定置管理标准",
+    "平板玻璃集装托盘",
+    "防水栓",
+    "CVA分类法",
+    "B2C",
+    "信息支持系统",
+    "新产品开发",
+    "销售订单处理",
+    "散热器罩",
+    "发动机周围原件",
+    "核心企业",
+    "《物流术语》（GB/T18354—2006）",
+    "物料输送小车",
+    "前和后制动器摩擦片磨损",
+    "收料与送料通道",
+    "ABC 分析",
+    "物流新技术",
+    "信息管理系统",
+    "JIS排序单",
+    "过分加工的浪费",
+    "伙伴关系构建",
+    "东风日产",
+    "企业内部物流",
+    "《汽车涂装》",
+    "备料区",
+    "离合器踏板高度",
+    "Supply Chain,SC",
+    "库存系数研究",
+    "轮胎螺栓及螺母",
+    "间接结合",
+    "以产品特征为单元进行计划管理",
+    "敞篷车",
+    "EU4323",
+    "标杆管理",
+    "素养(Shitsuke)",
+    "全球采购",
+    "外购件",
+    "工业工程人员",
+    "渠道创新",
+    "热熔胶条",
+    "物资管理",
+    "悬架/转向装置/轮毂",
+    "均衡化生产",
+    "发动机装备",
+    "看板拉动",
+    "陆路运输",
+    "润滑油",
+    "设备保养",
+    "自动下线机",
+    "配送方案",
+    "设计变更",
+    "循环取货",
+    "上海通用汽车公司",
+    "JIT 管理模式",
+    "账面库存",
+    "人与物的结合",
+    "企业运作效率",
+    "二手车回收/销售",
+    "VIN 码",
+    "发动机总成",
+    "工厂设计",
+    "(Q, r)模型",
+    "整顿（Seiton）",
+    "供应链电子商务信息平台",
+    "经销商",
+    "物流运作方案",
+    "油路悬架",
+    "关键因素分析",
+    "车间配送作业",
+    "提前期管理",
+    "中国汽车工业",
+    "动态联盟",
+    "经济批量订货法",
+    "慢速流动备件",
+    "信赖度测试",
+    "《汽车零部件供应商管理》",
+    "教育培训",
+    "原材料库存",
+    "《缺陷汽车产品召回管理规定》",
+    "供应商管理库存（VMI）",
+    "神龙汽车",
+    "木托盘",
+    "电气设备及仪表的易耗件",
+    "资源共享格局",
+    "IB",
+    "卡子",
+    "备件占57%",
+    "顾客对缺货的反应",
+    "供应链结构设计优化",
+    "定时定路线配送",
+    "MRP",
+    "竞争对手的最优服务水平",
+    "物流业务产业化",
+    "库存记录",
+    "配送管理",
+    "项目管理的方式",
+    "紧固件",
+    "准时制生产（JIT）",
+    "最优生产技术 (OPT)",
+    "上海、广州、长春、武汉、京津、重庆六大产业园",
+    "动作合理化",
+    "备件物流外包",
+    "运输方案",
+    "长尺寸物托盘",
+    "士气",
+    "Electronic Funds Transinit,EFT",
+    "上游企业",
+    "生产管理部",
+    "胶带",
+    "配件物流中心",
+    "装箱数量标准化",
+    "看板生产方式",
+    "甘特图法",
+    "工业废弃物的回收处理",
+    "逐次逼近法",
+    "制动片",
+    "福特汽车",
+    "物流服务品质",
+    "整理(Seiri)",
+    "整车出库均衡化的订单制生产方式（Make to Order, MTO）",
+    "MPR系统",
+    "流通加工附加价值",
+    "在制品品质",
+    "全面质量管理",
+    "轮胎专用托盘",
+    "线边库存",
+    "护套",
+    "供应链管理信息系统",
+    "生产工艺过程",
+    "运输与配送",
+    "JIT－定时",
+    "辊道输送机",
+    "试投产",
+    "(T, S)模型",
+    "玛莎·库珀",
+    "废弃处理",
+    "自检",
+    "主生产计划 (MPS)",
+    "动力部",
+    "主机厂",
+    "库存收益",
+    "订单管理",
+    "仓储中心",
+    "附加的增值服务",
+    "《汽车冲压》",
+    "储存型仓库",
+    "精益布局",
+    "供应商关系管理 (SRM) 系统",
+    "均衡生产",
+    "准时化生产",
+    "排产人员",
+    "火化塞",
+    "资源再利用",
+    "美国俄亥俄州立大学供应链研究中心",
+    "车身覆盖件",
+    "JIT供应商",
+    "资源配置合理化",
+    "成本增加",
+    "车间布置",
+    "EU12423",
+    "风窗清洗剂",
+    "清洁（Seiketsu）",
+    "市场份额",
+    "《汽车电器》",
+    "EU4312",
+    "工厂布置",
+    "车载电子控制装置",
+    "车享汇",
+    "厂外物流",
+    "拉动式准时化生产",
+    "零件外排",
+    "维修服务",
+    "实现用户个性化订单和预计交付日期的可靠性和产能协调",
+    "取货物流",
+    "PAOFF实绩",
+    "可循环标准包装",
+    "FMEA",
+    "存货管理",
+    "动作研究",
+    "顾客合作",
+    "测试系统的重复性和复现性",
+    "变速器壳体及上盖",
+    "底盘发动机号",
+    "成品、半成品合格区",
+    "常规订单",
+    "汽车记录仪",
+    "Total Productive Maintenance,TPM",
+    "精益生产理论",
+    "集中一分发形式(Hub and Spoke)",
+    "定期保养件",
+    "产品定义/BOM 的优化",
+    "管理的浪费",
+    "制动",
+    "7R原则",
+    "广义的库存",
+    "10年后我国汽车保有量将超过两亿辆",
+    "物料计划",
+    "汽车喇叭",
+    "2012年年底我国汽车保有量已经达到1.2亿辆",
+    "第三方物流配送中心",
+    "固定板装配",
+    "UPS",
+    "售后备件",
+    "历史映射法",
+    "通用汽车",
+    "Material Requirement Planning, MRP",
+    "半年盘点",
+    "大众",
+    "汽车正向物流",
+    "选装件管理",
+    "C级物料",
+    "第三方物流（3PL）",
+    "零部件配送",
+    "推式生产",
+    "拉动式供应链",
+    "制动液",
+    "底盘零部件",
+    "车间物流设计与管理",
+    "汽车装饰和美容用品物流",
+    "Supply Chain Management, SCM",
+    "机油滤清器",
+    "正时齿轮",
+    "主生产计划",
+    "衔接型仓库",
+    "汽车制造生产现场管理",
+    "物料替代",
+    "业务流程重组（Business Process Reengineering, BPR）",
+    "模块化生产",
+    "VMI 采购模式",
+    "销售",
+    "社会物流总额",
+    "清扫（Seiso）",
+    "物流节点选址",
+    "热缩管",
+    "生产技术部",
+    "周计划",
+    "工程品管试验品",
+    "物流系统运作",
+    "物流评估竞标体系标准",
+    "等待的浪费",
+    "待处理品区",
+    "包装作业",
+    "上汽安吉",
+    "前工程设备部",
+    "制造能力",
+    "关键资源",
+    "企业",
+    "八大浪费",
+    "生产计划和控制",
+    "场所价值",
+    "TQC/TQM",
+    "视频会议",
+    "汽车制造生产物流",
+    "整车生产企业",
+    "计划配送",
+    "搬运的浪费",
+    "板式输送机",
+    "广汽本田",
+    "库存方案",
+    "排序供货供应商",
+    "翼子板",
+    "售后服务市场",
+    "刮水器",
+    "TNT",
+    "内部一体化",
+    "声誉",
+    "系统合同",
+    "主销锁销及螺母",
+    "WTO 关税调整",
+    "表上作业法",
+    "汽油滤清器",
+    "供应商投诉",
+    "模块化设计",
+    "座椅轮胎输送线",
+    "事前事后实验法",
+    "一般一辆轿车的零部件数量在7000～9000种",
+    "端子铆接机",
+    "燃料",
+    "发动机罩",
+    "背门后视镜",
+    "零库存购买或库存系统",
+    "《轿车运输设备标准》",
+    "JIT 生产模式",
+    "植绒内托",
+    "库存的浪费",
+    "生产过程物流",
+    "能源涨价压力",
+    "质量控制抽检不良品",
+    "气缸盖紧固螺栓及螺母",
+    "物流关键绩效指标体系",
+    "感知式",
+    "订单发布规则",
+    "现场物料配送",
+    "组合件",
+    "紧急订单",
+    "联邦快递(FedEx)",
+    "前工程制造部",
+    "成品库存",
+    "汽油箱",
+    "曲轴起动爪",
+    "5S三定位",
+    "EU6434",
+    "购买成本",
+    "产品迟到率",
+    "成品、半成品待检区",
+    "扭转减振器",
+    "废品区",
+    "伪国产件",
+    "维修站",
+    "福特制",
+    "中国汽车物流企业",
+    "冲压",
+    "流程分析",
+    "物流服务速度",
+    "产成品库存",
+    "供应商合作",
+    "汽车物流信息公共平台",
+    "物料容器具",
+    "已订未交订单",
+    "模块系统组件",
+    "市场调查法",
+    "美国生产与库存控制协会",
+    "单证整理",
+    "发动机机油",
+    "送料人员",
+    "运行费用(Operating Expenses)",
+    "合并策略",
+    "零库存、零浪费、零缺陷",
+    "丰田汽车",
+    "岗位设置",
+    "设施构建",
+    "美国福特汽车公司",
+    "熔接钉机",
+    "资源整合",
+    "PDCA 循环",
+    "外协厂商",
+    "冷却油",
+    "汽车备件",
+    "退货",
+    "整车物流市场",
+    "巡检",
+    "制程能力指数",
+    "安全",
+    "电子产品",
+    "全自动铆压设备",
+    "动作的浪费",
+    "缺件",
+    "新车销售",
+    "物料处理",
+    "一汽物流",
+    "(s, S)模型",
+    "日程计划",
+    "定时定点",
+    "B2B",
+    "今井正明",
+    "零库存",
+    "多品种、小批量加工行业",
+    "业务流程重组",
+    "车身总成",
+    "特种车辆物流",
+    "准时制生产",
+    "离合器压盘及盖总成",
+    "飞翼车",
+    "平面仓库",
+    "全球500强的企业",
+    "仓储设施和运输设备的整合",
+    "国际会议",
+    "销售物流协同",
+    "混合策略",
+    "特种专用托盘",
+    "广汽商贸",
+    "关键工序",
+    "控制理论",
+    "订货管理",
+    "运输作业",
+    "营销理念",
+    "银行体系",
+    "质量",
+    "物流篮",
+    "到货频次",
+    "物料盘点",
+    "管理标准",
+    "盘点准确率",
+    "最小订购批量",
+    "停线",
+    "销售部售后科",
+    "SDCA循环",
+    "营销物流",
+    "生产物流协同",
+    "整车制造商",
+    "零件淋水",
+    "规模效应",
+    "物流管理",
+    "《汽车焊装》",
+    "企业绩效评价体系",
+    "菲亚特",
+    "《发动机及关键零部件制造技术》",
+    "人员配置",
+    "流程优化",
+    "订单履行",
+    "模具",
+    "知识共享",
+    "国民性特征",
+    "收料区",
+    "鼓-缓冲-绳法（Drum-Buffer-Rope Approach, DBR 法）",
+    "安全带",
+    "服务",
+    "计算模式",
+    "经济订货批量(Economic Order Quantity, EOQ)模型",
+    "CIF协议",
+    "项目总成本",
+    "供应链运作计划",
+    "通关",
+    "常用备件",
+    "物流园",
+    "物流与供应链系统的战略和战术方案",
+    "A级物料",
+    "库存持有成本",
+    "供货产品配置表",
+    "保险杠",
+    "盘点管理",
+    "汽车逆向物流",
+    "制造过多或过早的浪费",
+    "焊接",
+    "订货成本",
+    "连锁经营模式",
+    "成本与收益的权衡",
+    "订货周期",
+    "胶箱",
+    "车顶板",
+    "风神物流",
+    "特约维修站模式",
+    "物流运作模式",
+    "信息自动采集技术",
+    "第三方汽车物流企业",
+    "客户资源整合",
+    "集装单元器具",
+    "生产物料计划",
+    "广汽丰田",
+    "产品保留台数",
+    "空滤器滤芯",
+    "益普索大中华区",
+    "缺件管理",
+    "东风南方",
+    "发动机和变速器",
+    "联合库存",
+    "推迟配置",
+    "车体电子控制装置",
+    "升降机",
+    "量具校验",
+    "缓冲管理法（Buffer Management）",
+    "物流业绩",
+    "摩擦片",
+    "交付准时",
+    "FIS系统",
+    "广汽集团",
+    "综合管理部",
+    "PCI",
+    "相关法律、法规",
+    "研发组织形式",
+    "连杆螺栓及螺母",
+    "车型系列",
+    "收货作业",
+    "直接结合",
+    "流水线",
+    "搬运规范",
+    "储料区",
+    "整车厂",
+    "计划管理",
+    "定置物品的分类规定",
+    "5S管理",
+    "线性规划",
+    "上海永达",
+    "物和场所的关系",
+    "能力资源整合",
+    "自检报废品",
+    "变速器油",
+    "有效产出会计理论（Throughput Accounting）",
+    "连接钉机",
+    "5S",
+    "气门间隙",
+    "紧急发车趟次",
+    "帕累托定律",
+    "装饰件",
+    "物流综合成本",
+    "车型 B",
+    "物料控制",
+    "重要部件",
+    "北京东方基业国际汽车城",
+    "长江三角洲",
+    "泰勒的“科学管理”",
+    "零件",
+    "中央备件仓库",
+    "服务创新",
+    "制动系统和传动轴",
+    "点火",
+    "JIT供应",
+    "仓库群",
+    "供应链业务流程",
+    "生产物料管理",
+    "部件",
+    "静态库存",
+    "中国一汽",
+    "端子",
+    "工艺卡",
+    "助力转向液",
+    "车身件",
+    "柔性策略",
+    "信息处理",
+    "皮带输送机",
+    "生产过程跟踪控制",
+    "新品试制",
+    "成本开支的增加",
+    "订单作业",
+    "零配件生产商",
+    "整车物流企业",
+    "进口件",
+    "失销成本",
+    "供应商管理库存(Vendor Managed Inventory)",
+    "水运",
+    "客户退货品",
+    "B/C 分析",
+    "Gartner",
+    "存货分类方法",
+    "汽车销售服务行业",
+    "后工程制造部",
+    "取货计划",
+    "维修服务站",
+    "小批量多批次配送",
+    "运筹学",
+    "4S店",
+    "《汽车营销》",
+    "SPS单台套配送",
+    "外部一体化",
+    "配送节点",
+    "关键零部件的库存",
+    "中间库收线人员",
+    "汽车生产库存管理",
+    "平托盘",
+    "工业工程师",
+    "组合U型生产线",
+    "福特公司",
+    "行李箱盖",
+    "配送供应商",
+    "物流网络布局",
+    "通用件",
+    "EU8634",
+    "经销商备件仓库",
+    "发动机正时带",
+    "集配中心",
+    "国家标准化管理委员会",
+    "材料来料不良",
+    "标准化程度",
+    "丰田生产体系",
+    "交付频度",
+    "附件",
+    "试做",
+    "工程车车辆物流",
+    "全面质量管理(Total Quality Management, TQM)",
+    "自营物流",
+    "年终盘点",
+    "信息资源整合",
+    "GRR",
+    "标准化的包装",
+    "工业资源分析",
+    "品质保证部",
+    "物流商",
+    "厢式车",
+    "重要伙伴供应商",
+    "推动式供应链",
+    "项目决策成本",
+    "外部承运人",
+    "EU3212",
+    "装配工人",
+    "高效客户反应（Efficient Consumer Response, ECR）",
+    "响应周期",
+    "交付方式",
+    "同步化型供应链",
+    "五大核心步骤（Five Focusing Steps）",
+    "交期",
+    "推动式",
+    "单纯形法",
+    "企业管理部",
+    "物流业务流程重组",
+    "系统工程的方法",
+    "IT 整合体系",
+    "全员参与和持续改善",
+    "供应商管理库存（Vender Managed Inventory, VMI）模式",
+    "长库存数",
+    "JIT配送方式",
+    "产品退回",
+    "系统",
+    "(T, r, R)策略",
+    "供应链结构",
+    "车队",
+    "物流系统综合费用",
+    "跨国公司",
+    "制造工艺",
+    "JIT/JIS",
+    "客户服务水平",
+    "3W2H(When, Where, Who, How, How much)",
+    "OPT",
+    "多媒体教室",
+    "箱式托盘",
+    "O2O电子商务平台",
+    "多点自提(Milk Run)",
+    "财务管理部",
+    "调机报废品",
+    "汽车交易市场",
+    "《汽车制造安全管理》",
+    "通过配送中心的多地点送货",
+    "月度盘点",
+    "供应链战略决策",
+    "仓储和搬运设备",
+    "技术标准",
+    "信息平台",
+    "发动机控制电子",
+    "有效产出(Throughput)",
+    "牛鞭效应(Bullwhip Effect)",
+    "检测拉拔力仪器",
+    "SMED快速切换技术",
+    "车辆上线信息",
+    "商务与生产合同制",
+    "流程改进",
+    "庞大集团",
+    "库存(Inventory)",
+    "不良、修理的浪费",
+    "非易损件",
+    "中国汽车产业集群",
+    "服务站",
+    "火花塞",
+    "半自动铆压设备",
+    "中转库",
+    "美国生产与库存管理协会",
+    "接头",
+    "一汽轿车",
+    "销售服务部",
+    "系统观点",
+    "搬运活动",
+    "传动带",
+    "物流合作",
+    "1次订货量",
+    "3A分类法",
+    "并行工程",
+    "EDI 技术",
+    "操纵杆",
+    "国家发改委",
+    "JIT策略",
+    "EU6412",
+    "汽车制造物流与供应链管理",
+    "自动化数据采集技术",
+    "乔治·普洛什（George W. Plosh）",
+    "单证传递",
+    "季度盘点",
+    "(Q, R)策略",
+    "花粉滤器滤芯",
+    "维修",
+    "简化性设计",
+    "成品交付品质",
+    "成本",
+    "在汽车产业较成熟的发达国家，整个汽车产业链中超过70%的利润来自于售后服务",
+    "日计划",
+    "易耗件",
+    "工业工程理论（IE）",
+    "多落点的直接运送",
+    "后工程设备部",
+    "底盘易耗件",
+    "专业化程度",
+    "虚拟企业整合体系",
+    "工期延长",
+    "条码扫描",
+    "仓储设施",
+    "汽车召回",
+    "调拨",
+    "金砖四国",
+    "整车生产厂",
+    "物流支出水平",
+    "大规模定制化",
+    "约束理论",
+    "座套",
+    "自制件",
+    "中心库",
+    "关键绩效指标",
+    "订单制作",
+    "消耗件",
+    "寄售方法",
+    "入场物流",
+    "第三方利润源泉",
+    "车体轴承",
+    "ISO标准",
+    "分拨中心",
+    "缺货成本",
+    "Optimized Production Technology",
+    "延迟制造",
+    "质量部",
+    "发动机易耗件",
+    "下线检查",
+    "中国现代政策和物流企业",
+    "车享平台",
+    "油管",
+    "弹簧",
+    "原材料采购物流",
+    "生产选址",
+    "5S 活动",
+    "方法创新",
+    "跨国采购",
+    "企业形象",
+    "用友",
+    "流程规划",
+    "EDI/XML 标准电子报文",
+    "线边在制品控制",
+    "必装件",
+    "车载视频",
+    "标准作业",
+    "品质",
+    "物料仓库",
+    "计划供给",
+    "音响",
+    "ABCD分类法",
+    "劳动力柔性",
+    "物流业务外包",
+    "转向节",
+    "再制造",
+    "品管部门",
+    "马丁·克里斯托弗",
+    "滚装船运输",
+    "附件传动带张力",
+    "账面数量",
+    "Floyd 算法",
+    "零部件供应",
+    "制造执行系统 (MES)",
+    "后工序领取",
+    "首检",
+    "第四方物流（4PL）",
+    "车型停产",
+    "汽车生产企业",
+    "客户忠诚度",
+    "国外整车物流企业",
+    "条码技术",
+    "综合生产计划",
+    "油桶专用托盘",
+    "防盗器",
+    "物流系统绩效评价体系",
+    "瓶颈资源",
+    "量产件",
+    "西南地区",
+    "乘用车车辆物流",
+    "9.6m的厢式货车",
+    "逆向物流",
+    "搬运动作",
+    "物料需求计划 (MRP)",
+    "包装托盘化",
+    "辅料",
+    "多级、多点、多方管理库存",
+    "IBM 公司",
+    "到货规则",
+    "滑板托盘",
+    "涂装",
+    "月度生产下线计划",
+    "整车与备件的销售储存及运输",
+    "物流工艺",
+    "实际库存",
+    "敏捷策略",
+    "汽车供应链",
+    "蓄电池",
+    "生产过程中的废弃物",
+    "施工的重复",
+    "整车销售占29%",
+    "装卸技术",
+    "抗冲击聚丙烯 PP",
+    "选装件",
+    "EOP",
+    "汽车超市",
+    "整车总装线",
+    "美国物流管理协会",
+    "作业指导书",
+    "样品制作",
+    "轮式托盘",
+    "供应链节点企业",
+    "柱式托盘",
+    "发动机悬架装置中的螺栓及螺母",
+    "汽车用户",
+    "EDI 数据交换",
+    "灯泡",
+    "自动导引运输车",
+    "到货方式",
+    "配件销售",
+    "CLM",
+    "定置管理信息铭牌",
+    "汽车之家",
+    "能力约束资源（Capacity Constraint Resources, CCR）",
+    "固定资产规模",
+    "生产物流的物流节点",
+    "多技能作业员",
+    "销售商",
+    "物流标准化",
+    "技术创新",
+    "售后件",
+    "合同",
+    "商品车车辆物流",
+    "变速器总成",
+    "持续改善理论（KAIZEN）",
+    "岗位分工",
+    "机盒",
+    "《乘用车运输服务规范》",
+    "时间研究",
+    "作业标准",
+    "发动机冷却液",
+    "战略伙伴供应商",
+    "Electronic Data Interchange,EDI",
+    "JIT－定量",
+    "加急订单配送",
+    "系统分析与设定",
+    "超储存期限产品",
+    "浙江元通",
+    "延期交货成本",
+    "价值链全局范围的动态整合与协调管理",
+    "两点法",
+    "叫料系统",
+    "物流业务社会化",
+    "多媒体会议室",
+    "返修品区",
+    "外借仓库",
+    "最优生产技术",
+    "物流与供应链管理",
+    "合作设计",
+    "拉动式",
+    "《汽车品牌文化》",
+    "送货物流",
+    "物流分供方",
+    "品质人员",
+    "供应商最快响应天数",
+    "零部件品质",
+    "快速流动备件",
+    "车载通信电子",
+    "采购订单作业",
+    "物流运作",
+    "直接运输网络",
+    "地区备件仓库",
+    "试验",
+    "短缺库存",
+    "京津、辽吉、长江和两广四条线",
+    "4S模式",
+    "物料的定置管理",
+    "开点机",
+    "社会化",
+    "SMART 原则",
+    "U型单元",
+    "月度计划",
+    "机油滤清器总成",
+    "二手车车辆物流",
+    "库存周转率",
+    "适时生产方式",
+    "搬运效率",
+    "零部件企业",
+    "电线制造部",
+    "FOB协议",
+    "JIS－定量",
+    "动态规划",
+    "实物配送",
+    "滚动计划法",
+    "排班",
+    "标准化作业要领书",
+    "电子采购系统",
+    "底盘控制系统",
+    "意向书",
+    "备件供应",
+    "商用车车辆物流",
+    "维修占14%",
+    "动态库存",
+    "新华信",
+    "信息与通信",
+    "MRPⅡ",
+    "生产均衡化",
+    "信息反馈",
+    "加拿大物流管理协会",
+    "制程全检不良品",
+    "贴纸",
+    "海上运输",
+    "物流统计方法",
+    "北京亚运村汽车交易市场",
+    "因果法",
+    "戴姆勒-克莱斯勒",
+    "六十秒即时换模(SMED)",
+    "敏捷性",
+    "综合维修站",
+    "冷却液",
+    "整车下线需求",
+    "新的管理工具",
+    "河南汽车交易市场",
+    "集成精敏战略",
+    "对象专业化布局",
+    "利润—成本分析",
+    "地理位置",
+    "Free On Board",
+    "Cost, Insurance, and Freight",
+    "原材料品质",
+    "平台化设计",
+    "到货提前期",
+    "板链",
+    "转向摇臂和转向节臂",
+    "物品再利用",
+    "电子商务手段",
+    "物流行业整合",
+    "Physical Distribution (PD)",
+    "SRM",
+    "总工",
+    "《汽车构造》",
+    "卡板",
+    "一体化物流管理",
+    "上海汽车工业销售总公司",
+    "关键绩效指标法",
+    "凸轮轴",
+    "相关需求（Dependent Demand）",
+    "供应商X",
+    "X车型仪表板",
+    "悬挂输送机",
+    "班组设置",
+    "精益管理思想",
+    "拣选作业",
+    "《汽车制造物流与供应链管理》",
+    "设备柔性",
+    "标准件",
+    "设备负荷率",
+    "目标评价创新",
+    "标准化作业指导书",
+    "美国汽车工业行动组（AIAG）",
+    "《汽车生产中的IT技术》",
+    "大众市场伙伴供应商",
+    "运输工具",
+    "汽车备件物流",
+    "前风窗玻璃清洁剂",
+    "备件物流供应链库存预测",
+    "B级物料",
+    "Dijkstra 算法",
+    "地区经济",
+    "质量控制",
+    "独立经营模式",
+    "到货准时率",
+    "库区",
+    "工业化规划",
+    "汽车线束",
+    "物料需求清单",
+    "国产零件订购",
+    "不良品管理",
+    "汽车主机厂",
+    "国产件",
+    "整车物流",
+    "汽车专卖店",
+    "安吉物流",
+    "供应链可视化解决方案",
+    "密封圈",
+    "排序系统",
+    "郑州汽车交易市场",
+    "供应商布局",
+    "汽车企业供应链物流协同管理实践",
+    "关键零部件",
+    "EXW协议",
+    "汽油滤清器总成",
+    "W主机厂",
+    "ECRS分析",
+    "电话订购或传真订购",
+    "在制品管理",
+    "珠江三角洲",
+    "车型 A",
+    "X车型仪表分装线",
+    "效率",
+    "准时制物流管理",
+    "东风汽车集团",
+    "标准化的动作研究",
+    "《中国汽车供应商调查报告》",
+    "月计划",
+    "订货模式",
+    "分层编制法",
+    "时间价值",
+    "丰田生产体系（Toyota Production System, TPS）",
+    "设计潜在失效模式与后果分析",
+    "启发式",
+    "总装",
+    "拉式生产",
+    "定置管理",
+    "库位",
+    "直接供应商",
+    "《汽车制造质量管理》",
+    "准时化顺序供应",
+    "全员生产维修(Total Productive Maintenance, TPM)",
+    "差异化策略",
+    "区域配送中心",
+    "调速器",
+    "买主调查法",
+    "办公区",
+    "漏取零件",
+    "喉箍",
+    "快递",
+    "Y零部件供应商",
+    "生产流程化",
+    "筹资能力",
+    "零部件商",
+    "目视管理",
+    "供应链管理 (Supply Chain Management)",
+    "总订单",
+    "物流服务水平",
+    "排序供应商",
+    "控制电视",
+    "混流生产",
+    "内饰件",
+    "物流节点设施",
+    "Master Production Schedule, MPS",
+    "技术工艺部",
+    "EU8623",
+    "信息技术",
+    "POS 数据读取系统",
+    "通过配送中心的运输",
+    "易损件",
+    "定置",
+    "库存水平",
+    "原材料供应商",
+    "流程创新",
+    "勘察设计成本",
+    "套管",
+    "排队论",
+    "汽车园区",
+    "过程FMEA",
+    "消费者",
+    "主机厂的备件中心库",
+    "第三方物流服务商",
+    "3月8日",
+    "制造业配送",
+    "客户满意度",
+    "下游企业",
+    "出货管理科",
+    "整车制造厂",
+    "库位管理",
+    "游戏法",
+    "计算机系统",
+    "Theory of Constraint",
+    "大批量配送",
+    "运输车辆标准化",
+    "行业协会",
+    "标准化策略",
+    "《汽车总装》",
+    "质量圈（QC 小组）",
+    "座椅",
+    "导料装置",
+    "高级计划与排程 (APS) 系统",
+    "检验员",
+    "订购提前期",
+    "看板",
+    "发动机零部件",
+    "联合库存管理（JMI）",
+    "年度计划",
+    "供应链理论",
+    "奥利弗·怀特（Oliver W. Wight）",
+    "门板",
+    "换型车需要的零部件在3000种左右",
+    "整车企业",
+    "生产线均衡化设计",
+    "网上银行",
+    "滑撬",
+    "整车装配的零部件数量",
+    "柔性生产方式",
+    "VMI 系统",
+    "产品质损数",
+    "摔货",
+    "刀具",
+    "持续改善(Kaizen)",
+    "社会物流资源",
+    "物料仓库布局",
+    "标签",
+    "零部件及半成品库存"
+  ],
+  "relations": [
+    [
+      "10#车间",
+      "运输方式",
+      "重型叉车"
+    ],
+    [
+      "11#车间",
+      "运输方式",
+      "重型叉车"
+    ],
+    [
+      "13#车间",
+      "运输方式",
+      "大货车"
+    ],
+    [
+      "15#氧化组装车间",
+      "发生于",
+      "车间"
+    ],
+    [
+      "15#车间",
+      "运输方式",
+      "大货车"
+    ],
+    [
+      "16#车间",
+      "运输方式",
+      "大货车"
+    ],
+    [
+      "21#车间",
+      "运输方式",
+      "重型叉车"
+    ],
+    [
+      "30#氧化组装车间",
+      "发生于",
+      "车间"
+    ],
+    [
+      "30#车间",
+      "运输方式",
+      "小火车"
+    ],
+    [
+      "4#车间",
+      "运输方式",
+      "大货车"
+    ],
+    [
+      "4S店",
+      "功能包括",
+      "二手车回收/销售"
+    ],
+    [
+      "4S店",
+      "功能包括",
+      "信息反馈"
+    ],
+    [
+      "4S店",
+      "功能包括",
+      "新车销售"
+    ],
+    [
+      "4S店",
+      "功能包括",
+      "维修服务"
+    ],
+    [
+      "4S店",
+      "功能包括",
+      "配件销售"
+    ],
+    [
+      "5S",
+      "包含",
+      "整理(Seiri)"
+    ],
+    [
+      "5S",
+      "包含",
+      "整顿（Seiton）"
+    ],
+    [
+      "5S",
+      "包含",
+      "清扫（Seiso）"
+    ],
+    [
+      "5S",
+      "包含",
+      "清洁（Seiketsu）"
+    ],
+    [
+      "5S",
+      "包含",
+      "素养(Shitsuke)"
+    ],
+    [
+      "5S管理",
+      "包含",
+      "整理(Seiri)"
+    ],
+    [
+      "5S管理",
+      "包含",
+      "整顿（Seiton）"
+    ],
+    [
+      "5S管理",
+      "包含",
+      "清扫（Seiso）"
+    ],
+    [
+      "5S管理",
+      "包含",
+      "清洁（Seiketsu）"
+    ],
+    [
+      "5S管理",
+      "包含",
+      "素养(Shitsuke)"
+    ],
+    [
+      "8#车间",
+      "运输方式",
+      "大货车"
+    ],
+    [
+      "9#车间",
+      "运输方式",
+      "重型叉车"
+    ],
+    [
+      "AGV transportation resources",
+      "属于",
+      "Transportation resources"
+    ],
+    [
+      "AI 技术",
+      "提供",
+      "供应链协同"
+    ],
+    [
+      "AI 技术",
+      "提供",
+      "智能分仓"
+    ],
+    [
+      "AI 技术",
+      "提供",
+      "需求预测"
+    ],
+    [
+      "AV",
+      "用于",
+      "item-7"
+    ],
+    [
+      "Automatic mobile robot (AMR)",
+      "属于",
+      "Transportation resources"
+    ],
+    [
+      "C",
+      "属于",
+      "Solomon's VRP instances"
+    ],
+    [
+      "CI",
+      "用于",
+      "item-4"
+    ],
+    [
+      "CI",
+      "用于",
+      "item-5"
+    ],
+    [
+      "CIF协议",
+      "定义为",
+      "Cost, Insurance, and Freight"
+    ],
+    [
+      "Clever",
+      "与...紧密集成",
+      "SAP"
+    ],
+    [
+      "College of Economics and Management, Nanjing University of Aeronautics and Astronautics",
+      "属于",
+      "Nanjing 211106, People's Republic of China"
+    ],
+    [
+      "Covisint",
+      "包含",
+      "Auto Xchange"
+    ],
+    [
+      "Covisint",
+      "包含",
+      "Trade Xchange"
+    ],
+    [
+      "Covisint",
+      "提供",
+      "供应链管理"
+    ],
+    [
+      "Cplex12.10.0.0",
+      "适用于",
+      "大规模实例"
+    ],
+    [
+      "Cplex12.10.0.0",
+      "适用于",
+      "小规模实例"
+    ],
+    [
+      "ECRS理论",
+      "减少",
+      "搬运车"
+    ],
+    [
+      "EL",
+      "用于",
+      "item-10"
+    ],
+    [
+      "EN",
+      "用于",
+      "item-8"
+    ],
+    [
+      "ERP",
+      "与...数据都是孤立的",
+      "JIS"
+    ],
+    [
+      "ERP",
+      "与...数据都是孤立的",
+      "MES"
+    ],
+    [
+      "ERP",
+      "同步",
+      "库存数据"
+    ],
+    [
+      "ERP",
+      "最早由",
+      "Gartner"
+    ],
+    [
+      "ERP",
+      "着眼于",
+      "供应链管理"
+    ],
+    [
+      "ERP",
+      "集成",
+      "OMS"
+    ],
+    [
+      "ERP 系统",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "ERP 系统",
+      "使用",
+      "SAP"
+    ],
+    [
+      "ERP 系统",
+      "使用",
+      "供应商关系管理 (SRM) 系统"
+    ],
+    [
+      "ERP 系统",
+      "使用",
+      "制造执行系统 (MES)"
+    ],
+    [
+      "ERP 系统",
+      "使用",
+      "高级计划与排程 (APS) 系统"
+    ],
+    [
+      "EU3212",
+      "材质",
+      "抗冲击聚丙烯 PP"
+    ],
+    [
+      "FIS系统",
+      "发给",
+      "X车型仪表分装线"
+    ],
+    [
+      "FIS系统",
+      "发给",
+      "Y零部件供应商"
+    ],
+    [
+      "FOB协议",
+      "定义为",
+      "Free On Board"
+    ],
+    [
+      "Flexible Flow Shop",
+      "适用于",
+      "Single Factory"
+    ],
+    [
+      "Flexible Flow Shop",
+      "适用于",
+      "Single Product"
+    ],
+    [
+      "GA-based solution",
+      "由…执行",
+      "School of Management, Guangzhou University"
+    ],
+    [
+      "GB/T 3730.1—2001",
+      "引用",
+      "GB/T 18354—2006"
+    ],
+    [
+      "GB/T 3730.1—2001",
+      "引用",
+      "GB/T 26774—2011"
+    ],
+    [
+      "GFSH-GA2-MAIN 系统",
+      "监控",
+      "库存数据"
+    ],
+    [
+      "GFSH-GA2-MAIN 系统",
+      "监控",
+      "生产计划"
+    ],
+    [
+      "GFSH-GA2-MAIN 系统",
+      "监控",
+      "订单信息"
+    ],
+    [
+      "GFSH-GA2-MAIN 系统",
+      "监控",
+      "设备状态"
+    ],
+    [
+      "GFSH-GA2-MAIN 系统",
+      "适用于",
+      "JIS 模式"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "上海"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "中国台湾省"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "密歇根州兰辛的工厂"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "巴西"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "明尼阿波利斯"
+    ],
+    [
+      "GMBuypower",
+      "发生于",
+      "英国"
+    ],
+    [
+      "GPS 设备",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "GPS追踪",
+      "使用",
+      "运输"
+    ],
+    [
+      "Genetic Algorithms (GA)",
+      "使用",
+      "School of Management, Guangzhou University"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "产品库存时间"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "制造成本"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "完成时间"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "延期时间"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "总加权目标"
+    ],
+    [
+      "HSSA",
+      "优化",
+      "模式更改次数"
+    ],
+    [
+      "HSSA",
+      "使用",
+      "Taguchi方法"
+    ],
+    [
+      "HSSA",
+      "使用",
+      "多策略增强的HSSA"
+    ],
+    [
+      "HSSA",
+      "使用",
+      "逻辑混沌映射 (LCM)"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "Algorithm 1"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "Algorithm 2"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "Cauchy perturbation"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "Gaussian perturbation"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "continuous-to-discrete mapping method"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "differential variation strategy"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "multi-point crossover strategy"
+    ],
+    [
+      "HSSA",
+      "包含",
+      "particle swarm velocity-position updating strategies"
+    ],
+    [
+      "HSSA",
+      "适用于",
+      "大规模实例"
+    ],
+    [
+      "HSSA",
+      "适用于",
+      "小规模实例"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "Cauchy scale"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "Gaussian scale"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "discoverer variation rate"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "multi-point crossover proportion"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "perturbation probability"
+    ],
+    [
+      "HSSA algorithm",
+      "使用",
+      "scout proportion"
+    ],
+    [
+      "He et al. [42]",
+      "提出",
+      "hybrid ant colony optimization algorithm"
+    ],
+    [
+      "Heuristic-assisted deep Q-network (HA-DQN) algorithm",
+      "由…执行",
+      "School of Mechanical and Electrical Engineering, Guangzhou University"
+    ],
+    [
+      "Home Chemotherapy Delivery Problem (HCDP)",
+      "对应",
+      "hospital pharmacy"
+    ],
+    [
+      "Hybrid genetic algorithm",
+      "使用",
+      "School of Management, Guangzhou University"
+    ],
+    [
+      "IBM公司",
+      "实施",
+      "JIT"
+    ],
+    [
+      "ICSVRP",
+      "不同于",
+      "IPODS"
+    ],
+    [
+      "ICSVRP",
+      "使用",
+      "MS-ALNS-VND"
+    ],
+    [
+      "ICSVRP",
+      "使用",
+      "MTVRP"
+    ],
+    [
+      "ICSVRP",
+      "包含",
+      "MTVRP"
+    ],
+    [
+      "ICSVRP",
+      "包含",
+      "同步工作站"
+    ],
+    [
+      "ICSVRP",
+      "包含",
+      "同步零件"
+    ],
+    [
+      "ICSVRP",
+      "包含",
+      "混合模型装配线"
+    ],
+    [
+      "ICSVRP",
+      "包含",
+      "车辆路径优化"
+    ],
+    [
+      "ICSVRP",
+      "属于",
+      "车辆路径优化"
+    ],
+    [
+      "ICSVRP",
+      "要求",
+      "生产与运输的协调"
+    ],
+    [
+      "IN",
+      "用于",
+      "item-1"
+    ],
+    [
+      "IN",
+      "用于",
+      "item-2"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Exact Solution"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Heterogeneous Fleets"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Heuristic"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Job Shop Configurations"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Metaheuristic"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Multi-Facility Production"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Multi-Period Planning Horizons"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "Soft Time Windows"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "advanced heuristic methods"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "hybrid metaheuristics"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "integrated production research"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "mathematical optimization"
+    ],
+    [
+      "IPDS",
+      "包含",
+      "supply chain optimization"
+    ],
+    [
+      "IPODS",
+      "使用",
+      "ALNS算法"
+    ],
+    [
+      "IPODS",
+      "使用",
+      "MILP模型"
+    ],
+    [
+      "IPODS",
+      "使用",
+      "VND算法"
+    ],
+    [
+      "IPODS",
+      "属于",
+      "车辆路径优化"
+    ],
+    [
+      "IPODS",
+      "要求",
+      "生产与运输的协调"
+    ],
+    [
+      "Integrated lot-sizing and scheduling for parallel mixed-model automotive production lines with transportation resource constraints",
+      "要求",
+      "Transportation resources"
+    ],
+    [
+      "Integrated lot-sizing and scheduling for parallel mixed-model automotive production lines with transportation resource constraints",
+      "适用于",
+      "Automotive industry"
+    ],
+    [
+      "JIS",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "JIS",
+      "运输方式",
+      "准时化顺序供应"
+    ],
+    [
+      "JIS",
+      "适用于",
+      "保险杠"
+    ],
+    [
+      "JIS",
+      "适用于",
+      "座椅"
+    ],
+    [
+      "JIS 模式",
+      "属于",
+      "供应链协作"
+    ],
+    [
+      "JIS排序",
+      "属于",
+      "零部件拉动"
+    ],
+    [
+      "JIT",
+      "使用",
+      "看板"
+    ],
+    [
+      "JIT",
+      "包含",
+      "生产均衡化"
+    ],
+    [
+      "JIT",
+      "包含",
+      "生产流程化"
+    ],
+    [
+      "JIT",
+      "包含",
+      "资源配置合理化"
+    ],
+    [
+      "JIT",
+      "又称为",
+      "看板生产方式"
+    ],
+    [
+      "JIT",
+      "又称为",
+      "适时生产方式"
+    ],
+    [
+      "JIT",
+      "定义为",
+      "准时制生产"
+    ],
+    [
+      "JIT 管理模式",
+      "使用",
+      "EDI 数据交换"
+    ],
+    [
+      "JIT供应商",
+      "直接配送至",
+      "整车总装线"
+    ],
+    [
+      "Job Shop",
+      "适用于",
+      "Multiple Factories"
+    ],
+    [
+      "Job Shop",
+      "适用于",
+      "Multiple Products"
+    ],
+    [
+      "J公司",
+      "由…执行",
+      "厂内半成品运输"
+    ],
+    [
+      "KPI",
+      "包含",
+      "交付准时"
+    ],
+    [
+      "KPI",
+      "包含",
+      "供应商投诉"
+    ],
+    [
+      "KPI",
+      "包含",
+      "停线"
+    ],
+    [
+      "KPI",
+      "包含",
+      "摔货"
+    ],
+    [
+      "KPI",
+      "包含",
+      "漏取零件"
+    ],
+    [
+      "KPI",
+      "包含",
+      "紧急发车趟次"
+    ],
+    [
+      "KPI",
+      "包含",
+      "缺件"
+    ],
+    [
+      "KPI",
+      "包含",
+      "零件外排"
+    ],
+    [
+      "KPI",
+      "包含",
+      "零件淋水"
+    ],
+    [
+      "KPI",
+      "必须符合",
+      "SMART 原则"
+    ],
+    [
+      "Li et al. [41]",
+      "提出",
+      "MINLP model"
+    ],
+    [
+      "Lincs",
+      "传递",
+      "订单信息"
+    ],
+    [
+      "Lincs",
+      "接收",
+      "订单信息"
+    ],
+    [
+      "Lincs 系统",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "MES",
+      "与...数据都是孤立的",
+      "JIS"
+    ],
+    [
+      "MES",
+      "接收",
+      "订单信息"
+    ],
+    [
+      "MES 系统",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "MS-ALNS-VND",
+      "使用",
+      "Adaptive large neighborhood search"
+    ],
+    [
+      "MS-ALNS-VND",
+      "使用",
+      "Taguchi method"
+    ],
+    [
+      "MS-ALNS-VND",
+      "使用",
+      "VND"
+    ],
+    [
+      "MS-ALNS-VND",
+      "包含",
+      "VND"
+    ],
+    [
+      "MS-ALNS-VND",
+      "包含",
+      "交换操作符"
+    ],
+    [
+      "MS-ALNS-VND",
+      "包含",
+      "多启动策略"
+    ],
+    [
+      "MS-ALNS-VND",
+      "包含",
+      "破坏和修复操作符"
+    ],
+    [
+      "MS-ALNS-VND",
+      "比较于",
+      "ALNS"
+    ],
+    [
+      "MS-ALNS-VND",
+      "比较于",
+      "ALNS-VND"
+    ],
+    [
+      "MS-ALNS-VND",
+      "比较于",
+      "Gurobi solver"
+    ],
+    [
+      "Metaheuristic",
+      "包含",
+      "Genetic Algorithm"
+    ],
+    [
+      "Mixed-model assembly line",
+      "包含",
+      "Sequencing"
+    ],
+    [
+      "Mixed-model production (MMP)",
+      "属于",
+      "Automotive industry"
+    ],
+    [
+      "Multi-agent deep Q network framework",
+      "由…执行",
+      "School of Mechanical and Electrical Engineering, Guangzhou University"
+    ],
+    [
+      "Multi-agent deep reinforcement learning (MAPPO-MC)",
+      "由…执行",
+      "School of Mechanical and Electrical Engineering, Guangzhou University"
+    ],
+    [
+      "Multi-trip vehicle routing",
+      "包含",
+      "ICSVRP"
+    ],
+    [
+      "Non-Identical Parallel Machines",
+      "适用于",
+      "Single Factory"
+    ],
+    [
+      "Non-Identical Parallel Machines",
+      "适用于",
+      "Single Product"
+    ],
+    [
+      "PSO-simulated annealing hybrid algorithm",
+      "由…执行",
+      "School of Management, Guangzhou University"
+    ],
+    [
+      "Parallel Machines",
+      "适用于",
+      "Multiple Factories"
+    ],
+    [
+      "Parallel Machines",
+      "适用于",
+      "Multiple Products"
+    ],
+    [
+      "Particle Swarm Optimization (PSO)",
+      "使用",
+      "School of Mechanical and Electrical Engineering, Guangzhou University"
+    ],
+    [
+      "Permutation Flow Shop",
+      "适用于",
+      "Multiple Products"
+    ],
+    [
+      "Permutation Flow Shop",
+      "适用于",
+      "Single Factory"
+    ],
+    [
+      "Q-learning-based metaheuristic algorithm",
+      "用于",
+      "distributed flow shop"
+    ],
+    [
+      "R",
+      "属于",
+      "Solomon's VRP instances"
+    ],
+    [
+      "RC",
+      "属于",
+      "Solomon's VRP instances"
+    ],
+    [
+      "RFID",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "RaLC仿真建模",
+      "使用",
+      "RaLC（乐龙）系列软件"
+    ],
+    [
+      "RaLC（乐龙）系列软件",
+      "使用",
+      "物流运输仿真"
+    ],
+    [
+      "S 公司",
+      "与...之间自动传输信息",
+      "物流信息与协同系统 (LINCS)"
+    ],
+    [
+      "S 公司",
+      "与...之间自动传输信息",
+      "电子数据交换 (EDI)"
+    ],
+    [
+      "S 公司",
+      "使用",
+      "JIS 模式"
+    ],
+    [
+      "S 公司",
+      "使用",
+      "MES系统"
+    ],
+    [
+      "S 公司",
+      "使用",
+      "SAP系统"
+    ],
+    [
+      "S 公司",
+      "使用",
+      "动态库位分配管理"
+    ],
+    [
+      "S 公司",
+      "实施",
+      "供应商分级管理"
+    ],
+    [
+      "S 公司",
+      "属于",
+      "Tier 1供应商"
+    ],
+    [
+      "S 公司",
+      "建立",
+      "信息共享机制"
+    ],
+    [
+      "S 公司",
+      "建立",
+      "物流管理团队"
+    ],
+    [
+      "S 公司",
+      "改进",
+      "供应链动态监控管理"
+    ],
+    [
+      "S 公司",
+      "改进",
+      "物料配送"
+    ],
+    [
+      "S 公司",
+      "改进",
+      "系统订单信息共享"
+    ],
+    [
+      "S 公司",
+      "由…执行",
+      "Just In Sequence, JIS"
+    ],
+    [
+      "S 公司",
+      "采用",
+      "信息系统整合"
+    ],
+    [
+      "S 公司",
+      "采用",
+      "动态库存管理"
+    ],
+    [
+      "S 公司",
+      "采用",
+      "智能路径规划系统"
+    ],
+    [
+      "SAP",
+      "传递",
+      "生产计划"
+    ],
+    [
+      "SAP",
+      "传递",
+      "订单信息"
+    ],
+    [
+      "SAP",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "SAP",
+      "使用",
+      "库存管理系统"
+    ],
+    [
+      "SAP",
+      "接收来自",
+      "Lincs"
+    ],
+    [
+      "SAP iPro系统",
+      "使用",
+      "中德合资汽车厂"
+    ],
+    [
+      "SAP 系统",
+      "优化掉",
+      "调度员"
+    ],
+    [
+      "SAP 系统",
+      "使用",
+      "MM 模块"
+    ],
+    [
+      "SCOR 模型",
+      "开发",
+      "美国营运管理协会"
+    ],
+    [
+      "Sparrow search algorithm (HSSA)",
+      "由…执行",
+      "School of Mechanical and Electrical Engineering, Guangzhou University"
+    ],
+    [
+      "SynQuest",
+      "提供",
+      "IPE（内部运输计划）"
+    ],
+    [
+      "Sync-part supply",
+      "运输方式",
+      "milk-run logistics"
+    ],
+    [
+      "S公司",
+      "位于",
+      "上海奉贤区工厂"
+    ],
+    [
+      "S公司",
+      "生产",
+      "中控仪表台"
+    ],
+    [
+      "TMS（运输管理系统）",
+      "使用",
+      "GPS追踪"
+    ],
+    [
+      "TMS（运输管理系统）",
+      "使用",
+      "运输"
+    ],
+    [
+      "TQC/TQM",
+      "包含",
+      "质量圈（QC 小组）"
+    ],
+    [
+      "Total Productive Maintenance,TPM",
+      "要求",
+      "5S 活动"
+    ],
+    [
+      "UR",
+      "用于",
+      "item-11"
+    ],
+    [
+      "UR",
+      "用于",
+      "item-12"
+    ],
+    [
+      "UR",
+      "用于",
+      "item-6"
+    ],
+    [
+      "UR",
+      "用于",
+      "item-7"
+    ],
+    [
+      "Unrelated Parallel Machines",
+      "适用于",
+      "Single Factory"
+    ],
+    [
+      "Unrelated Parallel Machines",
+      "适用于",
+      "Single Product"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "一汽大众"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "一汽红旗"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "上汽集团"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "北京奔驰"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "华晨宝马"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "吉利汽车"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "小鹏汽车"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "沃尔沃"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "理想汽车"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "蔚来汽车"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "服务",
+      "长城汽车"
+    ],
+    [
+      "VCV 汽车零部件有限公司",
+      "由…执行",
+      "厂内物流优化"
+    ],
+    [
+      "VCV公司",
+      "使用",
+      "SAP 系统"
+    ],
+    [
+      "VMI",
+      "是",
+      "供应商管理用户库存"
+    ],
+    [
+      "VMI 系统",
+      "定义为",
+      "供应商管理库存(Vendor Managed Inventory)"
+    ],
+    [
+      "VMI 采购模式",
+      "使用",
+      "EDI 数据交换"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls1"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls2"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls3"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls4"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls5"
+    ],
+    [
+      "VND local search",
+      "包含",
+      "ls6"
+    ],
+    [
+      "Vauxhall",
+      "属于",
+      "通用"
+    ],
+    [
+      "WCS系统",
+      "辅助",
+      "SAP iPro系统"
+    ],
+    [
+      "WMS（仓储管理系统）",
+      "使用",
+      "EDI"
+    ],
+    [
+      "WMS（仓储管理系统）",
+      "使用",
+      "仓储"
+    ],
+    [
+      "WMS（仓储管理系统）",
+      "使用",
+      "条码技术（Bar Code）"
+    ],
+    [
+      "W主机厂",
+      "制订",
+      "整车下线需求"
+    ],
+    [
+      "W主机厂",
+      "设定",
+      "到货规则"
+    ],
+    [
+      "XR",
+      "用于",
+      "item-3"
+    ],
+    [
+      "XR",
+      "用于",
+      "item-9"
+    ],
+    [
+      "Y零部件供应商",
+      "基于",
+      "供应链电子商务信息平台"
+    ],
+    [
+      "automobile parts",
+      "属于",
+      "workpieces"
+    ],
+    [
+      "chemotherapy drugs",
+      "生产于",
+      "hospital pharmacy"
+    ],
+    [
+      "delivery tardiness and customer dissatisfaction",
+      "最小化",
+      "service-based objectives"
+    ],
+    [
+      "delivery time window",
+      "要求",
+      "IPDS"
+    ],
+    [
+      "electric automobile manufacturer in China",
+      "使用",
+      "MS-ALNS-VND"
+    ],
+    [
+      "electric automobile manufacturer in China",
+      "使用",
+      "milk-run logistics"
+    ],
+    [
+      "fleet of heterogeneous vehicles",
+      "使用",
+      "VRP"
+    ],
+    [
+      "flexible order composition",
+      "发生于",
+      "make-to-order supply chain model"
+    ],
+    [
+      "heuristic methods",
+      "包含",
+      "dispatching rules"
+    ],
+    [
+      "heuristic methods",
+      "包含",
+      "greedy algorithms"
+    ],
+    [
+      "homogeneous vehicles",
+      "使用",
+      "unlimited vehicle count"
+    ],
+    [
+      "hybrid metaheuristics",
+      "包含",
+      "Benders decomposition"
+    ],
+    [
+      "hybrid metaheuristics",
+      "包含",
+      "Memetic Algorithm"
+    ],
+    [
+      "hybrid metaheuristics",
+      "包含",
+      "rolling-horizon heuristic"
+    ],
+    [
+      "in-time delivery",
+      "要求",
+      "make-to-order supply chain model"
+    ],
+    [
+      "inventory",
+      "使用",
+      "IPDS"
+    ],
+    [
+      "learning-and-knowledge-assisted multi-population cooperative evolutionary algorithm",
+      "用于",
+      "distributed flow shop"
+    ],
+    [
+      "lifespan constraint",
+      "具有",
+      "hard time windows for delivery"
+    ],
+    [
+      "lot-sizing",
+      "包含",
+      "Scheduling"
+    ],
+    [
+      "make-to-order supply chain model",
+      "包含",
+      "granulating raw materials"
+    ],
+    [
+      "make-to-order supply chain model",
+      "包含",
+      "packaging of orders"
+    ],
+    [
+      "metaheuristics",
+      "包含",
+      "Genetic Algorithm"
+    ],
+    [
+      "metaheuristics",
+      "包含",
+      "simulated annealing (SA)"
+    ],
+    [
+      "metaheuristics",
+      "包含",
+      "tabu search (TS)"
+    ],
+    [
+      "multi-facility flow shop configurations",
+      "研究",
+      "integrated production and distribution scheduling (IPDS) problems"
+    ],
+    [
+      "multi-factory supply chain",
+      "发生于",
+      "IPDS"
+    ],
+    [
+      "multi-factory supply chain with parallel machines in each factory",
+      "研究",
+      "immediate shipments to customers"
+    ],
+    [
+      "multi-objective optimization",
+      "平衡",
+      "economic efficiency, service quality, and environmental savings"
+    ],
+    [
+      "non-permutation flow shop",
+      "区别于",
+      "Permutation Flow Shop"
+    ],
+    [
+      "open shop configuration",
+      "类似于",
+      "job shop configuration"
+    ],
+    [
+      "operations researchers",
+      "由…执行",
+      "IPDS"
+    ],
+    [
+      "parallel production line scheduling problem",
+      "使用",
+      "HSSA"
+    ],
+    [
+      "parallel production lines",
+      "包含",
+      "production lines"
+    ],
+    [
+      "permutation flow shop machine configuration",
+      "涉及",
+      "sequence-dependent setup time (SDST) vehicle routing issues"
+    ],
+    [
+      "product differentiation",
+      "定义",
+      "n orders as belonging to g distinct product types"
+    ],
+    [
+      "relaxed simplified programming (RSP)",
+      "使用",
+      "CPLEX solver"
+    ],
+    [
+      "self-adapted Gaussian mutation-based arithmetic optimizer algorithm (SGMAOA)",
+      "基于",
+      "Arithmetic Optimizer Algorithm (AOA)"
+    ],
+    [
+      "semi-finished automobile parts",
+      "属于",
+      "workpieces"
+    ],
+    [
+      "service-based objectives",
+      "主要关注",
+      "customer satisfaction and supply chain responsiveness"
+    ],
+    [
+      "single batch of production",
+      "具有",
+      "identical processing times of the machines"
+    ],
+    [
+      "single-factory system with parallel machines",
+      "类比于",
+      "multi-factory system with a single machine"
+    ],
+    [
+      "sub-lots",
+      "分配到",
+      "parallel production lines"
+    ],
+    [
+      "t_ij (Travel time matrix)",
+      "来源于",
+      "Solomon's VRP instances"
+    ],
+    [
+      "time-based elements",
+      "包含",
+      "makespan"
+    ],
+    [
+      "total distribution cost",
+      "组成",
+      "transportation and earliness/tardiness penalty costs"
+    ],
+    [
+      "total production, distribution, and tardiness costs",
+      "最小化",
+      "multi-factory supply chain with parallel machines in each factory"
+    ],
+    [
+      "trolley",
+      "属于",
+      "Transportation resources"
+    ],
+    [
+      "unidirectional flow",
+      "发生于",
+      "Permutation Flow Shop"
+    ],
+    [
+      "vehicle capacity",
+      "测量为",
+      "fixed number C of orders (pallets)"
+    ],
+    [
+      "vehicle routing problems (VRPs)",
+      "发生于",
+      "IPDS"
+    ],
+    [
+      "vehicles",
+      "使用",
+      "IPDS"
+    ],
+    [
+      "《物流术语》（GB/T18354—2006）",
+      "定义为",
+      "托盘"
+    ],
+    [
+      "三维虚拟物流中心模型构筑工具",
+      "定义为",
+      "RaLC（乐龙）系列软件"
+    ],
+    [
+      "上市牛奶的灭菌和摇匀",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "上汽集团",
+      "耗资上亿元独立搭建",
+      "车享平台"
+    ],
+    [
+      "上海大众",
+      "采用",
+      "取货物流"
+    ],
+    [
+      "上海工厂",
+      "发生于",
+      "S 公司"
+    ],
+    [
+      "上海汽车工业销售总公司",
+      "与",
+      "东风南方"
+    ],
+    [
+      "上海汽车工业销售总公司",
+      "与",
+      "广汽商贸"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "下线检查"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "作业不当"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "制程全检不良品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "原材料品质"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "在制品品质"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "客户退货品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "工程品管试验品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "成品交付品质"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "材料来料不良"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "自检报废品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "调机报废品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "质量控制抽检不良品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "超储存期限产品"
+    ],
+    [
+      "不良品管理",
+      "包含",
+      "零部件品质"
+    ],
+    [
+      "专业配送",
+      "属于",
+      "配送"
+    ],
+    [
+      "专门性评价",
+      "发生于",
+      "仓储"
+    ],
+    [
+      "专门性评价",
+      "发生于",
+      "运输"
+    ],
+    [
+      "东风日产",
+      "采用",
+      "取货物流"
+    ],
+    [
+      "中国汽车产业集群",
+      "包含",
+      "上海、广州、长春、武汉、京津、重庆六大产业园"
+    ],
+    [
+      "中国汽车产业集群",
+      "包含",
+      "京津、辽吉、长江和两广四条线"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "CPS 系统"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "Internet 系统"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "企业内部信息管理系统"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "存货管理系统"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "实时信息系统"
+    ],
+    [
+      "中外合资汽车物流服务企业",
+      "使用",
+      "电子数据交换"
+    ],
+    [
+      "中央备件仓库",
+      "发送至",
+      "服务站"
+    ],
+    [
+      "中控仪表台",
+      "包含",
+      "仪表壳"
+    ],
+    [
+      "中控仪表台",
+      "包含",
+      "横梁骨架"
+    ],
+    [
+      "中控仪表台",
+      "包含",
+      "线束电子件"
+    ],
+    [
+      "中转库",
+      "由…执行",
+      "整车制造厂"
+    ],
+    [
+      "中转运输",
+      "属于",
+      "配送运输"
+    ],
+    [
+      "丰田汽车",
+      "实施",
+      "JIT"
+    ],
+    [
+      "丰田汽车",
+      "采用",
+      "JIT供应"
+    ],
+    [
+      "丰田生产方式（Toyota Production System, TPS）",
+      "包含",
+      "准时化（JIT）"
+    ],
+    [
+      "丰田生产方式（Toyota Production System, TPS）",
+      "包含",
+      "自动化（Jidoka）"
+    ],
+    [
+      "主机厂",
+      "与…信息共享",
+      "供应商"
+    ],
+    [
+      "主机厂",
+      "使用",
+      "CIF协议"
+    ],
+    [
+      "主机厂",
+      "由…执行",
+      "取货物流"
+    ],
+    [
+      "主机厂",
+      "编制",
+      "标准化作业要领书"
+    ],
+    [
+      "主机厂的备件中心库",
+      "由…执行",
+      "整车制造厂"
+    ],
+    [
+      "乔治·普洛什（George W. Plosh）",
+      "提出",
+      "物料需求计划"
+    ],
+    [
+      "二层升降起动装置",
+      "使用",
+      "双层可调式装卸站台"
+    ],
+    [
+      "二次运输",
+      "补充",
+      "干线运输"
+    ],
+    [
+      "二维条码",
+      "定义为",
+      "物流信息技术"
+    ],
+    [
+      "产成品",
+      "经由",
+      "包装"
+    ],
+    [
+      "产成品",
+      "经由",
+      "厂内储存"
+    ],
+    [
+      "产成品",
+      "经由",
+      "厂外运输"
+    ],
+    [
+      "产成品",
+      "经由",
+      "地区储存"
+    ],
+    [
+      "产成品",
+      "经由",
+      "配货处理"
+    ],
+    [
+      "京哈线",
+      "连接",
+      "北京"
+    ],
+    [
+      "京广线",
+      "连接",
+      "北京"
+    ],
+    [
+      "京沪高速公路",
+      "连接",
+      "上海"
+    ],
+    [
+      "京沪高速公路",
+      "连接",
+      "北京"
+    ],
+    [
+      "人与物的结合",
+      "包含",
+      "直接结合"
+    ],
+    [
+      "人与物的结合",
+      "包含",
+      "间接结合"
+    ],
+    [
+      "仓储管理",
+      "使用",
+      "EDI"
+    ],
+    [
+      "仓储管理",
+      "使用",
+      "GPS系统"
+    ],
+    [
+      "仓储管理",
+      "使用",
+      "MES系统"
+    ],
+    [
+      "仓储管理",
+      "使用",
+      "SAP"
+    ],
+    [
+      "仓储管理",
+      "使用",
+      "物流系统"
+    ],
+    [
+      "仓储管理",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "仓库",
+      "发生于",
+      "仓储"
+    ],
+    [
+      "仓库管理系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "仓库装卸",
+      "属于",
+      "装卸搬运"
+    ],
+    [
+      "仓库配送",
+      "由…执行",
+      "仓库"
+    ],
+    [
+      "仓管员",
+      "负责",
+      "仓储"
+    ],
+    [
+      "仓管员",
+      "负责",
+      "库存控制"
+    ],
+    [
+      "仓配一体",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "代存代供配送",
+      "由…执行",
+      "配送企业"
+    ],
+    [
+      "价值流",
+      "包含",
+      "增值活动"
+    ],
+    [
+      "价值流",
+      "包含",
+      "非增值活动"
+    ],
+    [
+      "价值流图（Value Stream Mapping, VSM）",
+      "用于",
+      "价值流"
+    ],
+    [
+      "任务紧急程度",
+      "影响",
+      "车辆调度优化"
+    ],
+    [
+      "企业资源计划",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "使用矫直机将薄板卷材展平",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "供应商X",
+      "提供",
+      "供货产品配置表"
+    ],
+    [
+      "供应商分级管理",
+      "实施",
+      "S 公司"
+    ],
+    [
+      "供应商管理库存",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "供应商风险管理",
+      "由…执行",
+      "S 公司"
+    ],
+    [
+      "供应物流",
+      "包含",
+      "订货管理"
+    ],
+    [
+      "供应链",
+      "包含",
+      "一维条码 linear bar code; one-dimensional bar code"
+    ],
+    [
+      "供应链",
+      "包含",
+      "二维条码 two-dimensional bar code; 2D code"
+    ],
+    [
+      "供应链",
+      "包含",
+      "交割仓库 delivery warehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "交通枢纽 transportation hub"
+    ],
+    [
+      "供应链",
+      "包含",
+      "仓库 warehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "仓库管理系统 warehouse management system; WMS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "全球定位系统 global positioning system"
+    ],
+    [
+      "供应链",
+      "包含",
+      "公共仓库 public warehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "内陆港 inland port"
+    ],
+    [
+      "供应链",
+      "包含",
+      "冷链 cold-chain"
+    ],
+    [
+      "供应链",
+      "包含",
+      "分拣设备 sorting and picking equipment"
+    ],
+    [
+      "供应链",
+      "包含",
+      "升降台 lift table; LT"
+    ],
+    [
+      "供应链",
+      "包含",
+      "厢式货车 cargo van"
+    ],
+    [
+      "供应链",
+      "包含",
+      "叉车 fork lift truck"
+    ],
+    [
+      "供应链",
+      "包含",
+      "地理信息系统 geographical information system; GIS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "增值服务"
+    ],
+    [
+      "供应链",
+      "包含",
+      "射频标签 radio frequency tag； RF tag"
+    ],
+    [
+      "供应链",
+      "包含",
+      "射频识别 radio frequency identification； RFID"
+    ],
+    [
+      "供应链",
+      "包含",
+      "射频识别系统 radio frequency identification system"
+    ],
+    [
+      "供应链",
+      "包含",
+      "库房 storehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "循环取货 milk-run"
+    ],
+    [
+      "供应链",
+      "包含",
+      "托盘 pallet"
+    ],
+    [
+      "供应链",
+      "包含",
+      "挂车 trailer"
+    ],
+    [
+      "供应链",
+      "包含",
+      "智能运输系统 intelligent transport system; ITS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "条码 bar code"
+    ],
+    [
+      "供应链",
+      "包含",
+      "港口 water port"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物品标识编码 article identification number"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物品编码 article numbering; article number"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流信息技术 logistics information technology"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流公共信息平台 public logistics information platform"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流机器人 robot for logistics"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流标签 logistics label"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流管理信息系统 logistics management information system"
+    ],
+    [
+      "供应链",
+      "包含",
+      "物流系统仿真 logistics system simulation"
+    ],
+    [
+      "供应链",
+      "包含",
+      "牵引车 tractor"
+    ],
+    [
+      "供应链",
+      "包含",
+      "电子数据交换 electronic data interchange； EDI"
+    ],
+    [
+      "供应链",
+      "包含",
+      "电子订货系统 electronic ordering system; EOS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "电子运单 electronic waybill"
+    ],
+    [
+      "供应链",
+      "包含",
+      "电子通关 electronic customs clearance"
+    ],
+    [
+      "供应链",
+      "包含",
+      "码头 wharf"
+    ],
+    [
+      "供应链",
+      "包含",
+      "称量装置 load weighing device"
+    ],
+    [
+      "供应链",
+      "包含",
+      "立体仓库 stereoscopic warehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "自动存取系统 automatic storage and retrieval system; AS/RS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "自动导引车 automatic guided vehicle; AGV"
+    ],
+    [
+      "供应链",
+      "包含",
+      "自动识别技术 automatic identification technology"
+    ],
+    [
+      "供应链",
+      "包含",
+      "自营仓库 private warehouse"
+    ],
+    [
+      "供应链",
+      "包含",
+      "航空港 airport"
+    ],
+    [
+      "供应链",
+      "包含",
+      "调节板 dock leveler"
+    ],
+    [
+      "供应链",
+      "包含",
+      "货场 freight yard"
+    ],
+    [
+      "供应链",
+      "包含",
+      "货架 rack"
+    ],
+    [
+      "供应链",
+      "包含",
+      "货物跟踪系统 goods tracking system"
+    ],
+    [
+      "供应链",
+      "包含",
+      "起重机械 hoisting machinery"
+    ],
+    [
+      "供应链",
+      "包含",
+      "输送机 conveyor"
+    ],
+    [
+      "供应链",
+      "包含",
+      "运输管理系统 transportation management system; TMS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "铁路专用线 private railway siding"
+    ],
+    [
+      "供应链",
+      "包含",
+      "销售时点系统 point of sale; POS"
+    ],
+    [
+      "供应链",
+      "包含",
+      "集装单元 unitized unit"
+    ],
+    [
+      "供应链",
+      "包含",
+      "集装器具 unitized implement"
+    ],
+    [
+      "供应链",
+      "包含",
+      "集装箱 container"
+    ],
+    [
+      "供应链",
+      "包含",
+      "集装箱场站 yard-station"
+    ],
+    [
+      "供应链",
+      "包含",
+      "集装箱船 container ship"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "分销商"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "原材料供应商"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "整车制造商"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "汽车用户"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "物流分供方"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "第三方物流公司"
+    ],
+    [
+      "供应链",
+      "涉及",
+      "维修服务站"
+    ],
+    [
+      "供应链动态监控管理",
+      "构建",
+      "S 公司"
+    ],
+    [
+      "供应链协作",
+      "包含",
+      "信息共享"
+    ],
+    [
+      "供应链协作",
+      "包含",
+      "合作决策"
+    ],
+    [
+      "供应链协作",
+      "包含",
+      "激励机制"
+    ],
+    [
+      "供应链协作",
+      "包含",
+      "绩效评价"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "供应商管理用户库存（VMI）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "全面质量管理（TQM）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "准时制造制（JIT）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "制造资源计划（Manufacturing Resource Planning）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "多级库存优化控制"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "电子数据交换（Electronic Data Interchange，EDI）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "电子资金转账（EFT）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "精细生产（Lean Production）"
+    ],
+    [
+      "供应链管理",
+      "使用",
+      "联合库存管理"
+    ],
+    [
+      "供应链管理",
+      "包含",
+      "现代物流管理"
+    ],
+    [
+      "促销活动",
+      "影响",
+      "物流系统"
+    ],
+    [
+      "保管机器",
+      "使用于",
+      "配送中心"
+    ],
+    [
+      "信息处理设备",
+      "配置于",
+      "办公设施"
+    ],
+    [
+      "信息平台",
+      "使用",
+      "GPS"
+    ],
+    [
+      "信息管理系统",
+      "使用",
+      "条码扫描"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "EDI"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "ERP"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "GPS追踪"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "OMS"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "TMS（运输管理系统）"
+    ],
+    [
+      "信息系统",
+      "使用",
+      "WMS（仓储管理系统）"
+    ],
+    [
+      "信息系统",
+      "沟通并协调",
+      "促销活动"
+    ],
+    [
+      "充填包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "先进先出",
+      "使用",
+      "计算机储存系统"
+    ],
+    [
+      "先进先出",
+      "使用",
+      "贯通式货架"
+    ],
+    [
+      "先进先出",
+      "使用",
+      "重力式货架"
+    ],
+    [
+      "克莱斯勒",
+      "由…执行",
+      "Covisint"
+    ],
+    [
+      "入场物流",
+      "包含",
+      "取货物流"
+    ],
+    [
+      "入场物流",
+      "包含",
+      "送货物流"
+    ],
+    [
+      "全球定位系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "公路运输",
+      "使用",
+      "人力车"
+    ],
+    [
+      "公路运输",
+      "使用",
+      "汽车"
+    ],
+    [
+      "公路运输",
+      "使用",
+      "畜力车"
+    ],
+    [
+      "公路运输",
+      "由…执行",
+      "集成精敏战略"
+    ],
+    [
+      "公路运输",
+      "运输方式",
+      "物流"
+    ],
+    [
+      "六瓶装的新包装",
+      "方便",
+      "零售商"
+    ],
+    [
+      "共享库存",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "关键绩效指标法",
+      "从",
+      "交期"
+    ],
+    [
+      "关键绩效指标法",
+      "从",
+      "品质"
+    ],
+    [
+      "关键绩效指标法",
+      "从",
+      "士气"
+    ],
+    [
+      "关键绩效指标法",
+      "从",
+      "安全"
+    ],
+    [
+      "关键绩效指标法",
+      "从",
+      "成本"
+    ],
+    [
+      "准时制生产（JIT）",
+      "使用",
+      "同步管理"
+    ],
+    [
+      "准时制生产（JIT）",
+      "运输方式",
+      "看板系统"
+    ],
+    [
+      "分拣",
+      "由…执行",
+      "配送中心"
+    ],
+    [
+      "分拨中心",
+      "向...发货",
+      "服务站"
+    ],
+    [
+      "切断成形钢材",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "制造资源计划",
+      "使用",
+      "ERP系统"
+    ],
+    [
+      "制造资源计划",
+      "使用",
+      "MPR系统"
+    ],
+    [
+      "前置仓",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "加工批次",
+      "属于",
+      "生产线路"
+    ],
+    [
+      "动态库位分配管理",
+      "要求",
+      "库存满足率"
+    ],
+    [
+      "动态库位分配管理",
+      "要求",
+      "搬运成本"
+    ],
+    [
+      "动态库位分配管理",
+      "要求",
+      "空间利用率"
+    ],
+    [
+      "动态库存管理",
+      "实施",
+      "S 公司"
+    ],
+    [
+      "勘察设计成本",
+      "属于",
+      "项目总成本"
+    ],
+    [
+      "包装的标准化",
+      "包括",
+      "包装标准"
+    ],
+    [
+      "包装箱",
+      "装载",
+      "零部件"
+    ],
+    [
+      "包装费用",
+      "包含",
+      "包装人工费用"
+    ],
+    [
+      "包装费用",
+      "包含",
+      "包装技术费用"
+    ],
+    [
+      "包装费用",
+      "包含",
+      "包装机械费用"
+    ],
+    [
+      "包装费用",
+      "包含",
+      "包装材料费用"
+    ],
+    [
+      "包装费用",
+      "包含",
+      "包装辅助费用"
+    ],
+    [
+      "北美西海岸至欧洲大陆桥",
+      "属于",
+      "大陆桥运输"
+    ],
+    [
+      "厂内半成品运输",
+      "发生于",
+      "装配制造企业"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "备料"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "存储"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "收货入库"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "线边管理"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "进厂卸货"
+    ],
+    [
+      "厂内物流",
+      "涵盖",
+      "配送"
+    ],
+    [
+      "厂内物流优化",
+      "使用",
+      "ECRS方法"
+    ],
+    [
+      "厂内物流优化",
+      "使用",
+      "价值流图"
+    ],
+    [
+      "厂内物流优化",
+      "使用",
+      "系统布置设计"
+    ],
+    [
+      "原材料",
+      "存入",
+      "原材料仓库"
+    ],
+    [
+      "原材料",
+      "运到",
+      "工厂"
+    ],
+    [
+      "叉车",
+      "使用",
+      "装卸搬运"
+    ],
+    [
+      "叉车",
+      "由…执行",
+      "搬运车"
+    ],
+    [
+      "发货管理",
+      "使用",
+      "GPS系统"
+    ],
+    [
+      "发货系统",
+      "数据无法实时共享",
+      "ERP"
+    ],
+    [
+      "发货系统",
+      "数据无法实时共享",
+      "MES"
+    ],
+    [
+      "取货物流",
+      "使用",
+      "B/C 分析"
+    ],
+    [
+      "取货物流",
+      "负责",
+      "物流商"
+    ],
+    [
+      "取货物流",
+      "运输方式",
+      "9.6m的厢式货车"
+    ],
+    [
+      "取货物流",
+      "适用于",
+      "珠江三角洲"
+    ],
+    [
+      "取货物流",
+      "适用于",
+      "西南地区"
+    ],
+    [
+      "取货物流",
+      "适用于",
+      "长江三角洲"
+    ],
+    [
+      "可得性",
+      "衡量",
+      "供应比率"
+    ],
+    [
+      "可得性",
+      "衡量",
+      "缺货频率"
+    ],
+    [
+      "可得性",
+      "衡量",
+      "订货完成率"
+    ],
+    [
+      "可循环标准包装",
+      "包含",
+      "包装托盘化"
+    ],
+    [
+      "可循环标准包装",
+      "包含",
+      "尺寸标准化"
+    ],
+    [
+      "可循环标准包装",
+      "包含",
+      "装箱数量标准化"
+    ],
+    [
+      "可循环标准包装",
+      "包含",
+      "运输车辆标准化"
+    ],
+    [
+      "司机",
+      "由…执行",
+      "运输"
+    ],
+    [
+      "同步工作站",
+      "由…执行",
+      "制造商"
+    ],
+    [
+      "同步部件",
+      "由…执行",
+      "车辆"
+    ],
+    [
+      "同步零件",
+      "由…提供",
+      "供应商"
+    ],
+    [
+      "同步零件",
+      "要求",
+      "同步零件的截止日期"
+    ],
+    [
+      "哈萨克斯坦",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "售后件",
+      "由…提出",
+      "销售部售后科"
+    ],
+    [
+      "售后件",
+      "要求",
+      "标准化的包装"
+    ],
+    [
+      "国家发改委",
+      "批准了",
+      "《乘用车运输服务规范》"
+    ],
+    [
+      "国家标准化管理委员会",
+      "批准了",
+      "《轿车运输设备标准》"
+    ],
+    [
+      "国际市场",
+      "由…执行",
+      "国际第三方汽车物流公司"
+    ],
+    [
+      "地毯剪接",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "地理信息系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "地理信息系统（GIS）",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "场所价值",
+      "属于",
+      "物流"
+    ],
+    [
+      "塑料周转箱",
+      "使用",
+      "RFID芯片"
+    ],
+    [
+      "塑料周转箱",
+      "使用",
+      "把手"
+    ],
+    [
+      "塑料周转箱",
+      "使用",
+      "标签座"
+    ],
+    [
+      "塑料周转箱",
+      "包含",
+      "不可折叠箱"
+    ],
+    [
+      "塑料周转箱",
+      "包含",
+      "可折叠箱"
+    ],
+    [
+      "塑料容器",
+      "比",
+      "罐"
+    ],
+    [
+      "塑料袋",
+      "比",
+      "草包"
+    ],
+    [
+      "塑料袋",
+      "比",
+      "草袋"
+    ],
+    [
+      "塑料袋",
+      "比",
+      "麻袋"
+    ],
+    [
+      "备件物流供应链库存预测",
+      "使用",
+      "历史映射法"
+    ],
+    [
+      "备件物流供应链库存预测",
+      "使用",
+      "因果法"
+    ],
+    [
+      "备件物流外包",
+      "属于",
+      "汽车备件物流"
+    ],
+    [
+      "大米的自动包装",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "大陆桥运输",
+      "属于",
+      "联合运输"
+    ],
+    [
+      "天窗",
+      "包含",
+      "安装外部密封条"
+    ],
+    [
+      "天窗",
+      "包含",
+      "安装电机和线束"
+    ],
+    [
+      "天窗",
+      "包含",
+      "最终装配和功能测试"
+    ],
+    [
+      "天窗",
+      "包含",
+      "玻璃组件与框架组件之间的粘接"
+    ],
+    [
+      "天窗",
+      "包含",
+      "遮阳板组装"
+    ],
+    [
+      "天窗",
+      "包含",
+      "预装框架组装"
+    ],
+    [
+      "奥利弗·怀特（Oliver W. Wight）",
+      "提出",
+      "物料需求计划"
+    ],
+    [
+      "子批",
+      "包含",
+      "交货日期"
+    ],
+    [
+      "子批",
+      "包含",
+      "子批量"
+    ],
+    [
+      "子批",
+      "包含",
+      "工作件类型"
+    ],
+    [
+      "存货控制",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "存货控制决策",
+      "决定",
+      "储存结构"
+    ],
+    [
+      "存货控制决策",
+      "决定",
+      "合理储存量"
+    ],
+    [
+      "安全库存",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "安全库存模型",
+      "由…执行",
+      "S 公司"
+    ],
+    [
+      "安吉天地汽车物流有限公司",
+      "服务",
+      "上海大众"
+    ],
+    [
+      "安吉天地汽车物流有限公司",
+      "服务",
+      "上海通用"
+    ],
+    [
+      "安吉天地汽车物流有限公司",
+      "由…执行",
+      "上汽集团上海汽车工业销售总公司"
+    ],
+    [
+      "安吉天地汽车物流有限公司",
+      "由…执行",
+      "天地物流控股公司"
+    ],
+    [
+      "安装作广告用的幕墙",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "定期订货制",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "定置管理标准",
+      "包含",
+      "定置物品的分类规定"
+    ],
+    [
+      "定量订货制",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "定量配送",
+      "使用",
+      "托盘"
+    ],
+    [
+      "定量配送",
+      "使用",
+      "集装箱"
+    ],
+    [
+      "实物配送",
+      "包含",
+      "运输"
+    ],
+    [
+      "实物配送",
+      "又叫",
+      "营销物流"
+    ],
+    [
+      "家具等的组装",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "封口机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "射频识别",
+      "属于",
+      "自动识别技术"
+    ],
+    [
+      "将冷冻的鱼肉磨碎及蛋品加工",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "小车",
+      "属于",
+      "运输资源"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "传动带"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "刮水器"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "制动片"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "摩擦片"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "汽车喇叭"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "火化塞"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "灯泡"
+    ],
+    [
+      "常用备件",
+      "包括",
+      "轮胎"
+    ],
+    [
+      "常规订单",
+      "由…承担",
+      "整车厂"
+    ],
+    [
+      "平托盘",
+      "属于",
+      "托盘"
+    ],
+    [
+      "广汽丰田",
+      "采用",
+      "取货物流"
+    ],
+    [
+      "广汽本田",
+      "采用",
+      "取货物流"
+    ],
+    [
+      "库区",
+      "包含",
+      "库位"
+    ],
+    [
+      "库存制生产(Build to Stock, BTS)模式",
+      "发生于",
+      "整车生产厂"
+    ],
+    [
+      "库存控制",
+      "包含",
+      "成本"
+    ],
+    [
+      "库存控制",
+      "包含",
+      "服务水平"
+    ],
+    [
+      "库存控制",
+      "协调",
+      "产品策略"
+    ],
+    [
+      "库存水平",
+      "大于",
+      "供应商最快响应天数"
+    ],
+    [
+      "库存状态模块",
+      "优化",
+      "库存数据"
+    ],
+    [
+      "库房",
+      "包含",
+      "成品库房"
+    ],
+    [
+      "延迟制造",
+      "属于",
+      "敏捷策略"
+    ],
+    [
+      "彼得·卡拉杰克（Peter Kraljic）",
+      "提出",
+      "Kraljic 矩阵"
+    ],
+    [
+      "德国一家饮料制造商",
+      "设计",
+      "六瓶装的新包装"
+    ],
+    [
+      "总经理",
+      "领导",
+      "企业管理部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "前工程制造部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "前工程设备部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "副总经理"
+    ],
+    [
+      "总经理",
+      "领导",
+      "动力部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "后工程制造部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "后工程设备部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "品质保证部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "总工"
+    ],
+    [
+      "总经理",
+      "领导",
+      "技术工艺部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "技术开发部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "物流中心"
+    ],
+    [
+      "总经理",
+      "领导",
+      "生产技术部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "生产管理部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "电线制造部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "综合管理部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "财务管理部"
+    ],
+    [
+      "总经理",
+      "领导",
+      "销售服务部"
+    ],
+    [
+      "戈德拉特博士",
+      "创立",
+      "约束理论"
+    ],
+    [
+      "成本与收益的权衡",
+      "包含",
+      "两点法"
+    ],
+    [
+      "成本与收益的权衡",
+      "包含",
+      "买主调查法"
+    ],
+    [
+      "成本与收益的权衡",
+      "包含",
+      "事前事后实验法"
+    ],
+    [
+      "成本与收益的权衡",
+      "包含",
+      "游戏法"
+    ],
+    [
+      "托盘",
+      "使用",
+      "运输"
+    ],
+    [
+      "报关员",
+      "负责",
+      "报关"
+    ],
+    [
+      "招标费用",
+      "属于",
+      "项目总成本"
+    ],
+    [
+      "持续改善(Kaizen)",
+      "包含",
+      "PDCA 循环"
+    ],
+    [
+      "持续改善(Kaizen)",
+      "包含",
+      "SDCA循环"
+    ],
+    [
+      "持续改善(Kaizen)",
+      "包含",
+      "全员生产维修(Total Productive Maintenance, TPM)"
+    ],
+    [
+      "持续改善(Kaizen)",
+      "包含",
+      "全面质量管理(Total Quality Management, TQM)"
+    ],
+    [
+      "持续改善(Kaizen)",
+      "提出者",
+      "今井正明"
+    ],
+    [
+      "持续改善理论（KAIZEN）",
+      "包含",
+      "PDCA 循环"
+    ],
+    [
+      "捆扎机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "排序供应商",
+      "直接配送至",
+      "整车总装线"
+    ],
+    [
+      "接受订货系统",
+      "包含",
+      "发货系统"
+    ],
+    [
+      "接受订货系统",
+      "包含",
+      "库存管理系统"
+    ],
+    [
+      "接受订货系统",
+      "包含",
+      "收货系统"
+    ],
+    [
+      "接受订货系统",
+      "包含",
+      "订货系统"
+    ],
+    [
+      "接受订货系统",
+      "包含",
+      "配送系统"
+    ],
+    [
+      "推迟配置",
+      "属于",
+      "敏捷策略"
+    ],
+    [
+      "搬运",
+      "区别于",
+      "运输"
+    ],
+    [
+      "搬运工具",
+      "包括",
+      "叉车"
+    ],
+    [
+      "搬运工具",
+      "包括",
+      "托盘"
+    ],
+    [
+      "支线运输",
+      "辅助",
+      "干线运输"
+    ],
+    [
+      "收缩包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "数字化转型",
+      "推动",
+      "柔性生产"
+    ],
+    [
+      "整车",
+      "储存于",
+      "平面仓库"
+    ],
+    [
+      "整车",
+      "属于",
+      "成品"
+    ],
+    [
+      "整车",
+      "属于",
+      "车型系列"
+    ],
+    [
+      "整车制造商",
+      "共享",
+      "战略伙伴供应商"
+    ],
+    [
+      "整车制造商",
+      "共享",
+      "消费者"
+    ],
+    [
+      "整车制造商",
+      "共享",
+      "经销商"
+    ],
+    [
+      "整车制造商",
+      "共享",
+      "零部件供应商"
+    ],
+    [
+      "整车制造商",
+      "利用",
+      "物流评估竞标体系标准"
+    ],
+    [
+      "整车制造商",
+      "实现了",
+      "供应商管理库存"
+    ],
+    [
+      "整车制造商",
+      "实现了",
+      "零库存"
+    ],
+    [
+      "整车制造商",
+      "通过",
+      "供应链电子商务信息平台"
+    ],
+    [
+      "整车厂",
+      "要求",
+      "成本"
+    ],
+    [
+      "整车厂",
+      "要求",
+      "效率"
+    ],
+    [
+      "整车厂",
+      "采取",
+      "常规订单"
+    ],
+    [
+      "整车厂",
+      "采取",
+      "紧急订单"
+    ],
+    [
+      "整车发运",
+      "发生于",
+      "配送中心"
+    ],
+    [
+      "整车物流",
+      "包含",
+      "库存管理系统"
+    ],
+    [
+      "整车物流",
+      "包含",
+      "运输管理"
+    ],
+    [
+      "整车物流",
+      "包含",
+      "销售物流"
+    ],
+    [
+      "整车物流",
+      "运输方式",
+      "水路运输"
+    ],
+    [
+      "整车物流",
+      "运输方式",
+      "航空运输"
+    ],
+    [
+      "整车物流",
+      "运输方式",
+      "陆路运输"
+    ],
+    [
+      "整车物流管理解决方案",
+      "使用",
+      "ES/1 Manufacturing"
+    ],
+    [
+      "整车物流管理解决方案",
+      "基于",
+      "ES/1 Logistics"
+    ],
+    [
+      "整车物流管理解决方案",
+      "属于",
+      "供应链 SCM 整体解决方案"
+    ],
+    [
+      "整车生产厂",
+      "周围设立",
+      "仓库群"
+    ],
+    [
+      "新西伯利亚",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "时间价值",
+      "属于",
+      "物流"
+    ],
+    [
+      "易耗件",
+      "包含",
+      "发动机易耗件"
+    ],
+    [
+      "易耗件",
+      "包含",
+      "底盘易耗件"
+    ],
+    [
+      "易耗件",
+      "包含",
+      "电气设备及仪表的易耗件"
+    ],
+    [
+      "智能路径规划系统",
+      "使用",
+      "S 公司"
+    ],
+    [
+      "智能运输系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "最优生产技术 (OPT)",
+      "关注",
+      "关键工序"
+    ],
+    [
+      "最优生产技术 (OPT)",
+      "关注",
+      "关键资源"
+    ],
+    [
+      "最优生产技术 (OPT)",
+      "关注",
+      "关键零部件"
+    ],
+    [
+      "木箱",
+      "转换为",
+      "纸箱"
+    ],
+    [
+      "条码",
+      "定义为",
+      "物流信息技术"
+    ],
+    [
+      "柔性生产",
+      "推动",
+      "大规模个性化定制"
+    ],
+    [
+      "柱式托盘",
+      "属于",
+      "托盘"
+    ],
+    [
+      "标准件",
+      "包含",
+      "主销锁销及螺母"
+    ],
+    [
+      "标准件",
+      "包含",
+      "发动机悬架装置中的螺栓及螺母"
+    ],
+    [
+      "标准件",
+      "包含",
+      "气缸盖紧固螺栓及螺母"
+    ],
+    [
+      "标准件",
+      "包含",
+      "轮胎螺栓及螺母"
+    ],
+    [
+      "标准件",
+      "包含",
+      "连杆螺栓及螺母"
+    ],
+    [
+      "标签",
+      "粘贴于",
+      "包装箱"
+    ],
+    [
+      "检测机",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "模块系统组件",
+      "属于",
+      "系统"
+    ],
+    [
+      "水路运输",
+      "使用",
+      "船舶"
+    ],
+    [
+      "水路运输",
+      "包含",
+      "滚装船运输"
+    ],
+    [
+      "水路运输",
+      "包含",
+      "集装箱运输"
+    ],
+    [
+      "水运",
+      "运输方式",
+      "物流"
+    ],
+    [
+      "汽车",
+      "包含",
+      "供产销一体化物流模式"
+    ],
+    [
+      "汽车",
+      "包含",
+      "第三方物流"
+    ],
+    [
+      "汽车",
+      "要求",
+      "信息共享"
+    ],
+    [
+      "汽车",
+      "要求",
+      "信息化建设"
+    ],
+    [
+      "汽车",
+      "要求",
+      "物流管理模式"
+    ],
+    [
+      "汽车企业供应链物流协同管理实践",
+      "发生于",
+      "供应链协同"
+    ],
+    [
+      "汽车供应链",
+      "下游是",
+      "汽车销售服务行业"
+    ],
+    [
+      "汽车供应链",
+      "包含",
+      "第三方物流公司"
+    ],
+    [
+      "汽车召回",
+      "属于",
+      "逆向物流"
+    ],
+    [
+      "汽车园区",
+      "包含",
+      "配件销售"
+    ],
+    [
+      "汽车备件",
+      "包括",
+      "发动机零部件"
+    ],
+    [
+      "汽车备件",
+      "包括",
+      "底盘零部件"
+    ],
+    [
+      "汽车备件",
+      "包括",
+      "电子产品"
+    ],
+    [
+      "汽车备件",
+      "包括",
+      "车身及饰品零部件"
+    ],
+    [
+      "汽车备件",
+      "包括",
+      "通用件"
+    ],
+    [
+      "汽车正向物流",
+      "包含",
+      "整车与备件的销售储存及运输"
+    ],
+    [
+      "汽车正向物流",
+      "包含",
+      "零部件配送"
+    ],
+    [
+      "汽车物流",
+      "属于",
+      "物流"
+    ],
+    [
+      "汽车物流标准化",
+      "使用",
+      "物料容器具"
+    ],
+    [
+      "汽车装卸",
+      "属于",
+      "装卸搬运"
+    ],
+    [
+      "汽车装饰和美容用品物流",
+      "属于",
+      "汽车备件物流"
+    ],
+    [
+      "汽车零部件",
+      "属于",
+      "原材料"
+    ],
+    [
+      "汽车零部件制造企业",
+      "生产",
+      "天窗"
+    ],
+    [
+      "汽车零部件制造企业",
+      "生产",
+      "树脂件"
+    ],
+    [
+      "汽车零部件制造企业",
+      "生产",
+      "燃油箱"
+    ],
+    [
+      "汽车零部件制造企业",
+      "生产",
+      "钣金件"
+    ],
+    [
+      "汽车零部件物流",
+      "包含",
+      "入厂物流"
+    ],
+    [
+      "汽车零部件物流",
+      "包含",
+      "厂内物流"
+    ],
+    [
+      "汽车零部件物流运输系统设计",
+      "要求",
+      "JIT 式生产方式"
+    ],
+    [
+      "沈大铁路",
+      "连接",
+      "大连"
+    ],
+    [
+      "沈大铁路",
+      "连接",
+      "沈阳"
+    ],
+    [
+      "洗瓶机",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "流通加工",
+      "加工",
+      "半成品"
+    ],
+    [
+      "流通加工",
+      "加工",
+      "原材料"
+    ],
+    [
+      "流通加工",
+      "加工",
+      "商品"
+    ],
+    [
+      "流通加工",
+      "加工",
+      "零配件"
+    ],
+    [
+      "流通加工",
+      "加工",
+      "食品"
+    ],
+    [
+      "流通加工",
+      "发生于",
+      "木材配送"
+    ],
+    [
+      "流通加工",
+      "发生于",
+      "金属材料配送"
+    ],
+    [
+      "流通加工",
+      "属于",
+      "物流系统"
+    ],
+    [
+      "流通加工",
+      "提高",
+      "物流效率"
+    ],
+    [
+      "流通加工附加价值",
+      "属于",
+      "物流"
+    ],
+    [
+      "海空联运",
+      "属于",
+      "联合运输"
+    ],
+    [
+      "消耗件",
+      "包含",
+      "冷却液"
+    ],
+    [
+      "消耗件",
+      "包含",
+      "刮水器"
+    ],
+    [
+      "消耗件",
+      "包含",
+      "制动液"
+    ],
+    [
+      "消耗件",
+      "包含",
+      "前风窗玻璃清洁剂"
+    ],
+    [
+      "消耗件",
+      "包含",
+      "润滑油"
+    ],
+    [
+      "混合模型装配线",
+      "包含",
+      "同步工作站"
+    ],
+    [
+      "清关",
+      "又称",
+      "通关"
+    ],
+    [
+      "港口装卸",
+      "属于",
+      "装卸搬运"
+    ],
+    [
+      "灌装包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "烘干机",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "热成型包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "牛鞭效应",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物品标识编码",
+      "定义为",
+      "物流信息技术"
+    ],
+    [
+      "物品编码",
+      "定义为",
+      "物流信息技术"
+    ],
+    [
+      "物料配送路径优化",
+      "实施",
+      "S 公司"
+    ],
+    [
+      "物料需求计划",
+      "依据",
+      "主生产计划"
+    ],
+    [
+      "物料需求计划",
+      "依据",
+      "已订未交订单"
+    ],
+    [
+      "物料需求计划",
+      "依据",
+      "库存记录"
+    ],
+    [
+      "物料需求计划",
+      "依据",
+      "物料清单"
+    ],
+    [
+      "物料需求计划",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流",
+      "包含",
+      "仓储"
+    ],
+    [
+      "物流",
+      "包含",
+      "信息"
+    ],
+    [
+      "物流",
+      "包含",
+      "信息处理"
+    ],
+    [
+      "物流",
+      "包含",
+      "储存"
+    ],
+    [
+      "物流",
+      "包含",
+      "包装"
+    ],
+    [
+      "物流",
+      "包含",
+      "搬运"
+    ],
+    [
+      "物流",
+      "包含",
+      "流通加工"
+    ],
+    [
+      "物流",
+      "包含",
+      "装卸"
+    ],
+    [
+      "物流",
+      "包含",
+      "装卸搬运"
+    ],
+    [
+      "物流",
+      "包含",
+      "运输"
+    ],
+    [
+      "物流",
+      "包含",
+      "配送"
+    ],
+    [
+      "物流",
+      "属于",
+      "供应链管理 (Supply Chain Management)"
+    ],
+    [
+      "物流",
+      "是实现",
+      "电子商务"
+    ],
+    [
+      "物流",
+      "服务于",
+      "商流"
+    ],
+    [
+      "物流人员",
+      "使用",
+      "托盘"
+    ],
+    [
+      "物流人员",
+      "使用",
+      "推车"
+    ],
+    [
+      "物流作业系统",
+      "包含",
+      "仓储"
+    ],
+    [
+      "物流作业系统",
+      "包含",
+      "包装"
+    ],
+    [
+      "物流作业系统",
+      "包含",
+      "装卸搬运"
+    ],
+    [
+      "物流作业系统",
+      "包含",
+      "运输"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "EDI"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "ERP"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "GPS追踪"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "OMS"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "TMS（运输管理系统）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "WMS（仓储管理系统）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "互联网"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "人工智能专家系统"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "全球卫星定位系统（GPS）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "地理信息系统（GIS）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "射频技术（RF）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "条形码和扫描仪"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "电子数据交换（Electronic Data Interchange，EDI）"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "计算机"
+    ],
+    [
+      "物流信息系统",
+      "使用",
+      "通信"
+    ],
+    [
+      "物流公共信息平台",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "物流商",
+      "考核",
+      "KPI"
+    ],
+    [
+      "物流园区",
+      "包含",
+      "中转站"
+    ],
+    [
+      "物流园区",
+      "包含",
+      "货运站"
+    ],
+    [
+      "物流外包",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流成本管理",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流效益背反",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流服务水平",
+      "评价指标",
+      "企业形象"
+    ],
+    [
+      "物流服务水平",
+      "评价指标",
+      "声誉"
+    ],
+    [
+      "物流服务水平",
+      "评价指标",
+      "客户忠诚度"
+    ],
+    [
+      "物流服务水平",
+      "评价指标",
+      "客户满意度"
+    ],
+    [
+      "物流服务水平",
+      "评价指标",
+      "市场份额"
+    ],
+    [
+      "物流标准化",
+      "要求",
+      "ISO标准"
+    ],
+    [
+      "物流标签",
+      "定义为",
+      "物流信息技术"
+    ],
+    [
+      "物流管理信息系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "物流管理团队",
+      "包含",
+      "仓储管理"
+    ],
+    [
+      "物流管理团队",
+      "包含",
+      "供应链管理"
+    ],
+    [
+      "物流管理团队",
+      "包含",
+      "运输管理"
+    ],
+    [
+      "物流管理委员会",
+      "定义为",
+      "全国实物配送管理委员会"
+    ],
+    [
+      "物流系统",
+      "包含",
+      "销售人员"
+    ],
+    [
+      "物流系统仿真 logistics system simulation",
+      "属于",
+      "物流信息技术"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "RFID标签"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "冷链设备"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "包装材料"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "叉车"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "托盘"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "搬运工具"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "货架"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "运输车辆"
+    ],
+    [
+      "物流设施",
+      "包含",
+      "集装箱"
+    ],
+    [
+      "物流评价",
+      "包含",
+      "专门性评价"
+    ],
+    [
+      "物流评价",
+      "包含",
+      "综合性评价"
+    ],
+    [
+      "物流质量管理",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流资源整合",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "物流运输仿真",
+      "使用",
+      "RaLC（乐龙）系列软件"
+    ],
+    [
+      "物流部门",
+      "使用",
+      "仓库"
+    ],
+    [
+      "物流部门",
+      "使用",
+      "外部承运人"
+    ],
+    [
+      "物流部门",
+      "使用",
+      "车队"
+    ],
+    [
+      "物流部门",
+      "负责",
+      "半成品出入库及搬运，空器具返回"
+    ],
+    [
+      "物流部门",
+      "负责",
+      "取化学品药剂，入库危废料"
+    ],
+    [
+      "物流部门",
+      "负责",
+      "取原材料、辅料"
+    ],
+    [
+      "物流部门",
+      "负责",
+      "取铝型材、送型材框"
+    ],
+    [
+      "物流部门",
+      "负责",
+      "送原材料、成品器具，取成品，取垃圾废料"
+    ],
+    [
+      "物资管理",
+      "包含",
+      "生产物料计划"
+    ],
+    [
+      "物资管理",
+      "包含",
+      "采购订单作业"
+    ],
+    [
+      "特种专用托盘",
+      "属于",
+      "托盘"
+    ],
+    [
+      "现场物料配送",
+      "包含",
+      "JIT"
+    ],
+    [
+      "现场物料配送",
+      "包含",
+      "准时化顺序供应"
+    ],
+    [
+      "现场物料配送",
+      "包含",
+      "计划配送"
+    ],
+    [
+      "现场物料配送",
+      "由…执行",
+      "第三方物流"
+    ],
+    [
+      "现场物料配送",
+      "适用于",
+      "制造业配送"
+    ],
+    [
+      "理货",
+      "包含",
+      "包装"
+    ],
+    [
+      "理货",
+      "包含",
+      "货物分拣"
+    ],
+    [
+      "理货",
+      "包含",
+      "配货"
+    ],
+    [
+      "瓦楞纸板箱",
+      "比",
+      "木箱"
+    ],
+    [
+      "瓶颈资源",
+      "属于",
+      "能力约束资源（Capacity Constraint Resources, CCR）"
+    ],
+    [
+      "生产企业配送",
+      "由…执行",
+      "生产企业"
+    ],
+    [
+      "生产均衡化",
+      "要求",
+      "标准作业"
+    ],
+    [
+      "生产流程化",
+      "由…执行",
+      "多技能作业员"
+    ],
+    [
+      "生产流程化",
+      "要求",
+      "后工序领取"
+    ],
+    [
+      "生产物流",
+      "伴随",
+      "生产工艺过程"
+    ],
+    [
+      "生产计划",
+      "由…执行",
+      "HSSA"
+    ],
+    [
+      "生产计划和控制",
+      "需要",
+      "信息共享"
+    ],
+    [
+      "生产调度",
+      "由…执行",
+      "HSSA"
+    ],
+    [
+      "生产过程中的废弃物",
+      "属于",
+      "逆向物流"
+    ],
+    [
+      "生产过程物流",
+      "又叫",
+      "企业内部物流"
+    ],
+    [
+      "生奶酪的冷藏",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "生鲜食品的原包装",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "用友",
+      "使用",
+      "库存管理系统"
+    ],
+    [
+      "用气割厚板",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "电子商务",
+      "使用",
+      "Internet"
+    ],
+    [
+      "电子商务",
+      "使用",
+      "Intranet"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "交易管理"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "信息流"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "共享作用"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "咨询洽谈"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "售前售后服务"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "商流"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "物流"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "电子支付"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "网上广告"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "网上订货"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "虚拟企业"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "资金流"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "运输服务"
+    ],
+    [
+      "电子商务",
+      "包含",
+      "销售服务"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "个人通信系统"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "传真"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "保密措施"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "信用卡业务"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "安全认证"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "文件交换"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "电子数据交换技术"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "电子资金转账（EFT）"
+    ],
+    [
+      "电子商务",
+      "组合",
+      "目录服务"
+    ],
+    [
+      "电子商务",
+      "要求",
+      "电子支付"
+    ],
+    [
+      "电子商务",
+      "适用于",
+      "商业—商业"
+    ],
+    [
+      "电子商务",
+      "适用于",
+      "商业—政府"
+    ],
+    [
+      "电子商务",
+      "适用于",
+      "商业—消费者"
+    ],
+    [
+      "电子商务",
+      "适用于",
+      "消费者—政府"
+    ],
+    [
+      "电子商务手段",
+      "包括",
+      "EDI 技术"
+    ],
+    [
+      "电子商务手段",
+      "包括",
+      "POS 数据读取系统"
+    ],
+    [
+      "电子商务手段",
+      "包括",
+      "条码技术"
+    ],
+    [
+      "电子商务手段",
+      "包括",
+      "电子订货系统"
+    ],
+    [
+      "电子订货系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "电子通关",
+      "属于",
+      "物流信息技术"
+    ],
+    [
+      "盖印机",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "盘点",
+      "使用",
+      "射频识别设备"
+    ],
+    [
+      "盘点",
+      "使用",
+      "条码识读设备"
+    ],
+    [
+      "直达运输",
+      "属于",
+      "配送运输"
+    ],
+    [
+      "真空包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "石太铁路",
+      "连接",
+      "太原"
+    ],
+    [
+      "石太铁路",
+      "连接",
+      "石家庄"
+    ],
+    [
+      "破坏和修复操作符",
+      "包含",
+      "Shaw 破坏操作符"
+    ],
+    [
+      "破坏和修复操作符",
+      "包含",
+      "基于行程效率的破坏操作符"
+    ],
+    [
+      "破坏和修复操作符",
+      "包含",
+      "基于零件等待时间的破坏操作符"
+    ],
+    [
+      "破坏和修复操作符",
+      "包含",
+      "随机破坏操作符"
+    ],
+    [
+      "福特",
+      "由…执行",
+      "Covisint"
+    ],
+    [
+      "福特汽车公司",
+      "与…合作",
+      "SynQuest"
+    ],
+    [
+      "福特汽车公司",
+      "使用",
+      "IPE（内部运输计划）"
+    ],
+    [
+      "福特汽车公司",
+      "由…执行",
+      "联合包裹公司（UPS）"
+    ],
+    [
+      "秦皇岛 VCV 汽车零部件有限公司",
+      "获得",
+      "优秀开发奖"
+    ],
+    [
+      "秦皇岛 VCV 汽车零部件有限公司",
+      "获得",
+      "年度最佳协同奖"
+    ],
+    [
+      "秦皇岛VCV汽车零部件有限公司",
+      "使用",
+      "价值流图分析工具"
+    ],
+    [
+      "空运",
+      "运输方式",
+      "物流"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "中转站"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "仓库"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "口岸"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "枢纽城市"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "港口"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "物流园区"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "码头"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "经济区域"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "经销商仓库"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "货运站"
+    ],
+    [
+      "第三方物流",
+      "发生于",
+      "配送中心"
+    ],
+    [
+      "第三方物流",
+      "服务于",
+      "承运商"
+    ],
+    [
+      "第三方物流",
+      "服务于",
+      "货主"
+    ],
+    [
+      "第三方物流",
+      "由…执行",
+      "物流公司"
+    ],
+    [
+      "第三方物流",
+      "负责",
+      "分销物流"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "公路运输"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "内河运输"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "冷链运输"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "危险品运输"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "海运"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "空运"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "管道运输"
+    ],
+    [
+      "第三方物流",
+      "运输方式",
+      "铁路运输"
+    ],
+    [
+      "第三方物流企业",
+      "包含",
+      "仓储企业（仓储代理企业）"
+    ],
+    [
+      "第三方物流企业",
+      "包含",
+      "流通加工代理企业"
+    ],
+    [
+      "第三方物流企业",
+      "包含",
+      "货代公司（运输代理企业）"
+    ],
+    [
+      "第三方物流公司",
+      "协同配送至",
+      "外借仓库"
+    ],
+    [
+      "第三方物流公司",
+      "协同配送至",
+      "配送中心"
+    ],
+    [
+      "第二欧亚大陆桥",
+      "属于",
+      "大陆桥运输"
+    ],
+    [
+      "第四方物流（4PL）",
+      "高于",
+      "第三方物流（3PL）"
+    ],
+    [
+      "管道运输",
+      "使用",
+      "管道"
+    ],
+    [
+      "管道运输",
+      "运输方式",
+      "物流"
+    ],
+    [
+      "箱式托盘",
+      "属于",
+      "托盘"
+    ],
+    [
+      "粘贴标价",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "精益生产",
+      "包含",
+      "全面质量管理"
+    ],
+    [
+      "精益生产",
+      "包含",
+      "并行工程"
+    ],
+    [
+      "精益生产",
+      "包含",
+      "拉动式准时化生产"
+    ],
+    [
+      "精益生产",
+      "通过",
+      "准时制生产"
+    ],
+    [
+      "系统订单信息共享架构",
+      "设计",
+      "S 公司"
+    ],
+    [
+      "紧急订单",
+      "由…承担",
+      "4S店"
+    ],
+    [
+      "约束理论",
+      "包含",
+      "五大核心步骤（Five Focusing Steps）"
+    ],
+    [
+      "约束理论",
+      "对",
+      "JIT"
+    ],
+    [
+      "约束理论",
+      "对",
+      "MRPⅡ"
+    ],
+    [
+      "约束理论",
+      "是",
+      "戈德拉特博士"
+    ],
+    [
+      "纵向切割薄板卷，使之成为窄幅（钢管用卷材）",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "纸袋",
+      "比",
+      "草包"
+    ],
+    [
+      "纸袋",
+      "比",
+      "草袋"
+    ],
+    [
+      "纸袋",
+      "比",
+      "麻袋"
+    ],
+    [
+      "组合件",
+      "属于",
+      "系统"
+    ],
+    [
+      "经济订货批量",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "综合物流服务供应商",
+      "提供",
+      "增值服务"
+    ],
+    [
+      "综合生产计划",
+      "包含",
+      "主生产计划 (MPS)"
+    ],
+    [
+      "综合生产计划",
+      "包含",
+      "物料需求计划 (MRP)"
+    ],
+    [
+      "综合配送",
+      "属于",
+      "配送"
+    ],
+    [
+      "绿色物流",
+      "包含",
+      "逆向物流"
+    ],
+    [
+      "罐",
+      "比",
+      "缸"
+    ],
+    [
+      "美国汽车工业行动组（AIAG）",
+      "发布",
+      "《中国汽车供应商调查报告》"
+    ],
+    [
+      "美国汽车采购委员会",
+      "要求",
+      "克莱斯勒"
+    ],
+    [
+      "美国汽车采购委员会",
+      "要求",
+      "福特"
+    ],
+    [
+      "美国汽车采购委员会",
+      "要求",
+      "通用"
+    ],
+    [
+      "美国生产与库存控制协会",
+      "定义",
+      "物料需求计划"
+    ],
+    [
+      "美国福特汽车公司",
+      "实施",
+      "JIT"
+    ],
+    [
+      "联合包裹公司（UPS）",
+      "提供",
+      "现代物流服务"
+    ],
+    [
+      "联邦快递(FedEx)",
+      "采用",
+      "集中一分发形式(Hub and Spoke)"
+    ],
+    [
+      "自制件",
+      "由…统一向下发送",
+      "中央备件仓库"
+    ],
+    [
+      "自动存取系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "自动识别技术",
+      "包含",
+      "二维条码"
+    ],
+    [
+      "自动识别技术",
+      "包含",
+      "条码"
+    ],
+    [
+      "航空运输",
+      "使用",
+      "飞机"
+    ],
+    [
+      "衣料品的标识和印记商标",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "冶金专用起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "刮板输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "半挂车"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "卸载机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "叉车"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "固定旋转起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "堆取料机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "带式输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "建筑专用起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "托盘"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "挂车"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "振动输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "搬运机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "斗式提升机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "桥式起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "气力输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "港口专用起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "滚子输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "滚装船"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "牵引车"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "绞车"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "翻车机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "葫芦"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "螺旋输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "行动旋转式起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "装载机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "链式输送机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "门式起重机"
+    ],
+    [
+      "装卸搬运",
+      "使用",
+      "集装箱"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "仓库"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "保管"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "港口"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "物流园区"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "码头"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "车站"
+    ],
+    [
+      "装卸搬运",
+      "发生于",
+      "运输"
+    ],
+    [
+      "装卸搬运",
+      "由…执行",
+      "叉车"
+    ],
+    [
+      "装卸搬运",
+      "由…执行",
+      "司机"
+    ],
+    [
+      "装卸搬运",
+      "由…执行",
+      "操作人员"
+    ],
+    [
+      "装卸机器",
+      "使用于",
+      "配送中心"
+    ],
+    [
+      "装配制造企业",
+      "包含",
+      "厂内半成品运输"
+    ],
+    [
+      "裹包包装机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "西伯利亚大陆桥",
+      "属于",
+      "大陆桥运输"
+    ],
+    [
+      "计划生成模块",
+      "优化",
+      "生产计划"
+    ],
+    [
+      "计量机",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "订单",
+      "包含",
+      "子批"
+    ],
+    [
+      "订单作业",
+      "由…执行",
+      "物流部门"
+    ],
+    [
+      "订单处理",
+      "制约",
+      "物流速度"
+    ],
+    [
+      "订单处理",
+      "影响",
+      "市场营销水平"
+    ],
+    [
+      "订单拆分和合并",
+      "用于",
+      "生产调度优化"
+    ],
+    [
+      "订单更新模块",
+      "优化",
+      "订单信息"
+    ],
+    [
+      "订货管理",
+      "定义为",
+      "入厂物流"
+    ],
+    [
+      "订货管理",
+      "定义为",
+      "厂外物流"
+    ],
+    [
+      "订货管理",
+      "定义为",
+      "原材料采购物流"
+    ],
+    [
+      "订货管理",
+      "属于",
+      "供应链管理"
+    ],
+    [
+      "调度员",
+      "负责",
+      "运输"
+    ],
+    [
+      "货架",
+      "使用",
+      "仓储"
+    ],
+    [
+      "货物分拣",
+      "包含",
+      "摘取式分拣"
+    ],
+    [
+      "货物分拣",
+      "包含",
+      "播种式分拣"
+    ],
+    [
+      "货物跟踪系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "货车信息管理",
+      "由…执行",
+      "S 公司"
+    ],
+    [
+      "贴标机械",
+      "属于",
+      "包装机械"
+    ],
+    [
+      "资源再利用",
+      "属于",
+      "逆向物流"
+    ],
+    [
+      "资源配置合理化",
+      "使用",
+      "U型单元"
+    ],
+    [
+      "资源配置合理化",
+      "使用",
+      "六十秒即时换模(SMED)"
+    ],
+    [
+      "资源配置合理化",
+      "使用",
+      "组合U型生产线"
+    ],
+    [
+      "跨国采购",
+      "与…区别",
+      "国产零件订购"
+    ],
+    [
+      "跨国采购",
+      "使用",
+      "国际会议"
+    ],
+    [
+      "跨国采购",
+      "使用",
+      "电子订货系统"
+    ],
+    [
+      "跨国采购",
+      "使用",
+      "视频会议"
+    ],
+    [
+      "跨国采购",
+      "定义为",
+      "全球采购"
+    ],
+    [
+      "车型停产",
+      "定义为",
+      "EOP"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "发动机罩"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "散热器罩"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "翼子板"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "行李箱盖"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "车顶板"
+    ],
+    [
+      "车身覆盖件",
+      "包含",
+      "门板"
+    ],
+    [
+      "车辆",
+      "包括",
+      "中型卡车"
+    ],
+    [
+      "车辆",
+      "包括",
+      "乘用小车"
+    ],
+    [
+      "车辆",
+      "包括",
+      "卡车"
+    ],
+    [
+      "车辆",
+      "包括",
+      "大型卡车"
+    ],
+    [
+      "车辆",
+      "包括",
+      "集装箱车"
+    ],
+    [
+      "车辆",
+      "要求",
+      "容量"
+    ],
+    [
+      "车辆",
+      "要求",
+      "最大载重"
+    ],
+    [
+      "车辆任务均衡",
+      "影响",
+      "车辆调度优化"
+    ],
+    [
+      "车辆调度优化",
+      "要求",
+      "任务紧急程度"
+    ],
+    [
+      "车辆调度优化",
+      "要求",
+      "车辆任务均衡"
+    ],
+    [
+      "车辆调度优化",
+      "要求",
+      "车间通道约束"
+    ],
+    [
+      "车辆路径问题（VRP）",
+      "扩展为",
+      "带时间窗的车辆路径问题（Vehicle Routing Problem with Time Windows, VRPTW）"
+    ],
+    [
+      "轮式托盘",
+      "属于",
+      "托盘"
+    ],
+    [
+      "输送机",
+      "使用",
+      "悬挂输送机"
+    ],
+    [
+      "输送机",
+      "使用",
+      "板式输送机"
+    ],
+    [
+      "输送机",
+      "使用",
+      "皮带输送机"
+    ],
+    [
+      "输送机",
+      "使用",
+      "辊道输送机"
+    ],
+    [
+      "输送机",
+      "使用",
+      "链式输送机"
+    ],
+    [
+      "运输",
+      "包含",
+      "装卸"
+    ],
+    [
+      "运输",
+      "包含",
+      "道口对接"
+    ],
+    [
+      "运输",
+      "属于",
+      "物流"
+    ],
+    [
+      "运输",
+      "属于",
+      "物流系统"
+    ],
+    [
+      "运输资源管理",
+      "涉及",
+      "模具更换约束"
+    ],
+    [
+      "运输资源管理",
+      "涉及",
+      "物流车容量"
+    ],
+    [
+      "运输路径优化",
+      "由…执行",
+      "S 公司"
+    ],
+    [
+      "运输车辆",
+      "使用",
+      "运输"
+    ],
+    [
+      "进口件",
+      "运输方式",
+      "海上运输"
+    ],
+    [
+      "进口件",
+      "运输方式",
+      "空运"
+    ],
+    [
+      "远东至北美东海岸和墨西哥湾大陆桥",
+      "属于",
+      "大陆桥运输"
+    ],
+    [
+      "连云港",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "连续补货计划",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "退货",
+      "属于",
+      "逆向物流"
+    ],
+    [
+      "送货",
+      "运输方式",
+      "专用车"
+    ],
+    [
+      "送货",
+      "运输方式",
+      "汽车"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "产品退回"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "再制造"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "废弃处理"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "物品再利用"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "物料替代"
+    ],
+    [
+      "逆向物流",
+      "包含",
+      "维修"
+    ],
+    [
+      "逆向物流",
+      "属于",
+      "汽车备件物流"
+    ],
+    [
+      "通用",
+      "使用",
+      "GMBuypower"
+    ],
+    [
+      "通用",
+      "使用",
+      "Smart Auction"
+    ],
+    [
+      "通用",
+      "使用",
+      "e-GM"
+    ],
+    [
+      "通用",
+      "由…执行",
+      "Covisint"
+    ],
+    [
+      "通用公司",
+      "建立了",
+      "Trade Xchange"
+    ],
+    [
+      "通道",
+      "使用",
+      "伸长货叉型叉车"
+    ],
+    [
+      "通道",
+      "使用",
+      "侧面货叉型叉车"
+    ],
+    [
+      "通道",
+      "使用",
+      "叉车"
+    ],
+    [
+      "通道",
+      "使用",
+      "手推车"
+    ],
+    [
+      "通道",
+      "使用",
+      "重型平衡叉车"
+    ],
+    [
+      "部件",
+      "属于",
+      "系统"
+    ],
+    [
+      "配货",
+      "由…执行",
+      "配送中心"
+    ],
+    [
+      "配送",
+      "使用",
+      "运输资源"
+    ],
+    [
+      "配送",
+      "包含",
+      "发货管理"
+    ],
+    [
+      "配送",
+      "包含",
+      "备货"
+    ],
+    [
+      "配送",
+      "包含",
+      "理货"
+    ],
+    [
+      "配送",
+      "包含",
+      "送货"
+    ],
+    [
+      "配送",
+      "区别于",
+      "运输"
+    ],
+    [
+      "配送",
+      "属于",
+      "物流系统"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "EDI"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "ERP"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "GPS追踪"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "OMS"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "TMS"
+    ],
+    [
+      "配送中心",
+      "使用",
+      "WMS"
+    ],
+    [
+      "配送中心",
+      "包含",
+      "储存保管作业区"
+    ],
+    [
+      "配送中心",
+      "包含",
+      "分拣作业区"
+    ],
+    [
+      "配送中心",
+      "包含",
+      "收货验货作业区"
+    ],
+    [
+      "配送中心",
+      "包含",
+      "配送理货作业区"
+    ],
+    [
+      "配送中心",
+      "发生于",
+      "配送"
+    ],
+    [
+      "配送中心配送",
+      "由…执行",
+      "配送中心"
+    ],
+    [
+      "配送员",
+      "负责",
+      "配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "加急订单配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "大批量配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "定时定路线配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "定时定量配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "定时配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "定量配送"
+    ],
+    [
+      "配送管理",
+      "包含",
+      "小批量多批次配送"
+    ],
+    [
+      "配送箱",
+      "使用于",
+      "中、小件杂货配送"
+    ],
+    [
+      "配送需求计划",
+      "定义为",
+      "供应链集成"
+    ],
+    [
+      "采购活动",
+      "影响",
+      "产品策略"
+    ],
+    [
+      "采购订单",
+      "维护",
+      "物料清单"
+    ],
+    [
+      "采购部门",
+      "订购",
+      "原材料"
+    ],
+    [
+      "钢板的切割",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "铁路装卸",
+      "属于",
+      "装卸搬运"
+    ],
+    [
+      "铁路运输",
+      "运输方式",
+      "物流"
+    ],
+    [
+      "铁路运输",
+      "适用于",
+      "干线运输"
+    ],
+    [
+      "销售—供应一体化配送",
+      "由…执行",
+      "销售企业"
+    ],
+    [
+      "销售人员",
+      "反馈信息给",
+      "营销策划部门"
+    ],
+    [
+      "销售人员",
+      "影响",
+      "产品策略"
+    ],
+    [
+      "销售人员",
+      "提供",
+      "顾客需求"
+    ],
+    [
+      "销售及顾客服务活动",
+      "搜集",
+      "顾客需求"
+    ],
+    [
+      "销售时点系统",
+      "使用",
+      "物流信息技术"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "储存"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "包装"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "流通加工"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "装卸搬运"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "运输"
+    ],
+    [
+      "销售物流",
+      "包含",
+      "配送"
+    ],
+    [
+      "销售物流",
+      "定义为",
+      "分销物流"
+    ],
+    [
+      "销售配送",
+      "由…执行",
+      "销售企业"
+    ],
+    [
+      "门到门运输",
+      "由…执行",
+      "公路运输"
+    ],
+    [
+      "阿拉木图",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "陆海联运",
+      "属于",
+      "联合运输"
+    ],
+    [
+      "陆空联运",
+      "属于",
+      "联合运输"
+    ],
+    [
+      "陆路运输",
+      "包含",
+      "公路运输"
+    ],
+    [
+      "陆路运输",
+      "包含",
+      "铁路运输"
+    ],
+    [
+      "陇海铁路",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "集装单元器具",
+      "包含",
+      "周转箱"
+    ],
+    [
+      "集装单元器具",
+      "包含",
+      "托盘"
+    ],
+    [
+      "集装单元器具",
+      "包含",
+      "集装箱"
+    ],
+    [
+      "集装箱",
+      "使用",
+      "运输"
+    ],
+    [
+      "集装箱运输",
+      "运输方式",
+      "机车"
+    ],
+    [
+      "集装箱运输",
+      "运输方式",
+      "船舶"
+    ],
+    [
+      "集装箱运输",
+      "运输方式",
+      "车辆"
+    ],
+    [
+      "集货运输",
+      "补充",
+      "干线运输"
+    ],
+    [
+      "零件",
+      "属于",
+      "系统"
+    ],
+    [
+      "零部件供应商",
+      "负责",
+      "仓储"
+    ],
+    [
+      "需求计划共享",
+      "实施",
+      "S 公司"
+    ],
+    [
+      "需求预测",
+      "为…提供依据",
+      "供应链运作计划"
+    ],
+    [
+      "需求预测",
+      "为…提供参考",
+      "供应链战略决策"
+    ],
+    [
+      "霍尔果斯",
+      "发生于",
+      "第二欧亚大陆桥"
+    ],
+    [
+      "项目决策成本",
+      "属于",
+      "项目总成本"
+    ],
+    [
+      "项目施工成本",
+      "属于",
+      "项目总成本"
+    ],
+    [
+      "鱼和肉类的冷冻",
+      "属于",
+      "流通加工"
+    ],
+    [
+      "鹿特丹港",
+      "发生于",
+      "第二欧亚大陆桥"
+    ]
+  ]
+}

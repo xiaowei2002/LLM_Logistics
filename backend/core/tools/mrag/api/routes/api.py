@@ -9,6 +9,9 @@
 接口：
     POST /documents       上传文件，返回 task_id（后台解析分块）
     GET  /tasks/{id}      查询解析进度与分块结果
+    POST /build           建库（解析 -> 向量索引 + 知识图谱）
+    POST /ask             问答（检索 -> 重排 -> 生成）
+    GET  /status          索引/图谱就绪状态
     GET  /health          健康检查
     GET  /formats         列出支持的文件类型
 ==========================================================================
@@ -17,6 +20,7 @@ import asyncio
 import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import List, Optional
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -139,6 +143,63 @@ async def parse_local(body: ParseBody):
 @app.get("/formats")
 async def formats():
     return {"supported_formats": sorted(SUPPORTED_FORMATS)}
+
+
+# ==========================================================================
+# 建库 + 问答（RAG 主链路，直接转发 init.RAGPipeline，避免业务散落）
+# ==========================================================================
+_pipeline = None
+
+
+def _get_pipeline():
+    global _pipeline
+    if _pipeline is None:
+        from core.tools.mrag.init.init import RAGPipeline
+
+        _pipeline = RAGPipeline()
+    return _pipeline
+
+
+class BuildBody(BaseModel):
+    files: List[str]  # 服务器上已存在的文件/目录绝对路径
+    rebuild: bool = False  # True 则先清空旧索引与图谱再重建
+
+
+class AskBody(BaseModel):
+    question: str
+    history: Optional[List[List[str]]] = None  # [[用户, 助手], ...]
+    mode: str = "hybrid"  # auto / rag / graphrag / hybrid（默认 hybrid，对齐师兄 default_mode）
+
+
+@app.post("/build")
+async def build_index(body: BuildBody):
+    """建库：解析文件 -> 向量索引 + 知识图谱，返回统计。"""
+    try:
+        result = await asyncio.to_thread(_get_pipeline().build, body.files, body.rebuild)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"{type(exc).__name__}: {exc}")
+    return result
+
+
+@app.post("/ask")
+async def ask(body: AskBody):
+    """问答：改写 -> 检索 -> 重排 -> 生成（一次性）。"""
+    history = None
+    if body.history:
+        history = [(h[0], h[1]) for h in body.history if len(h) >= 2]
+    try:
+        result = await asyncio.to_thread(
+            _get_pipeline().ask, body.question, history, body.mode
+        )
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"{type(exc).__name__}: {exc}")
+    return result
+
+
+@app.get("/status")
+async def rag_status():
+    """报告向量索引 / 知识图谱就绪状态。"""
+    return _get_pipeline().status()
 
 
 @app.get("/db/test")

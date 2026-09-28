@@ -111,6 +111,34 @@ def _env_int(key: str, default: int) -> int:
         return default
 
 
+def _env_float(key: str, default: float) -> float:
+    try:
+        return float(os.getenv(key, str(default)))
+    except (TypeError, ValueError):
+        return default
+
+
+def torch_dtype_kwargs(dtype: str) -> Optional[Dict[str, Any]]:
+    """EMBEDDING_DTYPE 字符串 -> SentenceTransformer/CrossEncoder 的 model_kwargs。
+
+    留空返回 None（模型默认 fp32）；GPU 小显存可设 float16 / bfloat16 省一半显存。
+    返回 {"torch_dtype": torch.float16} 这类字典，直接传给 model_kwargs。
+    """
+    if not dtype:
+        return None
+    import torch
+
+    mapping = {
+        "float16": torch.float16,
+        "fp16": torch.float16,
+        "bfloat16": torch.bfloat16,
+        "bf16": torch.bfloat16,
+    }
+    if dtype not in mapping:
+        raise ValueError(f"不支持的 EMBEDDING_DTYPE：{dtype}（支持 float16 / bfloat16）")
+    return {"torch_dtype": mapping[dtype]}
+
+
 @dataclass
 class Config:
     # ---- 千问（DashScope OpenAI 兼容接口）----
@@ -133,13 +161,15 @@ class Config:
     chunk_token_size: int = 1200
     chunk_overlap: int = 100
 
-    # ---- 向量嵌入（BGE）----
+    # ---- 向量嵌入（Qwen3-Embedding，本地开源，无需 key）----
     embedding_backend: str = "local"  # local（sentence-transformers 本地跑）/ api（OpenAI 兼容，如硅基流动）
-    embedding_model: str = "BAAI/bge-m3"  # 中文可选 BAAI/bge-large-zh-v1.5 / bge-small-zh-v1.5
+    embedding_model: str = "Qwen/Qwen3-Embedding-0.6B"  # 对齐师兄 LogisticsKG；本地开源模型，无需 key
     embedding_api_key: str = ""  # api 后端用（硅基流动 SiliconFlow，免费注册）
     embedding_base_url: str = "https://api.siliconflow.cn/v1"
     embedding_dim: int = 0  # 0 = 自动（local 自动检测；api 后端建议手动填 1024）
     embedding_batch_size: int = 32
+    embedding_device: str = "cpu"  # local 模型设备：cpu（默认，避开 4GB 小显存 OOM）/ cuda
+    embedding_dtype: str = ""  # local 模型精度：留空=fp32；GPU 小显存可设 float16 / bfloat16 省显存
     hf_endpoint: str = "https://hf-mirror.com"  # HuggingFace 国内镜像；置空则用官方源
 
     # ---- 多模态描述开关 ----
@@ -155,6 +185,26 @@ class Config:
     vector_index_dir: Path = Path("./output/.rag_index")
     graph_index_dir: Path = Path("./output/.graphrag_index")
     graph_path: Path = Path("./output/merged_graph.json")
+
+    # ---- 检索 ----
+    top_k: int = 4            # 文档向量检索返回片段数（师兄 rag.top_k）
+    bm25_weight: float = 0.3  # 向量检索 BM25 权重（师兄 rag.bm25_weight）
+    entity_top_k: int = 8     # 图谱实体链接命中数（师兄 graphrag.entity_top_k）
+    context_depth: int = 2    # 子图扩展跳数（师兄 graphrag.context_depth）
+    max_triples: int = 40     # 最多返回三元组数（师兄 graphrag.max_triples）
+
+    # ---- 重排（检索后、生成前，cross-encoder）----
+    rerank_enabled: bool = True
+    rerank_model: str = "Qwen/Qwen3-Reranker-0.6B"  # 对齐师兄；本地开源重排模型，无需 key
+    rerank_top_k: int = 4
+
+    # ---- 生成（最终答案）----
+    gen_temperature: float = 0.7  # 生成温度（对齐师兄默认 0.7；.env 用 GEN_TEMPERATURE 可调）
+
+    # ---- 图谱构建（init 建库时，实体/关系抽取）----
+    graph_build_enabled: bool = True    # 建库时是否抽取实体/关系生成 merged_graph.json
+    kg_chunk_size: int = 16384          # KG 抽取分块字符数（对齐师兄 16384）
+    graph_dedup_threshold: float = 0.95 # 实体语义去重相似度阈值（semhash，对齐师兄）
 
     # ---- 数据库 ----
     db_type: str = "none"  # none / milvus / chroma / mysql / postgresql
@@ -190,13 +240,15 @@ class Config:
             chunk_token_size=_env_int("CHUNK_TOKEN_SIZE", 1200),
             chunk_overlap=_env_int("CHUNK_OVERLAP", 100),
             embedding_backend=os.getenv("EMBEDDING_BACKEND", "local").strip().lower(),
-            embedding_model=os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3"),
+            embedding_model=os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-0.6B"),
             embedding_api_key=os.getenv("EMBEDDING_API_KEY", ""),
             embedding_base_url=os.getenv(
                 "EMBEDDING_BASE_URL", "https://api.siliconflow.cn/v1"
             ),
             embedding_dim=_env_int("EMBEDDING_DIM", 0),
             embedding_batch_size=_env_int("EMBEDDING_BATCH_SIZE", 32),
+            embedding_device=os.getenv("EMBEDDING_DEVICE", "cpu").strip().lower(),
+            embedding_dtype=os.getenv("EMBEDDING_DTYPE", "").strip().lower(),
             hf_endpoint=os.getenv("HF_ENDPOINT", "https://hf-mirror.com"),
             enable_image_description=_env_bool("ENABLE_IMAGE_DESCRIPTION", True),
             enable_table_summary=_env_bool("ENABLE_TABLE_SUMMARY", True),
@@ -206,6 +258,18 @@ class Config:
             vector_index_dir=Path(os.getenv("VECTOR_INDEX_DIR", "./output/.rag_index")),
             graph_index_dir=Path(os.getenv("GRAPH_INDEX_DIR", "./output/.graphrag_index")),
             graph_path=Path(os.getenv("GRAPH_PATH", "./output/merged_graph.json")),
+            top_k=_env_int("TOP_K", 4),
+            bm25_weight=_env_float("BM25_WEIGHT", 0.3),
+            entity_top_k=_env_int("ENTITY_TOP_K", 8),
+            context_depth=_env_int("CONTEXT_DEPTH", 2),
+            max_triples=_env_int("MAX_TRIPLES", 40),
+            rerank_enabled=_env_bool("RERANK_ENABLED", True),
+            rerank_model=os.getenv("RERANK_MODEL", "Qwen/Qwen3-Reranker-0.6B"),
+            rerank_top_k=_env_int("RERANK_TOP_K", 4),
+            gen_temperature=_env_float("GEN_TEMPERATURE", 0.7),
+            graph_build_enabled=_env_bool("GRAPH_BUILD_ENABLED", True),
+            kg_chunk_size=_env_int("KG_CHUNK_SIZE", 16384),
+            graph_dedup_threshold=_env_float("GRAPH_DEDUP_THRESHOLD", 0.95),
             db_type=os.getenv("DB_TYPE", "none").strip().lower(),
             milvus_uri=os.getenv("MILVUS_URI", "http://localhost:19530"),
             milvus_token=os.getenv("MILVUS_TOKEN", ""),

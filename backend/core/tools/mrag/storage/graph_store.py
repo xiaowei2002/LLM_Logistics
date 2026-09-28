@@ -33,6 +33,7 @@ import numpy as np
 from core.tools.mrag.utils.utils import config, logger
 from core.tools.mrag.storage.vector_store import char_bigrams, _BM25Okapi
 
+
 class GraphStore:
     """知识图谱存储：加载 merged_graph.json，做实体链接 + 子图检索。"""
 
@@ -60,7 +61,7 @@ class GraphStore:
         self.context_depth = context_depth
         self.max_triples = max_triples
         self._embedder = embedder
-        self._graph: Optional[nx.DiGraph] = None
+        self._graph: Optional[nx.MultiDiGraph] = None
         self._nodes: List[str] = []
         self._node_vectors: Optional[np.ndarray] = None
         self._bm25: Optional[_BM25Okapi] = None
@@ -73,15 +74,15 @@ class GraphStore:
         return self._embedder
 
     # ---- 图谱加载 ----
-    def load_graph(self) -> nx.DiGraph:
-        """加载 merged_graph.json 为 networkx 有向图（边属性 relation）。"""
+    def load_graph(self) -> nx.MultiDiGraph:
+        """加载 merged_graph.json 为 networkx 有向多重图（边属性 relation，支持平行边）。"""
         if not self.graph_path.is_file():
             raise FileNotFoundError(
                 f"知识图谱不存在：{self.graph_path}（请先运行图谱构建管线，或改用向量检索 VectorStore）"
             )
         with self.graph_path.open("r", encoding="utf-8") as f:
             data = json.load(f)
-        graph = nx.DiGraph()
+        graph = nx.MultiDiGraph()
         graph.add_nodes_from(data.get("entities", []))
         for subject, relation, target in data.get("relations", []):
             graph.add_node(subject)
@@ -171,15 +172,19 @@ class GraphStore:
                 continue
             neighbors: List[Tuple[str, bool]] = [(s, True) for s in self._graph.successors(node)]
             neighbors += [(p, False) for p in self._graph.predecessors(node)]
+            score = entity_scores.get(node, 0.0)
             for neighbor, is_successor in neighbors:
-                if is_successor:
-                    rel = self._graph[node][neighbor]["relation"]
-                    triple = (node, rel, neighbor)
-                else:
-                    rel = self._graph[neighbor][node]["relation"]
-                    triple = (neighbor, rel, node)
-                score = entity_scores.get(node, 0.0)
-                triples[triple] = max(triples.get(triple, 0.0), score)
+                # MultiDiGraph：同一对 (s, o) 可能有多条不同谓词的平行边，逐条取出
+                edge_dict = (
+                    self._graph[node][neighbor]
+                    if is_successor
+                    else self._graph[neighbor][node]
+                )
+                s, o = (node, neighbor) if is_successor else (neighbor, node)
+                for key in edge_dict:
+                    rel = edge_dict[key]["relation"]
+                    triple = (s, rel, o)
+                    triples[triple] = max(triples.get(triple, 0.0), score)
                 if neighbor not in visited:
                     visited.add(neighbor)
                     entity_scores.setdefault(neighbor, score * 0.5)
