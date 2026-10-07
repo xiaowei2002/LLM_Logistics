@@ -1,17 +1,18 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { Collection, Delete, Fold, Plus, Search, Share, SwitchButton, Tools, TrendCharts } from '@element-plus/icons-vue'
+import { Collection, Delete, Fold, Plus, Search, SetUp, Share, SwitchButton, Tools, TrendCharts } from '@element-plus/icons-vue'
 
 import { useAuthStore } from '@/stores/auth'
 import { useChatStore } from '@/stores/chat'
 
-const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph', 'open-forecast', 'open-knowledge'])
+const emit = defineEmits(['new-chat', 'select', 'delete', 'logout', 'collapse', 'open-settings', 'open-graph', 'open-forecast', 'open-knowledge', 'open-scheduling'])
 
 /* 用户菜单：command 名 → 抛给父组件的事件名 */
 const MENU_EVENTS = {
   settings: 'open-settings',
   graph: 'open-graph',
   forecast: 'open-forecast',
+  scheduling: 'open-scheduling',
   knowledge: 'open-knowledge',
 }
 
@@ -129,6 +130,7 @@ function toggleSearch() {
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item command="forecast" :icon="TrendCharts">需求预测</el-dropdown-item>
+            <el-dropdown-item command="scheduling" :icon="SetUp">调度与计算卸载</el-dropdown-item>
             <el-dropdown-item command="knowledge" :icon="Collection">知识库</el-dropdown-item>
             <el-dropdown-item command="graph" :icon="Share">知识图谱</el-dropdown-item>
             <el-dropdown-item command="settings" :icon="Tools">系统设置</el-dropdown-item>

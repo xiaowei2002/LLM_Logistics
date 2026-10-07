@@ -227,6 +227,7 @@ function handleLogout() {
       @open-settings="settingsOpen = true"
       @open-graph="router.push('/graph')"
       @open-forecast="router.push('/forecast')"
+      @open-scheduling="router.push('/scheduling-offloading')"
       @open-knowledge="router.push('/knowledge')"
     />
 
