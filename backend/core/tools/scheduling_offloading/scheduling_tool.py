@@ -10,7 +10,12 @@ from core.agents.scheduling_offloading_agent import SchedulingOffloadingAgent
 
 class SchedulingOffloadingInput(BaseModel):
     seed: int = Field(default=41055, ge=0, description="仿真场景随机种子")
-    number_of_jobs: int = Field(default=20, ge=1, le=100, description="仿真工件数量")
+    number_of_jobs: int = Field(
+        default=20,
+        ge=20,
+        le=20,
+        description="联合 MAPPO 检查点固定使用 20 个仿真工件",
+    )
 
 
 @tool("run_scheduling_offloading", args_schema=SchedulingOffloadingInput)

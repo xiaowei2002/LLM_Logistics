@@ -21,12 +21,18 @@ ENGINE_OPTIONS = {
     "demo": "使用内置演示数据检查软件流程",
 }
 ALGORITHM_OPTIONS = {
-    "midterm": "联合调度与计算卸载策略",
+    "midterm": "路由与计算卸载联合 MAPPO（固定 SPT）",
     "rolling_ga": "滚动时域遗传算法",
     "rolling_nsga2": "滚动时域 NSGA-II",
 }
 
+DEFAULT_MAPPO_CHECKPOINT = DEFAULT_RESEARCH_ROOT / (
+    "results/event_mappo/"
+    "event_candidate_mappo_cross_v4_route_offload_jobs20_ep600_s2031.pt"
+)
+
 _ENGINE_LOCK = threading.Lock()
+_MAPPO_CACHE: dict[str, Any] = {}
 
 
 def _jsonable(value: Any) -> Any:
@@ -137,6 +143,83 @@ def _replay_decisions(module, seed: int, jobs: int, trace: list[int]):
     return [dict(item) for item in env.shop.decision_history]
 
 
+def _run_joint_mappo(seed: int, jobs: int) -> tuple[dict[str, Any], list[int], dict[str, Any]]:
+    """Run the report's deterministic routing+offloading MAPPO checkpoint."""
+    import torch
+
+    checkpoint_path = Path(
+        os.getenv("SCHEDULING_MAPPO_CHECKPOINT", str(DEFAULT_MAPPO_CHECKPOINT))
+    ).expanduser().resolve()
+    if not checkpoint_path.is_file():
+        raise FileNotFoundError(
+            f"未找到联合 MAPPO 模型：{checkpoint_path}；"
+            "可通过 SCHEDULING_MAPPO_CHECKPOINT 配置。"
+        )
+
+    cache_key = str(checkpoint_path)
+    cached = _MAPPO_CACHE.get(cache_key)
+    if cached is None:
+        module = importlib.import_module("train_event_candidate_mappo_dual")
+        checkpoint = torch.load(
+            checkpoint_path, map_location="cpu", weights_only=False
+        )
+        model = module.DualCandidateMAPPO(
+            checkpoint["base_dim"],
+            checkpoint["entity_counts"],
+            separate_actor_heads=checkpoint.get("separate_actor_heads", False),
+            independent_actors=checkpoint.get("independent_actors", False),
+            sequencing_action_q=checkpoint.get("sequencing_action_q", False),
+            relational_routing_actor=checkpoint.get(
+                "relational_routing_actor", False
+            ),
+        )
+        model.load_state_dict(checkpoint["network"])
+        model.eval()
+        cached = (module, checkpoint, model)
+        _MAPPO_CACHE[cache_key] = cached
+
+    module, checkpoint, model = cached
+    model_jobs = int(checkpoint["jobs"])
+    if jobs != model_jobs:
+        raise ValueError(
+            f"当前联合 MAPPO 模型固定支持 {model_jobs} 个工件，"
+            f"收到 {jobs} 个；请使用 20 工件场景。"
+        )
+
+    args = checkpoint.get("args", {})
+    rows, metrics, episode_return = module.collect_dual_episode(
+        model=model,
+        device=torch.device("cpu"),
+        seed=seed,
+        jobs=jobs,
+        scales=checkpoint["common_scales"],
+        max_actions=int(checkpoint["max_actions"]),
+        entity_state=checkpoint.get("entity_counts") is not None,
+        deterministic=True,
+        learned_roles=checkpoint.get("learned_roles"),
+        gate_sequencing=bool(args.get("gate_sequencing", False)),
+        gate_margin=float(args.get("gate_margin", 1.0)),
+        reward_variant=str(args.get("reward_variant", "cross_v4")),
+        routing_downstream_features=bool(
+            args.get("routing_downstream_features", False)
+        ),
+        routing_relations=bool(args.get("routing_relations", False)),
+    )
+    trace = [int(row["action"]) for row in rows]
+    diagnostics = {
+        "policy": "MAPPO_ROUTING_OFFLOADING+SPT",
+        "checkpoint": checkpoint_path.name,
+        "checkpoint_training_seed": args.get("seed"),
+        "best_episode": checkpoint.get("best_episode"),
+        "best_validation_return": checkpoint.get("best_return"),
+        "learned_roles": list(checkpoint.get("learned_roles") or ()),
+        "decision_count": len(trace),
+        "episode_return": float(episode_return),
+        "inference_device": "cpu",
+    }
+    return metrics, trace, diagnostics
+
+
 def _research_result(payload: dict[str, Any]) -> dict[str, Any]:
     seed = int(payload["seed"])
     jobs = int(payload["number_of_jobs"])
@@ -148,8 +231,7 @@ def _research_result(payload: dict[str, Any]) -> dict[str, Any]:
     })
     try:
         if algorithm == "midterm":
-            metrics, trace = module.run_teacher(seed, jobs)
-            diagnostics = {"decision_count": len(trace), "policy": "EA+SPT+RISK_GREEDY"}
+            metrics, trace, diagnostics = _run_joint_mappo(seed, jobs)
         else:
             config = module.PlannerConfig(
                 algorithm="ga" if algorithm == "rolling_ga" else "nsga2",

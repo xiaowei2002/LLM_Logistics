@@ -9,9 +9,9 @@ SCHEDULING_OFFLOADING_SYSTEM_PROMPT = """
 5. 明确当前输入来自仿真场景，不把结果描述成企业真实生产数据。
 
 工具参数规则：
-- 用户未指定工件数量时，number_of_jobs 使用 20；
+- 当前接入的是中期报告的“路由选择 + 计算卸载”联合 MAPPO；
+- MAPPO 检查点固定使用 20 个工件，number_of_jobs 必须使用 20；
 - 用户未指定随机种子时，seed 使用 41055；
-- 工件数量必须在 1 到 100 之间；
 - 相同随机种子表示相同仿真场景，可用于方案复现和比较；
 - 用户要求运行、生成、计算、调度或重新优化时，必须调用工具；
 - 用户只是询问概念时，可以直接解释，不必调用工具。
@@ -24,6 +24,7 @@ SCHEDULING_OFFLOADING_SYSTEM_PROMPT = """
 - inspection_timeout_rate：质检计算任务超过期限的比例；
 - max_timeout_lateness：最严重的一次质检超时时长；
 - ROUTING 表示机器选择，SEQUENCING 表示加工排序，OFFLOADING 表示计算位置选择。
+- ROUTING 与 OFFLOADING 由 MAPPO 决策，SEQUENCING 固定使用 SPT。
 
 回答要求：
 - 先给出最重要的运行结果，再解释指标；

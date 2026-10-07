@@ -122,11 +122,11 @@ function reset() {
       <div class="flow-inner">
         <section v-if="showConfig" class="config-card">
           <div class="card-heading">
-            <div><b>场景参数</b><span>设置本次仿真的工件规模和随机场景</span></div>
-            <el-tag size="small" effect="plain">仿真数据</el-tag>
+            <div><b>场景参数</b><span>当前联合 MAPPO 模型固定使用20个工件，可更换随机场景</span></div>
+            <el-tag size="small" type="primary" effect="plain">联合 MAPPO</el-tag>
           </div>
           <div class="form-grid">
-            <el-form-item label="工件数量"><el-input-number v-model="form.number_of_jobs" :min="1" :max="100" /></el-form-item>
+            <el-form-item label="工件数量"><el-input-number v-model="form.number_of_jobs" disabled /></el-form-item>
             <el-form-item label="随机种子"><el-input-number v-model="form.seed" :min="0" :controls="false" /></el-form-item>
             <div class="run-cell"><el-button type="primary" :icon="VideoPlay" :loading="loading" @click="runConfiguredScene">生成调度方案</el-button></div>
           </div>
@@ -149,7 +149,7 @@ function reset() {
 
         <section v-if="result" class="result-block">
           <div class="result-head">
-            <div class="result-status"><span></span><b>方案计算完成</b><small>{{ result.elapsed_seconds }} 秒</small></div>
+            <div class="result-status"><span></span><b>联合 MAPPO 计算完成</b><small>{{ result.elapsed_seconds }} 秒</small></div>
             <code>{{ result.run_id?.slice(0, 8) }}</code>
           </div>
           <el-alert v-for="warning in result.warnings" :key="warning" class="warning" :title="warning" type="warning" show-icon :closable="false" />
@@ -193,7 +193,7 @@ function reset() {
             <button @click="fillSample('为20个工件运行联合调度，并解释质检超时情况。')"><b>分析质检超时</b><span>计算方案并解释关键指标</span></button>
             <button @click="fillSample('什么是生产调度与计算卸载的耦合？')"><b>了解决策原理</b><span>先解释问题，不运行算法</span></button>
           </div>
-          <button class="config-link" @click="showConfig = true">需要指定工件数量或随机种子？打开场景参数</button>
+          <button class="config-link" @click="showConfig = true">需要更换随机场景？打开场景参数</button>
         </section>
       </div>
     </main>
