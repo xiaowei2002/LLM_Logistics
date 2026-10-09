@@ -14,3 +14,9 @@ wheels/
 # 运行时数据（网页端保存的 LLM 配置覆盖值）
 backend/data/
 
+# RAG 运行时产物：上传的原始文档 / 解析中间结果 / 日志 / 本地向量库
+uploads/
+output/
+logs/
+chroma_db/
+

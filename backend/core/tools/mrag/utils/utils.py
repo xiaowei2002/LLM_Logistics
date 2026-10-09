@@ -10,7 +10,7 @@
   - test_db_connection()：测试数据库连接（Milvus / Chroma / MySQL / PostgreSQL，可配置切换）
 
 用法：
-    from utils import config, logger, test_db_connection
+    from core.tools.mrag.utils.utils import config, logger, test_db_connection
     logger.info("模型：{}", config.vl_model)
     result = test_db_connection()   # -> {"ok": bool, "type": ..., "message": ...}
 ==========================================================================
@@ -111,6 +111,20 @@ def _env_int(key: str, default: int) -> int:
         return default
 
 
+def _saved_api_key() -> str:
+    """网页「系统设置」里保存的 API Key（backend/data/api_key.json）。
+
+    与 chat.py / demand_forecast.py 保持一致：设置页保存的 Key 优先于 .env。
+    注意本配置在进程启动时只读一次，改完 Key 需要重启 RAG 服务才生效。
+    """
+    try:
+        from core.llm.api_key_store import load_api_key
+
+        return load_api_key()
+    except Exception:  # noqa: BLE001
+        return ""
+
+
 @dataclass
 class Config:
     # ---- 千问（DashScope OpenAI 兼容接口）----
@@ -150,6 +164,11 @@ class Config:
     # ---- 目录 ----
     output_dir: Path = Path("./output")
     upload_dir: Path = Path("./uploads")
+
+    # ---- 向量 / 知识图谱存储（文件式，师兄 rag.py / graphrag.py 方案）----
+    vector_index_dir: Path = Path("./output/.rag_index")
+    graph_index_dir: Path = Path("./output/.graphrag_index")
+    graph_path: Path = Path("./output/merged_graph.json")
 
     # ---- 数据库 ----
     db_type: str = "none"  # none / milvus / chroma / mysql / postgresql
@@ -198,6 +217,9 @@ class Config:
             enable_equation_summary=_env_bool("ENABLE_EQUATION_SUMMARY", True),
             output_dir=Path(os.getenv("OUTPUT_DIR", "./output")),
             upload_dir=Path(os.getenv("UPLOAD_DIR", "./uploads")),
+            vector_index_dir=Path(os.getenv("VECTOR_INDEX_DIR", "./output/.rag_index")),
+            graph_index_dir=Path(os.getenv("GRAPH_INDEX_DIR", "./output/.graphrag_index")),
+            graph_path=Path(os.getenv("GRAPH_PATH", "./output/merged_graph.json")),
             db_type=os.getenv("DB_TYPE", "none").strip().lower(),
             milvus_uri=os.getenv("MILVUS_URI", "http://localhost:19530"),
             milvus_token=os.getenv("MILVUS_TOKEN", ""),
@@ -213,6 +235,13 @@ class Config:
 
 
 config = Config.from_env()  # 单例，全项目共享
+
+# 网页「系统设置」保存的 Key 优先于 .env，与 chat.py / demand_forecast.py 保持一致。
+# 必须放在 Config 构建之后：导入 core.llm 会连带执行其 load_dotenv(override=True)，
+# 若在读配置之前导入，.env 会反过来覆盖命令行传入的环境变量（如 PARSER_BACKEND）。
+_saved_key = _saved_api_key()
+if _saved_key:
+    config.openai_api_key = _saved_key
 
 # 确保常用目录存在
 config.output_dir.mkdir(parents=True, exist_ok=True)
