@@ -1,6 +1,6 @@
 """
 数据读取智能体
-通过 MCP 连接 mysql-mcp-server，使用 SQL 读取 ERP/WMS 数据。
+通过MCP连接 mysql-mcp-server，使用 SQL 读取 ERP/WMS 数据。
 """
 from pathlib import Path
 

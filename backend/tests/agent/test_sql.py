@@ -25,19 +25,19 @@ class SQLAgentTest(unittest.IsolatedAsyncioTestCase):
 
     async def test_prompt_loaded_from_yaml(self):
         agent = self._make_agent()
-        self.assertTrue(agent._system_prompt)
-        self.assertIn("数据读取专家", agent._system_prompt)
-        self.assertIn("list_tables", agent._system_prompt)
+        self.assertTrue(agent.system_prompt)
+        self.assertIn("数据读取专家", agent.system_prompt)
+        self.assertIn("list_tables", agent.system_prompt)
 
     async def test_ensure_agent_builds_once(self):
         agent = self._make_agent()
-        agent._mcp = MagicMock()
-        agent._mcp.get_tools = AsyncMock(return_value=[])
+        agent.mcp = MagicMock()
+        agent.mcp.get_tools = AsyncMock(return_value=[])
 
         fake_agent = MagicMock()
         with patch("core.agents.sql_agent.create_agent", return_value=fake_agent) as mock_create:
-            first = await agent._ensure_agent()
-            second = await agent._ensure_agent()
+            first = await agent.ensure_agent()
+            second = await agent.ensure_agent()
 
         self.assertIs(first, fake_agent)
         self.assertIs(second, fake_agent)
@@ -46,7 +46,7 @@ class SQLAgentTest(unittest.IsolatedAsyncioTestCase):
         _, kwargs = mock_create.call_args
         self.assertIs(kwargs["model"], agent.client.model)
         self.assertEqual(kwargs["tools"], [])
-        self.assertEqual(kwargs["system_prompt"], agent._system_prompt)
+        self.assertEqual(kwargs["system_prompt"], agent.system_prompt)
 
     async def test_query_returns_last_message_content(self):
         agent = self._make_agent()
@@ -57,7 +57,7 @@ class SQLAgentTest(unittest.IsolatedAsyncioTestCase):
         fake_agent = MagicMock()
         fake_agent.ainvoke = AsyncMock(return_value={"messages": [message]})
 
-        with patch.object(agent, "_ensure_agent", new=AsyncMock(return_value=fake_agent)):
+        with patch.object(agent, "ensure_agent", new=AsyncMock(return_value=fake_agent)):
             result = await agent.query("近7天有多少出库记录")
 
         self.assertEqual(result, "共有 1,284 条出库记录")
@@ -69,7 +69,7 @@ class SQLAgentTest(unittest.IsolatedAsyncioTestCase):
         fake_agent = MagicMock()
         fake_agent.ainvoke = AsyncMock(return_value={"messages": []})
 
-        with patch.object(agent, "_ensure_agent", new=AsyncMock(return_value=fake_agent)):
+        with patch.object(agent, "ensure_agent", new=AsyncMock(return_value=fake_agent)):
             result = await agent.query("随便问")
 
         self.assertEqual(result, "")
