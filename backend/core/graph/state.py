@@ -30,20 +30,17 @@ class LogisticsAgentState(TypedDict, total=False):
     # sql_report / cleaning_report / forecast_report
     task_mode: str
 
-    # 当前正在执行或最后执行的 Agent
+    # 当前正在执行或最后执行的 Agent / Gate
     current_agent: str | None
 
     # ======================================================
     # 2. 数据来源
     # ======================================================
 
-    # 原始数据文件路径。
-    # 适用于 CSV / Excel 等文件型任务。
+    # 原始数据文件路径
     data_file_path: str | None
 
-    # 数据清洗后文件路径。
-    # CleaningAgent 当前主要通过 MCP 将结果落盘，
-    # 这里预留给后续 Adapter 提取并保存。
+    # CleaningAgent 实际落盘后的数据文件路径
     cleaned_file_path: str | None
 
     # ======================================================
@@ -62,17 +59,33 @@ class LogisticsAgentState(TypedDict, total=False):
     cleaning_status: str | None
     cleaning_error: str | None
 
+    # Cleaning Quality Gate 的确定性检查结果
+    cleaning_quality: dict[str, Any] | None
+
+    # success / error / needs_human_input
+    cleaning_quality_status: str | None
+
+    cleaning_quality_error: str | None
+
+    # 大比例删行是否已经得到人工确认
+    #
+    # False / 未设置：
+    #     删除率 > 10% 时进入 HITL
+    #
+    # True：
+    #     已获得用户或业务方明确确认，
+    #     Quality Gate 可放行“大比例删除”这一项风险。
+    cleaning_large_deletion_approved: bool
+
     # ======================================================
     # 5. Demand Forecast
     # ======================================================
 
-    # DemandForecastAgent.invoke() 返回完整 dict。
     forecast_result: dict[str, Any] | None
 
     forecast_status: str | None
     forecast_error: str | None
 
-    # 预测 Agent 内部使用的 thread_id。
     forecast_thread_id: str | None
 
     # ======================================================
@@ -88,7 +101,12 @@ class LogisticsAgentState(TypedDict, total=False):
     # ======================================================
 
     needs_human_input: bool
+
+    # 例如：
+    # missing_time
+    # large_deletion
     human_reason: str | None
+
     human_question: str | None
 
     # ======================================================
@@ -98,9 +116,7 @@ class LogisticsAgentState(TypedDict, total=False):
     # running / completed / failed / needs_human_input
     status: str
 
-    # 保存实际执行过的 Agent，
-    # 后续系统评估时可直接检查执行轨迹。
-
+    # 保存实际执行过的 Agent / Gate
     execution_trace: Annotated[
         list[str],
         operator.add,
