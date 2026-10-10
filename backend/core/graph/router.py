@@ -1,13 +1,17 @@
+
 """
 物流多智能体工作流确定性路由。
 
-第一版不使用 LLM Supervisor，
-避免路由随机性影响系统功能验证和后续评估。
+支持：
+1. SQL -> Report
+2. 旧版 Cleaning -> Quality Gate -> Report
+3. 安全 Cleaning：
+   Precheck -> Restricted Cleaning -> Quality Gate
+4. 安全 Cleaning 事后 HITL 恢复：
+   Resume Validation -> Quality Gate
+5. Forecast -> Report
 
-Cleaning HITL 场景下：
-如果大比例删行已经获得人工确认，
-则从 START 直接重新进入 Cleaning Quality Gate，
-不重复执行 CleaningAgent。
+不使用 LLM Supervisor。
 """
 
 from __future__ import annotations
@@ -18,6 +22,7 @@ from core.graph.state import LogisticsAgentState
 VALID_TASK_MODES = {
     "sql_report",
     "cleaning_report",
+    "cleaning_safe_report",
     "forecast_report",
 }
 
@@ -25,34 +30,30 @@ VALID_TASK_MODES = {
 def route_from_start(
     state: LogisticsAgentState,
 ) -> str:
-    """
-    根据显式 task_mode 选择第一个执行节点。
-
-    Cleaning HITL 恢复逻辑：
-
-    cleaning_report
-    + cleaned_file_path 已存在
-    + cleaning_large_deletion_approved=True
-
-    → 直接重新进入 cleaning_quality
-
-    这样人工确认后不会再次调用 CleaningAgent，
-    避免 LLM 二次清洗产生不同结果。
-    """
-
     task_mode = str(
-        state.get(
-            "task_mode",
-            "",
-        )
-        or ""
+        state.get("task_mode", "") or ""
     ).strip()
 
     if task_mode == "sql_report":
         return "sql"
 
-    if task_mode == "cleaning_report":
+    if task_mode == "cleaning_safe_report":
+        # 声明已经获得事后批准时，
+        # 必须先进入专用恢复验证节点。
+        # 即使恢复证据缺失，也不能跳回普通清洗。
+        post_approved = (
+            state.get(
+                "cleaning_large_deletion_approved"
+            ) is True
+        )
 
+        if post_approved:
+            return "cleaning_resume"
+
+        return "cleaning_precheck"
+
+    if task_mode == "cleaning_report":
+        # 旧模式保持现有行为，供回归测试兼容。
         approved = bool(
             state.get(
                 "cleaning_large_deletion_approved",
@@ -62,10 +63,8 @@ def route_from_start(
 
         cleaned_file_path = str(
             state.get(
-                "cleaned_file_path",
-                "",
-            )
-            or ""
+                "cleaned_file_path", ""
+            ) or ""
         ).strip()
 
         if approved and cleaned_file_path:
@@ -83,21 +82,11 @@ def route_after_agent(
     state: LogisticsAgentState,
 ) -> str:
     """
-    Agent / Gate 执行后的统一路由。
-
-    - running:
-        进入下一个正常节点
-
-    - needs_human_input:
-        当前外层流程暂停，由调用方处理人工确认
-
-    - failed:
-        终止
+    running -> 正常继续
+    needs_human_input -> 暂停
+    其他状态 -> 失败
     """
-
-    status = state.get(
-        "status"
-    )
+    status = state.get("status")
 
     if status == "running":
         return "report"

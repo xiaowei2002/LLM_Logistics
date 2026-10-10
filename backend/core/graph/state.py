@@ -1,9 +1,9 @@
+
 """
 物流多智能体系统统一状态。
 
-该 State 只负责在外层 LangGraph 中传递各专业 Agent 的结果，
-不改变 SQLAgent、CleaningAgent、DemandForecastAgent、
-ReportAgent 本身的内部实现。
+在保留原有专业 Agent 接口的基础上，
+增加清洗前审批、受限执行及审计字段。
 """
 
 from __future__ import annotations
@@ -16,8 +16,7 @@ class LogisticsAgentState(TypedDict, total=False):
     """
     外层多智能体工作流共享状态。
 
-    所有字段均为可选字段，只有对应 Agent 实际运行后
-    才会写入相应结果。
+    所有字段均为可选字段。
     """
 
     # ======================================================
@@ -26,21 +25,17 @@ class LogisticsAgentState(TypedDict, total=False):
 
     user_query: str
 
-    # 工作流模式：
-    # sql_report / cleaning_report / forecast_report
+    # sql_report / cleaning_report /
+    # cleaning_safe_report / forecast_report
     task_mode: str
 
-    # 当前正在执行或最后执行的 Agent / Gate
     current_agent: str | None
 
     # ======================================================
     # 2. 数据来源
     # ======================================================
 
-    # 原始数据文件路径
     data_file_path: str | None
-
-    # CleaningAgent 实际落盘后的数据文件路径
     cleaned_file_path: str | None
 
     # ======================================================
@@ -59,7 +54,41 @@ class LogisticsAgentState(TypedDict, total=False):
     cleaning_status: str | None
     cleaning_error: str | None
 
-    # Cleaning Quality Gate 的确定性检查结果
+    # ----------------------------------------------
+    # 清洗前只读检查
+    # ----------------------------------------------
+
+    cleaning_precheck: dict[str, Any] | None
+    cleaning_precheck_status: str | None
+    cleaning_precheck_error: str | None
+
+    # 保留旧字段以避免其他调用方读取时报错。
+    # 新安全流程不再信任这个布尔值。
+    cleaning_precheck_approved: bool
+
+    # ----------------------------------------------
+    # 操作级审批
+    # ----------------------------------------------
+
+    # 由只读检查生成的审批方案
+    cleaning_approval_proposal: dict[str, Any] | None
+
+    # 外部提交的具体审批记录
+    cleaning_approval: dict[str, Any] | None
+
+    # 审批内容验证结果
+    cleaning_approval_validation: dict[str, Any] | None
+
+    # ----------------------------------------------
+    # 受限清洗执行结果
+    # ----------------------------------------------
+
+    cleaning_execution: dict[str, Any] | None
+
+    # ----------------------------------------------
+    # Post-Cleaning Quality Gate
+    # ----------------------------------------------
+
     cleaning_quality: dict[str, Any] | None
 
     # success / error / needs_human_input
@@ -67,14 +96,7 @@ class LogisticsAgentState(TypedDict, total=False):
 
     cleaning_quality_error: str | None
 
-    # 大比例删行是否已经得到人工确认
-    #
-    # False / 未设置：
-    #     删除率 > 10% 时进入 HITL
-    #
-    # True：
-    #     已获得用户或业务方明确确认，
-    #     Quality Gate 可放行“大比例删除”这一项风险。
+    # 原有大比例删行事后 HITL 字段
     cleaning_large_deletion_approved: bool
 
     # ======================================================
@@ -102,11 +124,7 @@ class LogisticsAgentState(TypedDict, total=False):
 
     needs_human_input: bool
 
-    # 例如：
-    # missing_time
-    # large_deletion
     human_reason: str | None
-
     human_question: str | None
 
     # ======================================================
@@ -116,7 +134,6 @@ class LogisticsAgentState(TypedDict, total=False):
     # running / completed / failed / needs_human_input
     status: str
 
-    # 保存实际执行过的 Agent / Gate
     execution_trace: Annotated[
         list[str],
         operator.add,

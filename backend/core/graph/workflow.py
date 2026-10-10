@@ -1,14 +1,20 @@
+
 """
 物流多智能体外层 LangGraph Workflow。
 
-当前第一版采用确定性 task_mode 路由，
-用于验证已有专业 Agent 的协作能力和系统级执行流程。
+支持：
+- sql_report
+- cleaning_report
+- cleaning_safe_report
+- forecast_report
 
-Cleaning 链包含：
-CleaningAgent
--> Cleaning Quality Gate
--> Human-in-the-loop（必要时）
--> ReportAgent
+安全清洗首次执行：
+Precheck -> Restricted Cleaning -> Quality Gate -> Report
+
+安全清洗事后恢复：
+Resume Validation -> Quality Gate -> Report
+
+旧版 Cleaning 工作流保持兼容。
 """
 
 from __future__ import annotations
@@ -22,8 +28,17 @@ from langgraph.graph import (
     StateGraph,
 )
 
+from core.graph.nodes.cleaning_precheck_node import (
+    cleaning_precheck_node,
+)
 from core.graph.nodes.cleaning_quality_node import (
     cleaning_quality_node,
+)
+from core.graph.nodes.cleaning_resume_node import (
+    cleaning_resume_node,
+)
+from core.graph.nodes.restricted_cleaning_node import (
+    restricted_cleaning_node,
 )
 from core.graph.router import (
     route_after_agent,
@@ -43,10 +58,6 @@ NodeCallable = Callable[
 def _invalid_task_node(
     state: LogisticsAgentState,
 ) -> LogisticsAgentState:
-    """
-    处理不支持的 task_mode。
-    """
-
     return {
         "current_agent": None,
         "status": "failed",
@@ -54,11 +65,11 @@ def _invalid_task_node(
         "report_error": (
             "不支持的 task_mode。"
             "当前支持：sql_report、"
-            "cleaning_report、forecast_report。"
+            "cleaning_report、"
+            "cleaning_safe_report、"
+            "forecast_report。"
         ),
-        "execution_trace": [
-            "invalid"
-        ],
+        "execution_trace": ["invalid"],
     }
 
 
@@ -72,19 +83,7 @@ def build_logistics_workflow(
     """
     构建物流多智能体外层工作流。
 
-    Cleaning 正常流程：
-
-        Cleaning
-        -> Cleaning Quality
-        -> Report
-
-    Cleaning HITL 恢复：
-
-        START
-        -> Cleaning Quality
-        -> Report
-
-    人工确认后不会重新执行 CleaningAgent。
+    保留现有依赖注入接口。
     """
 
     workflow = StateGraph(
@@ -95,9 +94,21 @@ def build_logistics_workflow(
     # 1. 注册节点
     # ======================================================
 
+    workflow.add_node("sql", sql_node)
+
     workflow.add_node(
-        "sql",
-        sql_node,
+        "cleaning_precheck",
+        cleaning_precheck_node,
+    )
+
+    workflow.add_node(
+        "restricted_cleaning",
+        restricted_cleaning_node,
+    )
+
+    workflow.add_node(
+        "cleaning_resume",
+        cleaning_resume_node,
     )
 
     workflow.add_node(
@@ -126,7 +137,7 @@ def build_logistics_workflow(
     )
 
     # ======================================================
-    # 2. START 路由
+    # 2. START
     # ======================================================
 
     workflow.add_conditional_edges(
@@ -134,21 +145,59 @@ def build_logistics_workflow(
         route_from_start,
         {
             "sql": "sql",
+            "cleaning_precheck": "cleaning_precheck",
+            "cleaning_resume": "cleaning_resume",
             "cleaning": "cleaning",
-
-            # Cleaning HITL 获得人工确认后，
-            # 直接重新进入 Quality Gate。
-            "cleaning_quality": (
-                "cleaning_quality"
-            ),
-
+            "cleaning_quality": "cleaning_quality",
             "forecast": "forecast",
             "invalid": "invalid",
         },
     )
 
     # ======================================================
-    # 3. SQL 后
+    # 3. Precheck -> Restricted Executor
+    # ======================================================
+
+    workflow.add_conditional_edges(
+        "cleaning_precheck",
+        route_after_agent,
+        {
+            "report": "restricted_cleaning",
+            "needs_human_input": END,
+            "failed": END,
+        },
+    )
+
+    # ======================================================
+    # 4. Restricted Executor -> Quality Gate
+    # ======================================================
+
+    workflow.add_conditional_edges(
+        "restricted_cleaning",
+        route_after_agent,
+        {
+            "report": "cleaning_quality",
+            "needs_human_input": END,
+            "failed": END,
+        },
+    )
+
+    # ======================================================
+    # 5. 安全恢复 -> Quality Gate
+    # ======================================================
+
+    workflow.add_conditional_edges(
+        "cleaning_resume",
+        route_after_agent,
+        {
+            "report": "cleaning_quality",
+            "needs_human_input": END,
+            "failed": END,
+        },
+    )
+
+    # ======================================================
+    # 6. SQL -> Report
     # ======================================================
 
     workflow.add_conditional_edges(
@@ -162,26 +211,21 @@ def build_logistics_workflow(
     )
 
     # ======================================================
-    # 4. Cleaning 后
+    # 7. 旧版 Cleaning -> Quality Gate
     # ======================================================
 
     workflow.add_conditional_edges(
         "cleaning",
         route_after_agent,
         {
-            # Cleaning 成功不能直接报告，
-            # 必须进入 Quality Gate。
-            "report": (
-                "cleaning_quality"
-            ),
-
+            "report": "cleaning_quality",
             "needs_human_input": END,
             "failed": END,
         },
     )
 
     # ======================================================
-    # 5. Cleaning Quality Gate 后
+    # 8. Quality Gate -> Report / HITL / END
     # ======================================================
 
     workflow.add_conditional_edges(
@@ -189,17 +233,13 @@ def build_logistics_workflow(
         route_after_agent,
         {
             "report": "report",
-
-            # 大比例删行等需要人工确认时，
-            # 第一阶段先结束外层图并返回状态。
             "needs_human_input": END,
-
             "failed": END,
         },
     )
 
     # ======================================================
-    # 6. Forecast 后
+    # 9. Forecast -> Report
     # ======================================================
 
     workflow.add_conditional_edges(
@@ -213,17 +253,10 @@ def build_logistics_workflow(
     )
 
     # ======================================================
-    # 7. Report / Invalid 后结束
+    # 10. END
     # ======================================================
 
-    workflow.add_edge(
-        "report",
-        END,
-    )
-
-    workflow.add_edge(
-        "invalid",
-        END,
-    )
+    workflow.add_edge("report", END)
+    workflow.add_edge("invalid", END)
 
     return workflow.compile()
