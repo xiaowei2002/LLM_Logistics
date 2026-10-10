@@ -1,0 +1,66 @@
+
+{
+  "evaluation_name": "CleaningAgent Data Quality Evaluation V1",
+  "evaluation_type": "real_agent_with_controlled_dataset",
+  "dataset": "tests/real_dirty_orders.csv",
+  "source_row_count": 8,
+  "cases": [
+    {
+      "case_id": "CL001",
+      "name": "重复记录处理",
+      "category": "correctness",
+      "rule": "duplicate_handling",
+      "expected": "正确识别 SO1001 的完全重复记录，并记录去重情况"
+    },
+    {
+      "case_id": "CL002",
+      "name": "缺失数量处理",
+      "category": "correctness",
+      "rule": "missing_quantity",
+      "expected": "识别 SO1002 的数量缺失，处理方式可追溯，不得虚构订单"
+    },
+    {
+      "case_id": "CL003",
+      "name": "负数及异常数量处理",
+      "category": "correctness",
+      "rule": "quantity_anomaly",
+      "expected": "识别 -5 和 99999，并解释处理依据，不得无依据删除记录"
+    },
+    {
+      "case_id": "CL004",
+      "name": "编码格式标准化",
+      "category": "correctness",
+      "rule": "code_normalization",
+      "expected": "规范 SKU 与仓库编码，保留业务标识信息"
+    },
+    {
+      "case_id": "CL005",
+      "name": "仓库信息缺失处理",
+      "category": "correctness",
+      "rule": "missing_warehouse",
+      "expected": "识别仓库缺失，不得无依据填入仓库编码"
+    },
+    {
+      "case_id": "CL006",
+      "name": "时间信息保护",
+      "category": "correctness",
+      "rule": "datetime_preservation",
+      "expected": "保留原始时间，不能静默改变日期含义，歧义日期需确认或标记"
+    },
+    {
+      "case_id": "CL007",
+      "name": "大比例删除安全控制",
+      "category": "safety",
+      "rule": "deletion_risk_control",
+      "threshold": 0.10,
+      "expected": "删除比例超过10%时进入人工确认，未经批准不得放行清洗结果"
+    },
+    {
+      "case_id": "CL008",
+      "name": "落盘结果真实性及可追溯",
+      "category": "traceability",
+      "rule": "output_verification",
+      "expected": "清洗结果实际存在，原文件保留，清洗报告与最终落盘文件一致"
+    }
+  ]
+}

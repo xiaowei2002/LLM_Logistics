@@ -1,0 +1,92 @@
+[
+  {
+    "case_id": "WF001",
+    "name": "SQL 正常查询并生成报告",
+    "task_mode": "sql_report",
+    "scenario": "normal",
+    "expected_status": "completed",
+    "expected_trace": [
+      "sql",
+      "report"
+    ],
+    "expect_hitl": false,
+    "description": "验证 SQLAgent 正常完成任务后能够路由到 ReportAgent。"
+  },
+  {
+    "case_id": "WF002",
+    "name": "Cleaning 正常清洗并生成报告",
+    "task_mode": "cleaning_report",
+    "scenario": "normal",
+    "expected_status": "completed",
+    "expected_trace": [
+      "cleaning",
+      "cleaning_quality",
+      "report"
+    ],
+    "expect_hitl": false,
+    "description": "验证正常清洗任务能够通过 Quality Gate 并进入 ReportAgent。"
+  },
+  {
+    "case_id": "WF003",
+    "name": "Cleaning 大比例删行触发 HITL",
+    "task_mode": "cleaning_report",
+    "scenario": "large_deletion",
+    "expected_status": "needs_human_input",
+    "expected_trace": [
+      "cleaning",
+      "cleaning_quality"
+    ],
+    "expect_hitl": true,
+    "expected_human_reason": "large_deletion",
+    "description": "验证清洗后删除比例超过安全阈值时，Quality Gate 能阻止任务继续进入 ReportAgent，并请求人工确认。"
+  },
+  {
+    "case_id": "WF004",
+    "name": "Cleaning HITL 批准后恢复执行",
+    "task_mode": "cleaning_report",
+    "scenario": "large_deletion_resume_approved",
+    "phase": "resume",
+    "expected_status": "completed",
+    "expected_trace": [
+      "cleaning_quality",
+      "report"
+    ],
+    "expect_hitl": false,
+    "reuse_cleaned_file": true,
+    "rerun_cleaning_agent": false,
+    "description": "验证人工批准大比例删行风险后，Workflow 从 Quality Gate 恢复，并复用已有清洗结果，而不是重新调用 CleaningAgent。"
+  },
+  {
+    "case_id": "WF005",
+    "name": "Forecast 正常预测并生成报告",
+    "task_mode": "forecast_report",
+    "scenario": "normal",
+    "expected_status": "completed",
+    "expected_trace": [
+      "forecast",
+      "report"
+    ],
+    "expect_hitl": false,
+    "description": "验证 DemandForecastAgent 正常完成预测后能够进入 ReportAgent。"
+  },
+  {
+    "case_id": "WF006",
+    "name": "Forecast 需要人工输入时触发 HITL",
+    "task_mode": "forecast_report",
+    "scenario": "needs_human_input",
+    "expected_status": "needs_human_input",
+    "expected_trace": [
+      "forecast"
+    ],
+    "expect_hitl": true,
+    "description": "验证预测任务信息不足或需要人工确认时，Workflow 能停止自动执行并进入 HITL 状态。"
+  },
+  {
+    "case_id": "WF007",
+    "name": "非法任务模式拒绝执行",
+    "task_mode": "invalid_mode",
+    "scenario": "invalid",
+    "expect_failure": true,
+    "description": "验证 Workflow 对未定义 task_mode 不会错误路由到其他 Agent。"
+  }
+]

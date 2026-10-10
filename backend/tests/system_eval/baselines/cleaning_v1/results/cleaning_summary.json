@@ -1,0 +1,15 @@
+{
+  "evaluation_type": "offline_cleaning_quality",
+  "source_file": "D:\\DataScience_Study\\LLM_Logistics_system-eval\\backend\\tests\\real_dirty_orders.csv",
+  "cleaned_file": "D:\\DataScience_Study\\LLM_Logistics_system-eval\\backend\\tests\\system_eval\\data\\real_dirty_orders_cleaned.csv",
+  "source_rows": 8,
+  "cleaned_rows": 5,
+  "total_cases": 8,
+  "pass_count": 2,
+  "fail_count": 1,
+  "review_count": 5,
+  "decided_cases": 3,
+  "decided_case_pass_rate": 0.6667,
+  "overall_pass_rate": 0.25,
+  "note": "overall_pass_rate 仅表示全部用例中已确认通过的占比，不代表真实清洗准确率；REVIEW 不计为通过。"
+}
