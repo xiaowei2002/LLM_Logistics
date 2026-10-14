@@ -1,0 +1,73 @@
+
+{
+  "evaluation_id": "forecast_routing_v2",
+  "evaluation_type": "real_llm_mock_forecast_tools",
+  "forecast_timestamp": "2026-01-30 12:00:00",
+  "cases": [
+    {
+      "case_id": "FR001",
+      "name": "高精度预测",
+      "query": "请尽可能准确地预测2026-01-30 12:00:00之后未来两小时的物料需求。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "state_conditioned",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR002",
+      "name": "最终模型预测",
+      "query": "请使用最终State-Conditioned模型，预测2026-01-30 12:00:00之后两小时的物料需求。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "state_conditioned",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR003",
+      "name": "基线模型预测",
+      "query": "请使用baseline_sh基线模型，预测2026-01-30 12:00:00之后两小时的物料需求。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "baseline_sh",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR004",
+      "name": "仅状态模型预测",
+      "query": "请使用state_only状态Ridge模型，预测2026-01-30 12:00:00之后两小时的物料需求。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "state_only",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR005",
+      "name": "基线与最终模型比较",
+      "query": "请比较2026-01-30 12:00:00的baseline_sh基线模型和state_conditioned最终模型的需求预测结果。",
+      "expected_tool": "compare_demand_forecasts",
+      "expected_variant": null,
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR006",
+      "name": "补货场景需求预测",
+      "query": "为了制定补货计划，请使用高精度需求预测模型预测2026-01-30 12:00:00之后未来两小时的物料需求。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "state_conditioned",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR007",
+      "name": "AGV配送场景需求预测",
+      "query": "为后续AGV配送提供需求依据，请预测2026-01-30 12:00:00之后两小时的物料需求，优先使用最终模型。",
+      "expected_tool": "demand_forecast",
+      "expected_variant": "state_conditioned",
+      "expected_timestamp": "2026-01-30 12:00:00"
+    },
+    {
+      "case_id": "FR008",
+      "name": "缺少预测时刻",
+      "query": "请预测未来两小时的物料需求。",
+      "expected_tool": null,
+      "expected_variant": null,
+      "expected_timestamp": null,
+      "expected_interrupt_reason": "missing_time"
+    }
+  ]
+}

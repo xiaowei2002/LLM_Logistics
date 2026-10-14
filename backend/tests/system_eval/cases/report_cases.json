@@ -1,0 +1,114 @@
+
+{
+  "evaluation_id": "report_control_v1",
+  "evaluation_type": "real_report_node_mock_report_agent",
+  "description": "真实 Report Node 与模拟 ReportAgent 的受控评估，不评价真实 LLM 文本质量。",
+  "cases": [
+    {
+      "case_id": "RP001",
+      "name": "完全没有输入",
+      "scenario": "empty",
+      "expected_status": "error",
+      "expected_generate_calls": 0
+    },
+    {
+      "case_id": "RP002",
+      "name": "只有用户任务，没有上游结果",
+      "scenario": "query_only",
+      "expected_status": "error",
+      "expected_generate_calls": 0,
+      "risk_probe": true
+    },
+    {
+      "case_id": "RP003",
+      "name": "正常 SQL 结果传递",
+      "scenario": "sql_success",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "【数据查询结果】",
+        "SKU-001",
+        "42"
+      ]
+    },
+    {
+      "case_id": "RP004",
+      "name": "清洗结果与 Quality Gate 冲突",
+      "scenario": "cleaning_conflict",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "【CleaningAgent 清洗结果】",
+        "【Cleaning Quality Gate 确定性验证结果】",
+        "source_row_count",
+        "cleaned_row_count",
+        "removed_row_count",
+        "Cleaning Quality Gate 为准"
+      ]
+    },
+    {
+      "case_id": "RP005",
+      "name": "人工确认事实传递",
+      "scenario": "hitl_approved",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "【Human-in-the-loop 人工确认】",
+        "人工确认结果",
+        "12.5",
+        "large_deletion_detected"
+      ]
+    },
+    {
+      "case_id": "RP006",
+      "name": "预测自然语言结果传递",
+      "scenario": "forecast_answer",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "【需求预测结果】",
+        "M001",
+        "12.5"
+      ]
+    },
+    {
+      "case_id": "RP007",
+      "name": "上游异常必须传递",
+      "scenario": "upstream_error",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "【异常信息】",
+        "SQLAgent",
+        "连接失败"
+      ]
+    },
+    {
+      "case_id": "RP008",
+      "name": "空报告必须判错",
+      "scenario": "empty_report",
+      "expected_status": "error",
+      "expected_generate_calls": 1
+    },
+    {
+      "case_id": "RP009",
+      "name": "报告生成异常必须捕获",
+      "scenario": "generator_exception",
+      "expected_status": "error",
+      "expected_generate_calls": 1
+    },
+    {
+      "case_id": "RP010",
+      "name": "只有结构化预测证据但没有自然语言回答",
+      "scenario": "structured_forecast_only",
+      "expected_status": "success",
+      "expected_generate_calls": 1,
+      "must_include": [
+        "M001",
+        "17.5",
+        "state_conditioned"
+      ],
+      "risk_probe": true
+    }
+  ]
+}

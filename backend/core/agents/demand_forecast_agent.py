@@ -275,6 +275,72 @@ class DemandForecastAgent:
         # 最终 AI 回答
         # --------------------------------------------------
 
+        # ==================================================
+        # FC007：预测回答必须具有真实工具执行证据
+        # ==================================================
+        #
+        # 不能仅凭 LLM 返回自然语言答案，
+        # 就认定需求预测任务已经成功。
+        #
+        # 本校验只认可：
+        # 1. 实际存在 ToolMessage；
+        # 2. 工具名属于允许的预测工具；
+        # 3. 工具结果可解析；
+        # 4. 工具结果通过已有的确定性检查。
+        #
+        # 它不验证模型路由是否符合用户意图，
+        # 路由正确率由后续专项评估负责。
+
+        allowed_forecast_tools = {
+            "demand_forecast",
+            "compare_demand_forecasts",
+        }
+
+        valid_forecast_evidence_count = 0
+
+        for message in messages:
+            if getattr(message, "type", "") != "tool":
+                continue
+
+            tool_payload = self._parse_tool_result(
+                getattr(message, "content", None)
+            )
+
+            if not isinstance(tool_payload, dict):
+                continue
+
+            payload_tool_name = tool_payload.get("tool")
+            message_tool_name = getattr(
+                message, "name", None
+            )
+
+            if payload_tool_name not in allowed_forecast_tools:
+                continue
+
+            if (
+                message_tool_name
+                and message_tool_name != payload_tool_name
+            ):
+                continue
+
+            if tool_payload.get("status") != "success":
+                continue
+
+            if self._inspect_tool_result(tool_payload) is not None:
+                continue
+
+            valid_forecast_evidence_count += 1
+
+        if (
+            tool_status == "success"
+            and valid_forecast_evidence_count == 0
+        ):
+            tool_status = "error"
+            tool_error = (
+                "未发现通过验证的预测工具执行结果，"
+                "拒绝将未经工具验证的回答认定为成功预测。"
+            )
+
         last_message = messages[-1]
 
         content = getattr(

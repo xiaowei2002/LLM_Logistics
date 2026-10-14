@@ -1,0 +1,62 @@
+[
+  {
+    "id": "SR321",
+    "category": "filter_count",
+    "question": "2018年8月1日当天一共有多少笔订单？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2018-08-01 00:00:00' AND order_purchase_timestamp < '2018-08-02 00:00:00'"
+  },
+  {
+    "id": "SR322",
+    "category": "filter_count",
+    "question": "2017年全年一共有多少笔订单？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2017-01-01 00:00:00' AND order_purchase_timestamp < '2018-01-01 00:00:00'"
+  },
+  {
+    "id": "SR323",
+    "category": "filter_count",
+    "question": "2018年1月1日以后下单且状态为delivered的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS delivered_count FROM orders WHERE order_status = 'delivered' AND order_purchase_timestamp >= '2018-01-01 00:00:00'"
+  },
+  {
+    "id": "SR324",
+    "category": "group_by",
+    "question": "客户记录数量最多的前5个州分别是什么？请按客户记录数量从高到低排列。",
+    "gold_sql": "SELECT customer_state, COUNT(*) AS customer_count FROM customers GROUP BY customer_state ORDER BY customer_count DESC LIMIT 5"
+  },
+  {
+    "id": "SR325",
+    "category": "group_by",
+    "question": "卖家数量最多的前5个州分别是什么？请按卖家数量从高到低排列。",
+    "gold_sql": "SELECT seller_state, COUNT(*) AS seller_count FROM sellers GROUP BY seller_state ORDER BY seller_count DESC LIMIT 5"
+  },
+  {
+    "id": "SR326",
+    "category": "filter_count",
+    "question": "商品价格大于500的订单商品明细一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS expensive_item_count FROM order_items WHERE price > 500"
+  },
+  {
+    "id": "SR327",
+    "category": "aggregation",
+    "question": "商品价格不低于100时，对应订单商品明细的平均运费是多少？",
+    "gold_sql": "SELECT AVG(freight_value) AS average_freight FROM order_items WHERE price >= 100"
+  },
+  {
+    "id": "SR328",
+    "category": "aggregation",
+    "question": "信用卡支付记录的支付总金额是多少？",
+    "gold_sql": "SELECT SUM(payment_value) AS credit_card_payment_total FROM order_payments WHERE payment_type = 'credit_card'"
+  },
+  {
+    "id": "SR329",
+    "category": "filter_count",
+    "question": "实际送达客户时间为空的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS missing_delivery_time_count FROM orders WHERE order_delivered_customer_date IS NULL"
+  },
+  {
+    "id": "SR330",
+    "category": "filter_count",
+    "question": "订单状态为not_a_real_status的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS nonexistent_status_count FROM orders WHERE order_status = 'not_a_real_status'"
+  }
+]

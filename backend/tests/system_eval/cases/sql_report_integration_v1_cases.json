@@ -1,0 +1,6 @@
+[
+  {"id":"IR401","category":"filter_count","question":"2018年第二季度（4月1日零点至7月1日零点，不含7月1日）一共有多少笔订单？","gold_sql":"SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2018-04-01 00:00:00' AND order_purchase_timestamp < '2018-07-01 00:00:00'"},
+  {"id":"IR402","category":"group_by","question":"在RJ、MG、ES这三个州内，客户记录最多的前2个州是什么，各有多少条记录？按记录数降序，同数量时按州代码升序。","gold_sql":"SELECT customer_state, COUNT(*) AS customer_count FROM customers WHERE customer_state IN ('RJ', 'MG', 'ES') GROUP BY customer_state ORDER BY customer_count DESC, customer_state ASC LIMIT 2"},
+  {"id":"IR403","category":"filter_count","question":"2030年1月期间一共有多少笔订单？","gold_sql":"SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2030-01-01 00:00:00' AND order_purchase_timestamp < '2030-02-01 00:00:00'"},
+  {"id":"IR404","category":"aggregation","question":"运费在10到20之间（包含10和20）的订单商品明细，其平均商品价格是多少？","gold_sql":"SELECT AVG(price) AS average_price FROM order_items WHERE freight_value BETWEEN 10 AND 20"}
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "SR301",
+    "category": "basic_count",
+    "question": "Olist数据库中一共有多少笔订单？",
+    "gold_sql": "SELECT COUNT(*) AS total_orders FROM orders"
+  },
+  {
+    "id": "SR302",
+    "category": "basic_count",
+    "question": "数据库中一共有多少个商品记录？",
+    "gold_sql": "SELECT COUNT(*) AS total_products FROM products"
+  },
+  {
+    "id": "SR303",
+    "category": "basic_count",
+    "question": "数据库中一共有多少个卖家？",
+    "gold_sql": "SELECT COUNT(*) AS total_sellers FROM sellers"
+  },
+  {
+    "id": "SR304",
+    "category": "filter_count",
+    "question": "订单状态为delivered的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS delivered_orders FROM orders WHERE order_status = 'delivered'"
+  },
+  {
+    "id": "SR305",
+    "category": "filter_count",
+    "question": "客户所在州为SP的客户记录一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS sp_customers FROM customers WHERE customer_state = 'SP'"
+  },
+  {
+    "id": "SR306",
+    "category": "group_by",
+    "question": "请统计不同订单状态分别有多少笔订单，并按订单数量从高到低排列。",
+    "gold_sql": "SELECT order_status, COUNT(*) AS order_count FROM orders GROUP BY order_status ORDER BY order_count DESC"
+  },
+  {
+    "id": "SR307",
+    "category": "group_by",
+    "question": "请统计不同支付方式分别有多少条支付记录，并按记录数从高到低排列。",
+    "gold_sql": "SELECT payment_type, COUNT(*) AS payment_count FROM order_payments GROUP BY payment_type ORDER BY payment_count DESC"
+  },
+  {
+    "id": "SR308",
+    "category": "aggregation",
+    "question": "订单商品明细中的平均商品价格是多少？",
+    "gold_sql": "SELECT AVG(price) AS average_price FROM order_items"
+  },
+  {
+    "id": "SR309",
+    "category": "aggregation",
+    "question": "订单商品明细中的运费总金额是多少？",
+    "gold_sql": "SELECT SUM(freight_value) AS total_freight FROM order_items"
+  },
+  {
+    "id": "SR310",
+    "category": "filter_count",
+    "question": "评分为5分的评价一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS five_star_reviews FROM order_reviews WHERE review_score = 5"
+  }
+]

@@ -1,0 +1,49 @@
+
+{
+  "evaluation_id": "forecast_performance_v3",
+  "evaluation_type": "real_forecast_models_temporal_holdout",
+  "experiment": "Experiment 3",
+  "variants": [
+    "baseline_sh",
+    "state_only",
+    "state_conditioned"
+  ],
+  "forecast_horizons": [
+    1,
+    2
+  ],
+  "materials": [
+    "M001",
+    "M002",
+    "M003",
+    "M004",
+    "M005",
+    "M006",
+    "M007",
+    "M008"
+  ],
+  "test_protocol": {
+    "mode": "full_holdout",
+    "max_samples": 0,
+    "purge_overlapping_targets": true,
+    "require_unique_timestamps": true,
+    "require_finite_values": true
+  },
+  "metrics": [
+    "MAE",
+    "RMSE",
+    "WMAPE"
+  ],
+  "ground_truth": {
+    "production_column": "actual_output",
+    "calculation": "actual_output_times_BOM",
+    "source": "Experiment 3 production_data.csv"
+  },
+  "notes": [
+    "No real LLM calls",
+    "No retraining on test data",
+    "Same timestamps for all models",
+    "Existing validation-selected models",
+    "Future covariate availability not independently verified"
+  ]
+}

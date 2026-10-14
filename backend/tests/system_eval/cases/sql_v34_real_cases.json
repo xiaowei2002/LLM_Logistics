@@ -1,0 +1,142 @@
+[
+  {
+    "id": "SR341",
+    "category": "filter_count",
+    "coverage": "date_range",
+    "question": "2018年第二季度（4月1日零点至7月1日零点，不含7月1日）一共有多少笔订单？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2018-04-01 00:00:00' AND order_purchase_timestamp < '2018-07-01 00:00:00'"
+  },
+  {
+    "id": "SR342",
+    "category": "filter_count",
+    "coverage": "date_status",
+    "question": "2017年11月期间，状态为canceled的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2017-11-01 00:00:00' AND order_purchase_timestamp < '2017-12-01 00:00:00' AND order_status = 'canceled'"
+  },
+  {
+    "id": "SR343",
+    "category": "filter_count",
+    "coverage": "is_not_null",
+    "question": "实际送达客户时间不为空的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_delivered_customer_date IS NOT NULL"
+  },
+  {
+    "id": "SR344",
+    "category": "filter_count",
+    "coverage": "between",
+    "question": "商品价格在200到300之间（包含200和300）的订单商品明细一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS item_count FROM order_items WHERE price BETWEEN 200 AND 300"
+  },
+  {
+    "id": "SR345",
+    "category": "filter_count",
+    "coverage": "in",
+    "question": "客户所在州为RJ、MG或ES的客户记录一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS customer_count FROM customers WHERE customer_state IN ('RJ', 'MG', 'ES')"
+  },
+  {
+    "id": "SR346",
+    "category": "filter_count",
+    "coverage": "like",
+    "question": "客户城市名称以rio开头的客户记录一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS customer_count FROM customers WHERE customer_city LIKE 'rio%'"
+  },
+  {
+    "id": "SR347",
+    "category": "filter_count",
+    "coverage": "or",
+    "question": "订单状态为canceled或unavailable的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_status = 'canceled' OR order_status = 'unavailable'"
+  },
+  {
+    "id": "SR348",
+    "category": "filter_count",
+    "coverage": "not_equal",
+    "question": "订单状态不是delivered的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_status <> 'delivered'"
+  },
+  {
+    "id": "SR349",
+    "category": "filter_count",
+    "coverage": "combined_predicates",
+    "question": "商品价格在50到150之间（包含边界）且运费大于30的订单商品明细一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS item_count FROM order_items WHERE price BETWEEN 50 AND 150 AND freight_value > 30"
+  },
+  {
+    "id": "SR350",
+    "category": "filter_count",
+    "coverage": "null_with_status",
+    "question": "状态为delivered且实际送达客户时间为空的订单一共有多少笔？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_status = 'delivered' AND order_delivered_customer_date IS NULL"
+  },
+  {
+    "id": "SR351",
+    "category": "aggregation",
+    "coverage": "min",
+    "question": "信用卡支付记录中，最小的支付金额是多少？",
+    "gold_sql": "SELECT MIN(payment_value) AS minimum_payment FROM order_payments WHERE payment_type = 'credit_card'"
+  },
+  {
+    "id": "SR352",
+    "category": "aggregation",
+    "coverage": "max",
+    "question": "商品价格小于1000的订单商品明细中，最大的运费是多少？",
+    "gold_sql": "SELECT MAX(freight_value) AS maximum_freight FROM order_items WHERE price < 1000"
+  },
+  {
+    "id": "SR353",
+    "category": "aggregation",
+    "coverage": "filtered_sum",
+    "question": "支付方式为boleto且支付金额大于100的支付记录，其支付总金额是多少？",
+    "gold_sql": "SELECT SUM(payment_value) AS total_payment FROM order_payments WHERE payment_type = 'boleto' AND payment_value > 100"
+  },
+  {
+    "id": "SR354",
+    "category": "aggregation",
+    "coverage": "filtered_avg",
+    "question": "运费在10到20之间（包含10和20）的订单商品明细，其平均商品价格是多少？",
+    "gold_sql": "SELECT AVG(price) AS average_price FROM order_items WHERE freight_value BETWEEN 10 AND 20"
+  },
+  {
+    "id": "SR355",
+    "category": "group_by",
+    "coverage": "new_top_n",
+    "question": "在RJ、MG、ES这三个州内，客户记录最多的前2个州是什么，各有多少条记录？按记录数降序，同数量时按州代码升序。",
+    "gold_sql": "SELECT customer_state, COUNT(*) AS customer_count FROM customers WHERE customer_state IN ('RJ', 'MG', 'ES') GROUP BY customer_state ORDER BY customer_count DESC, customer_state ASC LIMIT 2"
+  },
+  {
+    "id": "SR356",
+    "category": "group_by",
+    "coverage": "filtered_group",
+    "question": "只统计SP和PR两个州的卖家记录，分别有多少条？按记录数降序，同数量时按州代码升序。",
+    "gold_sql": "SELECT seller_state, COUNT(*) AS seller_count FROM sellers WHERE seller_state IN ('SP', 'PR') GROUP BY seller_state ORDER BY seller_count DESC, seller_state ASC"
+  },
+  {
+    "id": "SR357",
+    "category": "filter_count",
+    "coverage": "zero_count",
+    "question": "2030年1月期间一共有多少笔订单？",
+    "gold_sql": "SELECT COUNT(*) AS order_count FROM orders WHERE order_purchase_timestamp >= '2030-01-01 00:00:00' AND order_purchase_timestamp < '2030-02-01 00:00:00'"
+  },
+  {
+    "id": "SR358",
+    "category": "empty_result",
+    "coverage": "empty_rows",
+    "question": "查询商品价格小于0的订单商品明细，返回order_id和price，最多5条，按order_id升序；如无记录，请明确说明没有符合条件的记录。",
+    "gold_sql": "SELECT order_id, price FROM order_items WHERE price < 0 ORDER BY order_id ASC LIMIT 5"
+  },
+  {
+    "id": "SR359",
+    "category": "filter_count",
+    "coverage": "boundary_exact",
+    "question": "商品价格恰好等于100的订单商品明细一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS item_count FROM order_items WHERE price = 100"
+  },
+  {
+    "id": "SR360",
+    "category": "filter_count",
+    "coverage": "not_in",
+    "question": "支付方式不属于credit_card和boleto的支付记录一共有多少条？",
+    "gold_sql": "SELECT COUNT(*) AS payment_count FROM order_payments WHERE payment_type NOT IN ('credit_card', 'boleto')"
+  }
+]

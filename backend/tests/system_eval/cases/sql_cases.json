@@ -1,0 +1,75 @@
+
+{
+  "evaluation_id": "sql_control_v1",
+  "evaluation_type": "real_sql_node_mock_sql_agent",
+  "description": "真实 SQL Node 与受控模拟 SQLAgent 的确定性评估；不运行真实 LLM 或数据库工具。",
+  "cases": [
+    {
+      "case_id": "SQ001",
+      "name": "空用户请求",
+      "scenario": "empty_query",
+      "expected_status": "error",
+      "expected_agent_calls": 0,
+      "risk_probe": false
+    },
+    {
+      "case_id": "SQ002",
+      "name": "正常查询结果传递",
+      "scenario": "sql_success",
+      "expected_status": "success",
+      "expected_agent_calls": 1,
+      "expected_result": "SKU-001 的查询数量为 42。",
+      "risk_probe": false
+    },
+    {
+      "case_id": "SQ003",
+      "name": "Agent 返回空字符串",
+      "scenario": "empty_result",
+      "expected_status": "error",
+      "expected_agent_calls": 1,
+      "risk_probe": false
+    },
+    {
+      "case_id": "SQ004",
+      "name": "Agent 抛出连接异常",
+      "scenario": "raised_exception",
+      "expected_status": "error",
+      "expected_agent_calls": 1,
+      "expected_error": "数据库连接失败",
+      "risk_probe": false
+    },
+    {
+      "case_id": "SQ005",
+      "name": "非空连接失败文本",
+      "scenario": "connection_error_text",
+      "expected_status": "error",
+      "expected_agent_calls": 1,
+      "risk_probe": true
+    },
+    {
+      "case_id": "SQ006",
+      "name": "非空表不存在错误文本",
+      "scenario": "missing_table_text",
+      "expected_status": "error",
+      "expected_agent_calls": 1,
+      "risk_probe": true
+    },
+    {
+      "case_id": "SQ007",
+      "name": "没有工具执行证据的数值回答",
+      "scenario": "no_tool_evidence",
+      "expected_status": "error",
+      "expected_agent_calls": 1,
+      "risk_probe": true
+    },
+    {
+      "case_id": "SQ008",
+      "name": "查询成功但结果为空",
+      "scenario": "verified_empty_query",
+      "expected_status": "success",
+      "expected_agent_calls": 1,
+      "expected_result": "查询成功，结果为0条记录。",
+      "risk_probe": false
+    }
+  ]
+}

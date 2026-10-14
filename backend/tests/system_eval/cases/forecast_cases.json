@@ -1,0 +1,66 @@
+
+{
+  "evaluation_id": "forecast_control_v1",
+  "evaluation_type": "real_agent_control_with_mock_tool_messages",
+  "description": "使用真实 DemandForecastAgent LangGraph 控制逻辑和模拟 ToolMessage，验证输入校验、工具结果审核及 HITL。模型路由准确率和预测误差不在本轮计算。",
+  "cases": [
+    {
+      "case_id": "FC001",
+      "name": "缺少预测时刻触发 HITL",
+      "scenario": "missing_time",
+      "query": "请预测未来两小时的物料需求",
+      "expected": "input_interrupt"
+    },
+    {
+      "case_id": "FC002",
+      "name": "单模型预测结果正常返回",
+      "scenario": "single_success",
+      "query": "请使用最终模型预测 2026-01-30 12:00:00 之后两小时的物料需求",
+      "expected": "success"
+    },
+    {
+      "case_id": "FC003",
+      "name": "模型比较结果正常返回",
+      "scenario": "compare_success",
+      "query": "请比较 2026-01-30 12:00:00 的基线模型与最终模型",
+      "expected": "success"
+    },
+    {
+      "case_id": "FC004",
+      "name": "工具外层错误触发 HITL",
+      "scenario": "tool_error",
+      "query": "请预测 2026-01-30 12:00:00 的需求",
+      "expected": "result_interrupt"
+    },
+    {
+      "case_id": "FC005",
+      "name": "工具内部结果错误触发 HITL",
+      "scenario": "nested_error",
+      "query": "请预测 2026-01-30 12:00:00 的需求",
+      "expected": "result_interrupt"
+    },
+    {
+      "case_id": "FC006",
+      "name": "预测结果缺少关键字段触发 HITL",
+      "scenario": "missing_forecast_field",
+      "query": "请预测 2026-01-30 12:00:00 的需求",
+      "expected": "result_interrupt"
+    },
+    {
+      "case_id": "FC007",
+      "name": "Agent 未调用工具直接回答的风险探测",
+      "scenario": "no_tool_message",
+      "query": "请预测 2026-01-30 12:00:00 的需求",
+      "expected": "reject_unverified_answer",
+      "known_risk_probe": true
+    },
+    {
+      "case_id": "FC008",
+      "name": "用户补充预测时间后恢复",
+      "scenario": "clarification_resume",
+      "query": "请预测未来两小时的物料需求",
+      "human_answer": "预测基准时刻为 2026-01-30 12:00:00",
+      "expected": "resume_success"
+    }
+  ]
+}

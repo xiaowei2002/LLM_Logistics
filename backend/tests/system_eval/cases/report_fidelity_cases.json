@@ -1,0 +1,185 @@
+
+{
+  "evaluation_id": "report_fidelity_v2",
+  "evaluation_type": "real_llm_fixed_upstream_facts",
+  "cases": [
+    {
+      "case_id": "RV201",
+      "name": "SQL 查询数值忠实性",
+      "state": {
+        "user_query": "请整理这次物料查询结果，不要自行计算。",
+        "sql_status": "success",
+        "sql_result": {
+          "rows": [
+            {
+              "sku": "SKU-001",
+              "quantity": 42
+            },
+            {
+              "sku": "SKU-002",
+              "quantity": 17
+            }
+          ]
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "SKU-001",
+        "SKU-002",
+        "42",
+        "17"
+      ],
+      "forbidden_strings": [
+        "查询失败",
+        "数据库连接失败"
+      ]
+    },
+    {
+      "case_id": "RV202",
+      "name": "清洗台账与确定性验证冲突",
+      "state": {
+        "user_query": "请总结清洗结果并说明事实冲突。",
+        "cleaning_result": "CleaningAgent 声称原始8行、清洗后7行、仅删除1行。",
+        "cleaning_quality": {
+          "source_row_count": 8,
+          "cleaned_row_count": 5,
+          "removed_row_count": 3,
+          "passed": false,
+          "errors": [
+            "Agent台账与最终文件记录数不一致"
+          ]
+        },
+        "cleaning_quality_status": "failed",
+        "cleaning_quality_error": "清洗台账与确定性检查结果不一致"
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "8",
+        "5",
+        "3"
+      ],
+      "required_any_groups": [
+        [
+          "不一致",
+          "矛盾",
+          "冲突"
+        ]
+      ],
+      "forbidden_strings": [
+        "清洗完全成功",
+        "清洗结果全部通过",
+        "无异常"
+      ]
+    },
+    {
+      "case_id": "RV203",
+      "name": "大比例删除与人工确认真实性",
+      "state": {
+        "user_query": "请形成清洗审核报告。",
+        "cleaning_quality": {
+          "source_row_count": 8,
+          "cleaned_row_count": 7,
+          "removed_row_count": 1,
+          "deletion_rate_percent": 12.5,
+          "large_deletion_detected": true,
+          "large_deletion_approved": true,
+          "passed": true,
+          "warnings": [
+            "大比例删除风险仍应在报告中保留"
+          ]
+        },
+        "cleaning_quality_status": "passed",
+        "cleaning_large_deletion_approved": true
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "12.5",
+        "8",
+        "7"
+      ],
+      "required_any_groups": [
+        [
+          "人工确认",
+          "人工批准",
+          "人工审核"
+        ],
+        [
+          "风险",
+          "警告",
+          "warning"
+        ]
+      ],
+      "forbidden_strings": [
+        "无人工确认",
+        "全流程自动执行",
+        "未发生大比例删除",
+        "无需人工干预"
+      ]
+    },
+    {
+      "case_id": "RV204",
+      "name": "需求预测结果忠实性",
+      "state": {
+        "user_query": "请整理本次预测结果，不要新增预测数值。",
+        "forecast_status": "success",
+        "forecast_result": {
+          "answer": "预测基准时刻：2026-01-30 12:00:00。模型：state_conditioned。M001 在 t+1 的需求为 12.5，在 t+2 的需求为 14.0。"
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "2026-01-30 12:00:00",
+        "M001",
+        "12.5",
+        "14.0"
+      ],
+      "required_any_groups": [
+        [
+          "state_conditioned",
+          "State-Conditioned"
+        ]
+      ],
+      "forbidden_strings": [
+        "预测失败",
+        "模型调用失败"
+      ]
+    },
+    {
+      "case_id": "RV205",
+      "name": "SQL 上游异常忠实性",
+      "state": {
+        "user_query": "查询库存并生成报告。",
+        "sql_status": "error",
+        "sql_error": "数据库连接失败：未获得库存查询结果"
+      },
+      "expected_report_status": "success",
+      "required_any_groups": [
+        [
+          "连接失败",
+          "连接异常"
+        ],
+        [
+          "未获得",
+          "无法获得",
+          "未能获取",
+          "查询失败"
+        ]
+      ],
+      "forbidden_strings": [
+        "库存查询成功",
+        "查询已成功完成",
+        "获得完整库存结果"
+      ]
+    },
+    {
+      "case_id": "RV206",
+      "name": "无上游证据拒绝生成",
+      "state": {
+        "user_query": "请生成物料分析报告。"
+      },
+      "expected_report_status": "error",
+      "required_strings": [],
+      "forbidden_strings": []
+    }
+  ]
+}

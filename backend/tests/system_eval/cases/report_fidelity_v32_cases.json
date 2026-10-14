@@ -1,0 +1,342 @@
+{
+  "evaluation_id": "report_fidelity_v32",
+  "evaluation_type": "real_llm_new_controlled_upstream_facts",
+  "cases": [
+    {
+      "case_id": "RV321",
+      "name": "新对象与 quantity 语义",
+      "state": {
+        "user_query": "整理查询字段与值，不计算、不赋予额外业务含义。",
+        "sql_status": "success",
+        "sql_result": {
+          "rows": [
+            {
+              "sku": "SKU-A17",
+              "quantity": 63
+            },
+            {
+              "sku": "SKU-B92",
+              "quantity": 28
+            }
+          ]
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "SKU-A17",
+        "SKU-B92",
+        "63",
+        "28"
+      ],
+      "required_any_groups": [],
+      "forbidden_strings": [
+        "库存数量",
+        "可用库存",
+        "在途库存"
+      ]
+    },
+    {
+      "case_id": "RV322",
+      "name": "计数零与未提供模块状态",
+      "state": {
+        "user_query": "整理本次订单计数结果。",
+        "sql_status": "success",
+        "sql_result": {
+          "rows": [
+            {
+              "order_count": 0
+            }
+          ]
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "0"
+      ],
+      "required_any_groups": [],
+      "forbidden_strings": [
+        "查询失败",
+        "数据库连接失败",
+        "清洗模块未执行",
+        "预测模块未启动"
+      ]
+    },
+    {
+      "case_id": "RV323",
+      "name": "新清洗冲突且无派生比例",
+      "state": {
+        "user_query": "并列报告台账与验证记录，指出冲突，不计算。",
+        "cleaning_result": "Agent 台账：原始51行、清洗后50行、删除1行。",
+        "cleaning_quality": {
+          "source_row_count": 51,
+          "cleaned_row_count": 46,
+          "removed_row_count": 5,
+          "passed": false,
+          "errors": [
+            "台账与落盘记录不一致"
+          ]
+        },
+        "cleaning_quality_status": "failed"
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "51",
+        "50",
+        "1",
+        "46",
+        "5"
+      ],
+      "required_any_groups": [
+        [
+          "冲突",
+          "不一致"
+        ]
+      ],
+      "forbidden_strings": [
+        "另外4行",
+        "额外4行",
+        "相差4行",
+        "7.84%",
+        "9.80%",
+        "清洗完全成功"
+      ]
+    },
+    {
+      "case_id": "RV324",
+      "name": "风险发现不等于批准",
+      "state": {
+        "user_query": "整理清洗风险和审批标记。",
+        "cleaning_quality": {
+          "source_row_count": 25,
+          "cleaned_row_count": 20,
+          "removed_row_count": 5,
+          "deletion_rate_percent": 20,
+          "large_deletion_detected": true,
+          "large_deletion_approved": false,
+          "passed": false,
+          "warnings": [
+            "删除风险待确认"
+          ]
+        },
+        "cleaning_quality_status": "failed",
+        "cleaning_large_deletion_approved": false
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "25",
+        "20",
+        "5"
+      ],
+      "required_any_groups": [
+        [
+          "风险"
+        ],
+        [
+          "未批准",
+          "未获批准",
+          "尚未批准",
+          "未被标记",
+          "false"
+        ]
+      ],
+      "forbidden_strings": [
+        "已获得人工批准",
+        "人工确认已完成",
+        "全流程自动执行"
+      ]
+    },
+    {
+      "case_id": "RV325",
+      "name": "批准同时保留警告",
+      "state": {
+        "user_query": "整理清洗验证结果及已提供审批标志。",
+        "cleaning_quality": {
+          "source_row_count": 40,
+          "cleaned_row_count": 34,
+          "removed_row_count": 6,
+          "deletion_rate_percent": 15,
+          "large_deletion_detected": true,
+          "large_deletion_approved": true,
+          "passed": true,
+          "warnings": [
+            "删除风险仍需保留"
+          ]
+        },
+        "cleaning_quality_status": "passed",
+        "cleaning_large_deletion_approved": true
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "40",
+        "34",
+        "6",
+        "15",
+        "删除风险仍需保留"
+      ],
+      "required_any_groups": [
+        [
+          "人工确认",
+          "人工批准",
+          "审批"
+        ]
+      ],
+      "forbidden_strings": [
+        "风险已经消除",
+        "无任何质量风险",
+        "全流程自动执行",
+        "10%阈值",
+        "再次通过验证"
+      ]
+    },
+    {
+      "case_id": "RV326",
+      "name": "自然语言与结构化预测冲突",
+      "state": {
+        "user_query": "整理两种预测来源并指出冲突，不修改任一来源的数值。",
+        "forecast_status": "success",
+        "forecast_result": {
+          "answer": "预测对象M009，t+1为99，t+2为88。",
+          "tool_result": {
+            "status": "success",
+            "forecast_timestamp": "2026-02-02 09:00:00",
+            "variant": "state_conditioned",
+            "forecast": {
+              "M009": {
+                "t+1": 9.5,
+                "t+2": 11.2
+              }
+            }
+          }
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "M009",
+        "99",
+        "88",
+        "9.5",
+        "11.2"
+      ],
+      "required_any_groups": [
+        [
+          "冲突",
+          "不一致",
+          "差异"
+        ],
+        [
+          "结构化"
+        ],
+        [
+          "自然语言"
+        ]
+      ],
+      "forbidden_strings": [
+        "已独立验证",
+        "预测数字全部一致"
+      ]
+    },
+    {
+      "case_id": "RV327",
+      "name": "只有预测文字回答",
+      "state": {
+        "user_query": "整理预测文字回答，准确说明证据来源。",
+        "forecast_status": "success",
+        "forecast_result": {
+          "answer": "基准时刻2026-02-03 08:00:00。模型state_conditioned。M010在t+1为6.25，在t+2为7.75。"
+        }
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "2026-02-03 08:00:00",
+        "M010",
+        "6.25",
+        "7.75"
+      ],
+      "required_any_groups": [
+        [
+          "自然语言",
+          "文字回答"
+        ]
+      ],
+      "forbidden_strings": [
+        "已收到结构化工具结果",
+        "经过独立核验",
+        "预测数值已验证"
+      ]
+    },
+    {
+      "case_id": "RV328",
+      "name": "SQL 失败且其他模块明确成功",
+      "state": {
+        "user_query": "分别整理各模块已提供的结果，不推断依赖关系。",
+        "sql_status": "error",
+        "sql_error": "连接超时：未获得查询结果",
+        "cleaning_status": "success",
+        "cleaning_result": "CleaningAgent 提供记录：原始12行，清洗后12行，删除0行。"
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "12",
+        "0"
+      ],
+      "required_any_groups": [
+        [
+          "连接超时",
+          "超时"
+        ],
+        [
+          "清洗",
+          "CleaningAgent"
+        ]
+      ],
+      "forbidden_strings": [
+        "所有下游模块均未启动",
+        "CleaningAgent未执行",
+        "整个任务链路中断"
+      ]
+    },
+    {
+      "case_id": "RV329",
+      "name": "通过门禁但质量指标缺失",
+      "state": {
+        "user_query": "总结已提供的质量门禁字段，不补充其他质量结论。",
+        "cleaning_quality": {
+          "source_row_count": 19,
+          "cleaned_row_count": 19,
+          "removed_row_count": 0,
+          "passed": true,
+          "warnings": [
+            "未提供缺失值检查结果"
+          ]
+        },
+        "cleaning_quality_status": "passed"
+      },
+      "expected_report_status": "success",
+      "required_strings": [
+        "19",
+        "0",
+        "未提供缺失值检查结果"
+      ],
+      "required_any_groups": [],
+      "forbidden_strings": [
+        "无缺失值",
+        "没有缺失值",
+        "无重复记录",
+        "可直接用于生产"
+      ]
+    },
+    {
+      "case_id": "RV330",
+      "name": "路径不能替代执行证据",
+      "state": {
+        "user_query": "根据文件路径生成分析报告。",
+        "data_file_path": "source_materials.csv",
+        "cleaned_file_path": "cleaned_materials.csv"
+      },
+      "expected_report_status": "error",
+      "required_strings": [],
+      "required_any_groups": [],
+      "forbidden_strings": []
+    }
+  ]
+}

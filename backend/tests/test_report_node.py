@@ -214,13 +214,20 @@ class ReportNodeTest(
         )
 
         result = node(
-            {
-                "user_query": (
-                    "生成报告"
-                ),
-                "execution_trace": [],
-            }
-        )
+    {
+        "user_query": "生成查询结果报告",
+        "sql_result": {
+            "rows": [
+                {
+                    "sku": "SKU-001",
+                    "quantity": 42,
+                }
+            ]
+        },
+        "sql_status": "success",
+        "execution_trace": [],
+    }
+)
 
         self.assertEqual(
             result["report_status"],
