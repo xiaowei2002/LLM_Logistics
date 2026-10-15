@@ -1,16 +1,15 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { Back, ChatDotRound, Check, CopyDocument, Promotion, RefreshLeft, Setting } from '@element-plus/icons-vue'
+import { ChatDotRound, Check, CopyDocument, Promotion, Setting } from '@element-plus/icons-vue'
 
 import { chatScheduling, resumeScheduling } from '@/services/schedulingOffloading'
 import { renderMarkdown } from '@/utils/markdown'
 import AgentContextPanel from '@/components/AgentContextPanel.vue'
+import AppNav from '@/components/AppNav.vue'
 import ResultInsights from '@/components/ResultInsights.vue'
 import '@/assets/styles/agent-workspace.css'
 
-const router = useRouter()
 const flowEl = ref(null)
 const loading = ref(false)
 // 与需求预测一致：文字和图表数据放在同一条最终回答里，一起展示。
@@ -157,28 +156,15 @@ async function copyMessage(message) {
     ElMessage.error('复制失败')
   }
 }
-
-function reset() {
-  if (loading.value) return
-  messages.value = []
-  threadId.value = null
-  input.value = ''
-  activeTab.value = 'decisions'
-}
 </script>
 
 <template>
   <div class="schedule-page">
-    <header class="top-head">
-      <div class="bar-left">
-        <el-button text bg size="small" @click="router.push('/')"><el-icon><Back /></el-icon>返回对话</el-button>
-        <el-button text bg size="small" :disabled="(!messages.length && !result) || loading" @click="reset"><el-icon><RefreshLeft /></el-icon>新调度</el-button>
-      </div>
-      <div class="head-title">生产调度与计算卸载智能体</div>
-      <div class="bar-right">
-        <el-button text bg size="small" :disabled="loading || !!pendingCard" @click="requestSceneCard"><el-icon><Setting /></el-icon>场景参数</el-button>
-      </div>
-    </header>
+    <AppNav>
+      <template #actions>
+        <el-button text bg size="small" :disabled="loading || !!pendingCard" @click="requestSceneCard"><el-icon style="margin-right: 4px"><Setting /></el-icon>场景参数</el-button>
+      </template>
+    </AppNav>
 
     <div class="agent-workspace">
       <AgentContextPanel mode="scheduling" />
@@ -283,7 +269,6 @@ function reset() {
 
 <style scoped>
 .schedule-page { display:flex; flex-direction:column; height:100vh; overflow:hidden; background:var(--bg); color:var(--text); }
-.top-head { position:relative; display:flex; align-items:center; gap:8px; padding:14px 20px 6px; }.bar-left{display:flex;gap:4px}.bar-right{margin-left:auto}.bar-left :deep(.el-button),.bar-right :deep(.el-button){gap:4px}.head-title{position:absolute;left:50%;transform:translateX(-50%);font-size:13.5px;font-weight:600}
 .flow{flex:1;min-height:0;overflow-y:auto;width:100%;padding:20px 16px 12px;scrollbar-width:thin;scrollbar-color:#d3d7de transparent}.flow::-webkit-scrollbar{width:6px}.flow::-webkit-scrollbar-thumb{background:#d3d7de;border-radius:3px}.flow-inner{width:100%;max-width:820px;margin:0 auto;display:flex;flex-direction:column}
 .row{display:flex;flex-direction:column}.row+.row,.row+.result-block,.result-block+.row{margin-top:18px}.row.user{align-items:flex-end;padding-right:8px}.row.user:not(:first-child){margin-top:24px}.bubble{max-width:72%;padding:11px 16px;border-radius:20px;background:var(--primary-light);line-height:1.65;white-space:pre-wrap;word-break:break-word}.row.bot{align-items:stretch}.bot-label{display:flex;align-items:center;gap:6px;margin-bottom:5px;color:var(--primary);font-size:12px;font-weight:600}.bot-text{width:100%;padding:3px 2px;font-size:14px;line-height:1.7;word-break:break-word}.msg-toolbar{margin-top:4px;opacity:0;transition:opacity .15s}.row.bot:hover .msg-toolbar{opacity:1}.tool-btn{color:var(--text-muted)}
 .error-card{display:flex;flex-direction:column;gap:5px;padding:13px 15px;border:1px solid #fecaca;border-radius:12px;background:#fff8f8;color:#b91c1c}.error-card span{font-size:13px;line-height:1.6}
@@ -294,5 +279,5 @@ function reset() {
 .dots{display:inline-flex;align-items:center;gap:5px;height:18px}.dots i{width:6px;height:6px;border-radius:50%;background:var(--text-muted);animation:bounce 1.2s infinite ease-in-out}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}.loading-text{margin-top:6px;color:var(--text-muted)}@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
 .input-dock{width:100%;max-width:820px;margin:0 auto;padding:8px 16px 16px}.composer-box{display:flex;flex-direction:column;gap:8px;padding:12px 16px 10px;border:2px solid transparent;border-radius:16px;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(90deg,#ff8bd2,#b57bee,#5b8def) border-box;box-shadow:var(--shadow)}.composer-input :deep(.el-textarea__inner){min-height:26px;padding:2px 4px;border:0;box-shadow:none;background:transparent;font-family:inherit;font-size:14px;line-height:1.6}.composer-foot{display:flex;align-items:center;justify-content:space-between}.composer-foot>span{color:var(--text-placeholder);font-size:12px}.send-btn{width:32px;height:32px;padding:0}
 .md-content :deep(p){margin:7px 0}.md-content :deep(p:first-child){margin-top:0}.md-content :deep(ul),.md-content :deep(ol){margin:8px 0;padding-left:22px}.md-content :deep(li){margin:4px 0}.md-content :deep(code){padding:1px 5px;border-radius:4px;background:var(--fill-light)}.md-content :deep(table){border-collapse:collapse;margin:10px 0;font-size:13px}.md-content :deep(th),.md-content :deep(td){padding:6px 10px;border:1px solid var(--border)}.md-content :deep(th){background:var(--fill-light)}
-@media(max-width:760px){.head-title{display:none}.flow{padding-inline:12px}.input-dock{padding-inline:12px}.sample-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr 1fr}.run-cell{grid-column:1/-1}.run-cell :deep(.el-button){width:100%}.metrics-grid{grid-template-columns:repeat(2,1fr)}.metrics-grid article,.metrics-grid article:nth-child(3n),.metrics-grid article:nth-child(n+4){border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.metrics-grid article:nth-child(2n){border-right:0}.metrics-grid article:nth-last-child(-n+2){border-bottom:0}.bubble{max-width:88%}}
+@media(max-width:760px){.flow{padding-inline:12px}.input-dock{padding-inline:12px}.sample-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr 1fr}.run-cell{grid-column:1/-1}.run-cell :deep(.el-button){width:100%}.metrics-grid{grid-template-columns:repeat(2,1fr)}.metrics-grid article,.metrics-grid article:nth-child(3n),.metrics-grid article:nth-child(n+4){border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.metrics-grid article:nth-child(2n){border-right:0}.metrics-grid article:nth-last-child(-n+2){border-bottom:0}.bubble{max-width:88%}}
 </style>

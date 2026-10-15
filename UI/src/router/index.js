@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/HomeView.vue'
+import ChatView from '@/views/ChatView.vue'
 import GraphView from '@/views/GraphView.vue'
 import ForecastView from '@/views/ForecastView.vue'
 import KnowledgeView from '@/views/KnowledgeView.vue'
@@ -21,7 +22,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { title: '物流智能体 - 汽车物流大模型系统', requiresAuth: true },
+      meta: { title: '智慧物流决策系统 - 汽车物流大模型系统', requiresAuth: true },
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: ChatView,
+      meta: { title: '智能问答 - 汽车物流大模型系统', requiresAuth: true },
     },
     {
       path: '/graph',

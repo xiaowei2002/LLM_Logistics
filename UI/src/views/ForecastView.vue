@@ -1,24 +1,20 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
-  Back,
   ChatDotRound,
   Check,
   CopyDocument,
   Download,
   Promotion,
-  RefreshLeft,
 } from '@element-plus/icons-vue'
 
 import { predictDemand, resumeDemand } from '@/services/forecast'
 import { renderMarkdown } from '@/utils/markdown'
 import AgentContextPanel from '@/components/AgentContextPanel.vue'
+import AppNav from '@/components/AppNav.vue'
 import ResultInsights from '@/components/ResultInsights.vue'
 import '@/assets/styles/agent-workspace.css'
-
-const router = useRouter()
 
 /* 对话流消息类型：user 用户输入 / assistant 最终回答 / card 人在环提问卡片 / error 错误 */
 const messages = ref([])
@@ -253,37 +249,19 @@ const SAMPLE_TIME = '2026-01-30 12:00:00'
 function fillSampleTime(card) {
   card.draft = SAMPLE_TIME
 }
-
-/* 清空，开始新一轮预测（thread 也重置） */
-function reset() {
-  if (loading.value) return
-  messages.value = []
-  threadId.value = null
-  input.value = ''
-}
 </script>
 
 <template>
   <div class="forecast-page">
-    <!-- 顶栏：返回 / 新预测 + 居中标题 -->
-    <header class="top-head">
-      <div class="bar-left">
-        <el-button text bg size="small" @click="router.push('/')">
-          <el-icon style="margin-right: 4px"><Back /></el-icon>返回对话
-        </el-button>
-        <el-button text bg size="small" :disabled="!messages.length || loading" @click="reset">
-          <el-icon style="margin-right: 4px"><RefreshLeft /></el-icon>新预测
-        </el-button>
-      </div>
-      <div class="head-title">需求预测智能体</div>
-      <div class="bar-right">
+    <AppNav>
+      <template #actions>
         <el-tooltip content="把本轮预测存成 Markdown 文件" placement="bottom" :show-after="300">
           <el-button text bg size="small" :disabled="!hasReport || loading" @click="exportReport">
             <el-icon style="margin-right: 4px"><Download /></el-icon>导出报告
           </el-button>
         </el-tooltip>
-      </div>
-    </header>
+      </template>
+    </AppNav>
 
     <!-- 对话流 -->
     <div class="agent-workspace">
@@ -413,33 +391,6 @@ function reset() {
   height: 100vh;
   overflow: hidden;
   background: var(--bg);
-}
-
-/* ===== 顶栏：无边框白底，标题居中，与对话页同一气质 ===== */
-.top-head {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 20px 6px;
-}
-
-.bar-left {
-  display: flex;
-  gap: 4px;
-}
-
-.bar-right {
-  margin-left: auto;
-}
-
-.head-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--text);
 }
 
 /* ===== 对话流 ===== */

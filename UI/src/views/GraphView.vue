@@ -1,13 +1,12 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Expand, Fold, RefreshLeft, Search, Back } from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
 
 import { fetchOverview, fetchStats, searchGraph } from '@/services/graph'
+import AppNav from '@/components/AppNav.vue'
 
-const router = useRouter()
 const chartRef = ref(null)
 const keyword = ref('')
 const loading = ref(false)
@@ -302,14 +301,13 @@ function render(matched) {
 </script>
 
 <template>
+  <div class="graph-shell">
+  <AppNav />
   <div class="graph-page">
     <!-- 左侧：查询与信息面板 -->
     <aside v-show="sideOpen" class="side">
       <div class="side-head">
         <div class="side-title">知识图谱<span class="dot"></span></div>
-        <el-button class="back-btn" text bg size="small" @click="router.push('/')">
-          <el-icon style="margin-right: 4px"><Back /></el-icon>返回对话
-        </el-button>
       </div>
       <p class="side-desc">搜索实体、点击节点查看关联，探索汽车物流领域概念之间的联系。</p>
 
@@ -420,12 +418,21 @@ function render(matched) {
       </div>
     </main>
   </div>
+  </div>
 </template>
 
 <style scoped>
-/* 整页布局：侧栏 + 主图区，均占满视口 */
-.graph-page {
+/* 整页布局：顶栏 + （侧栏 + 主图区），占满视口 */
+.graph-shell {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.graph-page {
+  flex: 1;
+  min-height: 0;
   display: flex;
   overflow: hidden;
   background: #f8fafc;

@@ -1,11 +1,12 @@
 <script setup>
-import { Collection, Fold, SetUp, Share, SwitchButton, TrendCharts } from '@element-plus/icons-vue'
+import { Collection, Fold, HomeFilled, SetUp, Share, SwitchButton, TrendCharts } from '@element-plus/icons-vue'
 import IndustrialBackdrop from '@/components/IndustrialBackdrop.vue'
 import { useAuthStore } from '@/stores/auth'
 
-const emit = defineEmits(['logout', 'collapse', 'open-graph', 'open-forecast', 'open-knowledge', 'open-scheduling'])
+const emit = defineEmits(['logout', 'collapse', 'open-home', 'open-graph', 'open-forecast', 'open-knowledge', 'open-scheduling'])
 const authStore = useAuthStore()
 const features = [
+  { label: '系统首页', icon: HomeFilled, event: 'open-home' },
   { label: '需求预测', icon: TrendCharts, event: 'open-forecast' },
   { label: '调度与计算卸载', icon: SetUp, event: 'open-scheduling' },
   { label: '知识库', icon: Collection, event: 'open-knowledge' },
