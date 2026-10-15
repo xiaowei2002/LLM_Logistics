@@ -1,0 +1,22 @@
+/* 业务智能体：场景图形、原有对话与结果分析三栏布局。 */
+.agent-workspace{display:grid;grid-template-columns:220px minmax(0,1fr) 340px;flex:1;min-height:0;overflow:hidden}
+.agent-conversation{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--bg)}
+#app .agent-workspace .flow{padding:28px 24px 12px}
+#app .agent-workspace .flow-inner{max-width:760px}
+#app .agent-workspace .input-dock{max-width:808px;padding:10px 24px 20px}
+#app .agent-workspace .empty-hint{margin-top:8vh}
+#app .agent-workspace .empty-hint>p{line-height:1.9}
+#app .agent-workspace .sample-grid{grid-template-columns:1fr}
+#app .agent-workspace .sample-grid button{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#ffffffa6;padding:14px 16px;border-color:#d1dce5;border-radius:7px}
+#app .agent-workspace .sample-grid b{margin:0}
+#app .agent-workspace .sample-grid span{font-size:11px;text-align:right}
+#app .agent-workspace .sample{background:#ffffffa6;border-color:#d1dce5;border-radius:7px}
+#app .agent-workspace .result-block{padding:18px;background:white;border:1px solid #dbe4ec;border-radius:8px}
+#app .agent-workspace .metrics-grid{border-color:#e1e8ee;border-radius:6px}
+#app .agent-workspace .metrics-grid b{font-size:18px}
+#app .agent-workspace .detail-panel{padding:6px 10px;border-color:#e1e8ee}
+.home-insights{width:330px;flex:none}
+@media(min-width:1600px){.agent-workspace{grid-template-columns:260px minmax(0,1fr) 380px}}
+@media(max-width:1200px){.agent-workspace{grid-template-columns:minmax(0,1fr) 320px}.agent-workspace>.context-panel{display:none}.home-insights{width:300px}}
+@media(max-width:1050px){.home-insights{display:none}}
+@media(max-width:760px){.agent-workspace{display:flex;flex-direction:column;overflow-y:auto}.agent-conversation{flex:none;min-height:calc(100dvh - 56px)}.agent-workspace>.insights-panel{overflow:visible;border-left:0;border-top:1px solid #dce3eb;padding:20px 16px}.agent-workspace>.context-panel{display:none}#app .agent-workspace .flow{padding:20px 14px 12px}#app .agent-workspace .input-dock{padding:8px 14px 16px}#app .agent-workspace .sample-grid button{display:block}#app .agent-workspace .sample-grid span{margin-top:6px;text-align:left}#app .agent-workspace .result-block{padding:12px}}

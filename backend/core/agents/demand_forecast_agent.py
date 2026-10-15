@@ -27,6 +27,8 @@ class DemandForecastState(TypedDict, total=False):
 
     query: str
     answer: str
+    # 原始预测工具结果仅用于可视化，不改变预测与人工确认流程。
+    forecast_result: dict[str, Any] | None
 
     # Human-in-the-loop 状态
     needs_human_input: bool
@@ -230,6 +232,7 @@ class DemandForecastAgent:
 
         tool_status = "success"
         tool_error: str | None = None
+        forecast_result: dict[str, Any] | None = None
 
         # --------------------------------------------------
         # 检查所有 ToolMessage
@@ -271,6 +274,10 @@ class DemandForecastAgent:
                 tool_error = error_message
                 break
 
+            candidate = tool_result.get("result") or tool_result.get("state_conditioned_result")
+            if isinstance(candidate, dict) and isinstance(candidate.get("forecast"), dict):
+                forecast_result = candidate
+
         # --------------------------------------------------
         # 最终 AI 回答
         # --------------------------------------------------
@@ -285,6 +292,7 @@ class DemandForecastAgent:
 
         return {
             "answer": str(content),
+            "forecast_result": forecast_result if tool_status == "success" else None,
             "tool_status": tool_status,
             "tool_error": tool_error,
             "retry_requested": False,
