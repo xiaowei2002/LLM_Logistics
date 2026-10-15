@@ -93,6 +93,16 @@ uv sync
 MCP_TRANSPORT=http MCP_PORT=8080 uv run mcp-pandas
 ```
 
+## 多模态知识库（RAG）服务
+代码来自 joyagent-jdgenie 的 mrag（`core/tools/mrag`），独立进程运行在 8000 端口，前端经 `/rag` 代理访问。
+```bash
+cd backend
+python -m uvicorn core.tools.mrag.api.app:app --port 8000   # 接口文档 http://127.0.0.1:8000/docs
+```
+- 配置见 `.env` 的 MRAG 段：至少填写 `DASHSCOPE_API_KEY`（VLM / 向量 / 重排）和 `MINERU_API_KEY`（PDF 版面解析，未填时退化为直接抽取文本）
+- 向量库默认用 Qdrant 嵌入式本地模式（`QDRANT_URL` 留空），文件默认存本地磁盘（`STORAGE_TYPE=local`），数据都在 `backend/data/mrag/`
+- 网页入库依赖 crawl4ai 的浏览器，首次使用前执行 `crawl4ai-setup`
+
 ## 知识图谱数据库初始化
 1. 安装并启动Neo4j
 2. 在`backend/.env` 中配置连接信息

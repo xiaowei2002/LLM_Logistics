@@ -26,6 +26,14 @@ dependencies = [
     "uvicorn[standard]>=0.30.0",
     "langchain-mcp-adapters>=0.3.2",
     "fastmcp>=3.4.7",
+    "qdrant-client==1.15.1",
+    "loguru>=0.7.3",
+    "pymupdf>=1.26.6",
+    "pdfplumber>=0.11.8",
+    "fastembed>=0.7.3",
+    "crawl4ai>=0.7.7",
+    "sse-starlette>=2.4.1",
+    "markdown2>=2.5.5",
 ]
 
 [[tool.uv.index]]
