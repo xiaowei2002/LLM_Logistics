@@ -5,6 +5,7 @@ from app.routes.graph import router as graph_router
 from app.routes.demand_forecast import router as demand_forecast_router
 from app.routes.health import router as health_router
 from app.routes.settings import router as settings_router
+from app.routes.olist import router as olist_router
 
 
 def create_app() -> FastAPI:
@@ -18,5 +19,6 @@ def create_app() -> FastAPI:
     app.include_router(settings_router)
     app.include_router(graph_router)
     app.include_router(demand_forecast_router)
+    app.include_router(olist_router)
 
     return app
