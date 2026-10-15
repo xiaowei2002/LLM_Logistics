@@ -1,8 +1,8 @@
 <script setup>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { CopyDocument, EditPen, Expand, RefreshRight } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
+import { CopyDocument, EditPen, Expand, RefreshRight, Tools } from '@element-plus/icons-vue'
 
 import AppHero from '@/components/AppHero.vue'
 import ChatSidebar from '@/components/ChatSidebar.vue'
@@ -42,32 +42,6 @@ async function scrollToBottom() {
   await nextTick()
   const el = chatListRef.value
   if (el) el.scrollTop = el.scrollHeight
-}
-
-function startNewChat() {
-  abortController?.abort()
-  chatStore.newChat()
-}
-
-function handleSelectChat(id) {
-  if (id === chatStore.currentId) return
-  abortController?.abort()
-  chatStore.selectChat(id)
-}
-
-async function handleDeleteChat(id) {
-  try {
-    await ElMessageBox.confirm('确定删除这条对话吗？删除后无法恢复。', '删除对话', {
-      confirmButtonText: '删除',
-      cancelButtonText: '取消',
-      type: 'warning',
-    })
-  } catch {
-    return
-  }
-  if (id === chatStore.currentId) abortController?.abort()
-  chatStore.deleteChat(id)
-  if (!chatStore.current) chatStore.newChat()
 }
 
 async function handleSend(text, images = []) {
@@ -216,21 +190,19 @@ function handleLogout() {
 
 <template>
   <div class="page">
-    <!-- 左侧边栏：新对话 + 历史记录 -->
+    <!-- 左侧功能导航 -->
     <ChatSidebar
       v-show="sidebarOpen"
-      @new-chat="startNewChat"
-      @select="handleSelectChat"
-      @delete="handleDeleteChat"
       @logout="handleLogout"
       @collapse="sidebarOpen = false"
-      @open-settings="settingsOpen = true"
       @open-graph="router.push('/graph')"
       @open-forecast="router.push('/forecast')"
+      @open-scheduling="router.push('/scheduling-offloading')"
       @open-knowledge="router.push('/knowledge')"
     />
 
-    <!-- 系统设置：模型 / API / 采样参数 -->
+    <!-- 系统设置独立放在右上角，用户菜单只保留退出登录。 -->
+    <el-button class="settings-button" text :icon="Tools" @click="settingsOpen = true">系统设置</el-button>
     <SettingsDialog v-model:open="settingsOpen" />
 
     <!-- 右侧聊天区 -->
@@ -362,10 +334,15 @@ function handleLogout() {
 
 <style scoped>
 .page {
+  position: relative;
   height: 100vh;
   display: flex;
   overflow: hidden;
 }
+
+.settings-button{position:absolute;top:16px;right:24px;z-index:10;gap:6px;color:var(--text-muted)}
+.settings-button:hover{color:var(--primary);background:var(--primary-light)}
+.main.has-chat .chat-head{padding-right:120px;min-height:38px}
 
 /* 边栏收起后的展开按钮：悬在左上角 */
 .expand-btn {

@@ -14,6 +14,9 @@ import {
 
 import { predictDemand, resumeDemand } from '@/services/forecast'
 import { renderMarkdown } from '@/utils/markdown'
+import AgentContextPanel from '@/components/AgentContextPanel.vue'
+import ResultInsights from '@/components/ResultInsights.vue'
+import '@/assets/styles/agent-workspace.css'
 
 const router = useRouter()
 
@@ -23,6 +26,9 @@ const input = ref('')
 const loading = ref(false)
 const threadId = ref(null)
 const flowEl = ref(null)
+
+// 保留工具返回的结构化数据，图表不从大模型文字中猜测数值。
+const forecastData = computed(() => [...messages.value].reverse().find(m => m.type === 'assistant')?.forecastResult || null)
 
 /* 是否存在未回应的提问卡片：此时主输入框禁用，必须先回答卡片 */
 const pendingCard = computed(() => messages.value.find((m) => m.type === 'card' && !m.answered))
@@ -128,7 +134,7 @@ function applyResult(res) {
     scrollToBottom()
     return
   }
-  messages.value.push({ type: 'assistant', content: res.answer })
+  messages.value.push({ type: 'assistant', content: res.answer, forecastResult: res.forecast_result || null })
   scrollToBottom()
 }
 
@@ -280,6 +286,9 @@ function reset() {
     </header>
 
     <!-- 对话流 -->
+    <div class="agent-workspace">
+      <AgentContextPanel mode="forecast" />
+      <div class="agent-conversation">
     <main ref="flowEl" class="flow">
       <div class="flow-inner">
         <template v-for="(m, i) in messages" :key="i">
@@ -391,6 +400,9 @@ function reset() {
         </div>
       </div>
     </footer>
+      </div>
+      <ResultInsights mode="forecast" :data="forecastData" :messages="messages" :loading="loading" />
+    </div>
   </div>
 </template>
 

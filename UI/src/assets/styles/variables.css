@@ -1,23 +1,32 @@
-/* ===== 全局设计变量 ===== */
+/* 全局视觉变量：深海军蓝、浅灰背景和白色内容区域。 */
 :root {
-  --bg: #ffffff;
-  --border: #e8eaee;
-  --text: #1f2329;
-  --text-muted: #8a919c;
-  --text-placeholder: #b8bec8;
-  --fill-light: #f4f5f7;
-  --primary: #2f6fed;
-  --primary-light: #eef3ff;
-  --radius-md: 10px;
-  --radius-lg: 18px;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --bg: #eef0f5;
+  --surface: #ffffff;
+  --border: #bac3cd;
+  --text: #193c50;
+  --text-muted: #566b7b;
+  --text-placeholder: #657d8d;
+  --fill-light: #e3e7ed;
+  --primary: #002b43;
+  --primary-light: #e2eaf0;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow: 0 2px 8px rgba(18, 45, 65, 0.06);
 
-  /* Element Plus 主色对齐品牌蓝 */
-  --el-color-primary: #2f6fed;
-  --el-color-primary-light-3: #5d8cf1;
-  --el-color-primary-light-5: #85a6f4;
-  --el-color-primary-light-7: #adc2f8;
-  --el-color-primary-light-8: #c1d0fa;
-  --el-color-primary-light-9: #eef3ff;
-  --el-color-primary-dark-2: #2659be;
+  /* Element Plus 的按钮、选中项和输入焦点使用相同主色。 */
+  --el-color-primary: #002b43;
+  --el-color-primary-light-3: #4d6b7b;
+  --el-color-primary-light-5: #8095a1;
+  --el-color-primary-light-7: #b3bfc7;
+  --el-color-primary-light-8: #ccd5d9;
+  --el-color-primary-light-9: #e2eaf0;
+  --el-color-primary-dark-2: #002236;
+  --el-text-color-primary: #193c50;
+  --el-text-color-regular: #314f61;
+  --el-text-color-secondary: #566b7b;
+  --el-text-color-placeholder: #657d8d;
+  --el-border-color: #bac3cd;
+  --el-border-color-light: #d3dae2;
+  --el-border-color-lighter: #e1e6ec;
+  --el-border-radius-base: 6px;
 }

@@ -58,6 +58,7 @@ class DemandForecastResponse(BaseModel):
     status: str
     thread_id: str
     answer: str | None = None
+    forecast_result: dict[str, Any] | None = None
     reason: str | None = None
     question: str | None = None
 
@@ -190,6 +191,7 @@ def predict_demand(
             answer=_extract_answer(
                 result
             ),
+            forecast_result=result.get("forecast_result"),
         )
 
     except Exception as exc:
@@ -243,6 +245,7 @@ def resume_demand_forecast(
             answer=_extract_answer(
                 result
             ),
+            forecast_result=result.get("forecast_result"),
         )
 
     except Exception as exc:

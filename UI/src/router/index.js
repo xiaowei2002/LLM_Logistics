@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue'
 import GraphView from '@/views/GraphView.vue'
 import ForecastView from '@/views/ForecastView.vue'
 import KnowledgeView from '@/views/KnowledgeView.vue'
+import SchedulingOffloadingView from '@/views/SchedulingOffloadingView.vue'
 import LoginView from '@/views/LoginView.vue'
 import { useAuthStore } from '@/stores/auth'
 
@@ -33,6 +34,12 @@ const router = createRouter({
       name: 'forecast',
       component: ForecastView,
       meta: { title: '需求预测 - 汽车物流大模型系统', requiresAuth: true },
+    },
+    {
+      path: '/scheduling-offloading',
+      name: 'scheduling-offloading',
+      component: SchedulingOffloadingView,
+      meta: { title: '生产调度与计算卸载 - 汽车物流大模型系统', requiresAuth: true },
     },
     {
       path: '/knowledge',
