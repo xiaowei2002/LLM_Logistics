@@ -1,0 +1,221 @@
+Part_ID,Part_Name,Part_Category,Brand,Truck_Model,Price,Stock_Quantity,Supplier,Warehouse_Location,Delivery_Time_Days,Warranty_Period_Months,Order_Date,Monthly_Sales,Revenue
+P0001,Fuel Pump - Eco,Fuel System,ZF,Volvo FH,203.70,558,EuroTruck Supply,Budapest,14,6,2023-01-31,47,9573.90
+P0002,Brake Pad Set,Brakes,Bosch,DAF XF,286.69,558,Transline Distributors,Kyiv,15,24,2023-01-07,388,111235.72
+P0003,Torsion Bar,Suspension,Hella,Volvo FH,335.73,104,EuroTruck Supply,Rotterdam,4,24,2023-12-19,309,103740.57
+P0004,Glow Plug - Standard,Electrical,Michelin,MAN TGX,959.13,565,CentralFleet Co,Budapest,12,12,2024-12-22,35,33569.55
+P0005,Cylinder Head Gasket,Engine,Brembo,Renault T,898.26,284,Continental Supply,Brno,6,24,2023-12-30,107,96113.82
+P0006,Fuel Line,Fuel System,Scania,Iveco Stralis,111.40,175,NordicAuto GmbH,Kyiv,6,36,2024-01-24,138,15373.20
+P0007,Fuel Pressure Regulator,Fuel System,DAF,Renault T,1013.28,234,GlobalParts Ltd,Brno,13,24,2023-03-09,108,109434.24
+P0008,Control Valve - Standard,Hydraulics,Knorr-Bremse,Iveco Stralis,1133.71,271,Atlas Parts,Kyiv,18,24,2024-08-21,219,248282.49
+P0009,Hydraulic Hose Assembly,Hydraulics,MANN,DAF XF,1214.83,48,EuroTruck Supply,Prague,6,36,2024-09-02,32,38874.56
+P0010,Cabin Filter,Filters,Continental,DAF XF,47.19,11,EuroTruck Supply,Lviv,9,24,2023-04-25,150,7078.50
+P0011,Air Filter,Filters,MAN,Iveco Stralis,43.19,512,Atlas Parts,Lviv,4,24,2024-10-16,259,11186.21
+P0012,Hydraulic Cylinder - Pro,Hydraulics,Michelin,Renault T,3762.95,500,GlobalParts Ltd,Warsaw,12,24,2023-09-03,29,109125.55
+P0013,ABS Sensor,Brakes,Brembo,Iveco Stralis,598.51,545,Atlas Parts,Prague,16,12,2023-09-29,270,161597.70
+P0014,Hydraulic Hose Assembly,Hydraulics,Iveco,DAF XF,1827.32,205,CentralFleet Co,Rotterdam,12,36,2024-06-13,231,422110.92
+P0015,Transmission Filter - Eco,Transmission,Bosch,DAF XF,1614.11,7,EuroTruck Supply,Hamburg,8,6,2023-02-02,440,710208.40
+P0016,295/80R22.5 Tire,Tires,Hella,Iveco Stralis,524.96,584,Continental Supply,Kyiv,16,36,2023-07-14,48,25198.08
+P0017,Input Shaft,Transmission,Knorr-Bremse,Mercedes Actros,2166.40,55,EuroTruck Supply,Hamburg,13,24,2023-04-22,127,275132.80
+P0018,Brake Pad Set,Brakes,MANN,Mercedes Actros,228.35,473,PrimeTruck Traders,Warsaw,15,6,2023-02-21,333,76040.55
+P0019,Radiator,Cooling,Iveco,Renault T,1279.10,170,Transline Distributors,Milan,16,12,2024-02-15,462,590944.20
+P0020,Water Pump,Engine,Knorr-Bremse,Scania R,3248.69,465,CentralFleet Co,Rotterdam,18,36,2023-06-08,97,315122.93
+P0021,Alternator,Electrical,Volvo,Iveco Stralis,494.84,321,GlobalParts Ltd,Hamburg,19,36,2024-05-29,470,232574.80
+P0022,Intercooler - Premium,Cooling,Brembo,Renault T,508.30,240,Transline Distributors,Warsaw,19,12,2024-08-15,304,154523.20
+P0023,Cylinder Head - Heavy-Duty,Engine,Volvo,DAF XF,2921.59,209,BlueLine Logistics,Kyiv,9,36,2023-05-15,343,1002105.37
+P0024,Fuel Line,Fuel System,Iveco,Renault T,1217.74,9,Continental Supply,Budapest,19,6,2023-03-17,275,334878.50
+P0025,ABS Sensor - Eco,Brakes,Iveco,MAN TGX,1056.33,378,CentralFleet Co,Prague,15,24,2024-09-18,413,436264.29
+P0026,Fuel Pump,Fuel System,Michelin,Scania R,1244.05,137,CentralFleet Co,Warsaw,4,12,2023-10-06,144,179143.20
+P0027,Hydraulic Cylinder,Hydraulics,ZF,Iveco Stralis,1646.03,500,CentralFleet Co,Hamburg,3,36,2023-10-11,22,36212.66
+P0028,Timing Belt,Engine,Scania,Scania R,632.61,452,NordicAuto GmbH,Rotterdam,18,6,2023-04-25,38,24039.18
+P0029,LED Work Light,Lighting,DAF,Scania R,237.18,151,Transline Distributors,Prague,2,24,2024-01-09,460,109102.80
+P0030,Timing Belt - Pro,Engine,Scania,MAN TGX,1751.17,416,Atlas Parts,Kyiv,6,12,2024-02-27,12,21014.04
+P0031,Torsion Bar,Suspension,Mercedes,Mercedes Actros,968.62,254,CentralFleet Co,Prague,4,36,2023-02-09,439,425224.18
+P0032,Exhaust Pipe - Standard,Exhaust,Valeo,Scania R,1480.55,233,PrimeTruck Traders,Hamburg,7,36,2023-12-03,142,210238.10
+P0033,Output Shaft Seal,Transmission,Michelin,Mercedes Actros,2076.50,339,GlobalParts Ltd,Warsaw,9,12,2024-08-17,492,1021638.00
+P0034,Starter Motor - Standard,Electrical,Valeo,Iveco Stralis,710.99,446,NordicAuto GmbH,Warsaw,13,12,2023-09-18,22,15641.78
+P0035,Fog Light - Premium,Lighting,Scania,Iveco Stralis,548.24,201,BlueLine Logistics,Rotterdam,3,24,2024-09-30,160,87718.40
+P0036,Fuel Pump,Fuel System,Hella,DAF XF,458.34,412,CentralFleet Co,Lviv,5,12,2024-03-06,340,155835.60
+P0037,Separator Filter,Filters,MANN,DAF XF,87.52,415,NordicAuto GmbH,Hamburg,10,24,2023-08-04,220,19254.40
+P0038,Accumulator,Hydraulics,Continental,Mercedes Actros,1153.13,484,Atlas Parts,Warsaw,10,24,2023-04-06,419,483161.47
+P0039,Brake Drum - Pro,Brakes,MANN,MAN TGX,103.41,74,Continental Supply,Rotterdam,19,12,2024-12-14,196,20268.36
+P0040,DPF (cleaning unit) - Heavy-Duty,Exhaust,MAN,MAN TGX,2450.79,109,Transline Distributors,Kyiv,6,36,2023-02-21,285,698475.15
+P0041,Parking Brake Cable - Pro,Brakes,Mercedes,Mercedes Actros,1281.72,324,Continental Supply,Budapest,17,36,2024-07-15,228,292232.16
+P0042,Torsion Bar,Suspension,Continental,Scania R,1100.56,283,NordicAuto GmbH,Milan,8,24,2024-03-26,39,42921.84
+P0043,Indicator Lamp - Eco,Lighting,Valeo,DAF XF,41.43,154,PrimeTruck Traders,Rotterdam,5,12,2023-03-07,212,8783.16
+P0044,Fuel Filter,Filters,Knorr-Bremse,MAN TGX,34.99,430,Transline Distributors,Budapest,1,36,2024-05-03,3,104.97
+P0045,Spare Wheel,Tires,DAF,Renault T,406.17,559,PrimeTruck Traders,Milan,8,24,2024-03-22,248,100730.16
+P0046,Engine Mount,Engine,Scania,Renault T,1462.76,169,Continental Supply,Prague,20,6,2024-02-08,303,443216.28
+P0047,Hydraulic Pump - Standard,Hydraulics,MANN,Renault T,1140.37,51,CentralFleet Co,Rotterdam,11,12,2024-04-10,167,190441.79
+P0048,Tire Repair Kit - Standard,Tires,Hella,Renault T,120.20,552,GlobalParts Ltd,Brno,8,6,2024-10-29,20,2404.00
+P0049,Cylinder Head Gasket - HD,Engine,Volvo,Volvo FH,1173.94,117,PrimeTruck Traders,Milan,9,24,2023-06-21,310,363921.40
+P0050,Hydraulic Pump,Hydraulics,MANN,Scania R,312.95,26,CentralFleet Co,Budapest,13,36,2023-07-23,38,11892.10
+P0051,Hydraulic Cylinder - Eco,Hydraulics,DAF,Iveco Stralis,1464.96,123,GlobalParts Ltd,Brno,18,36,2024-11-08,189,276877.44
+P0052,Transmission Oil Cooler - Standard,Transmission,DAF,Mercedes Actros,308.57,370,Continental Supply,Prague,14,12,2024-06-18,494,152433.58
+P0053,Fuel Line,Fuel System,Iveco,DAF XF,1011.54,476,Transline Distributors,Budapest,9,24,2023-09-09,425,429904.50
+P0054,Output Shaft Seal,Transmission,ZF,Renault T,1369.89,388,BlueLine Logistics,Hamburg,16,24,2023-07-06,249,341102.61
+P0055,Brake Caliper,Brakes,Valeo,Scania R,1057.58,282,NordicAuto GmbH,Hamburg,17,12,2023-03-29,123,130082.34
+P0056,Fog Light,Lighting,Mercedes,Volvo FH,279.34,502,Continental Supply,Hamburg,3,24,2023-08-15,207,57823.38
+P0057,LED Work Light - Premium,Lighting,Valeo,Mercedes Actros,279.84,563,BlueLine Logistics,Brno,15,24,2023-11-10,128,35819.52
+P0058,Brake Disc,Brakes,Valeo,MAN TGX,894.03,189,PrimeTruck Traders,Kyiv,16,24,2024-08-26,500,447015.00
+P0059,Thermostat - HD,Cooling,DAF,Volvo FH,589.93,309,GlobalParts Ltd,Lviv,5,24,2023-02-16,498,293785.14
+P0060,Piston Ring Set - Pro,Engine,Scania,Renault T,2937.06,12,CentralFleet Co,Milan,16,36,2023-12-15,94,276083.64
+P0061,Oil Pan,Engine,Continental,MAN TGX,3181.32,75,GlobalParts Ltd,Prague,5,24,2023-03-29,127,404027.64
+P0062,Input Shaft,Transmission,Mercedes,DAF XF,602.93,535,Transline Distributors,Milan,15,24,2024-08-25,219,132041.67
+P0063,Tire Pressure Sensor,Electrical,Volvo,Iveco Stralis,102.82,212,PrimeTruck Traders,Gdansk,3,12,2023-09-03,88,9048.16
+P0064,Radiator - Standard,Cooling,Continental,Iveco Stralis,973.00,237,CentralFleet Co,Gdansk,15,6,2024-12-04,119,115787.00
+P0065,Glow Plug,Electrical,Volvo,Iveco Stralis,726.46,202,Transline Distributors,Warsaw,18,12,2024-10-25,76,55210.96
+P0066,Glow Plug - HD,Electrical,MANN,Renault T,419.92,582,CentralFleet Co,Milan,4,36,2024-12-06,155,65087.60
+P0067,Fog Light,Lighting,Michelin,DAF XF,206.65,40,Transline Distributors,Brno,20,24,2023-01-27,46,9505.90
+P0068,Brake Drum,Brakes,Volvo,DAF XF,1141.44,275,GlobalParts Ltd,Prague,16,36,2023-10-12,92,105012.48
+P0069,Hydraulic Hose Assembly,Hydraulics,Continental,MAN TGX,1278.22,328,EuroTruck Supply,Prague,11,36,2024-12-11,253,323389.66
+P0070,Wiring Harness,Electrical,DAF,Renault T,501.84,465,EuroTruck Supply,Brno,9,24,2023-04-29,496,248912.64
+P0071,Hydraulic Filter,Filters,Bosch,Iveco Stralis,146.20,55,PrimeTruck Traders,Lviv,12,36,2024-10-02,226,33041.20
+P0072,Cylinder Head Gasket - Pro,Engine,Iveco,Scania R,2263.43,124,GlobalParts Ltd,Budapest,8,12,2023-11-15,282,638287.26
+P0073,Piston Ring Set,Engine,ZF,Renault T,3571.63,120,Atlas Parts,Milan,10,24,2024-03-01,427,1525086.01
+P0074,DPF (cleaning unit) - Premium,Exhaust,MANN,Mercedes Actros,495.70,139,EuroTruck Supply,Gdansk,14,24,2024-06-03,136,67415.20
+P0075,Oil Pan,Engine,DAF,DAF XF,2063.34,501,Atlas Parts,Milan,18,36,2023-12-20,170,350767.80
+P0076,Thermostat,Cooling,Iveco,Scania R,1309.62,244,Transline Distributors,Kyiv,14,6,2023-11-22,381,498965.22
+P0077,DPF (cleaning unit),Exhaust,Scania,Renault T,1480.93,155,Continental Supply,Hamburg,5,24,2023-04-13,447,661975.71
+P0078,Exhaust Manifold,Exhaust,Continental,MAN TGX,1439.80,158,EuroTruck Supply,Milan,9,24,2024-09-30,354,509689.20
+P0079,Separator Filter - Eco,Filters,DAF,Iveco Stralis,129.60,389,BlueLine Logistics,Milan,18,6,2024-09-24,35,4536.00
+P0080,Brake Drum,Brakes,Hella,Volvo FH,996.15,100,EuroTruck Supply,Milan,6,24,2023-01-30,23,22911.45
+P0081,295/80R22.5 Tire - Eco,Tires,Knorr-Bremse,Volvo FH,257.57,421,Atlas Parts,Prague,6,6,2024-09-16,445,114618.65
+P0082,Hydraulic Filter,Filters,Continental,DAF XF,28.72,260,Continental Supply,Gdansk,1,36,2023-10-22,346,9937.12
+P0083,Intercooler - Eco,Cooling,Volvo,Scania R,972.85,434,CentralFleet Co,Milan,10,12,2024-01-29,436,424162.60
+P0084,Exhaust Manifold - Premium,Exhaust,Valeo,DAF XF,784.23,22,Transline Distributors,Gdansk,1,6,2024-09-12,381,298791.63
+P0085,Catalytic Converter,Exhaust,ZF,DAF XF,1526.69,194,CentralFleet Co,Prague,4,6,2023-11-13,403,615256.07
+P0086,Exhaust Manifold,Exhaust,MAN,Volvo FH,180.44,302,BlueLine Logistics,Rotterdam,6,12,2023-05-16,402,72536.88
+P0087,Cooling Fan,Cooling,Iveco,Scania R,1252.49,263,Continental Supply,Gdansk,11,6,2024-04-24,493,617477.57
+P0088,Shift Fork,Transmission,ZF,Renault T,1994.79,406,NordicAuto GmbH,Brno,3,36,2023-01-15,135,269296.65
+P0089,Radiator,Cooling,Scania,Iveco Stralis,1021.62,598,Transline Distributors,Brno,4,12,2024-04-27,12,12259.44
+P0090,Accumulator,Hydraulics,Volvo,Volvo FH,1575.51,475,CentralFleet Co,Rotterdam,4,12,2023-02-16,484,762546.84
+P0091,Oil Pan,Engine,Brembo,MAN TGX,1001.69,397,Continental Supply,Brno,18,36,2024-08-24,380,380642.20
+P0092,LED Work Light,Lighting,Scania,MAN TGX,335.14,417,CentralFleet Co,Hamburg,12,12,2024-03-30,227,76076.78
+P0093,Parking Brake Cable,Brakes,Scania,Scania R,657.91,367,GlobalParts Ltd,Rotterdam,9,12,2023-05-06,485,319086.35
+P0094,Exhaust Manifold,Exhaust,Scania,Iveco Stralis,1082.92,21,GlobalParts Ltd,Brno,8,12,2024-08-01,105,113706.60
+P0095,Transmission Filter,Transmission,DAF,Renault T,620.85,151,GlobalParts Ltd,Gdansk,5,12,2024-07-07,128,79468.80
+P0096,Shock Absorber,Suspension,Bosch,Volvo FH,56.75,243,BlueLine Logistics,Hamburg,6,24,2023-02-23,64,3632.00
+P0097,Fog Light,Lighting,MAN,MAN TGX,195.74,370,NordicAuto GmbH,Budapest,4,36,2024-05-30,113,22118.62
+P0098,Hydraulic Pump,Hydraulics,Iveco,Renault T,1601.83,308,Continental Supply,Hamburg,2,36,2024-02-16,218,349198.94
+P0099,Fuel Pump,Fuel System,Iveco,Mercedes Actros,114.07,82,BlueLine Logistics,Budapest,5,6,2023-05-10,140,15969.80
+P0100,Accumulator,Hydraulics,Valeo,Mercedes Actros,2387.43,543,CentralFleet Co,Milan,17,36,2023-04-12,406,969296.58
+P0101,Headlight Assembly,Lighting,Scania,Renault T,225.02,220,Transline Distributors,Milan,8,36,2023-12-14,423,95183.46
+P0102,DPF (cleaning unit),Exhaust,Brembo,Scania R,909.28,383,Atlas Parts,Milan,3,6,2023-03-29,47,42736.16
+P0103,Oil Filter,Filters,Valeo,Renault T,23.87,61,NordicAuto GmbH,Lviv,11,6,2024-02-25,181,4320.47
+P0104,Injector Pump,Fuel System,MAN,MAN TGX,1259.55,319,BlueLine Logistics,Warsaw,19,12,2023-06-08,336,423208.80
+P0105,Exhaust Pipe,Exhaust,Valeo,Renault T,1010.15,117,CentralFleet Co,Budapest,8,36,2024-07-28,498,503054.70
+P0106,Accumulator,Hydraulics,Michelin,MAN TGX,1729.28,273,GlobalParts Ltd,Prague,9,24,2023-12-14,179,309541.12
+P0107,Water Pump,Engine,Volvo,Iveco Stralis,1450.68,145,GlobalParts Ltd,Warsaw,17,12,2024-01-21,214,310445.52
+P0108,Catalytic Converter - Eco,Exhaust,MAN,Scania R,1402.77,581,EuroTruck Supply,Hamburg,5,12,2024-09-24,25,35069.25
+P0109,Fuel Pump - Heavy-Duty,Fuel System,Knorr-Bremse,Mercedes Actros,1018.48,220,NordicAuto GmbH,Warsaw,12,36,2023-04-24,145,147679.60
+P0110,Injector Pump,Fuel System,Hella,MAN TGX,376.65,56,GlobalParts Ltd,Kyiv,10,12,2023-05-21,391,147270.15
+P0111,Battery,Electrical,Bosch,Mercedes Actros,705.81,389,NordicAuto GmbH,Kyiv,17,24,2023-03-15,203,143279.43
+P0112,Headlight Assembly,Lighting,Continental,MAN TGX,396.05,587,Transline Distributors,Rotterdam,10,6,2024-02-19,10,3960.50
+P0113,Inner Tube,Tires,Volvo,Mercedes Actros,757.22,370,EuroTruck Supply,Rotterdam,4,12,2024-03-22,301,227923.22
+P0114,Hydraulic Filter - Eco,Filters,MAN,Scania R,37.13,172,EuroTruck Supply,Lviv,4,12,2023-12-24,179,6646.27
+P0115,LED Work Light - Pro,Lighting,Hella,Volvo FH,118.33,77,Atlas Parts,Milan,15,36,2024-11-28,473,55970.09
+P0116,Accumulator,Hydraulics,Scania,Scania R,413.24,69,Continental Supply,Milan,10,24,2024-08-28,28,11570.72
+P0117,Retread Tire - Standard,Tires,Continental,MAN TGX,118.81,78,EuroTruck Supply,Budapest,20,36,2024-04-18,297,35286.57
+P0118,Radiator,Cooling,Mercedes,DAF XF,991.68,329,Continental Supply,Lviv,5,6,2024-04-06,52,51567.36
+P0119,Wheel Rim - Heavy-Duty,Tires,MANN,MAN TGX,336.35,449,NordicAuto GmbH,Lviv,20,12,2024-01-08,190,63906.50
+P0120,Voltage Regulator,Electrical,Valeo,Iveco Stralis,544.13,342,EuroTruck Supply,Brno,4,36,2023-10-18,129,70192.77
+P0121,Tail Light,Lighting,Valeo,MAN TGX,237.27,144,BlueLine Logistics,Gdansk,13,12,2024-09-01,362,85891.74
+P0122,Output Shaft Seal,Transmission,Scania,Renault T,854.77,130,NordicAuto GmbH,Warsaw,14,24,2023-01-19,185,158132.45
+P0123,Alternator,Electrical,Valeo,Renault T,445.35,231,Atlas Parts,Prague,3,24,2023-04-14,259,115345.65
+P0124,Thermostat - Eco,Cooling,Iveco,Renault T,942.33,385,Atlas Parts,Prague,6,12,2024-03-24,22,20731.26
+P0125,Fuel Filter,Filters,ZF,Mercedes Actros,111.13,459,PrimeTruck Traders,Lviv,8,24,2024-04-25,462,51342.06
+P0126,Brake Caliper,Brakes,Volvo,Mercedes Actros,559.40,288,Transline Distributors,Lviv,17,36,2023-06-15,418,233829.20
+P0127,Parking Brake Cable,Brakes,DAF,Scania R,72.09,492,BlueLine Logistics,Lviv,4,6,2023-10-19,42,3027.78
+P0128,Control Arm,Suspension,Michelin,Volvo FH,1025.30,227,Continental Supply,Brno,1,36,2023-02-24,202,207110.60
+P0129,Cooling Fan - HD,Cooling,Valeo,Volvo FH,126.75,343,Atlas Parts,Prague,2,24,2024-04-28,356,45123.00
+P0130,Bushing Kit,Suspension,Continental,DAF XF,36.86,262,PrimeTruck Traders,Prague,18,36,2023-04-24,397,14633.42
+P0131,Alternator - HD,Electrical,ZF,Mercedes Actros,727.57,511,NordicAuto GmbH,Hamburg,17,12,2023-05-28,149,108407.93
+P0132,Oil Filter,Filters,ZF,DAF XF,76.26,87,NordicAuto GmbH,Brno,3,6,2024-02-04,447,34088.22
+P0133,Exhaust Manifold,Exhaust,Valeo,Scania R,1350.22,365,EuroTruck Supply,Brno,8,6,2024-08-18,376,507682.72
+P0134,Inner Tube - Premium,Tires,Valeo,Renault T,898.57,475,Continental Supply,Prague,5,6,2024-04-13,18,16174.26
+P0135,Alternator - Pro,Electrical,Iveco,MAN TGX,359.21,407,NordicAuto GmbH,Milan,9,6,2024-10-24,97,34843.37
+P0136,Battery,Electrical,Bosch,Renault T,635.98,376,Transline Distributors,Rotterdam,15,36,2023-12-14,498,316718.04
+P0137,Stabilizer Link,Suspension,Valeo,Renault T,637.55,84,Transline Distributors,Warsaw,14,12,2024-07-12,150,95632.50
+P0138,295/80R22.5 Tire - Heavy-Duty,Tires,Hella,Scania R,577.68,454,BlueLine Logistics,Milan,2,24,2024-09-21,222,128244.96
+P0139,Wiring Harness,Electrical,Bosch,MAN TGX,670.85,525,Atlas Parts,Hamburg,5,36,2023-02-05,64,42934.40
+P0140,Transmission Filter,Transmission,Valeo,Scania R,987.99,580,GlobalParts Ltd,Budapest,5,36,2024-01-15,190,187718.10
+P0141,Exhaust Manifold,Exhaust,Michelin,Scania R,846.80,255,EuroTruck Supply,Hamburg,6,36,2024-06-14,198,167666.40
+P0142,Radiator - Eco,Cooling,MAN,Mercedes Actros,353.27,292,Continental Supply,Kyiv,4,12,2023-03-17,231,81605.37
+P0143,Torsion Bar,Suspension,Brembo,Renault T,1002.85,327,BlueLine Logistics,Warsaw,18,24,2023-11-04,435,436239.75
+P0144,Torsion Bar,Suspension,MAN,Iveco Stralis,233.69,370,NordicAuto GmbH,Kyiv,4,12,2023-05-23,121,28276.49
+P0145,Exhaust Manifold,Exhaust,Volvo,Scania R,851.98,564,Atlas Parts,Budapest,3,6,2023-11-13,203,172951.94
+P0146,Fog Light,Lighting,Mercedes,Mercedes Actros,331.10,75,Atlas Parts,Brno,3,36,2024-04-22,348,115222.80
+P0147,Cooling Fan - Premium,Cooling,Scania,DAF XF,483.40,443,NordicAuto GmbH,Hamburg,4,12,2023-11-08,84,40605.60
+P0148,Control Arm,Suspension,ZF,Scania R,1286.26,290,EuroTruck Supply,Gdansk,7,24,2023-05-09,320,411603.20
+P0149,Tire Pressure Sensor,Electrical,Michelin,Iveco Stralis,202.90,157,Atlas Parts,Budapest,20,24,2024-07-31,21,4260.90
+P0150,Oil Pump - Heavy-Duty,Engine,Mercedes,DAF XF,1148.60,585,Transline Distributors,Budapest,1,36,2024-10-04,279,320459.40
+P0151,Wiring Harness,Electrical,Continental,Volvo FH,851.67,304,Continental Supply,Warsaw,2,12,2024-03-26,212,180554.04
+P0152,DPF (cleaning unit) - Premium,Exhaust,MANN,Scania R,1903.93,353,Transline Distributors,Prague,12,6,2023-11-23,123,234183.39
+P0153,Exhaust Manifold - Pro,Exhaust,MANN,MAN TGX,172.82,428,PrimeTruck Traders,Prague,11,24,2023-07-14,390,67399.80
+P0154,Stabilizer Link,Suspension,Continental,Mercedes Actros,1190.14,92,Transline Distributors,Lviv,15,12,2023-08-09,298,354661.72
+P0155,295/80R22.5 Tire - Standard,Tires,Volvo,Renault T,606.12,481,CentralFleet Co,Lviv,1,6,2024-03-17,68,41216.16
+P0156,Wiring Harness,Electrical,Knorr-Bremse,Scania R,55.04,52,NordicAuto GmbH,Kyiv,12,24,2023-03-17,197,10842.88
+P0157,Coolant Hose,Cooling,Hella,Renault T,1736.51,121,Atlas Parts,Warsaw,13,24,2023-12-14,285,494905.35
+P0158,Inner Tube - Premium,Tires,Knorr-Bremse,DAF XF,90.23,341,Continental Supply,Lviv,15,12,2024-09-12,457,41235.11
+P0159,Intercooler,Cooling,Volvo,Scania R,277.25,306,BlueLine Logistics,Lviv,17,36,2024-12-26,288,79848.00
+P0160,Voltage Regulator,Electrical,Valeo,Scania R,611.32,426,CentralFleet Co,Hamburg,20,36,2023-09-29,495,302603.40
+P0161,Fuel Pressure Regulator,Fuel System,Volvo,Mercedes Actros,238.26,389,Atlas Parts,Kyiv,2,6,2023-07-15,9,2144.34
+P0162,Catalytic Converter,Exhaust,Knorr-Bremse,Iveco Stralis,382.93,513,Continental Supply,Hamburg,5,12,2024-07-28,166,63566.38
+P0163,Injector Pump,Fuel System,Valeo,Volvo FH,608.37,545,BlueLine Logistics,Lviv,12,24,2024-09-16,247,150267.39
+P0164,Brake Pad Set - Eco,Brakes,ZF,Scania R,1091.18,500,BlueLine Logistics,Milan,12,24,2023-10-22,62,67653.16
+P0165,Accumulator,Hydraulics,Knorr-Bremse,Renault T,867.62,149,CentralFleet Co,Hamburg,10,6,2023-12-21,473,410384.26
+P0166,Catalytic Converter,Exhaust,ZF,Volvo FH,1595.00,575,CentralFleet Co,Prague,4,12,2023-09-06,25,39875.00
+P0167,Fuel Pressure Regulator,Fuel System,Bosch,MAN TGX,647.49,102,Atlas Parts,Hamburg,18,12,2024-02-21,334,216261.66
+P0168,DPF (cleaning unit),Exhaust,Mercedes,Scania R,591.68,60,EuroTruck Supply,Budapest,8,6,2023-06-29,213,126027.84
+P0169,Shock Absorber,Suspension,Knorr-Bremse,Renault T,609.60,296,GlobalParts Ltd,Hamburg,10,6,2023-12-10,145,88392.00
+P0170,Muffler,Exhaust,Iveco,Volvo FH,1534.89,479,CentralFleet Co,Kyiv,4,24,2023-06-16,374,574048.86
+P0171,Catalytic Converter,Exhaust,Bosch,Iveco Stralis,665.79,197,Atlas Parts,Budapest,13,36,2024-06-11,167,111186.93
+P0172,Input Shaft,Transmission,MANN,Volvo FH,1219.76,254,GlobalParts Ltd,Gdansk,13,12,2024-04-02,385,469607.60
+P0173,Battery - Heavy-Duty,Electrical,Volvo,MAN TGX,307.53,241,GlobalParts Ltd,Warsaw,15,24,2023-06-13,207,63658.71
+P0174,Fuel Line,Fuel System,Scania,Scania R,490.46,226,PrimeTruck Traders,Prague,16,12,2024-04-10,382,187355.72
+P0175,Control Valve,Hydraulics,Michelin,Mercedes Actros,2199.55,223,PrimeTruck Traders,Budapest,3,36,2024-06-24,360,791838.00
+P0176,295/80R22.5 Tire,Tires,Brembo,MAN TGX,924.76,207,NordicAuto GmbH,Prague,6,24,2024-06-16,226,208995.76
+P0177,Transmission Filter,Transmission,Continental,MAN TGX,2503.12,56,Continental Supply,Prague,17,36,2024-04-12,288,720898.56
+P0178,Piston Ring Set,Engine,Mercedes,Scania R,2553.62,405,CentralFleet Co,Hamburg,7,6,2023-02-16,216,551581.92
+P0179,Wheel Rim - HD,Tires,Iveco,MAN TGX,1163.25,293,Transline Distributors,Prague,5,36,2024-01-19,456,530442.00
+P0180,Cabin Filter,Filters,Iveco,Mercedes Actros,59.47,552,Atlas Parts,Brno,4,12,2024-07-04,201,11953.47
+P0181,Intercooler,Cooling,ZF,Renault T,45.33,305,Continental Supply,Lviv,14,36,2023-08-24,126,5711.58
+P0182,Catalytic Converter - Pro,Exhaust,Iveco,Iveco Stralis,1476.20,429,GlobalParts Ltd,Kyiv,7,6,2023-04-14,304,448764.80
+P0183,Fuel Injector,Engine,MAN,Renault T,246.47,45,Transline Distributors,Milan,8,12,2023-02-27,71,17499.37
+P0184,Cooling Fan - Heavy-Duty,Cooling,Volvo,Scania R,1302.50,328,PrimeTruck Traders,Gdansk,5,12,2024-02-28,153,199282.50
+P0185,Starter Motor,Electrical,Volvo,Iveco Stralis,821.75,437,NordicAuto GmbH,Milan,2,24,2024-10-20,343,281860.25
+P0186,Hydraulic Filter - Standard,Filters,Knorr-Bremse,Volvo FH,48.48,188,NordicAuto GmbH,Milan,8,12,2023-11-04,439,21282.72
+P0187,LED Work Light,Lighting,Iveco,MAN TGX,229.33,426,NordicAuto GmbH,Lviv,5,36,2023-09-06,130,29812.90
+P0188,Brake Caliper,Brakes,Iveco,Mercedes Actros,1018.09,94,NordicAuto GmbH,Kyiv,2,24,2024-01-22,344,350222.96
+P0189,Accumulator - HD,Hydraulics,ZF,Renault T,2953.61,490,PrimeTruck Traders,Brno,10,6,2023-08-05,479,1414779.19
+P0190,Brake Drum - Standard,Brakes,Iveco,Volvo FH,837.80,209,Transline Distributors,Kyiv,18,24,2023-10-17,194,162533.20
+P0191,Muffler,Exhaust,Hella,Scania R,805.87,477,EuroTruck Supply,Milan,11,12,2024-01-15,160,128939.20
+P0192,Oil Filter,Filters,ZF,Iveco Stralis,27.87,598,Transline Distributors,Gdansk,5,12,2023-12-04,117,3260.79
+P0193,Hydraulic Filter,Filters,Continental,DAF XF,117.03,263,Continental Supply,Milan,15,12,2023-12-27,86,10064.58
+P0194,Torsion Bar,Suspension,MANN,DAF XF,1188.68,60,NordicAuto GmbH,Hamburg,3,6,2023-01-07,211,250811.48
+P0195,Bushing Kit,Suspension,Brembo,Iveco Stralis,218.00,466,BlueLine Logistics,Hamburg,20,36,2024-11-06,249,54282.00
+P0196,Turbocharger,Engine,Knorr-Bremse,MAN TGX,137.20,281,NordicAuto GmbH,Gdansk,1,36,2023-07-03,54,7408.80
+P0197,Shift Fork - Premium,Transmission,Michelin,Scania R,2770.08,382,Transline Distributors,Milan,19,12,2024-12-14,115,318559.20
+P0198,Wiring Harness,Electrical,Brembo,Iveco Stralis,1037.66,32,EuroTruck Supply,Rotterdam,13,36,2024-07-19,243,252151.38
+P0199,Turbocharger,Engine,Brembo,Mercedes Actros,3450.04,339,EuroTruck Supply,Lviv,2,12,2023-08-05,461,1590468.44
+P0200,Tail Light,Lighting,Bosch,MAN TGX,296.34,556,GlobalParts Ltd,Prague,11,6,2023-08-01,300,88902.00
+P0201,Bushing Kit,Suspension,DAF,Mercedes Actros,1116.78,306,Atlas Parts,Budapest,8,36,2024-11-24,459,512602.02
+P0202,Cooling Fan,Cooling,MAN,Volvo FH,1194.13,80,NordicAuto GmbH,Brno,2,6,2024-03-23,118,140907.34
+P0203,Transmission Oil Cooler,Transmission,Volvo,DAF XF,1021.92,334,GlobalParts Ltd,Gdansk,15,36,2023-08-22,182,185989.44
+P0204,Coolant Hose,Cooling,Scania,DAF XF,1004.58,87,CentralFleet Co,Kyiv,3,6,2023-10-02,78,78357.24
+P0205,Separator Filter,Filters,MANN,Iveco Stralis,61.50,369,EuroTruck Supply,Warsaw,1,24,2024-03-31,184,11316.00
+P0206,Starter Motor - Pro,Electrical,Knorr-Bremse,Mercedes Actros,676.48,105,GlobalParts Ltd,Warsaw,12,6,2024-09-03,306,207002.88
+P0207,Tire Repair Kit - Standard,Tires,Knorr-Bremse,Renault T,121.99,572,PrimeTruck Traders,Budapest,17,12,2024-12-02,194,23666.06
+P0208,Leaf Spring - Eco,Suspension,Continental,Volvo FH,115.32,431,CentralFleet Co,Milan,3,24,2023-09-15,483,55699.56
+P0209,Brake Drum,Brakes,Volvo,DAF XF,242.70,109,Atlas Parts,Gdansk,1,36,2023-12-07,430,104361.00
+P0210,Hydraulic Hose Assembly,Hydraulics,Valeo,Mercedes Actros,843.28,139,CentralFleet Co,Brno,20,12,2024-05-05,160,134924.80
+P0211,Stabilizer Link,Suspension,Hella,Iveco Stralis,946.59,589,PrimeTruck Traders,Brno,13,24,2024-02-07,186,176065.74
+P0212,Transmission Filter,Transmission,Michelin,Volvo FH,1956.77,472,PrimeTruck Traders,Milan,10,6,2024-02-23,344,673128.88
+P0213,Exhaust Pipe,Exhaust,ZF,Scania R,1405.64,386,EuroTruck Supply,Milan,20,36,2024-08-19,205,288156.20
+P0214,Thermostat,Cooling,DAF,Iveco Stralis,650.72,37,BlueLine Logistics,Lviv,20,6,2023-04-22,393,255732.96
+P0215,Brake Drum,Brakes,MANN,Iveco Stralis,739.09,576,Transline Distributors,Brno,14,6,2023-01-11,50,36954.50
+P0216,Alternator,Electrical,Michelin,DAF XF,604.80,456,BlueLine Logistics,Rotterdam,15,12,2023-12-20,12,7257.60
+P0217,Exhaust Manifold - HD,Exhaust,Brembo,Renault T,2143.08,466,PrimeTruck Traders,Lviv,16,24,2024-05-02,49,105010.92
+P0218,DPF (cleaning unit) - Eco,Exhaust,Bosch,Renault T,1292.45,351,EuroTruck Supply,Prague,8,12,2024-07-19,81,104688.45
+P0219,Retread Tire,Tires,Continental,Volvo FH,842.72,190,Transline Distributors,Rotterdam,1,12,2024-04-05,303,255344.16
+P0220,Cabin Filter - Pro,Filters,ZF,Scania R,148.74,104,NordicAuto GmbH,Prague,12,24,2023-07-21,234,34805.16

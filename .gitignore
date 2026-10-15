@@ -14,3 +14,4 @@ wheels/
 # 运行时数据（网页端保存的 LLM 配置覆盖值）
 backend/data/
 
+knowledge/pdf/汽车零部件制造工艺及典型实例 (张志君主编；王宇昆，吴永锋，孙澄宇副主编, 张志君主编, 张志君) (z-library.sk, 1lib.sk, z-lib.sk).pdf
