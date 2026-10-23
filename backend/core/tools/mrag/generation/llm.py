@@ -50,7 +50,7 @@ class LLMClient:
 
 
 if __name__ == '__main__':
-    os.environ.setdefault("API_KEY", "Bearer sk-8a885913ec6044d38e6f167e4b1f6380")
+    os.environ.setdefault("API_KEY", "hhh")
     os.environ.setdefault("LLM_MODEL_NAME", "qwen-plus")
     os.environ.setdefault("LLM_MODEL_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
     llm = LLMClient()
